@@ -2291,7 +2291,7 @@
             shuffledTerms.forEach((item, i) => {
                 const matched = matchedTerms.includes(item.term);
                 html += `<div class="term-item ${matched ? 'matched' : ''}" 
-                    id="term${i}" onclick="selectTerm(${i}, '${item.term}')" 
+                    id="term${i}" onclick="selectTerm(${i})" 
                     ${matched ? 'style="opacity:0.5;cursor:not-allowed;"' : ''}>${item.term}</div>`;
             });
             html += '</div>';
@@ -2299,7 +2299,7 @@
             shuffledDefs.forEach((item, i) => {
                 const matched = matchedTerms.includes(item.term);
                 html += `<div class="def-item ${matched ? 'matched' : ''}" 
-                    id="def${i}" onclick="selectDef(${i}, '${item.def}', '${item.term}')"
+                    id="def${i}" onclick="selectDef(${i}, ${i})"
                     ${matched ? 'style="opacity:0.5;cursor:not-allowed;"' : ''}>${item.def}</div>`;
             });
             html += '</div></div>';
@@ -2307,16 +2307,21 @@
             document.getElementById('gameBody').innerHTML = html;
         }
 
-        function selectTerm(index, term) {
+        let selectedTermIndex = -1;
+        
+        function selectTerm(index) {
+            const term = shuffledTerms[index].term;
             if (matchedTerms.includes(term)) return;
             document.querySelectorAll('.term-item').forEach(t => t.classList.remove('selected'));
             document.getElementById('term' + index).classList.add('selected');
             selectedTerm = term;
+            selectedTermIndex = index;
         }
 
-        function selectDef(index, def, correctTerm) {
+        function selectDef(defIndex, correctTermIndex) {
+            const correctTerm = shuffledDefs[correctTermIndex].term;
             if (matchedTerms.includes(correctTerm)) return;
-            if (!selectedTerm) {
+            if (selectedTermIndex === -1) {
                 document.getElementById('termFeedback').innerHTML = showFeedback(false, 'Select a term first!');
                 return;
             }
@@ -2326,19 +2331,23 @@
             if (selectedTerm === correctTerm) {
                 termMatches++;
                 matchedTerms.push(selectedTerm);
-                feedbackDiv.innerHTML = showFeedback(true, `${selectedTerm} = ${def}`);
+                feedbackDiv.innerHTML = showFeedback(true, `${selectedTerm} matched!`);
                 setTimeout(() => {
+                    selectedTermIndex = -1;
+                    selectedTerm = null;
                     if (termMatches >= allTerms.length) {
                         document.getElementById('gameBody').innerHTML = `
                             <div class="millionaire-question"><h2>🎉 Perfect Match!</h2><p>All ${allTerms.length} terms mastered!</p></div>`;
                     } else {
                         showTerminologyQuestion();
                     }
-                }, 1000);
+                }, 800);
             } else {
-                feedbackDiv.innerHTML = showFeedback(false, 'Try again!');
+                feedbackDiv.innerHTML = showFeedback(false, 'Not a match - try again!');
+                document.querySelectorAll('.term-item').forEach(t => t.classList.remove('selected'));
+                selectedTermIndex = -1;
+                selectedTerm = null;
             }
-            selectedTerm = null;
         }
 
         // ====== COMPENSATION GAME ======
