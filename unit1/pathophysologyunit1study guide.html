@@ -1,0 +1,2821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUR221 Week 1 - Complete Study Guide</title>
+    <style>
+        :root {
+            --deep-pink: #C2185B;
+            --medium-pink: #E91E63;
+            --light-pink: #F8BBD9;
+            --pale-pink: #FCE4EC;
+            --accent-pink: #FF4081;
+            --dark-pink: #880E4F;
+            --white: #FFFFFF;
+            --text-dark: #2D2D2D;
+            --text-light: #666666;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--pale-pink) 0%, var(--white) 50%, var(--pale-pink) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(194, 24, 91, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: var(--pale-pink);
+            border: 2px solid var(--light-pink);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--deep-pink);
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--deep-pink);
+            color: white;
+            border-color: var(--deep-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(194, 24, 91, 0.3);
+        }
+
+        /* Return to Top Button */
+        .return-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(194, 24, 91, 0.4);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .return-top.visible {
+            opacity: 1;
+        }
+
+        .return-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(194, 24, 91, 0.5);
+        }
+
+        /* Progress Tracker */
+        .progress-tracker {
+            background: white;
+            margin: 20px auto;
+            max-width: 1400px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar-container {
+            background: var(--pale-pink);
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--medium-pink), var(--deep-pink));
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: var(--deep-pink);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            color: var(--deep-pink);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-pink);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Topic Boxes */
+        .topic-box {
+            background: linear-gradient(135deg, var(--pale-pink), white);
+            border: 2px solid var(--light-pink);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .topic-box:hover {
+            box-shadow: 0 5px 20px rgba(194, 24, 91, 0.2);
+        }
+
+        .topic-header {
+            background: linear-gradient(135deg, var(--light-pink), var(--pale-pink));
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topic-header h3 {
+            color: var(--deep-pink);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topic-header .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--medium-pink);
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .topic-header .checkbox.checked {
+            background: var(--deep-pink);
+            border-color: var(--deep-pink);
+        }
+
+        .topic-header .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--medium-pink);
+            transition: transform 0.3s ease;
+        }
+
+        .topic-box.expanded .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .topic-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .topic-box.expanded .topic-content {
+            padding: 20px;
+            max-height: 5000px;
+        }
+
+        /* Definition Cards */
+        .definition-card {
+            background: white;
+            border-left: 5px solid var(--medium-pink);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .definition-card .term {
+            font-weight: 700;
+            color: var(--deep-pink);
+            font-size: 1.1rem;
+        }
+
+        .definition-card .definition {
+            color: var(--text-dark);
+            margin-top: 5px;
+        }
+
+        /* Image Container */
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .image-caption {
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--pale-pink);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--pale-pink);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--light-pink);
+        }
+
+        /* Exam Focus */
+        .exam-focus {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border: 2px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .exam-focus-title {
+            color: #E65100;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Mnemonic Box */
+        .mnemonic-box {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .mnemonic-title {
+            color: #2E7D32;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Games Section */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .game-card {
+            background: white;
+            border: 2px solid var(--light-pink);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(194, 24, 91, 0.2);
+            border-color: var(--medium-pink);
+        }
+
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .game-title {
+            color: var(--deep-pink);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .game-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Game Modal */
+        .game-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .game-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 20px;
+        }
+
+        .game-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .game-header {
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .game-body {
+            padding: 20px;
+        }
+
+        .close-game {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-game:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Game Progress Indicator */
+        .game-progress {
+            background: var(--pale-pink);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .game-progress-text {
+            font-weight: bold;
+            color: var(--deep-pink);
+        }
+
+        .game-progress-bar {
+            flex: 1;
+            height: 10px;
+            background: white;
+            border-radius: 5px;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+
+        .game-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--medium-pink), var(--deep-pink));
+            transition: width 0.3s ease;
+        }
+
+        /* Answer Feedback */
+        .answer-feedback {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: 600;
+            display: none;
+        }
+
+        .answer-feedback.correct {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            border: 2px solid #4CAF50;
+            color: #2E7D32;
+            display: block;
+        }
+
+        .answer-feedback.incorrect {
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+            border: 2px solid #F44336;
+            color: #C62828;
+            display: block;
+        }
+
+        /* Jeopardy Styles */
+        .jeopardy-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .jeopardy-category {
+            background: linear-gradient(135deg, var(--deep-pink), var(--dark-pink));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .jeopardy-cell {
+            background: var(--medium-pink);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .jeopardy-cell:hover:not(.used) {
+            background: var(--deep-pink);
+            transform: scale(1.05);
+        }
+
+        .jeopardy-cell.used {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .jeopardy-score {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--deep-pink);
+            margin: 20px 0;
+        }
+
+        /* Millionaire Styles */
+        .millionaire-question {
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .millionaire-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .millionaire-option {
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .millionaire-option:hover:not(:disabled) {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(194, 24, 91, 0.4);
+        }
+
+        .millionaire-option.correct {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50) !important;
+        }
+
+        .millionaire-option.wrong {
+            background: linear-gradient(135deg, #C62828, #E53935) !important;
+        }
+
+        .millionaire-option:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .lifeline-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px solid var(--medium-pink);
+            background: white;
+            color: var(--deep-pink);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lifeline-btn:hover:not(:disabled) {
+            background: var(--medium-pink);
+            color: white;
+        }
+
+        .lifeline-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Quiz Styles */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-question {
+            background: linear-gradient(135deg, var(--pale-pink), white);
+            border: 2px solid var(--light-pink);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question-num {
+            color: var(--medium-pink);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid var(--light-pink);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--medium-pink);
+            background: var(--pale-pink);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--medium-pink);
+            background: var(--light-pink);
+        }
+
+        .quiz-option.correct {
+            border-color: #4CAF50;
+            background: #E8F5E9;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #F44336;
+            background: #FFEBEE;
+        }
+
+        .quiz-hint {
+            margin-top: 15px;
+            padding: 15px;
+            background: #FFF3E0;
+            border-radius: 10px;
+            border-left: 4px solid #FF9800;
+            display: none;
+        }
+
+        .quiz-hint.visible {
+            display: block;
+        }
+
+        .quiz-rationale {
+            margin-top: 15px;
+            padding: 15px;
+            background: #E3F2FD;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+            display: none;
+        }
+
+        .quiz-rationale.visible {
+            display: block;
+        }
+
+        .quiz-btn {
+            background: linear-gradient(135deg, var(--medium-pink), var(--deep-pink));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(194, 24, 91, 0.3);
+        }
+
+        /* Wrong Answer Vault */
+        .vault-section {
+            background: linear-gradient(135deg, #263238, #37474F);
+            border: 3px solid #546E7A;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .vault-title {
+            color: #FF7043;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vault-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #FF7043;
+        }
+
+        .vault-item .question-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .vault-item .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .progress-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .progress-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #546E7A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .progress-dot.filled {
+            background: #4CAF50;
+        }
+
+        .vault-empty {
+            text-align: center;
+            padding: 30px;
+            color: #B0BEC5;
+        }
+
+        /* Flashcard Styles */
+        .flashcard-container {
+            perspective: 1000px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, var(--light-pink), var(--pale-pink));
+            color: var(--text-dark);
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .flashcard-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--light-pink);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-pink);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--deep-pink);
+            color: white;
+            border-color: var(--deep-pink);
+        }
+
+        /* Quick Reference Cards */
+        .quick-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .quick-ref-card {
+            background: linear-gradient(135deg, var(--pale-pink), white);
+            border: 2px solid var(--light-pink);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .quick-ref-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(194, 24, 91, 0.2);
+        }
+
+        .quick-ref-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--deep-pink);
+        }
+
+        .quick-ref-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Compensation Cards */
+        .compensation-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .compensation-card {
+            border-radius: 15px;
+            padding: 20px;
+            border: 3px solid;
+        }
+
+        .compensation-card.fully-compensated {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            border-color: #4CAF50;
+        }
+
+        .compensation-card.partially-compensated {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border-color: #FF9800;
+        }
+
+        .compensation-card.uncompensated {
+            background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+            border-color: #F44336;
+        }
+
+        .compensation-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .compensation-card.fully-compensated .compensation-title { color: #2E7D32; }
+        .compensation-card.partially-compensated .compensation-title { color: #E65100; }
+        .compensation-card.uncompensated .compensation-title { color: #C62828; }
+
+        /* Case Study Styles */
+        .case-study {
+            background: white;
+            border: 2px solid var(--light-pink);
+            border-radius: 15px;
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .case-header {
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+            padding: 20px;
+        }
+
+        .case-header h3 {
+            font-size: 1.3rem;
+        }
+
+        .case-scenario {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            padding: 20px;
+            border-bottom: 1px solid var(--light-pink);
+        }
+
+        .case-scenario h4 {
+            color: #1565C0;
+            margin-bottom: 10px;
+        }
+
+        .case-data {
+            padding: 20px;
+            background: var(--pale-pink);
+        }
+
+        .case-data h4 {
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .data-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .data-item .label {
+            color: var(--text-light);
+        }
+
+        .data-item .value {
+            font-weight: bold;
+        }
+
+        .data-item .value.abnormal {
+            color: #C62828;
+        }
+
+        .data-item .value.normal {
+            color: #2E7D32;
+        }
+
+        .case-thinking {
+            padding: 20px;
+        }
+
+        .case-thinking h4 {
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+        }
+
+        .thinking-step {
+            background: var(--pale-pink);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid var(--medium-pink);
+        }
+
+        .thinking-step .step-num {
+            font-weight: bold;
+            color: var(--deep-pink);
+            margin-bottom: 5px;
+        }
+
+        .case-answers {
+            padding: 20px;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            display: none;
+        }
+
+        .case-answers.visible {
+            display: block;
+        }
+
+        .case-answers h4 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+
+        .reveal-btn {
+            background: linear-gradient(135deg, var(--medium-pink), var(--deep-pink));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        /* Terminology Game Styles */
+        .term-match-container {
+            padding: 20px;
+        }
+
+        .term-match-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .term-column, .definition-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .term-item, .def-item {
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .term-item {
+            background: linear-gradient(135deg, var(--deep-pink), var(--medium-pink));
+            color: white;
+        }
+
+        .def-item {
+            background: var(--pale-pink);
+            border: 2px solid var(--light-pink);
+        }
+
+        .term-item.selected, .def-item.selected {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(194, 24, 91, 0.4);
+        }
+
+        .term-item.matched, .def-item.matched {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-container, .progress-tracker, .game-card, .close-game, .return-top {
+                display: none !important;
+            }
+            
+            .content-section {
+                display: block !important;
+                page-break-inside: avoid;
+            }
+            
+            .topic-content {
+                max-height: none !important;
+                padding: 20px !important;
+            }
+            
+            body {
+                background: white;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            .nav-tabs { flex-direction: column; align-items: stretch; }
+            .jeopardy-board { grid-template-columns: repeat(2, 1fr); }
+            .millionaire-options { grid-template-columns: 1fr; }
+            .term-match-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header class="header" id="top">
+        <h1>🩺 NUR221 Pathophysiology - Week 1</h1>
+        <p>Complete Study Guide | Chapters 1, 2 & 4 | With Case Studies & Games</p>
+    </header>
+
+    <!-- Return to Top Button -->
+    <button class="return-top" id="returnTop" onclick="scrollToTop()">↑</button>
+
+    <div class="nav-container">
+        <nav class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('overview')">📖 Overview</button>
+            <button class="nav-tab" onclick="showSection('chapter1')">Chapter 1</button>
+            <button class="nav-tab" onclick="showSection('chapter2')">Chapter 2</button>
+            <button class="nav-tab" onclick="showSection('chapter4')">Chapter 4</button>
+            <button class="nav-tab" onclick="showSection('images')">🖼️ Images</button>
+            <button class="nav-tab" onclick="showSection('compensation')">⚖️ Compensation</button>
+            <button class="nav-tab" onclick="showSection('casestudies')">📋 Case Studies</button>
+            <button class="nav-tab" onclick="showSection('games')">🎮 Games</button>
+            <button class="nav-tab" onclick="showSection('quiz')">📝 NCLEX Quiz</button>
+            <button class="nav-tab" onclick="showSection('vault')">🔐 Wrong Answer Vault</button>
+            <button class="nav-tab" onclick="showSection('flashcards')">🃏 Flashcards</button>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <!-- Progress Tracker -->
+        <div class="progress-tracker">
+            <h3 style="color: var(--deep-pink); margin-bottom: 15px;">📊 Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar">0%</div>
+            </div>
+            <p class="progress-text"><span id="completedTopics">0</span> of <span id="totalTopics">25</span> topics completed</p>
+        </div>
+
+        <!-- Overview Section -->
+        <section id="overview" class="content-section active">
+            <h2 class="section-title">Study Guide Overview</h2>
+            
+            <div class="definition-card">
+                <div class="term">📚 Textbook Reference</div>
+                <div class="definition">Gould's Pathophysiology for the Health Professions by VanMeter & Hubert</div>
+            </div>
+
+            <div class="exam-focus">
+                <div class="exam-focus-title">🎯 Important Note</div>
+                <p><strong>Everything in the PowerPoint is testable!</strong> This guide covers all 88 slides from Week 1.</p>
+            </div>
+
+            <h3 style="color: var(--deep-pink); margin: 20px 0 15px;">What's Included:</h3>
+            
+            <div class="quick-ref-grid">
+                <div class="quick-ref-card">
+                    <div class="quick-ref-value">Ch 1</div>
+                    <div class="quick-ref-label">Intro to Pathophysiology</div>
+                </div>
+                <div class="quick-ref-card">
+                    <div class="quick-ref-value">Ch 2</div>
+                    <div class="quick-ref-label">Fluid, Electrolyte & Acid-Base</div>
+                </div>
+                <div class="quick-ref-card">
+                    <div class="quick-ref-value">Ch 4</div>
+                    <div class="quick-ref-label">Pain</div>
+                </div>
+                <div class="quick-ref-card">
+                    <div class="quick-ref-value">7</div>
+                    <div class="quick-ref-label">Interactive Games</div>
+                </div>
+                <div class="quick-ref-card">
+                    <div class="quick-ref-value">3</div>
+                    <div class="quick-ref-label">Case Studies</div>
+                </div>
+                <div class="quick-ref-card">
+                    <div class="quick-ref-value">15+</div>
+                    <div class="quick-ref-label">NCLEX Questions</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 1 Section -->
+        <section id="chapter1" class="content-section">
+            <h2 class="section-title">Chapter 1: Introduction to Pathophysiology</h2>
+
+            <!-- Etiology -->
+            <div class="topic-box" data-topic="ch1-1">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Etiology - Causes of Disease</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="definition-card">
+                        <div class="term">Etiology</div>
+                        <div class="definition">The study of the causes of disease.</div>
+                    </div>
+
+                    <div class="definition-card" style="border-left-color: #4CAF50;">
+                        <div class="term">🦠 Pathogen-Caused</div>
+                        <div class="definition">Diseases caused by microorganisms (bacteria, viruses, fungi, parasites). Examples: pneumonia, influenza.</div>
+                    </div>
+
+                    <div class="definition-card" style="border-left-color: #FF9800;">
+                        <div class="term">🏥 Nosocomial</div>
+                        <div class="definition">Hospital-acquired infections NOT present at admission. Examples: MRSA, C. diff, catheter-associated UTIs.</div>
+                    </div>
+
+                    <div class="definition-card" style="border-left-color: #9C27B0;">
+                        <div class="term">⚕️ Iatrogenic</div>
+                        <div class="definition">Caused by medical examination or treatment. Examples: medication side effects, surgical complications.</div>
+                    </div>
+
+                    <div class="definition-card" style="border-left-color: #607D8B;">
+                        <div class="term">❓ Idiopathic</div>
+                        <div class="definition">Disease with unknown cause. Examples: idiopathic pulmonary fibrosis.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prevention Levels -->
+            <div class="topic-box" data-topic="ch1-2">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Levels of Prevention</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="definition-card">
+                        <div class="term">🛡️ Primary Prevention</div>
+                        <div class="definition">Protecting people from <strong>developing</strong> disease. BEFORE disease occurs. Examples: Vaccinations, health education.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">🔍 Secondary Prevention</div>
+                        <div class="definition"><strong>Early detection</strong> through screening. WHEN disease is early. Examples: Mammograms, colonoscopies.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">🏥 Tertiary Prevention</div>
+                        <div class="definition"><strong>Rehabilitation</strong> after diagnosis. AFTER disease established. Examples: Cardiac rehab, physical therapy.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cellular Adaptations -->
+            <div class="topic-box" data-topic="ch1-3">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Cellular Adaptations</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="image-container">
+                        <img src="data:image/png;base64,CELLULAR_ADAPTATIONS_PLACEHOLDER" alt="Cellular Adaptations" id="cellAdaptImg1">
+                        <p class="image-caption">Figure: Common Cellular Adaptations</p>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">📉 Atrophy</div>
+                        <div class="definition"><strong>Decrease in cell size.</strong> Causes: Disuse, denervation, ischemia. Example: Muscle atrophy from immobilization.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">📈 Hypertrophy</div>
+                        <div class="definition"><strong>Increase in cell size.</strong> Cells get BIGGER. Example: Cardiac hypertrophy from hypertension.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">🔢 Hyperplasia</div>
+                        <div class="definition"><strong>Increase in cell NUMBER.</strong> Cells multiply. Example: Liver regeneration.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">🔄 Metaplasia</div>
+                        <div class="definition"><strong>Replacement of one cell type by another.</strong> Example: Smoker's bronchial epithelium changes.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">⚠️ Dysplasia</div>
+                        <div class="definition"><strong>Abnormal cell changes</strong> - pre-neoplastic. Example: Cervical dysplasia.</div>
+                    </div>
+
+                    <div class="definition-card" style="border-left-color: #F44336;">
+                        <div class="term">🚨 Neoplasia</div>
+                        <div class="definition"><strong>Uncontrolled cell growth.</strong> May be benign or malignant (cancer).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apoptosis vs Necrosis -->
+            <div class="topic-box" data-topic="ch1-4">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Apoptosis vs Necrosis</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="definition-card">
+                        <div class="term">🧬 Apoptosis</div>
+                        <div class="definition"><strong>Programmed cell death</strong> - normal, controlled, NO inflammation. Example: Fetal hand development.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">💀 Necrosis</div>
+                        <div class="definition"><strong>Unplanned cell death</strong> from injury, causes inflammation. Example: Myocardial infarction.</div>
+                    </div>
+
+                    <table class="comparison-table">
+                        <thead><tr><th>Feature</th><th>Apoptosis</th><th>Necrosis</th></tr></thead>
+                        <tbody>
+                            <tr><td>Process</td><td>Programmed</td><td>Unplanned</td></tr>
+                            <tr><td>Energy</td><td>Requires ATP</td><td>No ATP</td></tr>
+                            <tr><td>Inflammation</td><td>No</td><td>Yes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 2 Section -->
+        <section id="chapter2" class="content-section">
+            <h2 class="section-title">Chapter 2: Fluid, Electrolyte & Acid-Base</h2>
+
+            <!-- Electrolytes -->
+            <div class="topic-box" data-topic="ch2-1">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Electrolytes</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="definition-card">
+                        <div class="term">⚡ Electrolytes</div>
+                        <div class="definition">Chemicals that produce <strong>ions</strong> when dissolved in water.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">➕ Cations (Positive)</div>
+                        <div class="definition">Na⁺, K⁺, Ca²⁺, H⁺</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">➖ Anions (Negative)</div>
+                        <div class="definition">Cl⁻, HCO₃⁻, PO₄³⁻, SO₄²⁻</div>
+                    </div>
+
+                    <div class="image-container">
+                        <img src="data:image/png;base64,ELECTROLYTE_CONCENTRATIONS_PLACEHOLDER" alt="Electrolyte Concentrations" id="electrolyteImg1">
+                        <p class="image-caption">Intracellular vs Extracellular Electrolytes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Electrolyte Values -->
+            <div class="topic-box" data-topic="ch2-2">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Key Electrolyte Values</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="quick-ref-grid">
+                        <div class="quick-ref-card">
+                            <div class="quick-ref-value">Na⁺ 135-145</div>
+                            <div class="quick-ref-label">mEq/L</div>
+                        </div>
+                        <div class="quick-ref-card">
+                            <div class="quick-ref-value">K⁺ 3.5-5.0</div>
+                            <div class="quick-ref-label">mEq/L</div>
+                        </div>
+                        <div class="quick-ref-card">
+                            <div class="quick-ref-value">Ca²⁺ 8.5-10.5</div>
+                            <div class="quick-ref-label">mg/dL</div>
+                        </div>
+                        <div class="quick-ref-card">
+                            <div class="quick-ref-value">Cl⁻ 98-106</div>
+                            <div class="quick-ref-label">mEq/L</div>
+                        </div>
+                    </div>
+
+                    <div class="exam-focus">
+                        <div class="exam-focus-title">🎯 Critical Value!</div>
+                        <p><strong>K⁺ > 6.5 mEq/L = Medical Emergency!</strong> Risk of cardiac arrest!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABG -->
+            <div class="topic-box" data-topic="ch2-3">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Acid-Base Balance</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="image-container">
+                        <img src="data:image/png;base64,PH_SCALE_PLACEHOLDER" alt="pH Scale" id="phScaleImg1">
+                        <p class="image-caption">Serum pH Scale</p>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">Normal pH: 7.35 - 7.45</div>
+                        <div class="definition">
+                            • pH < 7.35 = Acidosis<br>
+                            • pH > 7.45 = Alkalosis<br>
+                            • pH < 6.8 or > 7.8 = Death
+                        </div>
+                    </div>
+
+                    <table class="comparison-table">
+                        <thead><tr><th>Disorder</th><th>pH</th><th>Primary Change</th></tr></thead>
+                        <tbody>
+                            <tr><td>Respiratory Acidosis</td><td>Low</td><td>↑ CO₂</td></tr>
+                            <tr><td>Respiratory Alkalosis</td><td>High</td><td>↓ CO₂</td></tr>
+                            <tr><td>Metabolic Acidosis</td><td>Low</td><td>↓ HCO₃⁻</td></tr>
+                            <tr><td>Metabolic Alkalosis</td><td>High</td><td>↑ HCO₃⁻</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4 Section -->
+        <section id="chapter4" class="content-section">
+            <h2 class="section-title">Chapter 4: Pain</h2>
+
+            <div class="topic-box" data-topic="ch4-1">
+                <div class="topic-header" onclick="toggleTopic(this)">
+                    <h3><span class="checkbox" onclick="event.stopPropagation(); toggleCheckbox(this)"></span> Pain Fundamentals</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="topic-content">
+                    <div class="definition-card">
+                        <div class="term">🔬 Nociceptors</div>
+                        <div class="definition">Specialized nerve endings that detect painful stimuli.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">🔥 Acute Pain</div>
+                        <div class="definition">Sudden onset, identifiable cause, resolves with healing. < 3-6 months.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">😰 Chronic Pain</div>
+                        <div class="definition">Persists beyond normal healing time. > 3-6 months.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">🚪 Gate Control Theory</div>
+                        <div class="definition">A "gate" in the spinal cord modulates pain signals. Distraction "closes" the gate.</div>
+                    </div>
+
+                    <div class="definition-card">
+                        <div class="term">📍 Referred Pain</div>
+                        <div class="definition">Pain felt at location different from source. Example: MI pain in left arm.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Images Section -->
+        <section id="images" class="content-section">
+            <h2 class="section-title">PowerPoint Images Gallery</h2>
+            
+            <div class="topic-box expanded">
+                <div class="topic-header"><h3>🔬 All Images from PowerPoint</h3></div>
+                <div class="topic-content">
+                    <div class="image-container">
+                        <img src="data:image/png;base64,CELLULAR_ADAPTATIONS_PLACEHOLDER" alt="Cellular Adaptations" id="cellAdaptImg2">
+                        <p class="image-caption">Cellular Adaptations Diagram</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="data:image/png;base64,ELECTROLYTE_CONCENTRATIONS_PLACEHOLDER" alt="Electrolyte Concentrations" id="electrolyteImg2">
+                        <p class="image-caption">Electrolyte Concentrations</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="data:image/png;base64,TRANSPORT_MECHANISMS_PLACEHOLDER" alt="Transport Mechanisms" id="transportImg">
+                        <p class="image-caption">Cell Transport Mechanisms</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="data:image/png;base64,FLUID_EXCESS_DEFICIT_PLACEHOLDER" alt="Fluid Balance" id="fluidImg">
+                        <p class="image-caption">Fluid Excess vs Deficit</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="data:image/png;base64,ELECTROLYTE_IMBALANCES_PLACEHOLDER" alt="Electrolyte Imbalances" id="electrolyteImbImg">
+                        <p class="image-caption">Electrolyte Imbalances Table</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="data:image/png;base64,PH_SCALE_PLACEHOLDER" alt="pH Scale" id="phScaleImg2">
+                        <p class="image-caption">Serum pH Scale</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="data:image/png;base64,CONCEPT_MAP_PLACEHOLDER" alt="Concept Map" id="conceptMapImg">
+                        <p class="image-caption">Pathophysiology Concept Map Template</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compensation Section -->
+        <section id="compensation" class="content-section">
+            <h2 class="section-title">Compensated vs Uncompensated</h2>
+
+            <div class="compensation-box">
+                <div class="compensation-card fully-compensated">
+                    <div class="compensation-title">✅ Fully Compensated</div>
+                    <p><strong>pH Normal (7.35-7.45)</strong></p>
+                    <p>Body successfully compensated. Both systems show abnormal values but pH is normal.</p>
+                    <div style="margin-top:15px; padding:10px; background:white; border-radius:8px;">
+                        <strong>Example:</strong><br>pH: 7.38 ✓<br>CO₂: 48 (high)<br>HCO₃: 28 (high - compensation)
+                    </div>
+                </div>
+
+                <div class="compensation-card partially-compensated">
+                    <div class="compensation-title">⚠️ Partially Compensated</div>
+                    <p><strong>pH Abnormal but moving toward normal</strong></p>
+                    <p>Body is compensating, but pH hasn't normalized yet.</p>
+                    <div style="margin-top:15px; padding:10px; background:white; border-radius:8px;">
+                        <strong>Example:</strong><br>pH: 7.32 (low)<br>CO₂: 52 (high - primary)<br>HCO₃: 26 (high - starting compensation)
+                    </div>
+                </div>
+
+                <div class="compensation-card uncompensated">
+                    <div class="compensation-title">🚨 Uncompensated</div>
+                    <p><strong>pH Abnormal with no compensation</strong></p>
+                    <p>Most dangerous state. Acute or compensation failed.</p>
+                    <div style="margin-top:15px; padding:10px; background:white; border-radius:8px;">
+                        <strong>Example:</strong><br>pH: 7.25 (low)<br>CO₂: 60 (high - primary)<br>HCO₃: 24 (normal - no compensation)
+                    </div>
+                </div>
+            </div>
+
+            <table class="comparison-table">
+                <thead><tr><th>Primary Disorder</th><th>pH</th><th>Primary Change</th><th>Compensation</th></tr></thead>
+                <tbody>
+                    <tr><td>Respiratory Acidosis</td><td>Low</td><td>↑ CO₂</td><td>Kidneys ↑ HCO₃⁻</td></tr>
+                    <tr><td>Respiratory Alkalosis</td><td>High</td><td>↓ CO₂</td><td>Kidneys ↓ HCO₃⁻</td></tr>
+                    <tr><td>Metabolic Acidosis</td><td>Low</td><td>↓ HCO₃⁻</td><td>Lungs ↓ CO₂</td></tr>
+                    <tr><td>Metabolic Alkalosis</td><td>High</td><td>↑ HCO₃⁻</td><td>Lungs ↑ CO₂</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Case Studies Section -->
+        <section id="casestudies" class="content-section">
+            <h2 class="section-title">📋 Case Studies</h2>
+            <p style="margin-bottom: 20px;">Practice your clinical thinking with these realistic scenarios. Work through each step before revealing the answers!</p>
+
+            <!-- Case Study 1 -->
+            <div class="case-study">
+                <div class="case-header">
+                    <h3>🏥 Case Study 1: Post-Operative Patient</h3>
+                </div>
+                <div class="case-scenario">
+                    <h4>Scenario</h4>
+                    <p>Mrs. Johnson, a 72-year-old female, is post-operative day 2 following abdominal surgery. She is reluctant to deep breathe due to incisional pain. Her respiratory rate has been 10-12/min for the past 6 hours. She appears drowsy and confused.</p>
+                </div>
+                <div class="case-data">
+                    <h4>Vital Signs & Labs</h4>
+                    <div class="data-grid">
+                        <div class="data-item"><span class="label">HR</span><span class="value normal">98 bpm</span></div>
+                        <div class="data-item"><span class="label">BP</span><span class="value normal">138/88 mmHg</span></div>
+                        <div class="data-item"><span class="label">RR</span><span class="value abnormal">10/min</span></div>
+                        <div class="data-item"><span class="label">SpO2</span><span class="value abnormal">91% on RA</span></div>
+                        <div class="data-item"><span class="label">pH</span><span class="value abnormal">7.28</span></div>
+                        <div class="data-item"><span class="label">PaCO2</span><span class="value abnormal">58 mmHg</span></div>
+                        <div class="data-item"><span class="label">HCO3</span><span class="value normal">26 mEq/L</span></div>
+                        <div class="data-item"><span class="label">K+</span><span class="value normal">4.0 mEq/L</span></div>
+                    </div>
+                </div>
+                <div class="case-thinking">
+                    <h4>🧠 Clinical Thinking Process</h4>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 1: Analyze pH</div>
+                        <p>pH is 7.28 - this is <strong>low</strong> (acidosis). Normal is 7.35-7.45.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 2: Identify Primary Cause</div>
+                        <p>CO₂ is 58 (high) and HCO3 is 26 (normal). The <strong>elevated CO₂</strong> is causing the acidosis. This points to a <strong>respiratory</strong> problem.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 3: Assess Compensation</div>
+                        <p>HCO3 is still normal (26 mEq/L), meaning the kidneys haven't had time to compensate yet. This is <strong>uncompensated</strong>.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 4: Identify the Problem</div>
+                        <p>Shallow breathing (10/min) → CO₂ retention → Respiratory acidosis. Cause: Incisional pain preventing deep breathing.</p>
+                    </div>
+                </div>
+                <button class="reveal-btn" onclick="toggleCaseAnswers(1)">📖 Reveal Diagnosis & Interventions</button>
+                <div class="case-answers" id="caseAnswers1">
+                    <h4>✅ Diagnosis & Interventions</h4>
+                    <p><strong>ABG Interpretation:</strong> Uncompensated Respiratory Acidosis</p>
+                    <p><strong>Priority Nursing Actions:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Encourage deep breathing and coughing exercises (incentive spirometry)</li>
+                        <li>Adequate pain control to allow for deep breathing</li>
+                        <li>Position patient in semi-Fowler's or high Fowler's</li>
+                        <li>Monitor respiratory status and ABGs</li>
+                        <li>Notify provider if condition worsens - may need respiratory support</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Why this matters:</strong> Post-operative patients are at high risk for respiratory complications. Early recognition and intervention prevents the need for intubation.</p>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="case-study">
+                <div class="case-header">
+                    <h3>💧 Case Study 2: The Diuretic Dilemma</h3>
+                </div>
+                <div class="case-scenario">
+                    <h4>Scenario</h4>
+                    <p>Mr. Thompson, a 68-year-old male with heart failure, has been taking furosemide (Lasix) 80mg daily for 2 weeks. He presents with weakness, muscle cramps, and palpitations. He mentions he's been "peeing a lot" and feels dizzy when standing up quickly.</p>
+                </div>
+                <div class="case-data">
+                    <h4>Vital Signs & Labs</h4>
+                    <div class="data-grid">
+                        <div class="data-item"><span class="label">HR</span><span class="value abnormal">112 bpm, irregular</span></div>
+                        <div class="data-item"><span class="label">BP</span><span class="value abnormal">98/62 mmHg</span></div>
+                        <div class="data-item"><span class="label">Na+</span><span class="value normal">138 mEq/L</span></div>
+                        <div class="data-item"><span class="label">K+</span><span class="value abnormal">2.8 mEq/L</span></div>
+                        <div class="data-item"><span class="label">Ca2+</span><span class="value normal">9.2 mg/dL</span></div>
+                        <div class="data-item"><span class="label">Mg2+</span><span class="value abnormal">1.2 mEq/L</span></div>
+                        <div class="data-item"><span class="label">ECG</span><span class="value abnormal">Flattened T waves, U waves</span></div>
+                    </div>
+                </div>
+                <div class="case-thinking">
+                    <h4>🧠 Clinical Thinking Process</h4>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 1: Identify the Medication Effect</div>
+                        <p>Furosemide (Lasix) is a <strong>loop diuretic</strong> that causes excretion of Na+, K+, and water. Potassium loss is a major side effect.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 2: Analyze the Potassium Level</div>
+                        <p>K+ is 2.8 mEq/L - this is <strong>severe hypokalemia</strong> (normal: 3.5-5.0). This explains the muscle cramps, weakness, and cardiac effects.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 3: Connect ECG Changes</div>
+                        <p><strong>Flattened T waves and U waves</strong> are classic ECG signs of hypokalemia. The irregular heart rate indicates cardiac involvement - this is dangerous!</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 4: Identify Additional Issues</div>
+                        <p>Mg2+ is also low (1.2 mEq/L). <strong>Hypomagnesemia makes hypokalemia harder to correct</strong> - both need to be addressed. Orthostatic hypotension suggests volume depletion.</p>
+                    </div>
+                </div>
+                <button class="reveal-btn" onclick="toggleCaseAnswers(2)">📖 Reveal Diagnosis & Interventions</button>
+                <div class="case-answers" id="caseAnswers2">
+                    <h4>✅ Diagnosis & Interventions</h4>
+                    <p><strong>Primary Problem:</strong> Severe Hypokalemia with Hypomagnesemia (diuretic-induced)</p>
+                    <p><strong>Priority Nursing Actions:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Cardiac monitoring</strong> - risk of arrhythmias is high!</li>
+                        <li>IV potassium replacement (with provider order)</li>
+                        <li>IV magnesium replacement (must correct Mg to correct K)</li>
+                        <li>Oral potassium supplements once stable</li>
+                        <li>Education: K+-rich foods (bananas, oranges, potatoes)</li>
+                        <li>May need K+-sparing diuretic added to regimen</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Key Point:</strong> Never give IV potassium push! Always diluted and via infusion pump. Monitor I&O and daily weights.</p>
+                </div>
+            </div>
+
+            <!-- Case Study 3 -->
+            <div class="case-study">
+                <div class="case-header">
+                    <h3>🩺 Case Study 3: The Mysterious Weakness</h3>
+                </div>
+                <div class="case-scenario">
+                    <h4>Scenario</h4>
+                    <p>A 55-year-old female presents to the ED with progressive weakness, tingling around her mouth, and muscle spasms in her hands. She recently had a thyroidectomy 3 weeks ago. She states, "I just don't feel right, and my hands keep cramping up."</p>
+                </div>
+                <div class="case-data">
+                    <h4>Vital Signs & Labs</h4>
+                    <div class="data-grid">
+                        <div class="data-item"><span class="label">HR</span><span class="value abnormal">62 bpm</span></div>
+                        <div class="data-item"><span class="label">BP</span><span class="value normal">128/76 mmHg</span></div>
+                        <div class="data-item"><span class="label">Temp</span><span class="value normal">98.4°F</span></div>
+                        <div class="data-item"><span class="label">Ca2+</span><span class="value abnormal">6.8 mg/dL</span></div>
+                        <div class="data-item"><span class="label">K+</span><span class="value normal">4.2 mEq/L</span></div>
+                        <div class="data-item"><span class="label">Na+</span><span class="value normal">140 mEq/L</span></div>
+                        <div class="data-item"><span class="label">Phosphate</span><span class="value abnormal">5.2 mg/dL</span></div>
+                    </div>
+                </div>
+                <div class="case-thinking">
+                    <h4>🧠 Clinical Thinking Process</h4>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 1: Consider the History</div>
+                        <p>Recent <strong>thyroidectomy</strong> - this is key! The parathyroid glands are located behind the thyroid and can be damaged or removed during surgery.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 2: Analyze the Calcium</div>
+                        <p>Ca2+ is 6.8 mg/dL - <strong>severe hypocalcemia</strong> (normal: 8.5-10.5). This explains ALL symptoms: perioral tingling, muscle spasms, weakness.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 3: Connect the Signs</div>
+                        <p><strong>Perioral tingling + hand spasms</strong> = classic signs of hypocalcemia. Positive Chvostek's (facial twitch) and Trousseau's (carpal spasm) signs would likely be present.</p>
+                    </div>
+                    <div class="thinking-step">
+                        <div class="step-num">Step 4: Understand the Mechanism</div>
+                        <p>Parathyroid hormone (PTH) regulates calcium. Damage to parathyroids → ↓ PTH → ↓ calcium. High phosphate is also consistent (PTH normally excretes phosphate).</p>
+                    </div>
+                </div>
+                <button class="reveal-btn" onclick="toggleCaseAnswers(3)">📖 Reveal Diagnosis & Interventions</button>
+                <div class="case-answers" id="caseAnswers3">
+                    <h4>✅ Diagnosis & Interventions</h4>
+                    <p><strong>Diagnosis:</strong> Acute Hypocalcemia secondary to Hypoparathyroidism (post-thyroidectomy)</p>
+                    <p><strong>Priority Nursing Actions:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>IV calcium gluconate</strong> - for severe symptomatic hypocalcemia</li>
+                        <li>Cardiac monitoring - hypocalcemia can cause arrhythmias</li>
+                        <li>Seizure precautions</li>
+                        <li>Keep IV access patent - calcium can cause tissue damage if extravasated</li>
+                        <li>Patient education: lifelong calcium and vitamin D supplements likely needed</li>
+                        <li>Monitor for laryngospasm - emergency airway equipment nearby</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Key Teaching Point:</strong> Post-thyroidectomy patients need monitoring for hypocalcemia. Symptoms can appear days to weeks after surgery. Early recognition prevents life-threatening complications!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="content-section">
+            <h2 class="section-title">Interactive Games</h2>
+            <p style="margin-bottom: 20px;">Test your knowledge! Each game tracks your progress and gives clear feedback.</p>
+
+            <div class="games-grid">
+                <div class="game-card" onclick="startGame('jeopardy')">
+                    <div class="game-icon">🏆</div>
+                    <div class="game-title">Patho Jeopardy!</div>
+                    <div class="game-description">Classic trivia with increasing difficulty. Track your score!</div>
+                </div>
+
+                <div class="game-card" onclick="startGame('millionaire')">
+                    <div class="game-icon">💰</div>
+                    <div class="game-title">Patho Millionaire</div>
+                    <div class="game-description">15 questions to $1,000,000. Clear feedback on every answer!</div>
+                </div>
+
+                <div class="game-card" onclick="startGame('abg')">
+                    <div class="game-icon">🩸</div>
+                    <div class="game-title">ABG Challenge</div>
+                    <div class="game-description">Interpret ABGs with clear progress tracking!</div>
+                </div>
+
+                <div class="game-card" onclick="startGame('electrolyte')">
+                    <div class="game-icon">⚡</div>
+                    <div class="game-title">Electrolyte Escape</div>
+                    <div class="game-description">Match symptoms to diagnoses. See your progress!</div>
+                </div>
+
+                <div class="game-card" onclick="startGame('terminology')">
+                    <div class="game-icon">📚</div>
+                    <div class="game-title">Term Master</div>
+                    <div class="game-description">Match terms to definitions. Track your matches!</div>
+                </div>
+
+                <div class="game-card" onclick="startGame('compensation')">
+                    <div class="game-icon">⚖️</div>
+                    <div class="game-title">Compensation Master</div>
+                    <div class="game-description">Determine compensation status with feedback!</div>
+                </div>
+
+                <div class="game-card" onclick="startGame('timeattack')">
+                    <div class="game-icon">⏱️</div>
+                    <div class="game-title">Time Attack</div>
+                    <div class="game-description">60 seconds - answer as many as you can!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="content-section">
+            <h2 class="section-title">NCLEX-Style Practice Questions</h2>
+            <p style="margin-bottom: 15px;">Wrong answers go to the Vault. Answer correctly 3 times to remove them!</p>
+            <div id="quizContainer"></div>
+        </section>
+
+        <!-- Wrong Answer Vault Section -->
+        <section id="vault" class="content-section">
+            <h2 class="section-title">🔐 Wrong Answer Vault</h2>
+            <p style="margin-bottom: 15px;">Questions you answer incorrectly appear here. Answer correctly 3 times to master them!</p>
+            
+            <div class="vault-section" id="vaultContainer">
+                <div class="vault-title">🔒 Your Locked Questions</div>
+                <div id="vaultItems">
+                    <div class="vault-empty">
+                        <p>🎉 Great job! Your vault is empty.</p>
+                        <p>Keep practicing - wrong answers will appear here for mastery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="vaultQuizArea" style="margin-top: 20px;"></div>
+        </section>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="content-section">
+            <h2 class="section-title">Interactive Flashcards</h2>
+            
+            <div class="flashcard-filter">
+                <button class="filter-btn active" onclick="filterFlashcards('all')">All</button>
+                <button class="filter-btn" onclick="filterFlashcards('ch1')">Chapter 1</button>
+                <button class="filter-btn" onclick="filterFlashcards('ch2')">Chapter 2</button>
+                <button class="filter-btn" onclick="filterFlashcards('ch4')">Chapter 4</button>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard" onclick="flipCard()">
+                    <div class="flashcard-front"><p id="flashcardTerm">Loading...</p></div>
+                    <div class="flashcard-back"><p id="flashcardDef">Loading...</p></div>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: var(--text-light);">Click card to flip | Card <span id="currentCard">1</span> of <span id="totalCards">38</span></p>
+
+            <div class="flashcard-nav">
+                <button class="quiz-btn" onclick="prevCard()">← Previous</button>
+                <button class="quiz-btn" onclick="nextCard()">Next →</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Game Modal -->
+    <div class="game-modal" id="gameModal">
+        <div class="game-content">
+            <span class="close-game" onclick="closeGame()">&times;</span>
+            <div class="game-header"><h2 id="gameTitle">Game Title</h2></div>
+            <div class="game-body" id="gameBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // ====== NAVIGATION ======
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ====== RETURN TO TOP ======
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('returnTop');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // ====== TOPIC BOXES ======
+        function toggleTopic(header) {
+            header.closest('.topic-box').classList.toggle('expanded');
+        }
+
+        function toggleCheckbox(checkbox) {
+            checkbox.classList.toggle('checked');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = document.querySelectorAll('.topic-box').length;
+            const completed = document.querySelectorAll('.checkbox.checked').length;
+            const percent = Math.round((completed / total) * 100);
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('progressBar').textContent = percent + '%';
+            document.getElementById('completedTopics').textContent = completed;
+            document.getElementById('totalTopics').textContent = total;
+            localStorage.setItem('nur221Progress', completed);
+        }
+
+        // ====== CASE STUDIES ======
+        function toggleCaseAnswers(num) {
+            const answers = document.getElementById('caseAnswers' + num);
+            answers.classList.toggle('visible');
+            event.target.textContent = answers.classList.contains('visible') ? '📖 Hide Answers' : '📖 Reveal Diagnosis & Interventions';
+        }
+
+        // ====== GAMES SYSTEM ======
+        function startGame(gameType) {
+            document.getElementById('gameModal').classList.add('active');
+            const gameTitle = document.getElementById('gameTitle');
+
+            switch(gameType) {
+                case 'jeopardy': gameTitle.textContent = '🏆 Patho Jeopardy!'; loadJeopardy(); break;
+                case 'millionaire': gameTitle.textContent = '💰 Patho Millionaire'; loadMillionaire(); break;
+                case 'abg': gameTitle.textContent = '🩸 ABG Challenge'; loadABGGame(); break;
+                case 'electrolyte': gameTitle.textContent = '⚡ Electrolyte Escape'; loadElectrolyteGame(); break;
+                case 'terminology': gameTitle.textContent = '📚 Term Master'; loadTerminologyGame(); break;
+                case 'compensation': gameTitle.textContent = '⚖️ Compensation Master'; loadCompensationGame(); break;
+                case 'timeattack': gameTitle.textContent = '⏱️ Time Attack'; loadTimeAttack(); break;
+            }
+        }
+
+        function closeGame() {
+            document.getElementById('gameModal').classList.remove('active');
+        }
+
+        function createProgressBar(current, total) {
+            const percent = Math.round((current / total) * 100);
+            return `<div class="game-progress">
+                <span class="game-progress-text">${current}/${total}</span>
+                <div class="game-progress-bar"><div class="game-progress-fill" style="width: ${percent}%"></div></div>
+                <span class="game-progress-text">${percent}%</span>
+            </div>`;
+        }
+
+        function showFeedback(correct, message) {
+            return `<div class="answer-feedback ${correct ? 'correct' : 'incorrect'}">
+                ${correct ? '✅ Correct!' : '❌ Incorrect'} ${message}
+            </div>`;
+        }
+
+        // ====== JEOPARDY ======
+        let jeopardyScore = 0;
+        let jeopardyAnswered = 0;
+        const jeopardyTotal = 20;
+
+        const jeopardyQuestions = {
+            'definitions': [
+                { q: 'Programmed cell death, a normal occurrence in the body.', a: 'Apoptosis', value: 100 },
+                { q: 'The study of the causes of disease.', a: 'Etiology', value: 200 },
+                { q: 'An infection acquired during a hospital stay.', a: 'Nosocomial', value: 300 },
+                { q: 'A condition caused by medical examination or treatment.', a: 'Iatrogenic', value: 400 },
+                { q: 'The replacement of one mature cell type by another.', a: 'Metaplasia', value: 500 }
+            ],
+            'electrolytes': [
+                { q: 'Normal serum potassium range in mEq/L.', a: '3.5-5.0', value: 100 },
+                { q: 'This imbalance causes tall peaked T waves on ECG.', a: 'Hyperkalemia', value: 200 },
+                { q: 'The most abundant extracellular cation.', a: 'Sodium', value: 300 },
+                { q: 'Chvostek\'s and Trousseau\'s signs indicate this condition.', a: 'Hypocalcemia', value: 400 },
+                { q: 'Critical potassium level requiring immediate intervention.', a: '6.5', value: 500 }
+            ],
+            'acid-base': [
+                { q: 'Normal arterial pH range.', a: '7.35-7.45', value: 100 },
+                { q: 'The primary extracellular buffer.', a: 'Bicarbonate', value: 200 },
+                { q: 'In respiratory acidosis, this blood gas is elevated.', a: 'CO2', value: 300 },
+                { q: 'Primary regulator of acid-base balance.', a: 'Kidneys', value: 400 },
+                { q: 'When pH is normal but CO2 and HCO3 are abnormal.', a: 'Fully compensated', value: 500 }
+            ],
+            'pain': [
+                { q: 'Specialized nerve endings that detect painful stimuli.', a: 'Nociceptors', value: 100 },
+                { q: 'Pain felt at a location different from the source.', a: 'Referred pain', value: 200 },
+                { q: 'Theory about a "gate" modulating pain signals.', a: 'Gate Control Theory', value: 300 },
+                { q: 'Pain persisting beyond 3-6 months.', a: 'Chronic pain', value: 400 },
+                { q: 'Pain caused by damage to the nervous system.', a: 'Neuropathic pain', value: 500 }
+            ]
+        };
+
+        function loadJeopardy() {
+            jeopardyScore = 0;
+            jeopardyAnswered = 0;
+            let html = createProgressBar(0, jeopardyTotal);
+            html += '<div class="jeopardy-score">Score: $<span id="jeopardyScore">0</span></div>';
+            html += '<div class="jeopardy-board">';
+            
+            ['DEFINITIONS', 'ELECTROLYTES', 'ACID-BASE', 'PAIN'].forEach(cat => {
+                html += `<div class="jeopardy-category">${cat}</div>`;
+            });
+
+            for (let row = 0; row < 5; row++) {
+                for (let cat = 0; cat < 4; cat++) {
+                    const value = (row + 1) * 100;
+                    html += `<div class="jeopardy-cell" id="j${cat}${row}" onclick="jeopardyClick(${cat}, ${row}, ${value})">$${value}</div>`;
+                }
+            }
+            html += '</div><div id="jeopardyFeedback"></div>';
+            document.getElementById('gameBody').innerHTML = html;
+        }
+
+        function jeopardyClick(cat, row, value) {
+            const categories = ['definitions', 'electrolytes', 'acid-base', 'pain'];
+            const question = jeopardyQuestions[categories[cat]][row];
+            
+            const answer = prompt(question.q + '\n\n(Answer for $' + value + ')');
+            const feedbackDiv = document.getElementById('jeopardyFeedback');
+            
+            if (answer && answer.toLowerCase().includes(question.a.toLowerCase())) {
+                jeopardyScore += value;
+                document.getElementById('jeopardyScore').textContent = jeopardyScore;
+                feedbackDiv.innerHTML = showFeedback(true, `+$${value}! Answer: ${question.a}`);
+            } else {
+                feedbackDiv.innerHTML = showFeedback(false, `Answer was: ${question.a}`);
+            }
+            
+            document.getElementById(`j${cat}${row}`).classList.add('used');
+            document.getElementById(`j${cat}${row}`).onclick = null;
+            jeopardyAnswered++;
+            
+            document.querySelector('.game-progress').outerHTML = createProgressBar(jeopardyAnswered, jeopardyTotal);
+            
+            if (jeopardyAnswered >= jeopardyTotal) {
+                setTimeout(() => {
+                    alert(`Game Complete! Final Score: $${jeopardyScore}`);
+                }, 500);
+            }
+        }
+
+        // ====== MILLIONAIRE ======
+        let millionaireLevel = 0;
+        let millionaireQuestions = [
+            { q: 'What is the normal range for serum sodium?', options: ['3.5-5.0 mEq/L', '135-145 mEq/L', '8.5-10.5 mg/dL', '98-106 mEq/L'], correct: 1, prize: '$100' },
+            { q: 'Which electrolyte imbalance causes muscle weakness and cardiac arrhythmias?', options: ['Hypernatremia', 'Hypokalemia', 'Hypercalcemia', 'Hyponatremia'], correct: 1, prize: '$200' },
+            { q: 'What is apoptosis?', options: ['Uncontrolled cell division', 'Programmed cell death', 'Cell enlargement', 'Cell shrinkage'], correct: 1, prize: '$300' },
+            { q: 'A hospital-acquired infection is called:', options: ['Iatrogenic', 'Idiopathic', 'Nosocomial', 'Endemic'], correct: 2, prize: '$500' },
+            { q: 'Which prevention level focuses on early detection through screening?', options: ['Primary', 'Secondary', 'Tertiary', 'Quaternary'], correct: 1, prize: '$1,000' },
+            { q: 'Normal arterial pH range is:', options: ['7.45-7.55', '7.25-7.35', '7.35-7.45', '7.15-7.25'], correct: 2, prize: '$2,000' },
+            { q: 'In respiratory acidosis, which value is elevated?', options: ['pH', 'HCO3', 'CO2', 'O2'], correct: 2, prize: '$4,000' },
+            { q: 'Which electrolyte is most abundant intracellularly?', options: ['Sodium', 'Potassium', 'Calcium', 'Chloride'], correct: 1, prize: '$8,000' },
+            { q: 'The Gate Control Theory relates to:', options: ['Cell transport', 'Pain perception', 'Acid-base balance', 'Fluid regulation'], correct: 1, prize: '$16,000' },
+            { q: 'Chvostek\'s sign indicates:', options: ['Hyperkalemia', 'Hypocalcemia', 'Hyponatremia', 'Hypercalcemia'], correct: 1, prize: '$32,000' },
+            { q: 'Which hormone causes water reabsorption in the kidneys?', options: ['Aldosterone', 'ADH', 'ANP', 'BNP'], correct: 1, prize: '$64,000' },
+            { q: 'Metaplasia is defined as:', options: ['Increase in cell size', 'Increase in cell number', 'Replacement of one cell type', 'Abnormal cell growth'], correct: 2, prize: '$125,000' },
+            { q: 'In fully compensated respiratory acidosis, the pH would be:', options: ['Below 7.35', 'Above 7.45', 'Within 7.35-7.45', 'Cannot determine'], correct: 2, prize: '$250,000' },
+            { q: 'Which buffer system reacts within seconds to pH changes?', options: ['Renal', 'Respiratory', 'Plasma', 'Protein'], correct: 2, prize: '$500,000' },
+            { q: 'A disease with unknown cause is described as:', options: ['Nosocomial', 'Iatrogenic', 'Idiopathic', 'Epidemic'], correct: 2, prize: '$1,000,000' }
+        ];
+
+        function loadMillionaire() {
+            millionaireLevel = 0;
+            showMillionaireQuestion();
+        }
+
+        function showMillionaireQuestion() {
+            if (millionaireLevel >= millionaireQuestions.length) {
+                document.getElementById('gameBody').innerHTML = `
+                    <div class="millionaire-question">
+                        <h2>🎉 CONGRATULATIONS!</h2>
+                        <p>You won $1,000,000!</p>
+                    </div>`;
+                return;
+            }
+
+            const q = millionaireQuestions[millionaireLevel];
+            let html = createProgressBar(millionaireLevel, millionaireQuestions.length);
+            html += `<div style="text-align:center; font-weight:bold; color:var(--deep-pink); margin:10px 0;">Prize Level: ${q.prize}</div>`;
+            html += `<div class="millionaire-question">${q.q}</div>`;
+            html += '<div class="millionaire-options">';
+            q.options.forEach((opt, i) => {
+                html += `<button class="millionaire-option" id="mo${i}" onclick="millionaireAnswer(${i})">${String.fromCharCode(65 + i)}) ${opt}</button>`;
+            });
+            html += '</div>';
+            html += '<div id="millFeedback"></div>';
+            html += '<div style="text-align:center;"><button class="quiz-btn" onclick="millionaireHint()">💡 Hint</button></div>';
+            
+            document.getElementById('gameBody').innerHTML = html;
+        }
+
+        function millionaireAnswer(index) {
+            const q = millionaireQuestions[millionaireLevel];
+            const buttons = document.querySelectorAll('.millionaire-option');
+            const feedbackDiv = document.getElementById('millFeedback');
+            
+            buttons.forEach(btn => btn.disabled = true);
+            
+            if (index === q.correct) {
+                buttons[index].classList.add('correct');
+                feedbackDiv.innerHTML = showFeedback(true, 'Moving to next question...');
+                setTimeout(() => { millionaireLevel++; showMillionaireQuestion(); }, 1500);
+            } else {
+                buttons[index].classList.add('wrong');
+                buttons[q.correct].classList.add('correct');
+                feedbackDiv.innerHTML = showFeedback(false, `Correct answer was: ${q.options[q.correct]}`);
+                setTimeout(() => {
+                    alert('Game Over! You reached ' + (millionaireLevel > 0 ? millionaireQuestions[millionaireLevel-1].prize : '$0'));
+                    loadMillionaire();
+                }, 2000);
+            }
+        }
+
+        function millionaireHint() {
+            const hints = ['Remember: Sodium is the main extracellular cation.',
+                'Think about what happens when you lose potassium.',
+                'This is a NORMAL process in development.',
+                'Think "NO" for "New" infection in hospital.',
+                'Screening happens BEFORE disease is advanced.',
+                'The body keeps pH very tightly controlled.',
+                'Respiratory = lungs = CO2.',
+                'Most potassium is INSIDE cells.',
+                'Think about how rubbing an injury reduces pain.',
+                'This sign is from neuromuscular irritability.',
+                'ADH = Anti-Diuretic Hormone.',
+                'Meta = change, plasia = formation.',
+                'Fully compensated = pH is normal.',
+                'Plasma = blood = fastest response.',
+                'Idio- means unknown/self.'];
+            alert(hints[millionaireLevel]);
+        }
+
+        // ====== ABG GAME ======
+        let abgIndex = 0;
+        let abgScore = 0;
+        const abgCases = [
+            { ph: 7.30, co2: 50, hco3: 24, answer: 'Uncompensated Respiratory Acidosis' },
+            { ph: 7.48, co2: 30, hco3: 22, answer: 'Uncompensated Respiratory Alkalosis' },
+            { ph: 7.25, co2: 28, hco3: 16, answer: 'Uncompensated Metabolic Acidosis' },
+            { ph: 7.52, co2: 48, hco3: 34, answer: 'Uncompensated Metabolic Alkalosis' },
+            { ph: 7.38, co2: 55, hco3: 32, answer: 'Fully Compensated Respiratory Acidosis' },
+            { ph: 7.42, co2: 30, hco3: 19, answer: 'Fully Compensated Respiratory Alkalosis' },
+            { ph: 7.35, co2: 30, hco3: 16, answer: 'Fully Compensated Metabolic Acidosis' },
+            { ph: 7.44, co2: 48, hco3: 32, answer: 'Fully Compensated Metabolic Alkalosis' },
+            { ph: 7.32, co2: 50, hco3: 28, answer: 'Partially Compensated Respiratory Acidosis' },
+            { ph: 7.46, co2: 32, hco3: 24, answer: 'Partially Compensated Respiratory Alkalosis' }
+        ];
+
+        function loadABGGame() {
+            abgIndex = 0;
+            abgScore = 0;
+            showABGQuestion();
+        }
+
+        function showABGQuestion() {
+            if (abgIndex >= abgCases.length) {
+                document.getElementById('gameBody').innerHTML = `
+                    <div class="millionaire-question">
+                        <h2>🎉 Challenge Complete!</h2>
+                        <p>Final Score: ${abgScore}/${abgCases.length}</p>
+                    </div>`;
+                return;
+            }
+
+            const case_ = abgCases[abgIndex];
+            let html = createProgressBar(abgIndex, abgCases.length);
+            html += `<div class="exam-focus" style="margin-top:15px;">
+                <h3>ABG Results:</h3>
+                <p>pH: ${case_.ph} | PaCO2: ${case_.co2} mmHg | HCO3: ${case_.hco3} mEq/L</p>
+            </div>`;
+            html += '<div class="millionaire-options" style="grid-template-columns:1fr;">';
+            
+            const allAnswers = ['Uncompensated Respiratory Acidosis', 'Uncompensated Respiratory Alkalosis',
+                'Uncompensated Metabolic Acidosis', 'Uncompensated Metabolic Alkalosis',
+                'Fully Compensated Respiratory Acidosis', 'Fully Compensated Respiratory Alkalosis',
+                'Fully Compensated Metabolic Acidosis', 'Fully Compensated Metabolic Alkalosis',
+                'Partially Compensated Respiratory Acidosis', 'Partially Compensated Respiratory Alkalosis',
+                'Partially Compensated Metabolic Acidosis', 'Partially Compensated Metabolic Alkalosis'];
+            
+            allAnswers.forEach(opt => {
+                html += `<button class="millionaire-option" onclick="checkABG('${opt}')">${opt}</button>`;
+            });
+            
+            html += '</div><div id="abgFeedback"></div>';
+            document.getElementById('gameBody').innerHTML = html;
+        }
+
+        function checkABG(answer) {
+            const correct = answer === abgCases[abgIndex].answer;
+            const feedbackDiv = document.getElementById('abgFeedback');
+            
+            if (correct) {
+                abgScore++;
+                feedbackDiv.innerHTML = showFeedback(true, `Score: ${abgScore}/${abgCases.length}`);
+            } else {
+                feedbackDiv.innerHTML = showFeedback(false, `Correct answer: ${abgCases[abgIndex].answer}`);
+            }
+            
+            setTimeout(() => { abgIndex++; showABGQuestion(); }, 1500);
+        }
+
+        // ====== ELECTROLYTE ESCAPE ======
+        let electrolyteRoom = 0;
+        const electrolyteRooms = [
+            { symptoms: 'Muscle weakness, leg cramps, cardiac arrhythmias, peaked T waves', answer: 'Hyperkalemia' },
+            { symptoms: 'Muscle twitching, weakness, hypotension, headache, seizures', answer: 'Hyponatremia' },
+            { symptoms: 'Tetany, muscle spasms, laryngospasm, positive Chvostek sign', answer: 'Hypocalcemia' },
+            { symptoms: 'Thirst, agitation, restlessness, hypertension, weight gain', answer: 'Hypernatremia' },
+            { symptoms: 'Dizziness, leg cramps, hypotension, arrhythmias', answer: 'Hypokalemia' },
+            { symptoms: 'Confusion, fatigue, constipation, kidney stones', answer: 'Hypercalcemia' }
+        ];
+
+        function loadElectrolyteGame() {
+            electrolyteRoom = 0;
+            showElectrolyteRoom();
+        }
+
+        function showElectrolyteRoom() {
+            if (electrolyteRoom >= electrolyteRooms.length) {
+                document.getElementById('gameBody').innerHTML = `
+                    <div class="millionaire-question"><h2>🎉 You Escaped!</h2><p>All ${electrolyteRooms.length} rooms cleared!</p></div>`;
+                return;
+            }
+
+            const room = electrolyteRooms[electrolyteRoom];
+            let html = createProgressBar(electrolyteRoom, electrolyteRooms.length);
+            html += `<div class="exam-focus" style="margin-top:15px;">
+                <h3>🏥 Room ${electrolyteRoom + 1}</h3>
+                <p><strong>Symptoms:</strong> ${room.symptoms}</p>
+            </div>`;
+            html += '<div class="millionaire-options">';
+            ['Hyperkalemia', 'Hypokalemia', 'Hypernatremia', 'Hyponatremia', 'Hypercalcemia', 'Hypocalcemia'].forEach(opt => {
+                html += `<button class="millionaire-option" onclick="checkElectrolyte('${opt}')">${opt}</button>`;
+            });
+            html += '</div><div id="elecFeedback"></div>';
+            document.getElementById('gameBody').innerHTML = html;
+        }
+
+        function checkElectrolyte(answer) {
+            const correct = answer === electrolyteRooms[electrolyteRoom].answer;
+            const feedbackDiv = document.getElementById('elecFeedback');
+            
+            if (correct) {
+                feedbackDiv.innerHTML = showFeedback(true, 'Moving to next room...');
+                setTimeout(() => { electrolyteRoom++; showElectrolyteRoom(); }, 1500);
+            } else {
+                feedbackDiv.innerHTML = showFeedback(false, 'Try again!');
+            }
+        }
+
+        // ====== TERMINOLOGY GAME ======
+        let termMatches = 0;
+        let selectedTerm = null;
+        const allTerms = [
+            { term: 'Apoptosis', def: 'Programmed cell death' },
+            { term: 'Necrosis', def: 'Unplanned cell death from injury' },
+            { term: 'Nosocomial', def: 'Hospital-acquired infection' },
+            { term: 'Iatrogenic', def: 'Caused by medical treatment' },
+            { term: 'Idiopathic', def: 'Unknown cause' },
+            { term: 'Hypertrophy', def: 'Increase in cell size' },
+            { term: 'Hyperplasia', def: 'Increase in cell number' },
+            { term: 'Metaplasia', def: 'Replacement of one cell type' },
+            { term: 'Atrophy', def: 'Decrease in cell size' },
+            { term: 'Dysplasia', def: 'Abnormal cell changes' }
+        ];
+        let shuffledTerms = [];
+        let shuffledDefs = [];
+        let matchedTerms = [];
+
+        function loadTerminologyGame() {
+            termMatches = 0;
+            matchedTerms = [];
+            shuffledTerms = [...allTerms].sort(() => Math.random() - 0.5);
+            shuffledDefs = [...allTerms].sort(() => Math.random() - 0.5);
+            showTerminologyQuestion();
+        }
+
+        function showTerminologyQuestion() {
+            let html = createProgressBar(termMatches, allTerms.length);
+            html += '<p style="text-align:center; margin:15px 0;">Click a term, then click its matching definition!</p>';
+            html += '<div class="term-match-grid">';
+            html += '<div class="term-column">';
+            shuffledTerms.forEach((item, i) => {
+                const matched = matchedTerms.includes(item.term);
+                html += `<div class="term-item ${matched ? 'matched' : ''}" 
+                    id="term${i}" onclick="selectTerm(${i}, '${item.term}')" 
+                    ${matched ? 'style="opacity:0.5;cursor:not-allowed;"' : ''}>${item.term}</div>`;
+            });
+            html += '</div>';
+            html += '<div class="definition-column">';
+            shuffledDefs.forEach((item, i) => {
+                const matched = matchedTerms.includes(item.term);
+                html += `<div class="def-item ${matched ? 'matched' : ''}" 
+                    id="def${i}" onclick="selectDef(${i}, '${item.def}', '${item.term}')"
+                    ${matched ? 'style="opacity:0.5;cursor:not-allowed;"' : ''}>${item.def}</div>`;
+            });
+            html += '</div></div>';
+            html += '<div id="termFeedback"></div>';
+            document.getElementById('gameBody').innerHTML = html;
+        }
+
+        function selectTerm(index, term) {
+            if (matchedTerms.includes(term)) return;
+            document.querySelectorAll('.term-item').forEach(t => t.classList.remove('selected'));
+            document.getElementById('term' + index).classList.add('selected');
+            selectedTerm = term;
+        }
+
+        function selectDef(index, def, correctTerm) {
+            if (matchedTerms.includes(correctTerm)) return;
+            if (!selectedTerm) {
+                document.getElementById('termFeedback').innerHTML = showFeedback(false, 'Select a term first!');
+                return;
+            }
+            
+            const feedbackDiv = document.getElementById('termFeedback');
+            
+            if (selectedTerm === correctTerm) {
+                termMatches++;
+                matchedTerms.push(selectedTerm);
+                feedbackDiv.innerHTML = showFeedback(true, `${selectedTerm} = ${def}`);
+                setTimeout(() => {
+                    if (termMatches >= allTerms.length) {
+                        document.getElementById('gameBody').innerHTML = `
+                            <div class="millionaire-question"><h2>🎉 Perfect Match!</h2><p>All ${allTerms.length} terms mastered!</p></div>`;
+                    } else {
+                        showTerminologyQuestion();
+                    }
+                }, 1000);
+            } else {
+                feedbackDiv.innerHTML = showFeedback(false, 'Try again!');
+            }
+            selectedTerm = null;
+        }
+
+        // ====== COMPENSATION GAME ======
+        let compIndex = 0;
+        let compScore = 0;
+        const compensationCases = [
+            { ph: 7.30, co2: 50, hco3: 24, answer: 'Uncompensated' },
+            { ph: 7.38, co2: 55, hco3: 32, answer: 'Fully Compensated' },
+            { ph: 7.32, co2: 50, hco3: 28, answer: 'Partially Compensated' },
+            { ph: 7.48, co2: 30, hco3: 22, answer: 'Uncompensated' },
+            { ph: 7.42, co2: 48, hco3: 30, answer: 'Fully Compensated' },
+            { ph: 7.46, co2: 32, hco3: 24, answer: 'Partially Compensated' }
+        ];
+
+        function loadCompensationGame() {
+            compIndex = 0;
+            compScore = 0;
+            showCompensationQuestion();
+        }
+
+        function showCompensationQuestion() {
+            if (compIndex >= compensationCases.length) {
+                document.getElementById('gameBody').innerHTML = `
+                    <div class="millionaire-question"><h2>🎉 Complete!</h2><p>Score: ${compScore}/${compensationCases.length}</p></div>`;
+                return;
+            }
+
+            const case_ = compensationCases[compIndex];
+            let html = createProgressBar(compIndex, compensationCases.length);
+            html += `<div class="exam-focus" style="margin-top:15px;">
+                <h3>Determine Compensation Status:</h3>
+                <p>pH: ${case_.ph} | PaCO2: ${case_.co2} | HCO3: ${case_.hco3}</p>
+            </div>`;
+            html += '<div class="millionaire-options">';
+            ['Uncompensated', 'Partially Compensated', 'Fully Compensated'].forEach(opt => {
+                html += `<button class="millionaire-option" onclick="checkCompensation('${opt}')">${opt}</button>`;
+            });
+            html += '</div><div id="compFeedback"></div>';
+            document.getElementById('gameBody').innerHTML = html;
+        }
+
+        function checkCompensation(answer) {
+            const correct = answer === compensationCases[compIndex].answer;
+            const feedbackDiv = document.getElementById('compFeedback');
+            
+            if (correct) {
+                compScore++;
+                feedbackDiv.innerHTML = showFeedback(true, `Score: ${compScore}/${compensationCases.length}`);
+            } else {
+                feedbackDiv.innerHTML = showFeedback(false, `Answer was: ${compensationCases[compIndex].answer}`);
+            }
+            
+            setTimeout(() => { compIndex++; showCompensationQuestion(); }, 1500);
+        }
+
+        // ====== TIME ATTACK ======
+        let timeAttackScore = 0;
+        let timeAttackTime = 60;
+        let timeAttackTimer;
+        let timeAttackIndex = 0;
+
+        const timeAttackQuestions = [
+            { q: 'Normal serum sodium range?', a: '135-145' },
+            { q: 'Normal serum potassium range?', a: '3.5-5' },
+            { q: 'Normal arterial pH?', a: '7.35-7.45' },
+            { q: 'Programmed cell death?', a: 'apoptosis' },
+            { q: 'Hospital-acquired infection?', a: 'nosocomial' },
+            { q: 'Unknown cause of disease?', a: 'idiopathic' },
+            { q: 'Caused by medical treatment?', a: 'iatrogenic' },
+            { q: 'Increase in cell size?', a: 'hypertrophy' },
+            { q: 'Increase in cell number?', a: 'hyperplasia' },
+            { q: 'Cell replacement type change?', a: 'metaplasia' },
+            { q: 'Primary extracellular cation?', a: 'sodium' },
+            { q: 'Primary intracellular cation?', a: 'potassium' },
+            { q: 'Hormone for water reabsorption?', a: 'adh' },
+            { q: 'Hormone for sodium reabsorption?', a: 'aldosterone' },
+            { q: 'Pain nerve endings called?', a: 'nociceptors' }
+        ];
+
+        function loadTimeAttack() {
+            timeAttackScore = 0;
+            timeAttackTime = 60;
+            timeAttackIndex = 0;
+            timeAttackQuestions.sort(() => Math.random() - 0.5);
+            
+            document.getElementById('gameBody').innerHTML = `
+                <div class="millionaire-question">
+                    <h3>⏱️ Time: <span id="timeDisplay">60</span>s | Score: <span id="taScore">0</span></h3>
+                </div>
+                <div id="taQuestion" style="text-align:center; margin:20px 0; font-size:1.3rem;"></div>
+                <input type="text" id="taAnswer" style="width:100%; padding:15px; font-size:1.2rem; border:2px solid var(--medium-pink); border-radius:10px;" placeholder="Type your answer..." onkeypress="if(event.key==='Enter')checkTimeAttack()">
+                <div id="taFeedback" style="margin-top:15px;"></div>`;
+            
+            showTimeAttackQuestion();
+            timeAttackTimer = setInterval(() => {
+                timeAttackTime--;
+                document.getElementById('timeDisplay').textContent = timeAttackTime;
+                if (timeAttackTime <= 0) {
+                    clearInterval(timeAttackTimer);
+                    document.getElementById('gameBody').innerHTML = `
+                        <div class="millionaire-question"><h2>⏱️ Time's Up!</h2><p>Final Score: ${timeAttackScore}</p></div>`;
+                }
+            }, 1000);
+        }
+
+        function showTimeAttackQuestion() {
+            if (timeAttackIndex >= timeAttackQuestions.length) {
+                timeAttackQuestions.sort(() => Math.random() - 0.5);
+                timeAttackIndex = 0;
+            }
+            document.getElementById('taQuestion').innerHTML = `<strong>${timeAttackQuestions[timeAttackIndex].q}</strong>`;
+            document.getElementById('taAnswer').value = '';
+            document.getElementById('taAnswer').focus();
+        }
+
+        function checkTimeAttack() {
+            const userAnswer = document.getElementById('taAnswer').value.toLowerCase().trim();
+            const correctAnswer = timeAttackQuestions[timeAttackIndex].a.toLowerCase();
+            
+            if (userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer)) {
+                timeAttackScore++;
+                document.getElementById('taScore').textContent = timeAttackScore;
+                document.getElementById('taFeedback').innerHTML = showFeedback(true, '');
+            } else {
+                document.getElementById('taFeedback').innerHTML = showFeedback(false, `Answer: ${timeAttackQuestions[timeAttackIndex].a}`);
+            }
+            
+            timeAttackIndex++;
+            showTimeAttackQuestion();
+        }
+
+        // ====== WRONG ANSWER VAULT ======
+        const vault = JSON.parse(localStorage.getItem('nur221Vault') || '{}');
+
+        function addToVault(question, correctAnswer, rationale) {
+            const key = question.substring(0, 50);
+            if (!vault[key]) {
+                vault[key] = {
+                    question: question,
+                    correctAnswer: correctAnswer,
+                    rationale: rationale,
+                    correctCount: 0
+                };
+                localStorage.setItem('nur221Vault', JSON.stringify(vault));
+                updateVaultDisplay();
+            }
+        }
+
+        function updateVaultDisplay() {
+            const container = document.getElementById('vaultItems');
+            const keys = Object.keys(vault);
+            
+            if (keys.length === 0) {
+                container.innerHTML = `<div class="vault-empty">
+                    <p>🎉 Great job! Your vault is empty.</p>
+                    <p>Wrong answers will appear here for mastery.</p>
+                </div>`;
+                return;
+            }
+            
+            let html = '';
+            keys.forEach((key, i) => {
+                const item = vault[key];
+                html += `<div class="vault-item">
+                    <div class="question-text">${item.question}</div>
+                    <div class="progress-indicator">
+                        <span>Mastered: </span>
+                        <div class="progress-dots">`;
+                for (let j = 0; j < 3; j++) {
+                    html += `<div class="progress-dot ${j < item.correctCount ? 'filled' : ''}">${j < item.correctCount ? '✓' : (j+1)}</div>`;
+                }
+                html += `</div><button class="quiz-btn" onclick="practiceVaultItem('${key}')">Practice</button></div></div>`;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function practiceVaultItem(key) {
+            const item = vault[key];
+            const area = document.getElementById('vaultQuizArea');
+            
+            area.innerHTML = `
+                <div class="quiz-question" style="background:white;">
+                    <div class="quiz-question-text">${item.question}</div>
+                    <div class="quiz-options">
+                        <input type="text" id="vaultAnswer" style="width:100%; padding:15px; font-size:1.1rem; border:2px solid var(--medium-pink); border-radius:10px;" placeholder="Type your answer...">
+                    </div>
+                    <button class="quiz-btn" onclick="checkVaultAnswer('${key}')" style="margin-top:15px;">Submit</button>
+                    <div id="vaultFeedback"></div>
+                </div>`;
+        }
+
+        function checkVaultAnswer(key) {
+            const item = vault[key];
+            const userAnswer = document.getElementById('vaultAnswer').value.trim().toLowerCase();
+            const correct = item.correctAnswer.toLowerCase();
+            
+            const feedbackDiv = document.getElementById('vaultFeedback');
+            
+            if (userAnswer.includes(correct) || correct.includes(userAnswer)) {
+                item.correctCount++;
+                vault[key] = item;
+                
+                if (item.correctCount >= 3) {
+                    delete vault[key];
+                    feedbackDiv.innerHTML = `<div class="answer-feedback correct">✅ Mastered! Question removed from vault!</div>`;
+                } else {
+                    feedbackDiv.innerHTML = `<div class="answer-feedback correct">✅ Correct! (${item.correctCount}/3 to master)</div>`;
+                }
+                
+                localStorage.setItem('nur221Vault', JSON.stringify(vault));
+                setTimeout(() => {
+                    updateVaultDisplay();
+                    document.getElementById('vaultQuizArea').innerHTML = '';
+                }, 2000);
+            } else {
+                feedbackDiv.innerHTML = `<div class="answer-feedback incorrect">❌ Incorrect. The answer was: ${item.correctAnswer}<br><small>${item.rationale}</small></div>`;
+            }
+        }
+
+        // ====== QUIZ SYSTEM ======
+        const quizQuestions = [
+            {
+                num: 1,
+                question: 'A nurse is caring for a client who is postoperative and whose respirations are shallow and 9/min. Which acid-base imbalance should the nurse identify the client as being at risk for?',
+                options: ['Respiratory acidosis', 'Respiratory alkalosis', 'Metabolic acidosis', 'Metabolic alkalosis'],
+                correct: 0,
+                hint: 'Think about what happens to CO2 when breathing is shallow and slow.',
+                rationale: 'Shallow, slow respirations cause CO2 retention → Respiratory Acidosis. CO2 is acidic, so retention causes pH to decrease.'
+            },
+            {
+                num: 2,
+                question: 'A nurse should recognize that which client is at risk for metabolic acidosis?',
+                options: ['A client who has diarrhea', 'A client who is vomiting', 'A client taking thiazide diuretics', 'A client with salicylate intoxication'],
+                correct: 0,
+                hint: 'What is lost in diarrhea that affects pH?',
+                rationale: 'Diarrhea causes loss of bicarbonate-rich intestinal secretions → Metabolic Acidosis. Vomiting causes metabolic alkalosis.'
+            },
+            {
+                num: 3,
+                question: 'A client has an NG tube draining 2,500 mL in 6 hours. Which electrolyte imbalance should the nurse monitor for?',
+                options: ['Elevated sodium', 'Decreased potassium', 'Elevated magnesium', 'Decreased calcium'],
+                correct: 1,
+                hint: 'NG suction removes gastric contents rich in what electrolyte?',
+                rationale: 'NG suction removes potassium-rich gastric secretions → Hypokalemia. Monitor K+ levels closely.'
+            },
+            {
+                num: 4,
+                question: 'Which finding indicates dehydration in an older adult?',
+                options: ['Urine specific gravity 1.010', 'Weight gain of 2.2 kg in 24 hr', 'Hematocrit 45%', 'Temperature of 39°C (102°F)'],
+                correct: 3,
+                hint: 'Fever increases insensible fluid losses.',
+                rationale: 'Fever increases insensible fluid losses through sweating and increased metabolic rate → Dehydration risk.'
+            },
+            {
+                num: 5,
+                question: 'Which cellular adaptation is characterized by a change from one mature cell type to another?',
+                options: ['Hypertrophy', 'Hyperplasia', 'Metaplasia', 'Dysplasia'],
+                correct: 2,
+                hint: 'Meta means change - one type changes to another.',
+                rationale: 'Metaplasia = replacement of one mature cell type by another. Classic example: smoker\'s bronchial epithelium changes from columnar to squamous.'
+            },
+            {
+                num: 6,
+                question: 'A patient has K+ of 6.8 mEq/L. What is the priority intervention?',
+                options: ['Encourage bananas', 'Administer kayexalate', 'Monitor for cardiac arrhythmias', 'Prepare for dialysis'],
+                correct: 2,
+                hint: 'What is the most immediate life-threatening concern?',
+                rationale: 'Severe hyperkalemia (>6.5 mEq/L) is a medical emergency due to cardiac arrest risk. Monitoring for arrhythmias is the priority.'
+            },
+            {
+                num: 7,
+                question: 'ABG: pH 7.48, PaCO2 32, HCO3 24. What is the interpretation?',
+                options: ['Respiratory acidosis, uncompensated', 'Respiratory alkalosis, uncompensated', 'Metabolic alkalosis, uncompensated', 'Respiratory alkalosis, partially compensated'],
+                correct: 1,
+                hint: 'pH high = alkalosis. CO2 low = respiratory cause. HCO3 normal = no compensation.',
+                rationale: 'High pH = alkalosis. Low CO2 causing alkalosis = respiratory. Normal HCO3 = no compensation. Uncompensated Respiratory Alkalosis.'
+            },
+            {
+                num: 8,
+                question: 'Which hormone causes sodium and water reabsorption while excreting potassium?',
+                options: ['ADH', 'Aldosterone', 'ANP', 'BNP'],
+                correct: 1,
+                hint: 'Think "Al" = "Save All" - sodium and water.',
+                rationale: 'Aldosterone causes Na+ and water reabsorption, K+ excretion. From adrenal cortex in response to low blood volume/pressure.'
+            },
+            {
+                num: 9,
+                question: 'A patient with heart failure has pitting edema. This is caused by:',
+                options: ['Increased capillary filtration pressure', 'Decreased capillary osmotic pressure', 'Increased capillary permeability', 'Obstructed lymph flow'],
+                correct: 0,
+                hint: 'In heart failure, what happens to venous pressure?',
+                rationale: 'Heart failure → increased venous pressure → increased capillary filtration pressure → fluid forced into interstitial spaces → edema.'
+            },
+            {
+                num: 10,
+                question: 'Which ABG indicates fully compensated respiratory acidosis?',
+                options: ['pH 7.30, PaCO2 50, HCO3 24', 'pH 7.38, PaCO2 52, HCO3 30', 'pH 7.32, PaCO2 48, HCO3 28', 'pH 7.42, PaCO2 38, HCO3 24'],
+                correct: 1,
+                hint: 'Fully compensated = pH normal, but both CO2 and HCO3 abnormal.',
+                rationale: 'Fully compensated respiratory acidosis: pH normal (7.35-7.45), CO2 high (primary), HCO3 high (compensation).'
+            },
+            {
+                num: 11,
+                question: 'A patient with hypocalcemia would exhibit which finding?',
+                options: ['Muscle weakness and constipation', 'Muscle twitching and tetany', 'Hypotension and bradycardia', 'Lethargy and confusion'],
+                correct: 1,
+                hint: 'Low calcium causes INCREASED neuromuscular irritability.',
+                rationale: 'Hypocalcemia causes enhanced neuromuscular irritability: twitching, cramps, spasms, tetany, laryngospasm, seizures.'
+            },
+            {
+                num: 12,
+                question: 'Which is an example of a nosocomial infection?',
+                options: ['Pneumonia 3 days after admission', 'UTI present at admission', 'Diabetes from steroid use', 'Unknown cause of fever'],
+                correct: 0,
+                hint: 'Nosocomial = hospital-acquired, not present at admission.',
+                rationale: 'Nosocomial infections develop during hospital stay, not present or incubating at admission.'
+            },
+            {
+                num: 13,
+                question: 'Primary prevention includes which activity?',
+                options: ['Mammogram screening', 'Cardiac rehabilitation', 'Vaccination program', 'Diabetes management'],
+                correct: 2,
+                hint: 'Primary = before disease occurs.',
+                rationale: 'Primary prevention protects from developing disease. Vaccinations prevent disease before it occurs.'
+            },
+            {
+                num: 14,
+                question: 'Apoptosis differs from necrosis in that apoptosis:',
+                options: ['Causes inflammation', 'Is programmed cell death', 'Results from injury', 'Causes cell swelling'],
+                correct: 1,
+                hint: 'Think about which one is "planned" vs "unplanned".',
+                rationale: 'Apoptosis = programmed cell death, controlled, no inflammation. Necrosis = unplanned, from injury, causes inflammation.'
+            },
+            {
+                num: 15,
+                question: 'The Gate Control Theory explains:',
+                options: ['Cell membrane transport', 'Pain signal modulation', 'Acid-base compensation', 'Fluid balance regulation'],
+                correct: 1,
+                hint: 'Think about how distraction reduces pain.',
+                rationale: 'Gate Control Theory: a "gate" in the spinal cord modulates pain signals. Distraction "closes" the gate.'
+            }
+        ];
+
+        function loadQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quizQuestions.forEach((q, index) => {
+                html += `<div class="quiz-question">
+                    <div class="quiz-question-num">Question ${q.num}</div>
+                    <div class="quiz-question-text">${q.question}</div>
+                    <div class="quiz-options">`;
+                
+                q.options.forEach((opt, i) => {
+                    html += `<div class="quiz-option" onclick="selectAnswer(${index}, ${i})" data-question="${index}" data-option="${i}">
+                        ${String.fromCharCode(65 + i)}) ${opt}
+                    </div>`;
+                });
+                
+                html += `</div>
+                    <button class="quiz-btn" onclick="showHint(${index})">💡 Hint</button>
+                    <div class="quiz-hint" id="hint${index}"><strong>Hint:</strong> ${q.hint}</div>
+                    <div class="quiz-rationale" id="rationale${index}"><strong>Rationale:</strong> ${q.rationale}</div>
+                </div>`;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function selectAnswer(qIndex, optIndex) {
+            const q = quizQuestions[qIndex];
+            const options = document.querySelectorAll(`[data-question="${qIndex}"]`);
+            
+            options.forEach((opt, i) => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+                opt.style.cursor = 'default';
+                if (i === q.correct) {
+                    opt.classList.add('correct');
+                } else if (i === optIndex && optIndex !== q.correct) {
+                    opt.classList.add('incorrect');
+                }
+            });
+            
+            if (optIndex !== q.correct) {
+                addToVault(q.question, q.options[q.correct], q.rationale);
+            }
+            
+            document.getElementById(`rationale${qIndex}`).classList.add('visible');
+        }
+
+        function showHint(index) {
+            document.getElementById(`hint${index}`).classList.toggle('visible');
+        }
+
+        // ====== FLASHCARDS ======
+        const flashcards = [
+            { term: 'Pathophysiology', def: 'Study of functional changes in disease', chapter: 'ch1' },
+            { term: 'Etiology', def: 'Study of causes of disease', chapter: 'ch1' },
+            { term: 'Nosocomial', def: 'Hospital-acquired infection', chapter: 'ch1' },
+            { term: 'Iatrogenic', def: 'Caused by medical treatment', chapter: 'ch1' },
+            { term: 'Idiopathic', def: 'Unknown cause', chapter: 'ch1' },
+            { term: 'Apoptosis', def: 'Programmed cell death', chapter: 'ch1' },
+            { term: 'Necrosis', def: 'Unplanned cell death from injury', chapter: 'ch1' },
+            { term: 'Atrophy', def: 'Decrease in cell size', chapter: 'ch1' },
+            { term: 'Hypertrophy', def: 'Increase in cell size', chapter: 'ch1' },
+            { term: 'Hyperplasia', def: 'Increase in cell number', chapter: 'ch1' },
+            { term: 'Metaplasia', def: 'Replacement of one cell type by another', chapter: 'ch1' },
+            { term: 'Dysplasia', def: 'Abnormal cell changes', chapter: 'ch1' },
+            { term: 'Electrolytes', def: 'Chemicals that produce ions in solution', chapter: 'ch2' },
+            { term: 'Cations', def: 'Positively charged ions (Na+, K+, Ca2+)', chapter: 'ch2' },
+            { term: 'Anions', def: 'Negatively charged ions (Cl-, HCO3-)', chapter: 'ch2' },
+            { term: 'Hyponatremia', def: 'Low sodium (<135 mEq/L)', chapter: 'ch2' },
+            { term: 'Hyperkalemia', def: 'High potassium (>5 mEq/L) - DANGEROUS!', chapter: 'ch2' },
+            { term: 'Hypocalcemia', def: 'Low calcium (<8.5 mg/dL) - causes tetany', chapter: 'ch2' },
+            { term: 'ADH', def: 'Causes water reabsorption in kidneys', chapter: 'ch2' },
+            { term: 'Aldosterone', def: 'Causes Na+ reabsorption, K+ excretion', chapter: 'ch2' },
+            { term: 'Edema', def: 'Increased interstitial fluid', chapter: 'ch2' },
+            { term: 'Normal pH', def: '7.35 - 7.45', chapter: 'ch2' },
+            { term: 'Respiratory Acidosis', def: 'pH low, CO2 high', chapter: 'ch2' },
+            { term: 'Compensation', def: 'Body\'s attempt to correct pH imbalance', chapter: 'ch2' },
+            { term: 'Nociceptors', def: 'Pain-detecting nerve endings', chapter: 'ch4' },
+            { term: 'Acute Pain', def: 'Sudden onset, < 3-6 months', chapter: 'ch4' },
+            { term: 'Chronic Pain', def: 'Persists > 3-6 months', chapter: 'ch4' },
+            { term: 'Referred Pain', def: 'Pain felt at different location from source', chapter: 'ch4' },
+            { term: 'Gate Control Theory', def: 'Spinal "gate" modulates pain signals', chapter: 'ch4' },
+            { term: 'Endemic', def: 'Disease stable and predictable in population', chapter: 'ch1' },
+            { term: 'Epidemic', def: 'Dramatic increase in disease incidence', chapter: 'ch1' },
+            { term: 'Pandemic', def: 'Epidemic across continents', chapter: 'ch1' },
+            { term: 'Primary Prevention', def: 'Before disease occurs (vaccines)', chapter: 'ch1' },
+            { term: 'Secondary Prevention', def: 'Early detection (screening)', chapter: 'ch1' },
+            { term: 'Tertiary Prevention', def: 'Rehabilitation after diagnosis', chapter: 'ch1' },
+            { term: 'Neoplasia', def: 'Uncontrolled cell growth', chapter: 'ch1' },
+            { term: 'Neuropathic Pain', def: 'Pain from nerve damage', chapter: 'ch4' },
+            { term: 'Tetany', def: 'Muscle spasms from hypocalcemia', chapter: 'ch2' }
+        ];
+
+        let currentCardIndex = 0;
+        let filteredCards = [...flashcards];
+
+        function filterFlashcards(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            filteredCards = filter === 'all' ? [...flashcards] : flashcards.filter(card => card.chapter === filter);
+            currentCardIndex = 0;
+            updateFlashcard();
+        }
+
+        function updateFlashcard() {
+            if (filteredCards.length === 0) return;
+            document.getElementById('flashcardTerm').textContent = filteredCards[currentCardIndex].term;
+            document.getElementById('flashcardDef').textContent = filteredCards[currentCardIndex].def;
+            document.getElementById('currentCard').textContent = currentCardIndex + 1;
+            document.getElementById('totalCards').textContent = filteredCards.length;
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % filteredCards.length;
+            updateFlashcard();
+        }
+
+        function prevCard() {
+            currentCardIndex = (currentCardIndex - 1 + filteredCards.length) % filteredCards.length;
+            updateFlashcard();
+        }
+
+        // ====== INITIALIZE ======
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuiz();
+            updateVaultDisplay();
+        });
+    </script>
+</body>
+</html>
