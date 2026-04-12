@@ -2368,6 +2368,7 @@
         // Jeopardy
         let jeopardyScore = 0;
         let jeopardyAnswered = 0;
+        let jeopardyAnsweredQuestions = {}; // Track which questions have been answered
 
         const jeopardyQuestions = {
             'Definitions': [
@@ -2396,6 +2397,7 @@
         function loadJeopardy() {
             jeopardyScore = 0;
             jeopardyAnswered = 0;
+            jeopardyAnsweredQuestions = {}; // Reset answered questions
             showJeopardyBoard();
         }
 
@@ -2407,7 +2409,14 @@
             categories.forEach(cat => {
                 html += `<div style="text-align: center;"><h4 style="color: var(--deep-pink);">${cat}</h4>`;
                 jeopardyQuestions[cat].forEach((item, i) => {
-                    html += `<button class="quiz-btn" style="width: 100%; margin: 5px 0;" onclick="showJeopardyQuestion('${cat}', ${i})">$${item.value}</button>`;
+                    const questionKey = `${cat}-${i}`;
+                    const isAnswered = jeopardyAnsweredQuestions[questionKey];
+                    if (isAnswered) {
+                        // Blacked out answered question
+                        html += `<button class="quiz-btn" style="width: 100%; margin: 5px 0; background: #333; color: #333; cursor: not-allowed; border: 2px solid #333;" disabled>&nbsp;</button>`;
+                    } else {
+                        html += `<button class="quiz-btn" style="width: 100%; margin: 5px 0;" onclick="showJeopardyQuestion('${cat}', ${i})">$${item.value}</button>`;
+                    }
                 });
                 html += '</div>';
             });
@@ -2416,20 +2425,76 @@
             document.getElementById('gameBody').innerHTML = html;
         }
 
+        // Generate wrong answers for Jeopardy multiple choice
+        const jeopardyWrongAnswers = {
+            'Pathophysiology': ['Pharmacology', 'Pathology', 'Physiology'],
+            'Homeostasis': ['Hemostasis', 'Hypostasis', 'Hyperstasis'],
+            'Etiology': ['Ethology', 'Entomology', 'Epidemiology'],
+            'Apoptosis': ['Necrosis', 'Mitosis', 'Apnea'],
+            'Nosocomial': ['Iatrogenic', 'Idiopathic', 'Endemic'],
+            'Sodium': ['Potassium', 'Calcium', 'Magnesium'],
+            '3.5-5.0': ['1.5-3.0', '5.0-7.5', '7.5-10.0'],
+            'Potassium': ['Sodium', 'Calcium', 'Magnesium'],
+            'Calcium': ['Potassium', 'Sodium', 'Magnesium'],
+            'Bicarbonate': ['Phosphate', 'Protein', 'Hemoglobin'],
+            '7.35-7.45': ['7.25-7.35', '7.45-7.55', '7.55-7.65'],
+            'Respiratory acidosis': ['Respiratory alkalosis', 'Metabolic acidosis', 'Metabolic alkalosis'],
+            'Metabolic acidosis': ['Metabolic alkalosis', 'Respiratory acidosis', 'Respiratory alkalosis'],
+            'Metabolic alkalosis': ['Metabolic acidosis', 'Respiratory acidosis', 'Respiratory alkalosis'],
+            'Respiratory alkalosis': ['Respiratory acidosis', 'Metabolic acidosis', 'Metabolic alkalosis']
+        };
+
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
         function showJeopardyQuestion(category, index) {
             const q = jeopardyQuestions[category][index];
+            const correctAnswer = q.a;
+            
+            // Get wrong answers or generate defaults
+            let wrongAnswers = jeopardyWrongAnswers[correctAnswer] || ['Wrong A', 'Wrong B', 'Wrong C'];
+            
+            // Create options array with correct answer
+            let options = shuffleArray([correctAnswer, ...wrongAnswers.slice(0, 3)]);
+            const correctIndex = options.indexOf(correctAnswer);
+            
             let html = `<div class="millionaire-question"><h3>$${q.value} - ${category}</h3><p>${q.q}</p></div>`;
-            html += `<input type="text" id="jeopardyAnswer" placeholder="Your answer" style="width: 100%; padding: 15px; font-size: 1.1rem; border: 2px solid var(--light-pink); border-radius: 10px; margin: 15px 0;">`;
-            html += `<button class="quiz-btn" onclick="checkJeopardyAnswer('${category}', ${index})">Submit</button>`;
+            html += `<div style="display: grid; gap: 10px; margin-top: 15px;">`;
+            
+            options.forEach((opt, i) => {
+                html += `<button class="quiz-btn" id="jeopardyOpt${i}" onclick="checkJeopardyAnswer('${category}', ${index}, ${correctIndex}, ${i})">${String.fromCharCode(65 + i)}: ${opt}</button>`;
+            });
+            
+            html += `</div>`;
             html += `<div id="jeopardyFeedback"></div>`;
             document.getElementById('gameBody').innerHTML = html;
         }
 
-        function checkJeopardyAnswer(category, index) {
+        function checkJeopardyAnswer(category, index, correctIndex, selectedIndex) {
             const q = jeopardyQuestions[category][index];
-            const answer = document.getElementById('jeopardyAnswer').value.toLowerCase().trim();
-            const correct = answer.includes(q.a.toLowerCase());
+            const correct = selectedIndex === correctIndex;
             const feedbackDiv = document.getElementById('jeopardyFeedback');
+            
+            // Mark this question as answered
+            const questionKey = `${category}-${index}`;
+            jeopardyAnsweredQuestions[questionKey] = true;
+            
+            // Disable all buttons
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`jeopardyOpt${i}`);
+                btn.disabled = true;
+                if (i === correctIndex) {
+                    btn.style.background = 'linear-gradient(135deg, #4caf50, #45a049)';
+                } else if (i === selectedIndex && !correct) {
+                    btn.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
+                }
+            }
             
             if (correct) {
                 jeopardyScore += q.value;
