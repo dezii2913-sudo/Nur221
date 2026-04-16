@@ -211,7 +211,7 @@
 
         .diagram-part {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 24px;
             margin: 5px;
             background: var(--ocean-foam);
             border: 2px solid var(--ocean-light);
@@ -219,6 +219,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+            min-height: 44px;
+            min-width: 44px;
+            touch-action: manipulation;
         }
 
         .diagram-part:hover {
@@ -281,11 +284,15 @@
             background: var(--ocean-dark);
             color: white;
             border: none;
-            padding: 8px 20px;
+            padding: 12px 24px;
             border-radius: 20px;
             cursor: pointer;
-            margin-left: 10px;
+            margin: 10px 5px;
             transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            min-height: 44px;
+            touch-action: manipulation;
         }
 
         .check-btn:hover {
@@ -314,12 +321,17 @@
 
         .drag-item {
             background: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 20px;
             cursor: grab;
             border: 2px solid var(--ocean-light);
             transition: all 0.3s ease;
             user-select: none;
+            touch-action: none;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .drag-item:hover {
@@ -342,8 +354,12 @@
             padding: 15px;
             border-radius: 10px;
             border: 2px dashed var(--ocean-light);
-            min-height: 80px;
+            min-height: 100px;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .drop-zone.drag-over {
@@ -432,12 +448,15 @@
             background: white;
             color: var(--warning);
             border: none;
-            padding: 8px 20px;
+            padding: 12px 24px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
             margin-top: 10px;
+            font-size: 1rem;
+            min-height: 44px;
+            touch-action: manipulation;
         }
 
         .knowledge-btn:hover {
@@ -561,12 +580,13 @@
             right: 30px;
             background: linear-gradient(135deg, var(--ocean-dark), var(--navy));
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: none;
+            border: 3px solid white;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
             display: none;
             align-items: center;
             justify-content: center;
@@ -580,8 +600,132 @@
             box-shadow: 0 6px 20px rgba(0, 105, 148, 0.6);
         }
 
+        .return-to-top:active {
+            transform: scale(0.95);
+        }
+
         .return-to-top.show {
             display: flex;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .return-to-top {
+                width: 70px;
+                height: 70px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 32px;
+                border-width: 4px;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .nav-tab {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .content-card {
+                padding: 15px;
+            }
+
+            .interactive-diagram {
+                padding: 15px;
+            }
+
+            .diagram-parts {
+                flex-direction: column;
+            }
+
+            .diagram-part {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .drop-zones {
+                grid-template-columns: 1fr;
+            }
+
+            .case-options {
+                gap: 5px;
+            }
+
+            .case-option {
+                padding: 12px 10px;
+                font-size: 0.9rem;
+            }
+
+            .blank-input {
+                width: 120px;
+                font-size: 0.9rem;
+            }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 10px;
+            }
+
+            .definition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-bar {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .return-to-top {
+                width: 80px;
+                height: 80px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 36px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-tab {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+
+            .content-card {
+                padding: 12px;
+            }
+
+            .blank-input {
+                width: 100px;
+                font-size: 0.85rem;
+            }
+
+            .comparison-table {
+                font-size: 0.75rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 6px 8px;
+            }
+
+            .case-option {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
         }
 
         .comparison-table {
