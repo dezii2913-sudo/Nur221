@@ -1,1 +1,2564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUR221 Pathophysiology - Unit 2 Part 1</title>
+    <style>
+        :root {
+            --ocean-dark: #006994;
+            --ocean-medium: #0077B6;
+            --ocean-light: #00B4D8;
+            --ocean-pale: #90E0EF;
+            --ocean-foam: #CAF0F8;
+            --navy: #03045E;
+            --gold: #FFD700;
+            --success: #2A9D8F;
+            --warning: #F4A261;
+            --error: #E63946;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--ocean-foam) 0%, #fff 50%, var(--ocean-pale) 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--navy), var(--ocean-dark));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 105, 148, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .nav-container {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: var(--ocean-foam);
+            border: 2px solid var(--ocean-light);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--ocean-dark);
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--ocean-dark);
+            color: white;
+            border-color: var(--ocean-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 105, 148, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            color: var(--ocean-dark);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--ocean-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--ocean-medium);
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateX(5px);
+        }
+
+        .content-card h3 {
+            color: var(--ocean-dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .content-card p {
+            margin-bottom: 10px;
+        }
+
+        .definition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .definition-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--ocean-medium);
+        }
+
+        .definition-card h4 {
+            color: var(--ocean-dark);
+            margin-bottom: 10px;
+        }
+
+        .exam-callout {
+            background: linear-gradient(135deg, var(--warning), #E76F51);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid var(--error);
+        }
+
+        .exam-callout h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .key-points {
+            background: var(--ocean-foam);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .key-points h4 {
+            color: var(--ocean-dark);
+            margin-bottom: 10px;
+        }
+
+        .key-points ul, .content-card ul {
+            margin-left: 20px;
+        }
+
+        .key-points li, .content-card li {
+            margin-bottom: 8px;
+        }
+
+        /* Interactive Elements */
+        .interactive-diagram {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .diagram-part {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: var(--ocean-foam);
+            border: 2px solid var(--ocean-light);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .diagram-part:hover {
+            background: var(--ocean-medium);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .diagram-part.active {
+            background: var(--ocean-dark);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 105, 148, 0.4);
+        }
+
+        .diagram-info {
+            background: var(--ocean-pale);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .diagram-info.show {
+            display: block;
+        }
+
+        .fill-blank {
+            background: var(--ocean-foam);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .blank-input {
+            border: 2px solid var(--ocean-light);
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin: 0 5px;
+            width: 150px;
+            font-size: 1rem;
+        }
+
+        .blank-input:focus {
+            outline: none;
+            border-color: var(--ocean-dark);
+        }
+
+        .blank-input.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .blank-input.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+
+        .check-btn {
+            background: var(--ocean-dark);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .check-btn:hover {
+            background: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        .drag-drop-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .drag-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--ocean-foam);
+            border-radius: 10px;
+            min-height: 60px;
+        }
+
+        .drag-item {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: grab;
+            border: 2px solid var(--ocean-light);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .drag-item:hover {
+            border-color: var(--ocean-dark);
+            transform: scale(1.05);
+        }
+
+        .drag-item.dragging {
+            opacity: 0.5;
+        }
+
+        .drop-zones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .drop-zone {
+            background: var(--ocean-pale);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px dashed var(--ocean-light);
+            min-height: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .drop-zone.drag-over {
+            background: var(--ocean-light);
+            border-color: var(--ocean-dark);
+        }
+
+        .drop-zone h4 {
+            color: var(--ocean-dark);
+            margin-bottom: 10px;
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, #fff, var(--ocean-foam));
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--ocean-medium);
+        }
+
+        .case-study h4 {
+            color: var(--ocean-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .case-question {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid var(--warning);
+        }
+
+        .case-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .case-option {
+            padding: 10px 15px;
+            background: var(--ocean-foam);
+            border: 2px solid var(--ocean-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .case-option:hover {
+            background: var(--ocean-light);
+            border-color: var(--ocean-dark);
+        }
+
+        .case-option.correct {
+            background: #d4edda;
+            border-color: var(--success);
+        }
+
+        .case-option.incorrect {
+            background: #f8d7da;
+            border-color: var(--error);
+        }
+
+        .knowledge-check {
+            background: var(--warning);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid var(--error);
+        }
+
+        .knowledge-check h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .knowledge-btn {
+            background: white;
+            color: var(--warning);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .knowledge-btn:hover {
+            background: var(--ocean-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .knowledge-answer {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .knowledge-answer.show {
+            display: block;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .comparison-table th {
+            background: var(--ocean-dark);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--ocean-light);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--ocean-foam);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            border-bottom: 2px dotted var(--ocean-dark);
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            width: 250px;
+            font-size: 0.9rem;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .progress-bar {
+            background: var(--ocean-foam);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .progress-bar h4 {
+            color: var(--ocean-dark);
+            margin-bottom: 10px;
+        }
+
+        .progress-track {
+            background: white;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--ocean-light);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--ocean-light), var(--ocean-dark));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 8px;
+            color: var(--ocean-dark);
+            font-weight: 600;
+        }
+
+        /* Return to Top Button */
+        .return-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--ocean-dark), var(--navy));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 105, 148, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .return-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 105, 148, 0.6);
+        }
+
+        .return-to-top.show {
+            display: flex;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th {
+            background: var(--ocean-dark);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--ocean-pale);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--ocean-foam);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--ocean-pale);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--ocean-light);
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 105, 148, 0.2);
+            border-color: var(--ocean-medium);
+        }
+
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .game-title {
+            color: var(--ocean-dark);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .game-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .game-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .game-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 20px;
+        }
+
+        .game-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-game {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .game-header {
+            background: linear-gradient(135deg, var(--navy), var(--ocean-dark));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .game-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .game-body {
+            padding: 30px;
+        }
+
+        .quiz-question {
+            background: var(--ocean-foam);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question h4 {
+            color: var(--ocean-dark);
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid var(--ocean-light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--ocean-medium);
+            background: var(--ocean-pale);
+        }
+
+        .quiz-option.correct {
+            background: #d4edda;
+            border-color: var(--success);
+        }
+
+        .quiz-option.incorrect {
+            background: #f8d7da;
+            border-color: var(--error);
+        }
+
+        .hint-box {
+            background: #fff3cd;
+            border: 1px solid var(--warning);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .hint-box.show {
+            display: block;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--ocean-medium);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--ocean-dark);
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        /* Jeopardy Styles */
+        .jeopardy-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .jeopardy-category {
+            background: var(--navy);
+            color: var(--gold);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        .jeopardy-cell {
+            background: var(--ocean-medium);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .jeopardy-cell:hover:not(.used) {
+            background: var(--ocean-dark);
+            transform: scale(1.05);
+        }
+
+        .jeopardy-cell.used {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .jeopardy-question {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            z-index: 1002;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .jeopardy-question.active {
+            display: block;
+        }
+
+        /* Vault Styles */
+        .vault-item {
+            background: #f8d7da;
+            border: 1px solid var(--error);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .vault-item h5 {
+            color: var(--error);
+            margin-bottom: 10px;
+        }
+
+        .vault-correct {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        /* Flashcard Styles */
+        .flashcard-container {
+            perspective: 1000px;
+            margin: 30px auto;
+            max-width: 500px;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, var(--navy), var(--ocean-dark));
+            color: white;
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, var(--success), #1D7A6C);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* Millionaire Styles */
+        .millionaire-question {
+            background: linear-gradient(135deg, var(--navy), var(--ocean-dark));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .millionaire-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .millionaire-option {
+            background: var(--ocean-medium);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .millionaire-option:hover {
+            background: var(--ocean-dark);
+        }
+
+        .millionaire-option.selected {
+            border-color: var(--gold);
+        }
+
+        .millionaire-option.correct {
+            background: var(--success);
+        }
+
+        .millionaire-option.incorrect {
+            background: var(--error);
+        }
+
+        .money-ladder {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .money-level {
+            padding: 8px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .money-level.current {
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .money-level.passed {
+            background: var(--success);
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .definition-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .jeopardy-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .millionaire-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .money-ladder {
+                display: none;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>🏥 Unit 2 Part 1: Chapters 8-10</h1>
+        <p>Skin, Musculoskeletal, and Blood Disorders</p>
+    </header>
+
+    <div class="nav-container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('overview')">📚 Overview</button>
+            <button class="nav-tab" onclick="showSection('chapter8')">🩹 Chapter 8</button>
+            <button class="nav-tab" onclick="showSection('chapter9')">🦴 Chapter 9</button>
+            <button class="nav-tab" onclick="showSection('chapter10')">🩸 Chapter 10</button>
+            <button class="nav-tab" onclick="showSection('outline')">📝 Exam Outline</button>
+            <button class="nav-tab" onclick="showSection('games')">🎮 Games</button>
+            <button class="nav-tab" onclick="showSection('quiz')">📋 Quiz</button>
+            <button class="nav-tab" onclick="showSection('vault')">🔐 Vault</button>
+            <button class="nav-tab" onclick="showSection('flashcards')">🃏 Flashcards</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview" class="content-section active">
+            <h2 class="section-title">📚 Unit 2 Part 1 Overview</h2>
+            
+            <div class="content-card">
+                <h3>Chapters Covered</h3>
+                <p><strong>Chapter 8:</strong> Structure and Function of the Skin</p>
+                <p><strong>Chapter 9:</strong> Musculoskeletal System Disorders</p>
+                <p><strong>Chapter 10:</strong> Blood and Blood Disorders</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Learning Objectives</h3>
+                <ul>
+                    <li>Understand the structure and function of skin layers</li>
+                    <li>Identify types of skin lesions and pressure injuries</li>
+                    <li>Explain bone cell functions and fracture types</li>
+                    <li>Describe blood components and their functions</li>
+                    <li>Recognize signs and symptoms of anemia and clotting disorders</li>
+                </ul>
+            </div>
+
+            <div class="exam-callout">
+                <h4>⚠️ Exam Alert</h4>
+                <p>Focus on: Skin layers, lesion types, bone cells, fracture stages, blood components, and anemia types!</p>
+            </div>
+        </section>
+
+        <!-- Chapter 8: Skin -->
+        <section id="chapter8" class="content-section">
+            <h2 class="section-title">🩹 Chapter 8: Skin</h2>
+            
+            <div class="content-card">
+                <h3>Skin Structure Overview</h3>
+                <p>The skin is the largest organ of the body, providing protection, temperature regulation, sensation, and vitamin D synthesis.</p>
+                
+                <div class="key-points">
+                    <h4>🔄 Layers of the Epidermis (Outer to Inner)</h4>
+                    <ul>
+                        <li><strong>Stratum corneum</strong> - Outermost, keratinized dead cells</li>
+                        <li><strong>Stratum lucidum</strong> - Clear layer (only in thick skin)</li>
+                        <li><strong>Stratum granulosum</strong> - Keratin production begins</li>
+                        <li><strong>Stratum spinosum</strong> - Spiny appearance, Langerhans cells</li>
+                        <li><strong>Stratum basale (germinativum)</strong> - Deepest, stem cells, melanocytes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Terminology: Skin</h3>
+                <div class="definition-grid">
+                    <div class="definition-card">
+                        <h4>Keratinocytes</h4>
+                        <p>Primary cells of the epidermis that produce keratin, making skin waterproof and resistant.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Melanocytes</h4>
+                        <p>Cells in the stratum basale that produce melanin, providing skin color and UV protection.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Langerhans Cells</h4>
+                        <p>Immune cells in the stratum spinosum that fight pathogens and present antigens.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Merkel Cells</h4>
+                        <p>Touch receptors located in the stratum basale, connected to nerve endings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Diagram: Skin Layers -->
+            <div class="interactive-diagram">
+                <h3>🔬 Interactive Skin Layers Diagram</h3>
+                <p style="color: var(--ocean-dark); margin-bottom: 15px;">Click on each layer to learn more:</p>
+                <div class="diagram-parts">
+                    <span class="diagram-part" onclick="showDiagramInfo('epidermis', this)">Epidermis</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('dermis', this)">Dermis</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('subcutaneous', this)">Subcutaneous</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('appendages', this)">Appendages</span>
+                </div>
+                <div id="diagram-info-epidermis" class="diagram-info">
+                    <strong>Epidermis</strong> - The outermost layer of skin. Composed of stratified squamous epithelium. Contains 5 layers: stratum corneum (outermost), lucidum, granulosum, spinosum, and basale (innermost). No blood vessels - receives nutrients through diffusion from dermis. Key cells: keratinocytes (produce keratin), melanocytes (produce melanin), Langerhans cells (immune function).
+                </div>
+                <div id="diagram-info-dermis" class="diagram-info">
+                    <strong>Dermis</strong> - The middle layer, composed of connective tissue. Contains two layers: papillary (upper, loose connective tissue) and reticular (lower, dense connective tissue). Houses blood vessels, nerves, hair follicles, sebaceous glands, and sweat glands. Provides strength and elasticity through collagen and elastin fibers.
+                </div>
+                <div id="diagram-info-subcutaneous" class="diagram-info">
+                    <strong>Subcutaneous Tissue (Hypodermis)</strong> - The deepest layer. Composed primarily of adipose tissue and loose connective tissue. Functions: insulation, energy storage, shock absorption, and anchors skin to underlying structures. Contains larger blood vessels and nerves.
+                </div>
+                <div id="diagram-info-appendages" class="diagram-info">
+                    <strong>Skin Appendages</strong> - Include hair, nails, sebaceous glands, and sweat glands. Hair: provides protection and warmth. Nails: protect distal phalanges. Sebaceous glands: produce sebum (oily substance). Sweat glands: eccrine (thermoregulation) and apocrine (scent).
+                </div>
+            </div>
+
+            <!-- Fill in the Blank Exercise -->
+            <div class="fill-blank">
+                <h3>✏️ Fill in the Blank: Skin Assessment</h3>
+                <p style="margin: 10px 0;">The <input type="text" class="blank-input" id="blank1" data-answer="Braden"> Scale is used to assess pressure injury risk. A score below 18 indicates <input type="text" class="blank-input" id="blank2" data-answer="risk"> for pressure injury development.</p>
+                <p style="margin: 10px 0;">Stage 1 pressure injuries show non-blanchable <input type="text" class="blank-input" id="blank3" data-answer="erythema"> (redness), while Stage 4 involves damage to <input type="text" class="blank-input" id="blank4" data-answer="muscle"> and/or bone.</p>
+                <button class="check-btn" onclick="checkFillBlanks(['blank1', 'blank2', 'blank3', 'blank4'])">Check Answers</button>
+                <p id="fill-result" style="margin-top: 10px; font-weight: 600;"></p>
+            </div>
+
+            <!-- Case Study -->
+            <div class="case-study">
+                <h4>📋 Case Study: Mrs. Thompson</h4>
+                <p>Mrs. Thompson is a 78-year-old nursing home resident with limited mobility due to Parkinson's disease. She has type 2 diabetes and urinary incontinence. During your assessment, you notice a reddened area on her sacrum that does not blanch when pressed. Her Braden Scale score is 11.</p>
+                
+                <div class="case-question">
+                    <strong>Question 1:</strong> What stage pressure injury does this finding indicate?
+                    <div class="case-options">
+                        <div class="case-option" onclick="checkCase(this, false)">A) Stage 2</div>
+                        <div class="case-option" onclick="checkCase(this, true)">B) Stage 1 (non-blanchable erythema)</div>
+                        <div class="case-option" onclick="checkCase(this, false)">C) Stage 3</div>
+                        <div class="case-option" onclick="checkCase(this, false)">D) Deep Tissue Injury</div>
+                    </div>
+                </div>
+
+                <div class="case-question">
+                    <strong>Question 2:</strong> Based on her Braden Scale score, what is her risk level?
+                    <div class="case-options">
+                        <div class="case-option" onclick="checkCase(this, false)">A) Low risk (19-23)</div>
+                        <div class="case-option" onclick="checkCase(this, false)">B) Moderate risk (15-18)</div>
+                        <div class="case-option" onclick="checkCase(this, false)">C) High risk (13-14)</div>
+                        <div class="case-option" onclick="checkCase(this, true)">D) Very high risk (≤9-12)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Check -->
+            <div class="knowledge-check">
+                <h4>🧠 Quick Knowledge Check</h4>
+                <p>What is the MOST important intervention for preventing pressure injuries in immobile patients?</p>
+                <button class="knowledge-btn" onclick="showKnowledgeAnswer('answer1')">Click to Reveal Answer</button>
+                <div id="answer1" class="knowledge-answer">
+                    <strong>Answer:</strong> Repositioning every 2 hours (or more frequently for high-risk patients). Other important interventions include: using pressure-relieving mattresses, keeping skin clean and dry, ensuring adequate nutrition (especially protein), and managing moisture from incontinence.
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Skin Lesions</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Lesion Type</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Macule</strong></td>
+                            <td>Flat, <1cm, color change</td>
+                            <td>Freckle, petechiae</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Papule</strong></td>
+                            <td>Elevated, <1cm, solid</td>
+                            <td>Mole, wart</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vesicle</strong></td>
+                            <td>Elevated, <1cm, fluid-filled</td>
+                            <td>Chickenpox, herpes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bulla</strong></td>
+                            <td>Elevated, >1cm, fluid-filled</td>
+                            <td>Blister, burn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nodule</strong></td>
+                            <td>Elevated, >1cm, solid</td>
+                            <td>Lipoma, cyst</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Plaque</strong></td>
+                            <td>Elevated, flat-topped, >1cm</td>
+                            <td>Psoriasis</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="exam-callout">
+                <h4>⚠️ Must Know for Exam!</h4>
+                <p>Know the difference between macule (flat) vs papule (elevated), and vesicle (<1cm) vs bulla (>1cm)!</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Pressure Injuries (Bedsores)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Description</th>
+                            <th>Clinical Signs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Stage 1</strong></td>
+                            <td>Non-blanchable erythema</td>
+                            <td>Redness doesn't fade when pressed</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stage 2</strong></td>
+                            <td>Partial thickness skin loss</td>
+                            <td>Blister or shallow open ulcer</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stage 3</strong></td>
+                            <td>Full thickness skin loss</td>
+                            <td>Deep crater, subcutaneous tissue visible</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stage 4</strong></td>
+                            <td>Full thickness tissue loss</td>
+                            <td>Muscle, bone, or tendon visible</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Chapter 9: Musculoskeletal -->
+        <section id="chapter9" class="content-section">
+            <h2 class="section-title">🦴 Chapter 9: Musculoskeletal System</h2>
+            
+            <div class="content-card">
+                <h3>Bone Cells</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Cell Type</th>
+                            <th>Function</th>
+                            <th>Key Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Osteoblasts</strong></td>
+                            <td>Build new bone</td>
+                            <td>Form new bone matrix, "Blast = Build"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Osteoclasts</strong></td>
+                            <td>Break down bone</td>
+                            <td>Resorb bone, release calcium, "Clast = Crush"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Osteocytes</strong></td>
+                            <td>Maintain bone</td>
+                            <td>Mature cells in lacunae, detect stress</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Osteogenic cells</strong></td>
+                            <td>Stem cells</td>
+                            <td>Found in periosteum, differentiate into osteoblasts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="exam-callout">
+                <h4>⚠️ Exam Tip!</h4>
+                <p>Remember: <strong>Blasts Build, Clasts Crush!</strong> Osteoblasts create new bone; osteoclasts resorb bone.</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Terminology: Musculoskeletal</h3>
+                <div class="definition-grid">
+                    <div class="definition-card">
+                        <h4>Periosteum</h4>
+                        <p>Fibrous membrane covering bone surfaces, contains blood vessels and osteogenic cells.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Endosteum</h4>
+                        <p>Thin membrane lining the inner bone surfaces and medullary cavity.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Lacunae</h4>
+                        <p>Small spaces in bone matrix where osteocytes reside.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Canaliculi</h4>
+                        <p>Tiny channels connecting lacunae, allowing nutrient exchange between osteocytes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Fracture Types</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Closed/Simple</strong></td>
+                            <td>Fracture doesn't break through skin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Open/Compound</strong></td>
+                            <td>Fracture breaks through skin (higher infection risk)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Comminuted</strong></td>
+                            <td>Bone shattered into multiple pieces</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Greenstick</strong></td>
+                            <td>Incomplete fracture (common in children)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pathologic</strong></td>
+                            <td>Due to bone disease (osteoporosis, cancer)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Interactive Diagram: Bone Structure -->
+            <div class="interactive-diagram">
+                <h3>🔬 Interactive Bone Cell Functions</h3>
+                <p style="color: var(--ocean-dark); margin-bottom: 15px;">Click on each cell type to learn more:</p>
+                <div class="diagram-parts">
+                    <span class="diagram-part" onclick="showDiagramInfo('osteoblast', this)">Osteoblast</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('osteoclast', this)">Osteoclast</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('osteocyte', this)">Osteocyte</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('osteogenic', this)">Osteogenic</span>
+                </div>
+                <div id="diagram-info-osteoblast" class="diagram-info">
+                    <strong>Osteoblasts (Bone Builders)</strong> - These cells synthesize and secrete collagen and other components of the bone matrix. They are responsible for bone formation and mineralization. When they become trapped in the matrix they produce, they differentiate into osteocytes. Memory trick: "Blast = Build"
+                </div>
+                <div id="diagram-info-osteoclast" class="diagram-info">
+                    <strong>Osteoclasts (Bone Breakers)</strong> - Large, multinucleated cells that resorb bone by releasing enzymes and acids. They break down bone tissue, releasing calcium and phosphate into the bloodstream. Essential for bone remodeling and calcium homeostasis. Memory trick: "Clast = Crush"
+                </div>
+                <div id="diagram-info-osteocyte" class="diagram-info">
+                    <strong>Osteocytes (Bone Maintainers)</strong> - Mature bone cells derived from osteoblasts that have become trapped in the bone matrix. They reside in lacunae and communicate through canaliculi. They detect mechanical stress and help regulate bone remodeling by signaling osteoblasts and osteoclasts.
+                </div>
+                <div id="diagram-info-osteogenic" class="diagram-info">
+                    <strong>Osteogenic Cells (Bone Stem Cells)</strong> - Undifferentiated stem cells found in the periosteum and endosteum. They can differentiate into osteoblasts when needed for bone repair or growth. These cells are essential for fracture healing and bone regeneration.
+                </div>
+            </div>
+
+            <!-- Drag and Drop: Fracture Matching -->
+            <div class="drag-drop-container">
+                <h3>🎯 Drag and Drop: Match the Fracture Type</h3>
+                <p style="margin-bottom: 15px; color: var(--ocean-dark);">Drag each fracture type to its correct description:</p>
+                
+                <div class="drag-items" id="drag-items-fracture">
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="closed">Closed/Simple</div>
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="open">Open/Compound</div>
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="comminuted">Comminuted</div>
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="greenstick">Greenstick</div>
+                </div>
+
+                <div class="drop-zones">
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="open">
+                        <h4>⚠️ Bone breaks through skin</h4>
+                    </div>
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="closed">
+                        <h4>🔒 Fracture doesn't penetrate skin</h4>
+                    </div>
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="comminuted">
+                        <h4>💥 Bone shattered into pieces</h4>
+                    </div>
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="greenstick">
+                        <h4>🌱 Incomplete fracture (children)</h4>
+                    </div>
+                </div>
+                
+                <button class="check-btn" onclick="checkDragDrop('fracture')" style="margin-top: 15px;">Check Answers</button>
+                <p id="drag-result-fracture" style="margin-top: 10px; font-weight: 600;"></p>
+            </div>
+
+            <!-- Fill in the Blank: Bone Healing -->
+            <div class="fill-blank">
+                <h3>✏️ Fill in the Blank: Bone Healing Process</h3>
+                <p style="margin: 10px 0;">The process of bone healing begins with the formation of a <input type="text" class="blank-input" id="blank5" data-answer="hematoma"> at the fracture site, followed by the development of a soft <input type="text" class="blank-input" id="blank6" data-answer="callus"> which is later replaced by hard bone.</p>
+                <p style="margin: 10px 0;">Osteoblasts require adequate <input type="text" class="blank-input" id="blank7" data-answer="calcium"> and vitamin D for proper bone formation. Weight-bearing exercise stimulates <input type="text" class="blank-input" id="blank8" data-answer="osteoblast"> activity.</p>
+                <button class="check-btn" onclick="checkFillBlanks(['blank5', 'blank6', 'blank7', 'blank8'])">Check Answers</button>
+                <p id="fill-result-2" style="margin-top: 10px; font-weight: 600;"></p>
+            </div>
+
+            <!-- Case Study: Fracture -->
+            <div class="case-study">
+                <h4>📋 Case Study: Mr. Rodriguez</h4>
+                <p>Mr. Rodriguez, a 68-year-old man with osteoporosis, fell at home. He presents with severe pain, swelling, and deformity of his right forearm. X-ray shows the bone has pierced through the skin. His vital signs are: BP 148/92, HR 102, RR 22, Temp 99.2°F.</p>
+                
+                <div class="case-question">
+                    <strong>Question 1:</strong> What type of fracture does this patient have?
+                    <div class="case-options">
+                        <div class="case-option" onclick="checkCase(this, false)">A) Closed fracture</div>
+                        <div class="case-option" onclick="checkCase(this, true)">B) Open/Compound fracture</div>
+                        <div class="case-option" onclick="checkCase(this, false)">C) Greenstick fracture</div>
+                        <div class="case-option" onclick="checkCase(this, false)">D) Pathologic fracture</div>
+                    </div>
+                </div>
+
+                <div class="case-question">
+                    <strong>Question 2:</strong> What is the PRIORITY nursing intervention?
+                    <div class="case-options">
+                        <div class="case-option" onclick="checkCase(this, false)">A) Apply ice to reduce swelling</div>
+                        <div class="case-option" onclick="checkCase(this, false)">B) Administer pain medication</div>
+                        <div class="case-option" onclick="checkCase(this, true)">C) Cover the wound with sterile dressing</div>
+                        <div class="case-option" onclick="checkCase(this, false)">D) Immobilize with a splint</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Check -->
+            <div class="knowledge-check">
+                <h4>🧠 Quick Knowledge Check</h4>
+                <p>What complication is MOST concerning in the first 24-48 hours after a long bone fracture?</p>
+                <button class="knowledge-btn" onclick="showKnowledgeAnswer('answer2')">Click to Reveal Answer</button>
+                <div id="answer2" class="knowledge-answer">
+                    <strong>Answer:</strong> Fat embolism syndrome (FES). This occurs when fat globules from the bone marrow enter the bloodstream, potentially causing respiratory distress, neurological changes, and petechial rash. Other early complications include compartment syndrome and deep vein thrombosis (DVT).
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Fracture Healing Stages</h3>
+                <div class="key-points">
+                    <ul>
+                        <li><strong>Stage 1: Hematoma formation</strong> - Blood clot forms at fracture site</li>
+                        <li><strong>Stage 2: Soft callus formation</strong> - Fibrocartilage bridges the gap (weeks 1-2)</li>
+                        <li><strong>Stage 3: Hard callus formation</strong> - Osteoblasts create new bone (weeks 3-4)</li>
+                        <li><strong>Stage 4: Bone remodeling</strong> - Bone reshaped by osteoclasts/osteoblasts (months-years)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Signs of Fracture</h3>
+                <div class="key-points">
+                    <h4>The 5 P's</h4>
+                    <ul>
+                        <li><strong>P</strong>ain at fracture site</li>
+                        <li><strong>P</strong>allor (pale skin)</li>
+                        <li><strong>P</strong>aresthesia (numbness/tingling)</li>
+                        <li><strong>P</strong>ulselessness (absent pulse distal to fracture)</li>
+                        <li><strong>P</strong>aralysis (inability to move)</li>
+                    </ul>
+                </div>
+                <p>Other signs: Swelling, deformity, crepitus (grinding sound), bruising</p>
+            </div>
+        </section>
+
+        <!-- Chapter 10: Blood -->
+        <section id="chapter10" class="content-section">
+            <h2 class="section-title">🩸 Chapter 10: Blood Disorders</h2>
+            
+            <div class="content-card">
+                <h3>Blood Components</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Function</th>
+                            <th>Normal Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Red Blood Cells (Erythrocytes)</strong></td>
+                            <td>Carry oxygen via hemoglobin</td>
+                            <td>Male: 4.7-6.1 million/μL<br>Female: 4.2-5.4 million/μL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>White Blood Cells (Leukocytes)</strong></td>
+                            <td>Immune defense</td>
+                            <td>4,500-11,000/μL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Platelets (Thrombocytes)</strong></td>
+                            <td>Blood clotting</td>
+                            <td>150,000-400,000/μL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Plasma</strong></td>
+                            <td>Transport medium (55% of blood volume)</td>
+                            <td>~55% of total blood volume</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3>Terminology: Blood</h3>
+                <div class="definition-grid">
+                    <div class="definition-card">
+                        <h4>Hemoglobin (Hgb)</h4>
+                        <p>Iron-containing protein in RBCs that carries oxygen. Normal: Male 14-18 g/dL, Female 12-16 g/dL.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Hematocrit (Hct)</h4>
+                        <p>Percentage of blood volume occupied by RBCs. Normal: Male 42-52%, Female 37-47%.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Erythropoietin (EPO)</h4>
+                        <p>Hormone produced by kidneys that stimulates RBC production in bone marrow.</p>
+                    </div>
+                    <div class="definition-card">
+                        <h4>Bilirubin</h4>
+                        <p>Yellow pigment from hemoglobin breakdown; elevated in jaundice.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>White Blood Cell Types</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>% of WBCs</th>
+                            <th>Function</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Neutrophils</strong></td>
+                            <td>60-70%</td>
+                            <td>First responders to bacterial infection; phagocytosis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lymphocytes</strong></td>
+                            <td>20-25%</td>
+                            <td>Viral defense; B cells (antibodies), T cells (cell-mediated)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monocytes</strong></td>
+                            <td>3-8%</td>
+                            <td>Become macrophages; chronic infection fighters</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Eosinophils</strong></td>
+                            <td>2-4%</td>
+                            <td>Allergic reactions; parasitic infections</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Basophils</strong></td>
+                            <td>0.5-1%</td>
+                            <td>Release histamine in allergic reactions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3>Types of Anemia</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Cause</th>
+                            <th>Key Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Iron Deficiency</strong></td>
+                            <td>Inadequate iron intake/absorption or blood loss</td>
+                            <td>Microcytic, hypochromic RBCs; fatigue, pallor</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pernicious Anemia</strong></td>
+                            <td>Vitamin B12 deficiency (lack of intrinsic factor)</td>
+                            <td>Macrocytic RBCs; neurologic symptoms</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sickle Cell Anemia</strong></td>
+                            <td>Genetic; abnormal hemoglobin S</td>
+                            <td>Sickled RBCs; vaso-occlusive crises</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aplastic Anemia</strong></td>
+                            <td>Bone marrow failure</td>
+                            <td>Pancytopenia (low all cell types)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hemolytic Anemia</strong></td>
+                            <td>Premature RBC destruction</td>
+                            <td>Jaundice, splenomegaly</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="exam-callout">
+                <h4>⚠️ Critical Point!</h4>
+                <p>Iron deficiency = microcytic (small cells)<br>B12/folate deficiency = macrocytic (large cells)</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Signs & Symptoms of Anemia</h3>
+                <div class="key-points">
+                    <ul>
+                        <li>Fatigue and weakness</li>
+                        <li>Pallor (pale skin, mucous membranes)</li>
+                        <li>Shortness of breath (dyspnea)</li>
+                        <li>Tachycardia (rapid heart rate)</li>
+                        <li>Dizziness, headache</li>
+                        <li>Cold hands and feet</li>
+                        <li>Brittle nails</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Diagram: WBC Types -->
+            <div class="interactive-diagram">
+                <h3>🔬 Interactive White Blood Cell Types</h3>
+                <p style="color: var(--ocean-dark); margin-bottom: 15px;">Click on each WBC type to learn more:</p>
+                <div class="diagram-parts">
+                    <span class="diagram-part" onclick="showDiagramInfo('neutrophil', this)">Neutrophil</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('lymphocyte', this)">Lymphocyte</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('monocyte', this)">Monocyte</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('eosinophil', this)">Eosinophil</span>
+                    <span class="diagram-part" onclick="showDiagramInfo('basophil', this)">Basophil</span>
+                </div>
+                <div id="diagram-info-neutrophil" class="diagram-info">
+                    <strong>Neutrophils (60-70%)</strong> - The most abundant WBCs and FIRST RESPONDERS to bacterial infections. They perform phagocytosis (engulf and destroy bacteria). Elevated in acute bacterial infections (left shift). Life span: 6-8 hours in blood, 1-2 days in tissue. Memory: "Neu-tro-phil" = "New" = First on scene!
+                </div>
+                <div id="diagram-info-lymphocyte" class="diagram-info">
+                    <strong>Lymphocytes (20-25%)</strong> - Key players in viral defense and specific immunity. Two main types: B cells (produce antibodies) and T cells (cell-mediated immunity, CD4/CD8). Elevated in viral infections. Small cells with large, round nucleus that fills most of the cell.
+                </div>
+                <div id="diagram-info-monocyte" class="diagram-info">
+                    <strong>Monocytes (3-8%)</strong> - The LARGEST WBCs. They circulate briefly then migrate to tissues and become MACROPHAGES. Excellent phagocytes for chronic infections and clean-up of cellular debris. Kidney-shaped nucleus. Elevated in chronic infections like TB.
+                </div>
+                <div id="diagram-info-eosinophil" class="diagram-info">
+                    <strong>Eosinophils (2-4%)</strong> - Elevated in ALLERGIC REACTIONS and PARASITIC INFECTIONS. Bilobed nucleus with red-orange granules. Release major basic protein and other enzymes to combat parasites. Also involved in asthma and allergic responses.
+                </div>
+                <div id="diagram-info-basophil" class="diagram-info">
+                    <strong>Basophils (0.5-1%)</strong> - The LEAST ABUNDANT WBCs. Release HISTAMINE and heparin. Similar function to mast cells. Involved in allergic and inflammatory responses. Dark blue/purple granules obscure the nucleus. Cause vasodilation and increased permeability.
+                </div>
+            </div>
+
+            <!-- Fill in the Blank: Blood Values -->
+            <div class="fill-blank">
+                <h3>✏️ Fill in the Blank: Normal Lab Values</h3>
+                <p style="margin: 10px 0;">Normal WBC count is <input type="text" class="blank-input" id="blank9" data-answer="4500">-11,000/μL. Normal platelet count is <input type="text" class="blank-input" id="blank10" data-answer="150000">-400,000/μL.</p>
+                <p style="margin: 10px 0;">Normal hemoglobin for an adult male is <input type="text" class="blank-input" id="blank11" data-answer="14">-18 g/dL. Normal hematocrit for an adult female is <input type="text" class="blank-input" id="blank12" data-answer="37">-47%.</p>
+                <button class="check-btn" onclick="checkFillBlanks(['blank9', 'blank10', 'blank11', 'blank12'])">Check Answers</button>
+                <p id="fill-result-3" style="margin-top: 10px; font-weight: 600;"></p>
+            </div>
+
+            <!-- Drag and Drop: Anemia Types -->
+            <div class="drag-drop-container">
+                <h3>🎯 Drag and Drop: Match the Anemia Type</h3>
+                <p style="margin-bottom: 15px; color: var(--ocean-dark);">Drag each anemia type to its key feature:</p>
+                
+                <div class="drag-items" id="drag-items-anemia">
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="iron">Iron Deficiency</div>
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="b12">Pernicious Anemia</div>
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="sickle">Sickle Cell</div>
+                    <div class="drag-item" draggable="true" ondragstart="dragStart(event)" data-match="aplastic">Aplastic Anemia</div>
+                </div>
+
+                <div class="drop-zones">
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="iron">
+                        <h4>🔴 Microcytic, hypochromic RBCs</h4>
+                    </div>
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="b12">
+                        <h4>🔴 Macrocytic RBCs, B12 deficiency</h4>
+                    </div>
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="sickle">
+                        <h4>🔴 Vaso-occlusive crises</h4>
+                    </div>
+                    <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" data-answer="aplastic">
+                        <h4>🔴 Pancytopenia (all cells low)</h4>
+                    </div>
+                </div>
+                
+                <button class="check-btn" onclick="checkDragDrop('anemia')" style="margin-top: 15px;">Check Answers</button>
+                <p id="drag-result-anemia" style="margin-top: 10px; font-weight: 600;"></p>
+            </div>
+
+            <!-- Case Study: Anemia -->
+            <div class="case-study">
+                <h4>📋 Case Study: Mrs. Chen</h4>
+                <p>Mrs. Chen is a 45-year-old woman presenting with fatigue, shortness of breath on exertion, and pallor. She reports heavy menstrual periods. Lab results show: Hgb 9.2 g/dL, Hct 28%, MCV 72 fL (low), MCHC 28% (low). Peripheral smear shows hypochromic, microcytic RBCs.</p>
+                
+                <div class="case-question">
+                    <strong>Question 1:</strong> What type of anemia does this patient most likely have?
+                    <div class="case-options">
+                        <div class="case-option" onclick="checkCase(this, true)">A) Iron deficiency anemia</div>
+                        <div class="case-option" onclick="checkCase(this, false)">B) Pernicious anemia</div>
+                        <div class="case-option" onclick="checkCase(this, false)">C) Hemolytic anemia</div>
+                        <div class="case-option" onclick="checkCase(this, false)">D) Aplastic anemia</div>
+                    </div>
+                </div>
+
+                <div class="case-question">
+                    <strong>Question 2:</strong> What additional lab test would be MOST helpful?
+                    <div class="case-options">
+                        <div class="case-option" onclick="checkCase(this, false)">A) Vitamin B12 level</div>
+                        <div class="case-option" onclick="checkCase(this, true)">B) Serum ferritin</div>
+                        <div class="case-option" onclick="checkCase(this, false)">C) Coombs test</div>
+                        <div class="case-option" onclick="checkCase(this, false)">D) Bone marrow biopsy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Check -->
+            <div class="knowledge-check">
+                <h4>🧠 Quick Knowledge Check</h4>
+                <p>Which WBC type would be MOST elevated in a patient with a parasitic infection?</p>
+                <button class="knowledge-btn" onclick="showKnowledgeAnswer('answer3')">Click to Reveal Answer</button>
+                <div id="answer3" class="knowledge-answer">
+                    <strong>Answer:</strong> Eosinophils. These cells are specifically designed to combat parasitic infections and are also elevated in allergic reactions. They release enzymes that damage the parasite membrane. Normal range is only 2-4% of WBCs, but can increase significantly with parasites.
+                </div>
+            </div>
+
+            <!-- Progress Tracking -->
+            <div class="progress-bar">
+                <h4>📊 Chapter Progress Tracker</h4>
+                <p style="margin-bottom: 10px;">Track your understanding of Chapter 10:</p>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-ch10" style="width: 0%"></div>
+                </div>
+                <p class="progress-text"><span id="progress-text-ch10">0</span>% Complete</p>
+                <button class="check-btn" onclick="markSectionComplete('ch10', 100)" style="margin-top: 10px;">Mark Section Complete</button>
+            </div>
+        </section>
+
+        <!-- Exam Outline Section -->
+        <section id="outline" class="content-section">
+            <h2 class="section-title">📝 Exam Outline</h2>
+            
+            <div class="content-card">
+                <h3>High-Yield Facts to Memorize</h3>
+                <div class="key-points">
+                    <h4>Skin (Chapter 8)</h4>
+                    <ul>
+                        <li>5 layers of epidermis: Corneum, Lucidum, Granulosum, Spinosum, Basale</li>
+                        <li>Macule = flat, <1cm | Papule = elevated, <1cm</li>
+                        <li>Vesicle = fluid, <1cm | Bulla = fluid, >1cm</li>
+                        <li>Stage 1 pressure injury = non-blanchable erythema</li>
+                    </ul>
+                    <h4>Musculoskeletal (Chapter 9)</h4>
+                    <ul>
+                        <li>Osteoblasts BUILD | Osteoclasts CRUSH</li>
+                        <li>Osteocytes maintain | Osteogenic are stem cells</li>
+                        <li>Fracture healing: Hematoma → Soft callus → Hard callus → Remodeling</li>
+                        <li>5 P's of fracture: Pain, Pallor, Paresthesia, Pulselessness, Paralysis</li>
+                    </ul>
+                    <h4>Blood (Chapter 10)</h4>
+                    <ul>
+                        <li>RBCs carry oxygen | WBCs fight infection | Platelets clot</li>
+                        <li>Neutrophils = first responders (bacteria)</li>
+                        <li>Iron deficiency = microcytic | B12 deficiency = macrocytic</li>
+                        <li>Hgb normal: Male 14-18 g/dL, Female 12-16 g/dL</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Common Exam Topics</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>What to Focus On</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Skin Layers</td>
+                            <td>Order from outer to inner, cell types in each layer</td>
+                        </tr>
+                        <tr>
+                            <td>Lesion Identification</td>
+                            <td>Size (<1cm vs >1cm), elevated vs flat, fluid vs solid</td>
+                        </tr>
+                        <tr>
+                            <td>Pressure Injuries</td>
+                            <td>Staging criteria, prevention strategies</td>
+                        </tr>
+                        <tr>
+                            <td>Bone Cells</td>
+                            <td>Function of each cell type, location</td>
+                        </tr>
+                        <tr>
+                            <td>Fractures</td>
+                            <td>Types, healing stages, signs (5 P's)</td>
+                        </tr>
+                        <tr>
+                            <td>Blood Components</td>
+                            <td>Normal values, functions</td>
+                        </tr>
+                        <tr>
+                            <td>WBC Types</td>
+                            <td>Percentages, functions, what elevated levels indicate</td>
+                        </tr>
+                        <tr>
+                            <td>Anemia Types</td>
+                            <td>Cause, RBC morphology, key symptoms</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="content-section">
+            <h2 class="section-title">🎮 Interactive Games</h2>
+            
+            <div class="games-grid">
+                <div class="game-card" onclick="openGame('jeopardy')">
+                    <div class="game-icon">🎯</div>
+                    <div class="game-title">Jeopardy</div>
+                    <div class="game-description">Test your knowledge with point values!</div>
+                </div>
+                <div class="game-card" onclick="openGame('millionaire')">
+                    <div class="game-icon">💰</div>
+                    <div class="game-title">Millionaire</div>
+                    <div class="game-description">Can you reach the top prize?</div>
+                </div>
+                <div class="game-card" onclick="openGame('terminology')">
+                    <div class="game-icon">📚</div>
+                    <div class="game-title">Term Master</div>
+                    <div class="game-description">Match terms to definitions!</div>
+                </div>
+                <div class="game-card" onclick="openGame('matching')">
+                    <div class="game-icon">🔗</div>
+                    <div class="game-title">Quick Match</div>
+                    <div class="game-description">Match bone cells to functions!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="content-section">
+            <h2 class="section-title">📋 Practice Quiz (30 Questions)</h2>
+            <div id="quiz-container"></div>
+            <button class="btn btn-primary" onclick="submitQuiz()" style="margin-top: 20px;">Submit Quiz</button>
+            <button class="btn btn-warning" onclick="loadQuiz()" style="margin-top: 20px; margin-left: 10px;">Reset Quiz</button>
+        </section>
+
+        <!-- Vault Section -->
+        <section id="vault" class="content-section">
+            <h2 class="section-title">🔐 Wrong Answer Vault</h2>
+            <p>Questions you answer incorrectly will appear here for review.</p>
+            <div id="vault-container"></div>
+            <button class="btn btn-warning" onclick="clearVault()" style="margin-top: 20px;">Clear Vault</button>
+        </section>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="content-section">
+            <h2 class="section-title">🃏 Flashcards</h2>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="flipCard()">
+                    <div class="flashcard-front" id="flashcard-front">
+                        Click to reveal definition
+                    </div>
+                    <div class="flashcard-back" id="flashcard-back">
+                        Definition appears here
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" onclick="prevFlashcard()">← Previous</button>
+                <button class="btn btn-success" onclick="nextFlashcard()">Next →</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Game Modal -->
+    <div class="game-modal" id="game-modal">
+        <span class="close-game" onclick="closeGame()">×</span>
+        <div class="game-content">
+            <div class="game-header">
+                <h2 id="game-title">Game Title</h2>
+            </div>
+            <div class="game-body" id="game-body">
+                <!-- Game content loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Quiz Data
+        const quizQuestions = [
+            { q: "Which layer of the epidermis contains stem cells and melanocytes?", options: ["Stratum corneum", "Stratum basale", "Stratum spinosum", "Stratum granulosum"], answer: 1, hint: "This is the deepest layer of the epidermis.", whereToFind: "Chapter 8: Skin Structure" },
+            { q: "A flat, discolored lesion less than 1 cm is called a:", options: ["Papule", "Vesicle", "Macule", "Nodule"], answer: 2, hint: "Think of something flat like a freckle.", whereToFind: "Chapter 8: Skin Lesions" },
+            { q: "Which bone cell is responsible for building new bone?", options: ["Osteoclast", "Osteocyte", "Osteoblast", "Osteogenic cell"], answer: 2, hint: "Blast = Build", whereToFind: "Chapter 9: Bone Cells" },
+            { q: "A fracture that breaks through the skin is called:", options: ["Simple fracture", "Greenstick fracture", "Closed fracture", "Compound fracture"], answer: 3, hint: "Also known as an open fracture.", whereToFind: "Chapter 9: Fracture Types" },
+            { q: "Which WBC is the first responder to bacterial infections?", options: ["Lymphocyte", "Eosinophil", "Neutrophil", "Monocyte"], answer: 2, hint: "This is the most abundant WBC.", whereToFind: "Chapter 10: White Blood Cells" },
+            { q: "Iron deficiency anemia results in which type of RBC morphology?", options: ["Macrocytic", "Microcytic", "Normocytic", "Sickle shaped"], answer: 1, hint: "Without iron, cells cannot grow properly.", whereToFind: "Chapter 10: Anemia Types" },
+            { q: "What is the first stage of fracture healing?", options: ["Soft callus formation", "Hard callus formation", "Hematoma formation", "Bone remodeling"], answer: 2, hint: "Bleeding occurs first at the fracture site.", whereToFind: "Chapter 9: Fracture Healing" },
+            { q: "Which type of pressure injury is characterized by non-blanchable erythema?", options: ["Stage 1", "Stage 2", "Stage 3", "Stage 4"], answer: 0, hint: "This is the earliest stage of pressure injury.", whereToFind: "Chapter 8: Pressure Injuries" },
+            { q: "Pernicious anemia is caused by deficiency of:", options: ["Iron", "Vitamin B12", "Folate", "Vitamin C"], answer: 1, hint: "This vitamin requires intrinsic factor for absorption.", whereToFind: "Chapter 10: Anemia Types" },
+            { q: "The 5 P's of fracture include all EXCEPT:", options: ["Pain", "Pallor", "Pulse", "Paralysis"], answer: 2, hint: "Think about vascular compromise signs.", whereToFind: "Chapter 9: Fracture Signs" },
+            { q: "Which cell produces melanin?", options: ["Keratinocyte", "Melanocyte", "Langerhans cell", "Merkel cell"], answer: 1, hint: "This cell is named after the pigment it produces.", whereToFind: "Chapter 8: Skin Cells" },
+            { q: "A vesicle differs from a bulla in:", options: ["Color", "Size", "Elevation", "Location"], answer: 1, hint: "Vesicle < 1cm, Bulla > 1cm", whereToFind: "Chapter 8: Skin Lesions" },
+            { q: "Mature bone cells located in lacunae are called:", options: ["Osteoblasts", "Osteoclasts", "Osteocytes", "Osteogenic cells"], answer: 2, hint: "These cells maintain bone tissue.", whereToFind: "Chapter 9: Bone Cells" },
+            { q: "Normal hemoglobin for an adult male is:", options: ["10-12 g/dL", "12-16 g/dL", "14-18 g/dL", "18-22 g/dL"], answer: 2, hint: "Males typically have higher hemoglobin than females.", whereToFind: "Chapter 10: Blood Values" },
+            { q: "Which anemia is characterized by sickle-shaped RBCs?", options: ["Iron deficiency", "Pernicious anemia", "Sickle cell anemia", "Aplastic anemia"], answer: 2, hint: "This is a genetic disorder with abnormal hemoglobin S.", whereToFind: "Chapter 10: Anemia Types" },
+            { q: "The stratum lucidum is found only in:", options: ["Thin skin", "Thick skin", "All skin types", "Aging skin"], answer: 1, hint: "This layer is present in palms and soles.", whereToFind: "Chapter 8: Skin Layers" },
+            { q: "Which WBC type is elevated in allergic reactions?", options: ["Neutrophil", "Lymphocyte", "Eosinophil", "Monocyte"], answer: 2, hint: "Think allergies = eosinophils.", whereToFind: "Chapter 10: White Blood Cells" },
+            { q: "Stage 4 pressure injury involves damage to:", options: ["Epidermis only", "Dermis", "Subcutaneous tissue", "Muscle and/or bone"], answer: 3, hint: "This is the most severe stage.", whereToFind: "Chapter 8: Pressure Injuries" },
+            { q: "The hormone that stimulates RBC production is:", options: ["Renin", "Erythropoietin", "Cortisol", "Thyroxine"], answer: 1, hint: "Produced by the kidneys.", whereToFind: "Chapter 10: Blood Formation" },
+            { q: "A greenstick fracture is most common in:", options: ["Elderly adults", "Children", "Athletes", "Osteoporotic patients"], answer: 1, hint: "Young bones are more flexible.", whereToFind: "Chapter 9: Fracture Types" },
+            { q: "The fibrous membrane covering bone surfaces is the:", options: ["Endosteum", "Periosteum", "Lacunae", "Canaliculi"], answer: 1, hint: "Peri = around, osteum = bone", whereToFind: "Chapter 9: Bone Structure" },
+            { q: "Which of the following is NOT a function of the skin?", options: ["Protection", "Temperature regulation", "Vitamin D synthesis", "Oxygen transport"], answer: 3, hint: "RBCs perform this function.", whereToFind: "Chapter 8: Skin Functions" },
+            { q: "A nodule differs from a papule in:", options: ["It is fluid-filled", "It is larger than 1 cm", "It is flat", "It is not elevated"], answer: 1, hint: "Both are solid, elevated lesions.", whereToFind: "Chapter 8: Skin Lesions" },
+            { q: "Which bone cell type would be MOST active in hypercalcemia?", options: ["Osteoblasts", "Osteoclasts", "Osteocytes", "Osteogenic cells"], answer: 1, hint: "These cells break down bone to release calcium.", whereToFind: "Chapter 9: Bone Cells" },
+            { q: "Normal platelet count is:", options: ["4,500-11,000/μL", "150,000-400,000/μL", "4.7-6.1 million/μL", "12-16 g/dL"], answer: 1, hint: "Platelets are needed for clotting.", whereToFind: "Chapter 10: Blood Values" },
+            { q: "Crepitus refers to:", options: ["Swelling at fracture site", "Grinding sound from bone fragments", "Loss of pulse", "Numbness distal to injury"], answer: 1, hint: "This is a characteristic sign of fracture.", whereToFind: "Chapter 9: Fracture Signs" },
+            { q: "Which anemia type involves pancytopenia?", options: ["Iron deficiency", "Aplastic anemia", "Sickle cell", "Hemolytic anemia"], answer: 1, hint: "Bone marrow failure affects all cell lines.", whereToFind: "Chapter 10: Anemia Types" },
+            { q: "Langerhans cells are found in which layer of the epidermis?", options: ["Stratum corneum", "Stratum basale", "Stratum spinosum", "Stratum granulosum"], answer: 2, hint: "These are immune cells in the spiny layer.", whereToFind: "Chapter 8: Skin Cells" },
+            { q: "The most abundant WBC type is:", options: ["Lymphocyte", "Monocyte", "Neutrophil", "Eosinophil"], answer: 2, hint: "This cell makes up 60-70% of WBCs.", whereToFind: "Chapter 10: White Blood Cells" },
+            { q: "Jaundice in hemolytic anemia is caused by:", options: ["Low iron levels", "Excess bilirubin", "Vitamin B12 deficiency", "Bone marrow suppression"], answer: 1, hint: "RBC breakdown releases this pigment.", whereToFind: "Chapter 10: Anemia Signs" }
+        ];
+
+        let currentQuizQuestion = 0;
+        let wrongAnswers = JSON.parse(localStorage.getItem('unit2part1vault') || '[]');
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            quizQuestions.forEach((q, i) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-question';
+                div.innerHTML = `
+                    <h4>Question ${i + 1}: ${q.q}</h4>
+                    <div class="quiz-options">
+                        ${q.options.map((opt, j) => `
+                            <div class="quiz-option" onclick="selectAnswer(${i}, ${j})" id="q${i}o${j}">
+                                ${String.fromCharCode(65 + j)}. ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="hint-box" id="hint${i}">
+                        <strong>Hint:</strong> ${q.hint}<br>
+                        <strong>Find in:</strong> ${q.whereToFind}
+                    </div>
+                    <button class="btn btn-warning" onclick="showHint(${i})" style="margin-top: 10px; font-size: 0.8rem;">Show Hint</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function selectAnswer(qIndex, aIndex) {
+            const question = quizQuestions[qIndex];
+            const options = document.querySelectorAll(`#q${qIndex}o0, #q${qIndex}o1, #q${qIndex}o2, #q${qIndex}o3`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            document.getElementById(`q${qIndex}o${aIndex}`).classList.add('selected');
+        }
+
+        function showHint(index) {
+            document.getElementById(`hint${index}`).classList.toggle('show');
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            quizQuestions.forEach((q, i) => {
+                const selected = document.querySelector(`#q${i}o${q.answer}`);
+                const options = document.querySelectorAll(`[id^="q${i}o"]`);
+                
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (opt.id === `q${i}o${q.answer}`) {
+                        opt.classList.add('correct');
+                    }
+                });
+
+                const userAnswer = document.querySelector(`[id^="q${i}o"].selected`);
+                if (userAnswer && userAnswer.id === `q${i}o${q.answer}`) {
+                    score++;
+                } else if (userAnswer) {
+                    userAnswer.classList.add('incorrect');
+                    // Add to vault
+                    if (!wrongAnswers.find(w => w.q === q.q)) {
+                        wrongAnswers.push({
+                            q: q.q,
+                            userAnswer: q.options[parseInt(userAnswer.id.slice(-1))],
+                            correctAnswer: q.options[q.answer],
+                            whereToFind: q.whereToFind
+                        });
+                        localStorage.setItem('unit2part1vault', JSON.stringify(wrongAnswers));
+                    }
+                }
+            });
+            alert(`Score: ${score}/${quizQuestions.length}`);
+            loadVault();
+        }
+
+        function loadVault() {
+            const container = document.getElementById('vault-container');
+            if (wrongAnswers.length === 0) {
+                container.innerHTML = '<p>No wrong answers yet!</p>';
+                return;
+            }
+            container.innerHTML = wrongAnswers.map(w => `
+                <div class="vault-item">
+                    <h5>${w.q}</h5>
+                    <p>Your answer: ${w.userAnswer}</p>
+                    <p class="vault-correct">Correct answer: ${w.correctAnswer}</p>
+                    <p><em>Find in: ${w.whereToFind}</em></p>
+                </div>
+            `).join('');
+        }
+
+        function clearVault() {
+            wrongAnswers = [];
+            localStorage.setItem('unit2part1vault', '[]');
+            loadVault();
+        }
+
+        // Flashcards
+        const flashcards = [
+            { term: "Stratum corneum", definition: "Outermost layer of epidermis; keratinized dead cells" },
+            { term: "Stratum basale", definition: "Deepest epidermal layer; contains stem cells and melanocytes" },
+            { term: "Osteoblast", definition: "Bone-building cell; creates new bone matrix" },
+            { term: "Osteoclast", definition: "Bone-resorbing cell; breaks down bone tissue" },
+            { term: "Osteocyte", definition: "Mature bone cell; maintains bone tissue in lacunae" },
+            { term: "Macule", definition: "Flat, discolored skin lesion < 1cm" },
+            { term: "Papule", definition: "Elevated, solid skin lesion < 1cm" },
+            { term: "Vesicle", definition: "Elevated, fluid-filled skin lesion < 1cm" },
+            { term: "Bulla", definition: "Elevated, fluid-filled skin lesion > 1cm" },
+            { term: "Neutrophil", definition: "Most abundant WBC; first responder to bacterial infections" },
+            { term: "Erythropoietin", definition: "Hormone from kidneys that stimulates RBC production" },
+            { term: "Hemoglobin", definition: "Iron-containing protein in RBCs that carries oxygen" },
+            { term: "Hematocrit", definition: "Percentage of blood volume occupied by RBCs" },
+            { term: "Microcytic anemia", definition: "Anemia with small RBCs; caused by iron deficiency" },
+            { term: "Macrocytic anemia", definition: "Anemia with large RBCs; caused by B12 or folate deficiency" }
+        ];
+
+        let currentFlashcard = 0;
+
+        function updateFlashcard() {
+            document.getElementById('flashcard-front').textContent = flashcards[currentFlashcard].term;
+            document.getElementById('flashcard-back').textContent = flashcards[currentFlashcard].definition;
+            document.querySelector('.flashcard').classList.remove('flipped');
+        }
+
+        function flipCard() {
+            document.querySelector('.flashcard').classList.toggle('flipped');
+        }
+
+        function nextFlashcard() {
+            currentFlashcard = (currentFlashcard + 1) % flashcards.length;
+            updateFlashcard();
+        }
+
+        function prevFlashcard() {
+            currentFlashcard = (currentFlashcard - 1 + flashcards.length) % flashcards.length;
+            updateFlashcard();
+        }
+
+        // Games
+        function openGame(game) {
+            document.getElementById('game-modal').classList.add('active');
+            switch(game) {
+                case 'jeopardy': loadJeopardy(); break;
+                case 'millionaire': loadMillionaire(); break;
+                case 'terminology': loadTerminologyGame(); break;
+                case 'matching': loadMatchingGame(); break;
+            }
+        }
+
+        function closeGame() {
+            document.getElementById('game-modal').classList.remove('active');
+        }
+
+        // Jeopardy Game
+        const jeopardyCategories = ['Skin', 'Bones', 'Blood', 'Anemia'];
+        const jeopardyQuestions = [
+            [
+                { q: "The deepest layer of the epidermis", a: "What is stratum basale?", pts: 100 },
+                { q: "Cells that produce melanin", a: "What are melanocytes?", pts: 100 },
+                { q: "Flat lesion less than 1cm", a: "What is a macule?", pts: 100 },
+                { q: "Non-blanchable redness indicates this stage pressure injury", a: "What is Stage 1?", pts: 100 }
+            ],
+            [
+                { q: "Bone cells that BUILD new bone", a: "What are osteoblasts?", pts: 200 },
+                { q: "Bone cells that BREAK DOWN bone", a: "What are osteoclasts?", pts: 200 },
+                { q: "First stage of fracture healing", a: "What is hematoma formation?", pts: 200 },
+                { q: "Incomplete fracture common in children", a: "What is greenstick fracture?", pts: 200 }
+            ],
+            [
+                { q: "Most abundant white blood cell", a: "What is neutrophil?", pts: 300 },
+                { q: "Hormone that stimulates RBC production", a: "What is erythropoietin?", pts: 300 },
+                { q: "Normal hemoglobin for adult male", a: "What is 14-18 g/dL?", pts: 300 },
+                { q: "WBC elevated in allergic reactions", a: "What is eosinophil?", pts: 300 }
+            ],
+            [
+                { q: "Anemia with small RBCs", a: "What is microcytic anemia?", pts: 400 },
+                { q: "Anemia caused by B12 deficiency", a: "What is pernicious anemia?", pts: 400 },
+                { q: "Genetic anemia with sickle-shaped cells", a: "What is sickle cell anemia?", pts: 400 },
+                { q: "Anemia with pancytopenia", a: "What is aplastic anemia?", pts: 400 }
+            ]
+        ];
+
+        let jeopardyScore = 0;
+        let usedQuestions = new Set();
+
+        function loadJeopardy() {
+            document.getElementById('game-title').textContent = '🎯 Jeopardy';
+            let html = '<div class="jeopardy-board">';
+            jeopardyCategories.forEach((cat, i) => {
+                html += `<div class="jeopardy-category">${cat}</div>`;
+            });
+            for (let row = 0; row < 4; row++) {
+                for (let col = 0; col < 4; col++) {
+                    const q = jeopardyQuestions[col][row];
+                    const id = `j-${col}-${row}`;
+                    html += `<div class="jeopardy-cell" id="${id}" onclick="selectJeopardy(${col}, ${row}, '${id}')">${q.pts}</div>`;
+                }
+            }
+            html += '</div><div style="text-align: center; margin-top: 20px; font-size: 1.5rem; color: var(--ocean-dark);">Score: <span id="jeopardy-score">0</span></div>';
+            document.getElementById('game-body').innerHTML = html;
+        }
+
+        function selectJeopardy(col, row, id) {
+            if (usedQuestions.has(id)) return;
+            usedQuestions.add(id);
+            document.getElementById(id).classList.add('used');
+            
+            const q = jeopardyQuestions[col][row];
+            const answer = prompt(q.q);
+            if (answer && answer.toLowerCase().includes(q.a.toLowerCase().split(' ').pop().replace('?', ''))) {
+                jeopardyScore += q.pts;
+                document.getElementById('jeopardy-score').textContent = jeopardyScore;
+                alert(`Correct! ${q.a}`);
+            } else {
+                alert(`Incorrect. The correct answer is: ${q.a}`);
+            }
+        }
+
+        // Millionaire Game
+        const millionaireQuestions = [
+            { q: "Which layer of the epidermis contains stem cells?", options: ["Stratum corneum", "Stratum basale", "Stratum spinosum", "Stratum granulosum"], answer: 1 },
+            { q: "Which bone cell builds new bone?", options: ["Osteoclast", "Osteocyte", "Osteoblast", "Osteogenic"], answer: 2 },
+            { q: "What is the most abundant WBC?", options: ["Lymphocyte", "Monocyte", "Eosinophil", "Neutrophil"], answer: 3 },
+            { q: "Iron deficiency causes which type of anemia?", options: ["Macrocytic", "Microcytic", "Normocytic", "Sickle cell"], answer: 1 },
+            { q: "Stage 1 pressure injury is characterized by:", options: ["Blistering", "Non-blanchable erythema", "Deep tissue loss", "Visible bone"], answer: 1 }
+        ];
+
+        let currentMillionaireQuestion = 0;
+        let millionaireLevel = 0;
+        const moneyLevels = ['$100', '$200', '$500', '$1,000', '$5,000', '$10,000', '$50,000', '$100,000', '$500,000', '$1,000,000'];
+
+        function loadMillionaire() {
+            document.getElementById('game-title').textContent = '💰 Millionaire';
+            currentMillionaireQuestion = 0;
+            millionaireLevel = 0;
+            showMillionaireQuestion();
+        }
+
+        function showMillionaireQuestion() {
+            if (currentMillionaireQuestion >= millionaireQuestions.length) {
+                document.getElementById('game-body').innerHTML = '<div style="text-align: center; padding: 50px;"><h2>Congratulations! You won!</h2></div>';
+                return;
+            }
+            const q = millionaireQuestions[currentMillionaireQuestion];
+            let html = `
+                <div class="millionaire-question">
+                    <h3>${q.q}</h3>
+                </div>
+                <div class="millionaire-options">
+                    ${q.options.map((opt, i) => `
+                        <div class="millionaire-option" onclick="selectMillionaire(${i})" id="m-opt-${i}">
+                            ${String.fromCharCode(65 + i)}: ${opt}
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <p>Current Level: ${moneyLevels[millionaireLevel]}</p>
+                </div>
+            `;
+            document.getElementById('game-body').innerHTML = html;
+        }
+
+        function selectMillionaire(index) {
+            const q = millionaireQuestions[currentMillionaireQuestion];
+            const options = document.querySelectorAll('.millionaire-option');
+            options.forEach(opt => opt.onclick = null);
+            
+            options[index].classList.add('selected');
+            setTimeout(() => {
+                if (index === q.answer) {
+                    options[index].classList.add('correct');
+                    millionaireLevel++;
+                    setTimeout(() => {
+                        currentMillionaireQuestion++;
+                        showMillionaireQuestion();
+                    }, 1500);
+                } else {
+                    options[index].classList.add('incorrect');
+                    options[q.answer].classList.add('correct');
+                    alert(`Game Over! You reached ${moneyLevels[Math.max(0, millionaireLevel)]}`);
+                }
+            }, 1000);
+        }
+
+        // Terminology Game
+        const termMatches = [
+            { term: "Osteoblast", definition: "Builds new bone" },
+            { term: "Osteoclast", definition: "Breaks down bone" },
+            { term: "Melanocyte", definition: "Produces melanin" },
+            { term: "Neutrophil", definition: "First responder WBC" },
+            { term: "Erythropoietin", definition: "Stimulates RBC production" },
+            { term: "Hemoglobin", definition: "Carries oxygen in RBCs" },
+            { term: "Vesicle", definition: "Fluid-filled lesion < 1cm" },
+            { term: "Macule", definition: "Flat lesion < 1cm" }
+        ];
+
+        let termScore = 0;
+        let currentTerm = 0;
+        let shuffledTerms = [];
+
+        function loadTerminologyGame() {
+            document.getElementById('game-title').textContent = '📚 Term Master';
+            termScore = 0;
+            currentTerm = 0;
+            shuffledTerms = [...termMatches].sort(() => Math.random() - 0.5);
+            showTermQuestion();
+        }
+
+        function showTermQuestion() {
+            if (currentTerm >= shuffledTerms.length) {
+                document.getElementById('game-body').innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h2>Game Complete!</h2>
+                        <p>Score: ${termScore}/${shuffledTerms.length}</p>
+                        <button class="btn btn-primary" onclick="loadTerminologyGame()">Play Again</button>
+                    </div>
+                `;
+                return;
+            }
+            const term = shuffledTerms[currentTerm];
+            const wrongDefs = termMatches.filter(t => t.term !== term.term).map(t => t.definition);
+            const options = [term.definition, ...wrongDefs.sort(() => Math.random() - 0.5).slice(0, 3)].sort(() => Math.random() - 0.5);
+            
+            let html = `
+                <div style="text-align: center; padding: 30px;">
+                    <h3>What is the definition of:</h3>
+                    <h2 style="color: var(--ocean-dark); margin: 20px 0;">${term.term}</h2>
+                </div>
+                <div class="millionaire-options" style="max-width: 600px; margin: 0 auto;">
+                    ${options.map((opt, i) => `
+                        <div class="millionaire-option" onclick="selectTerm('${opt.replace(/'/g, "\\'")}', '${term.definition.replace(/'/g, "\\'")}')">
+                            ${opt}
+                        </div>
+                    `).join('')}
+                </div>
+                <p style="text-align: center; margin-top: 20px;">Score: ${termScore}/${currentTerm}</p>
+            `;
+            document.getElementById('game-body').innerHTML = html;
+        }
+
+        function selectTerm(selected, correct) {
+            if (selected === correct) {
+                termScore++;
+                alert('Correct!');
+            } else {
+                alert(`Incorrect. Correct answer: ${correct}`);
+            }
+            currentTerm++;
+            showTermQuestion();
+        }
+
+        // Matching Game
+        function loadMatchingGame() {
+            document.getElementById('game-title').textContent = '🔗 Quick Match';
+            const items = [
+                { item: "Osteoblast", match: "Builds bone" },
+                { item: "Osteoclast", match: "Breaks down bone" },
+                { item: "Osteocyte", match: "Maintains bone" },
+                { item: "Melanocyte", match: "Produces pigment" },
+                { item: "Neutrophil", match: "Fights bacteria" },
+                { item: "Eosinophil", match: "Allergies/Parasites" }
+            ];
+            
+            let html = '<div style="padding: 20px;">';
+            html += '<p style="text-align: center; margin-bottom: 20px;">Match each item with its function:</p>';
+            
+            const shuffledMatches = [...items].sort(() => Math.random() - 0.5);
+            
+            items.forEach((item, i) => {
+                html += `
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <div style="flex: 1; padding: 15px; background: var(--ocean-foam); border-radius: 8px; font-weight: 600;">${item.item}</div>
+                        <div style="width: 50px; text-align: center;">→</div>
+                        <select style="flex: 1; padding: 15px; border-radius: 8px; border: 2px solid var(--ocean-light);" id="match-${i}">
+                            <option value="">Select...</option>
+                            ${shuffledMatches.map(m => `<option value="${m.match}">${m.match}</option>`).join('')}
+                        </select>
+                    </div>
+                `;
+            });
+            
+            html += '<button class="btn btn-primary" onclick="checkMatching()" style="width: 100%; margin-top: 20px;">Check Answers</button>';
+            html += '</div>';
+            
+            document.getElementById('game-body').innerHTML = html;
+        }
+
+        function checkMatching() {
+            const items = [
+                { item: "Osteoblast", match: "Builds bone" },
+                { item: "Osteoclast", match: "Breaks down bone" },
+                { item: "Osteocyte", match: "Maintains bone" },
+                { item: "Melanocyte", match: "Produces pigment" },
+                { item: "Neutrophil", match: "Fights bacteria" },
+                { item: "Eosinophil", match: "Allergies/Parasites" }
+            ];
+            
+            let correct = 0;
+            items.forEach((item, i) => {
+                const select = document.getElementById(`match-${i}`);
+                if (select.value === item.match) {
+                    correct++;
+                    select.style.borderColor = 'var(--success)';
+                } else {
+                    select.style.borderColor = 'var(--error)';
+                }
+            });
+            
+            alert(`You got ${correct}/${items.length} correct!`);
+        }
+
+        // Interactive Diagram Functions
+        function showDiagramInfo(type, element) {
+            // Remove active class from all parts
+            document.querySelectorAll('.diagram-part').forEach(p => p.classList.remove('active'));
+            // Add active class to clicked part
+            element.classList.add('active');
+            // Hide all info boxes
+            document.querySelectorAll('.diagram-info').forEach(info => info.classList.remove('show'));
+            // Show selected info box
+            const infoBox = document.getElementById('diagram-info-' + type);
+            if (infoBox) {
+                infoBox.classList.add('show');
+            }
+        }
+
+        // Fill in the Blank Functions
+        function checkFillBlanks(blankIds) {
+            let correct = 0;
+            blankIds.forEach(id => {
+                const input = document.getElementById(id);
+                const answer = input.dataset.answer.toLowerCase();
+                const userAnswer = input.value.trim().toLowerCase();
+                
+                if (userAnswer === answer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+            
+            const resultId = 'fill-result';
+            const existingResult = document.getElementById(resultId);
+            if (existingResult) {
+                existingResult.textContent = `You got ${correct}/${blankIds.length} correct!`;
+                existingResult.style.color = correct === blankIds.length ? 'var(--success)' : 'var(--error)';
+            }
+        }
+
+        // Case Study Functions
+        function checkCase(element, isCorrect) {
+            const options = element.parentElement.querySelectorAll('.case-option');
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+                // Highlight correct answer
+                options.forEach(opt => {
+                    const onclick = opt.getAttribute('onclick');
+                    if (onclick && onclick.includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Knowledge Check Functions
+        function showKnowledgeAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer) {
+                answer.classList.toggle('show');
+            }
+        }
+
+        // Drag and Drop Functions
+        let draggedItem = null;
+
+        function dragStart(e) {
+            draggedItem = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function allowDrop(e) {
+            e.preventDefault();
+        }
+
+        function dragEnter(e) {
+            e.preventDefault();
+            e.target.closest('.drop-zone')?.classList.add('drag-over');
+        }
+
+        function dragLeave(e) {
+            e.target.closest('.drop-zone')?.classList.remove('drag-over');
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            const dropZone = e.target.closest('.drop-zone');
+            if (dropZone) {
+                dropZone.classList.remove('drag-over');
+                if (draggedItem) {
+                    // Clear any existing item in this drop zone
+                    const existingItem = dropZone.querySelector('.drag-item');
+                    if (existingItem) {
+                        document.getElementById('drag-items-fracture')?.appendChild(existingItem);
+                    }
+                    dropZone.appendChild(draggedItem);
+                    draggedItem.classList.remove('dragging');
+                }
+            }
+        }
+
+        function checkDragDrop(type) {
+            const dropZones = document.querySelectorAll('.drop-zone');
+            let correct = 0;
+            let total = 0;
+            
+            dropZones.forEach(zone => {
+                const item = zone.querySelector('.drag-item');
+                if (item) {
+                    total++;
+                    const itemMatch = item.dataset.match;
+                    const zoneAnswer = zone.dataset.answer;
+                    
+                    if (itemMatch === zoneAnswer) {
+                        correct++;
+                        zone.style.borderColor = 'var(--success)';
+                        zone.style.background = 'rgba(42, 157, 143, 0.1)';
+                    } else {
+                        zone.style.borderColor = 'var(--error)';
+                        zone.style.background = 'rgba(230, 57, 70, 0.1)';
+                    }
+                }
+            });
+            
+            const resultElement = document.getElementById('drag-result-' + type);
+            if (resultElement) {
+                resultElement.textContent = `You got ${correct}/${total} correct!`;
+                resultElement.style.color = correct === total ? 'var(--success)' : 'var(--error)';
+            }
+        }
+
+        // Progress Tracking Functions
+        function markSectionComplete(section, percent) {
+            const progressBar = document.getElementById('progress-' + section);
+            const progressText = document.getElementById('progress-text-' + section);
+            
+            if (progressBar) {
+                progressBar.style.width = percent + '%';
+            }
+            if (progressText) {
+                progressText.textContent = percent;
+            }
+            
+            // Save progress
+            localStorage.setItem('progress-' + section, percent);
+        }
+
+        function loadProgress() {
+            // Load all saved progress
+            document.querySelectorAll('.progress-fill').forEach(bar => {
+                const id = bar.id.replace('progress-', '');
+                const saved = localStorage.getItem('progress-' + id);
+                if (saved) {
+                    bar.style.width = saved + '%';
+                    const textEl = document.getElementById('progress-text-' + id);
+                    if (textEl) textEl.textContent = saved;
+                }
+            });
+        }
+
+        // Initialize
+        loadQuiz();
+        loadVault();
+        updateFlashcard();
+        loadProgress();
+    </script>
+
+    <!-- Return to Top Button -->
+    <button class="return-to-top" id="returnToTop" onclick="scrollToTop()" title="Return to Top">
+        ↑
+    </button>
+
+    <script>
+        // Return to Top functionality
+        window.onscroll = function() {
+            const returnToTopBtn = document.getElementById('returnToTop');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                returnToTopBtn.classList.add('show');
+            } else {
+                returnToTopBtn.classList.remove('show');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
