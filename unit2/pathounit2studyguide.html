@@ -879,14 +879,60 @@
             background: var(--ocean-pale);
         }
 
+        .quiz-option.selected {
+            background: var(--ocean-light);
+            border-color: var(--ocean-dark);
+            color: white;
+            transform: scale(1.02);
+        }
+
         .quiz-option.correct {
             background: #d4edda;
             border-color: var(--success);
+            color: #155724;
         }
 
         .quiz-option.incorrect {
             background: #f8d7da;
             border-color: var(--error);
+            color: #721c24;
+        }
+        .quiz-option.selected {
+            background: var(--ocean-light);
+            border-color: var(--ocean-dark);
+            color: white;
+            transform: scale(1.02);
+        }
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .feedback-box {
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback-box.correct {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        .feedback-box.incorrect {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .hint-box {
@@ -2065,36 +2111,36 @@
 
         // Quiz Data
         const quizQuestions = [
-            { q: "Which layer of the epidermis contains stem cells and melanocytes?", options: ["Stratum corneum", "Stratum basale", "Stratum spinosum", "Stratum granulosum"], answer: 1, hint: "This is the deepest layer of the epidermis.", whereToFind: "Chapter 8: Skin Structure" },
-            { q: "A flat, discolored lesion less than 1 cm is called a:", options: ["Papule", "Vesicle", "Macule", "Nodule"], answer: 2, hint: "Think of something flat like a freckle.", whereToFind: "Chapter 8: Skin Lesions" },
-            { q: "Which bone cell is responsible for building new bone?", options: ["Osteoclast", "Osteocyte", "Osteoblast", "Osteogenic cell"], answer: 2, hint: "Blast = Build", whereToFind: "Chapter 9: Bone Cells" },
-            { q: "A fracture that breaks through the skin is called:", options: ["Simple fracture", "Greenstick fracture", "Closed fracture", "Compound fracture"], answer: 3, hint: "Also known as an open fracture.", whereToFind: "Chapter 9: Fracture Types" },
-            { q: "Which WBC is the first responder to bacterial infections?", options: ["Lymphocyte", "Eosinophil", "Neutrophil", "Monocyte"], answer: 2, hint: "This is the most abundant WBC.", whereToFind: "Chapter 10: White Blood Cells" },
-            { q: "Iron deficiency anemia results in which type of RBC morphology?", options: ["Macrocytic", "Microcytic", "Normocytic", "Sickle shaped"], answer: 1, hint: "Without iron, cells cannot grow properly.", whereToFind: "Chapter 10: Anemia Types" },
-            { q: "What is the first stage of fracture healing?", options: ["Soft callus formation", "Hard callus formation", "Hematoma formation", "Bone remodeling"], answer: 2, hint: "Bleeding occurs first at the fracture site.", whereToFind: "Chapter 9: Fracture Healing" },
-            { q: "Which type of pressure injury is characterized by non-blanchable erythema?", options: ["Stage 1", "Stage 2", "Stage 3", "Stage 4"], answer: 0, hint: "This is the earliest stage of pressure injury.", whereToFind: "Chapter 8: Pressure Injuries" },
-            { q: "Pernicious anemia is caused by deficiency of:", options: ["Iron", "Vitamin B12", "Folate", "Vitamin C"], answer: 1, hint: "This vitamin requires intrinsic factor for absorption.", whereToFind: "Chapter 10: Anemia Types" },
-            { q: "The 5 P's of fracture include all EXCEPT:", options: ["Pain", "Pallor", "Pulse", "Paralysis"], answer: 2, hint: "Think about vascular compromise signs.", whereToFind: "Chapter 9: Fracture Signs" },
-            { q: "Which cell produces melanin?", options: ["Keratinocyte", "Melanocyte", "Langerhans cell", "Merkel cell"], answer: 1, hint: "This cell is named after the pigment it produces.", whereToFind: "Chapter 8: Skin Cells" },
-            { q: "A vesicle differs from a bulla in:", options: ["Color", "Size", "Elevation", "Location"], answer: 1, hint: "Vesicle < 1cm, Bulla > 1cm", whereToFind: "Chapter 8: Skin Lesions" },
-            { q: "Mature bone cells located in lacunae are called:", options: ["Osteoblasts", "Osteoclasts", "Osteocytes", "Osteogenic cells"], answer: 2, hint: "These cells maintain bone tissue.", whereToFind: "Chapter 9: Bone Cells" },
-            { q: "Normal hemoglobin for an adult male is:", options: ["10-12 g/dL", "12-16 g/dL", "14-18 g/dL", "18-22 g/dL"], answer: 2, hint: "Males typically have higher hemoglobin than females.", whereToFind: "Chapter 10: Blood Values" },
-            { q: "Which anemia is characterized by sickle-shaped RBCs?", options: ["Iron deficiency", "Pernicious anemia", "Sickle cell anemia", "Aplastic anemia"], answer: 2, hint: "This is a genetic disorder with abnormal hemoglobin S.", whereToFind: "Chapter 10: Anemia Types" },
-            { q: "The stratum lucidum is found only in:", options: ["Thin skin", "Thick skin", "All skin types", "Aging skin"], answer: 1, hint: "This layer is present in palms and soles.", whereToFind: "Chapter 8: Skin Layers" },
-            { q: "Which WBC type is elevated in allergic reactions?", options: ["Neutrophil", "Lymphocyte", "Eosinophil", "Monocyte"], answer: 2, hint: "Think allergies = eosinophils.", whereToFind: "Chapter 10: White Blood Cells" },
-            { q: "Stage 4 pressure injury involves damage to:", options: ["Epidermis only", "Dermis", "Subcutaneous tissue", "Muscle and/or bone"], answer: 3, hint: "This is the most severe stage.", whereToFind: "Chapter 8: Pressure Injuries" },
-            { q: "The hormone that stimulates RBC production is:", options: ["Renin", "Erythropoietin", "Cortisol", "Thyroxine"], answer: 1, hint: "Produced by the kidneys.", whereToFind: "Chapter 10: Blood Formation" },
-            { q: "A greenstick fracture is most common in:", options: ["Elderly adults", "Children", "Athletes", "Osteoporotic patients"], answer: 1, hint: "Young bones are more flexible.", whereToFind: "Chapter 9: Fracture Types" },
-            { q: "The fibrous membrane covering bone surfaces is the:", options: ["Endosteum", "Periosteum", "Lacunae", "Canaliculi"], answer: 1, hint: "Peri = around, osteum = bone", whereToFind: "Chapter 9: Bone Structure" },
-            { q: "Which of the following is NOT a function of the skin?", options: ["Protection", "Temperature regulation", "Vitamin D synthesis", "Oxygen transport"], answer: 3, hint: "RBCs perform this function.", whereToFind: "Chapter 8: Skin Functions" },
-            { q: "A nodule differs from a papule in:", options: ["It is fluid-filled", "It is larger than 1 cm", "It is flat", "It is not elevated"], answer: 1, hint: "Both are solid, elevated lesions.", whereToFind: "Chapter 8: Skin Lesions" },
-            { q: "Which bone cell type would be MOST active in hypercalcemia?", options: ["Osteoblasts", "Osteoclasts", "Osteocytes", "Osteogenic cells"], answer: 1, hint: "These cells break down bone to release calcium.", whereToFind: "Chapter 9: Bone Cells" },
-            { q: "Normal platelet count is:", options: ["4,500-11,000/μL", "150,000-400,000/μL", "4.7-6.1 million/μL", "12-16 g/dL"], answer: 1, hint: "Platelets are needed for clotting.", whereToFind: "Chapter 10: Blood Values" },
-            { q: "Crepitus refers to:", options: ["Swelling at fracture site", "Grinding sound from bone fragments", "Loss of pulse", "Numbness distal to injury"], answer: 1, hint: "This is a characteristic sign of fracture.", whereToFind: "Chapter 9: Fracture Signs" },
-            { q: "Which anemia type involves pancytopenia?", options: ["Iron deficiency", "Aplastic anemia", "Sickle cell", "Hemolytic anemia"], answer: 1, hint: "Bone marrow failure affects all cell lines.", whereToFind: "Chapter 10: Anemia Types" },
-            { q: "Langerhans cells are found in which layer of the epidermis?", options: ["Stratum corneum", "Stratum basale", "Stratum spinosum", "Stratum granulosum"], answer: 2, hint: "These are immune cells in the spiny layer.", whereToFind: "Chapter 8: Skin Cells" },
-            { q: "The most abundant WBC type is:", options: ["Lymphocyte", "Monocyte", "Neutrophil", "Eosinophil"], answer: 2, hint: "This cell makes up 60-70% of WBCs.", whereToFind: "Chapter 10: White Blood Cells" },
-            { q: "Jaundice in hemolytic anemia is caused by:", options: ["Low iron levels", "Excess bilirubin", "Vitamin B12 deficiency", "Bone marrow suppression"], answer: 1, hint: "RBC breakdown releases this pigment.", whereToFind: "Chapter 10: Anemia Signs" }
+            { q: "Which layer of the epidermis contains stem cells and melanocytes?", options: ["Stratum corneum", "Stratum basale", "Stratum spinosum", "Stratum granulosum"], answer: 1, hint: "This is the deepest layer of the epidermis.", whereToFind: "Chapter 8: Skin Structure", rationale: "The stratum basale is the deepest layer of the epidermis and contains stem cells that continuously divide to produce new keratinocytes, as well as melanocytes that produce melanin pigment." },
+            { q: "A flat, discolored lesion less than 1 cm is called a:", options: ["Papule", "Vesicle", "Macule", "Nodule"], answer: 2, hint: "Think of something flat like a freckle.", whereToFind: "Chapter 8: Skin Lesions", rationale: "A macule is a flat, discolored area of skin less than 1 cm in diameter. Examples include freckles and flat moles. Papules are elevated, vesicles are fluid-filled, and nodules are larger than 1 cm." },
+            { q: "Which bone cell is responsible for building new bone?", options: ["Osteoclast", "Osteocyte", "Osteoblast", "Osteogenic cell"], answer: 2, hint: "Blast = Build", whereToFind: "Chapter 9: Bone Cells", rationale: "Osteoblasts are bone-forming cells that synthesize and secrete the organic components of bone matrix. Osteoclasts break down bone, osteocytes maintain bone tissue, and osteogenic cells are stem cells." },
+            { q: "A fracture that breaks through the skin is called:", options: ["Simple fracture", "Greenstick fracture", "Closed fracture", "Compound fracture"], answer: 3, hint: "Also known as an open fracture.", whereToFind: "Chapter 9: Fracture Types", rationale: "A compound fracture (also called open fracture) occurs when broken bone fragments penetrate through the skin, creating a risk of infection. Simple/closed fractures do not break the skin." },
+            { q: "Which WBC is the first responder to bacterial infections?", options: ["Lymphocyte", "Eosinophil", "Neutrophil", "Monocyte"], answer: 2, hint: "This is the most abundant WBC.", whereToFind: "Chapter 10: White Blood Cells", rationale: "Neutrophils are the most abundant WBCs (60-70%) and are the first responders to bacterial infections. They phagocytose bacteria and release enzymes to kill pathogens." },
+            { q: "Iron deficiency anemia results in which type of RBC morphology?", options: ["Macrocytic", "Microcytic", "Normocytic", "Sickle shaped"], answer: 1, hint: "Without iron, cells cannot grow properly.", whereToFind: "Chapter 10: Anemia Types", rationale: "Iron deficiency anemia causes microcytic (small) and hypochromic (pale) RBCs because iron is essential for hemoglobin synthesis. Without adequate iron, RBCs cannot reach normal size." },
+            { q: "What is the first stage of fracture healing?", options: ["Soft callus formation", "Hard callus formation", "Hematoma formation", "Bone remodeling"], answer: 2, hint: "Bleeding occurs first at the fracture site.", whereToFind: "Chapter 9: Fracture Healing", rationale: "Hematoma formation is the first stage, occurring within hours of fracture when blood vessels are damaged and a blood clot forms at the fracture site, providing a framework for healing." },
+            { q: "Which type of pressure injury is characterized by non-blanchable erythema?", options: ["Stage 1", "Stage 2", "Stage 3", "Stage 4"], answer: 0, hint: "This is the earliest stage of pressure injury.", whereToFind: "Chapter 8: Pressure Injuries", rationale: "Stage 1 pressure injury presents as non-blanchable erythema (redness that doesn't fade when pressed) of intact skin. This indicates damage to underlying tissue from prolonged pressure." },
+            { q: "Pernicious anemia is caused by deficiency of:", options: ["Iron", "Vitamin B12", "Folate", "Vitamin C"], answer: 1, hint: "This vitamin requires intrinsic factor for absorption.", whereToFind: "Chapter 10: Anemia Types", rationale: "Pernicious anemia is caused by vitamin B12 deficiency due to lack of intrinsic factor, which is normally produced by parietal cells in the stomach and is necessary for B12 absorption in the ileum." },
+            { q: "The 5 P's of fracture include all EXCEPT:", options: ["Pain", "Pallor", "Pulse", "Paralysis"], answer: 2, hint: "Think about vascular compromise signs.", whereToFind: "Chapter 9: Fracture Signs", rationale: "The 5 P's of fracture are: Pain, Pallor, Pulselessness, Paresthesia, and Paralysis. These signs indicate vascular compromise and nerve damage. Pulse is assessed but 'Pulselessness' is the correct term." },
+            { q: "Which cell produces melanin?", options: ["Keratinocyte", "Melanocyte", "Langerhans cell", "Merkel cell"], answer: 1, hint: "This cell is named after the pigment it produces.", whereToFind: "Chapter 8: Skin Cells", rationale: "Melanocytes are specialized cells in the stratum basale that produce melanin, the pigment responsible for skin color and protection from UV radiation. Keratinocytes produce keratin, Langerhans cells are immune cells, and Merkel cells are touch receptors." },
+            { q: "A vesicle differs from a bulla in:", options: ["Color", "Size", "Elevation", "Location"], answer: 1, hint: "Vesicle < 1cm, Bulla > 1cm", whereToFind: "Chapter 8: Skin Lesions", rationale: "Both vesicles and bullae are fluid-filled, elevated lesions. The difference is size: vesicles are less than 1 cm (like blisters from poison ivy), while bullae are larger than 1 cm (like second-degree burn blisters)." },
+            { q: "Mature bone cells located in lacunae are called:", options: ["Osteoblasts", "Osteoclasts", "Osteocytes", "Osteogenic cells"], answer: 2, hint: "These cells maintain bone tissue.", whereToFind: "Chapter 9: Bone Cells", rationale: "Osteocytes are mature bone cells trapped in lacunae (small spaces) within the calcified bone matrix. They maintain bone tissue and communicate with other osteocytes through canaliculi." },
+            { q: "Normal hemoglobin for an adult male is:", options: ["10-12 g/dL", "12-16 g/dL", "14-18 g/dL", "18-22 g/dL"], answer: 2, hint: "Males typically have higher hemoglobin than females.", whereToFind: "Chapter 10: Blood Values", rationale: "Normal hemoglobin for adult males is 14-18 g/dL, while for adult females it's 12-16 g/dL. The difference is due to androgen effects on erythropoiesis and lower iron loss in males." },
+            { q: "Which anemia is characterized by sickle-shaped RBCs?", options: ["Iron deficiency", "Pernicious anemia", "Sickle cell anemia", "Aplastic anemia"], answer: 2, hint: "This is a genetic disorder with abnormal hemoglobin S.", whereToFind: "Chapter 10: Anemia Types", rationale: "Sickle cell anemia is a genetic disorder caused by abnormal hemoglobin S. Under low oxygen conditions, RBCs become sickle-shaped, leading to vaso-occlusion, pain crises, and organ damage." },
+            { q: "The stratum lucidum is found only in:", options: ["Thin skin", "Thick skin", "All skin types", "Aging skin"], answer: 1, hint: "This layer is present in palms and soles.", whereToFind: "Chapter 8: Skin Layers", rationale: "The stratum lucidum is a thin, clear layer of dead keratinocytes found only in thick skin (palms of hands and soles of feet). It provides extra protection in areas subject to friction." },
+            { q: "Which WBC type is elevated in allergic reactions?", options: ["Neutrophil", "Lymphocyte", "Eosinophil", "Monocyte"], answer: 2, hint: "Think allergies = eosinophils.", whereToFind: "Chapter 10: White Blood Cells", rationale: "Eosinophils are WBCs that increase during allergic reactions and parasitic infections. They release histamine and other mediators that contribute to allergic inflammation and combat parasites." },
+            { q: "Stage 4 pressure injury involves damage to:", options: ["Epidermis only", "Dermis", "Subcutaneous tissue", "Muscle and/or bone"], answer: 3, hint: "This is the most severe stage.", whereToFind: "Chapter 8: Pressure Injuries", rationale: "Stage 4 pressure injury is the most severe, involving full-thickness skin and tissue loss with exposed muscle, tendon, ligament, cartilage, or bone. It often requires surgical intervention." },
+            { q: "The hormone that stimulates RBC production is:", options: ["Renin", "Erythropoietin", "Cortisol", "Thyroxine"], answer: 1, hint: "Produced by the kidneys.", whereToFind: "Chapter 10: Blood Formation", rationale: "Erythropoietin (EPO) is a hormone produced by the kidneys in response to hypoxia. It stimulates the bone marrow to produce more red blood cells, increasing oxygen-carrying capacity." },
+            { q: "A greenstick fracture is most common in:", options: ["Elderly adults", "Children", "Athletes", "Osteoporotic patients"], answer: 1, hint: "Young bones are more flexible.", whereToFind: "Chapter 9: Fracture Types", rationale: "Greenstick fractures are incomplete fractures where the bone bends and cracks on one side but doesn't break completely. They're most common in children because their bones are more flexible and contain more organic matrix." },
+            { q: "The fibrous membrane covering bone surfaces is the:", options: ["Endosteum", "Periosteum", "Lacunae", "Canaliculi"], answer: 1, hint: "Peri = around, osteum = bone", whereToFind: "Chapter 9: Bone Structure", rationale: "The periosteum is a fibrous connective tissue membrane that covers the external surface of bones (except at joints). It contains blood vessels, nerves, and osteogenic cells important for bone growth and repair." },
+            { q: "Which of the following is NOT a function of the skin?", options: ["Protection", "Temperature regulation", "Vitamin D synthesis", "Oxygen transport"], answer: 3, hint: "RBCs perform this function.", whereToFind: "Chapter 8: Skin Functions", rationale: "The skin provides protection, temperature regulation, sensation, vitamin D synthesis, and excretion. Oxygen transport is performed by red blood cells and the circulatory system, not the skin." },
+            { q: "A nodule differs from a papule in:", options: ["It is fluid-filled", "It is larger than 1 cm", "It is flat", "It is not elevated"], answer: 1, hint: "Both are solid, elevated lesions.", whereToFind: "Chapter 8: Skin Lesions", rationale: "Both nodules and papules are solid, elevated lesions. The difference is size: papules are less than 1 cm, while nodules are larger than 1 cm and extend deeper into the dermis or subcutaneous tissue." },
+            { q: "Which bone cell type would be MOST active in hypercalcemia?", options: ["Osteoblasts", "Osteoclasts", "Osteocytes", "Osteogenic cells"], answer: 1, hint: "These cells break down bone to release calcium.", whereToFind: "Chapter 9: Bone Cells", rationale: "In hypercalcemia (high blood calcium), osteoclasts would be most active to break down bone matrix and release calcium into the bloodstream. Osteoblasts would decrease activity to reduce calcium deposition." },
+            { q: "Normal platelet count is:", options: ["4,500-11,000/μL", "150,000-400,000/μL", "4.7-6.1 million/μL", "12-16 g/dL"], answer: 1, hint: "Platelets are needed for clotting.", whereToFind: "Chapter 10: Blood Values", rationale: "Normal platelet count is 150,000-400,000/μL. Platelets are essential for blood clotting. Counts below 150,000 indicate thrombocytopenia (increased bleeding risk), while counts above 400,000 indicate thrombocytosis." },
+            { q: "Crepitus refers to:", options: ["Swelling at fracture site", "Grinding sound from bone fragments", "Loss of pulse", "Numbness distal to injury"], answer: 1, hint: "This is a characteristic sign of fracture.", whereToFind: "Chapter 9: Fracture Signs", rationale: "Crepitus is a grating or grinding sound/feeling caused by bone fragments rubbing against each other. It's a classic sign of fracture and indicates that the bone is broken and the fragments are moving." },
+            { q: "Which anemia type involves pancytopenia?", options: ["Iron deficiency", "Aplastic anemia", "Sickle cell", "Hemolytic anemia"], answer: 1, hint: "Bone marrow failure affects all cell lines.", whereToFind: "Chapter 10: Anemia Types", rationale: "Aplastic anemia is characterized by pancytopenia (deficiency of all blood cell types: RBCs, WBCs, and platelets) due to bone marrow failure. It results from damage to hematopoietic stem cells." },
+            { q: "Langerhans cells are found in which layer of the epidermis?", options: ["Stratum corneum", "Stratum basale", "Stratum spinosum", "Stratum granulosum"], answer: 2, hint: "These are immune cells in the spiny layer.", whereToFind: "Chapter 8: Skin Cells", rationale: "Langerhans cells are dendritic immune cells found primarily in the stratum spinosum. They capture antigens and migrate to lymph nodes to present them to T cells, initiating immune responses." },
+            { q: "The most abundant WBC type is:", options: ["Lymphocyte", "Monocyte", "Neutrophil", "Eosinophil"], answer: 2, hint: "This cell makes up 60-70% of WBCs.", whereToFind: "Chapter 10: White Blood Cells", rationale: "Neutrophils are the most abundant WBCs, comprising 60-70% of the total WBC count. They are the primary responders to bacterial infections and are the first cells to arrive at sites of inflammation." },
+            { q: "Jaundice in hemolytic anemia is caused by:", options: ["Low iron levels", "Excess bilirubin", "Vitamin B12 deficiency", "Bone marrow suppression"], answer: 1, hint: "RBC breakdown releases this pigment.", whereToFind: "Chapter 10: Anemia Signs", rationale: "In hemolytic anemia, RBCs are destroyed prematurely, releasing hemoglobin which is broken down into bilirubin. Excess bilirubin accumulates in tissues, causing yellow discoloration (jaundice) of skin and eyes." }
         ];
 
         let currentQuizQuestion = 0;
@@ -2115,6 +2161,7 @@
                             </div>
                         `).join('')}
                     </div>
+                    <div class="feedback-box" id="feedback${i}"></div>
                     <div class="hint-box" id="hint${i}">
                         <strong>Hint:</strong> ${q.hint}<br>
                         <strong>Find in:</strong> ${q.whereToFind}
@@ -2128,8 +2175,50 @@
         function selectAnswer(qIndex, aIndex) {
             const question = quizQuestions[qIndex];
             const options = document.querySelectorAll(`#q${qIndex}o0, #q${qIndex}o1, #q${qIndex}o2, #q${qIndex}o3`);
-            options.forEach(opt => opt.classList.remove('selected'));
-            document.getElementById(`q${qIndex}o${aIndex}`).classList.add('selected');
+            const feedbackBox = document.getElementById(`feedback${qIndex}`);
+            const isCorrect = aIndex === question.answer;
+            
+            // Disable all options for this question
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Mark the selected answer
+            const selectedOpt = document.getElementById(`q${qIndex}o${aIndex}`);
+            selectedOpt.classList.add('selected');
+            
+            // Mark correct answer
+            const correctOpt = document.getElementById(`q${qIndex}o${question.answer}`);
+            correctOpt.classList.add('correct');
+            
+            // If wrong, also mark selected as incorrect
+            if (!isCorrect) {
+                selectedOpt.classList.add('incorrect');
+                // Add to wrong answers vault
+                if (!wrongAnswers.find(w => w.q === question.q)) {
+                    wrongAnswers.push({
+                        q: question.q,
+                        userAnswer: question.options[aIndex],
+                        correctAnswer: question.options[question.answer],
+                        whereToFind: question.whereToFind
+                    });
+                    localStorage.setItem('unit2part1vault', JSON.stringify(wrongAnswers));
+                }
+            }
+            
+            // Show feedback
+            feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedbackBox.innerHTML = `
+                <div class="feedback-title">
+                    ${isCorrect ? '✅ Correct!' : '❌ Incorrect'}
+                </div>
+                <p><strong>Rationale:</strong> ${question.rationale}</p>
+                <p><em>Reference: ${question.whereToFind}</em></p>
+            `;
+            
+            // Update vault display
+            loadVault();
         }
 
         function showHint(index) {
@@ -2137,37 +2226,25 @@
         }
 
         function submitQuiz() {
-            let score = 0;
+            // Count answered questions
+            let answered = 0;
+            let correct = 0;
             quizQuestions.forEach((q, i) => {
-                const selected = document.querySelector(`#q${i}o${q.answer}`);
-                const options = document.querySelectorAll(`[id^="q${i}o"]`);
-                
-                options.forEach(opt => {
-                    opt.classList.remove('correct', 'incorrect');
-                    if (opt.id === `q${i}o${q.answer}`) {
-                        opt.classList.add('correct');
-                    }
-                });
-
-                const userAnswer = document.querySelector(`[id^="q${i}o"].selected`);
-                if (userAnswer && userAnswer.id === `q${i}o${q.answer}`) {
-                    score++;
-                } else if (userAnswer) {
-                    userAnswer.classList.add('incorrect');
-                    // Add to vault
-                    if (!wrongAnswers.find(w => w.q === q.q)) {
-                        wrongAnswers.push({
-                            q: q.q,
-                            userAnswer: q.options[parseInt(userAnswer.id.slice(-1))],
-                            correctAnswer: q.options[q.answer],
-                            whereToFind: q.whereToFind
-                        });
-                        localStorage.setItem('unit2part1vault', JSON.stringify(wrongAnswers));
+                const selectedOpt = document.querySelector(`.quiz-option.selected[id^="q${i}o"]`);
+                if (selectedOpt) {
+                    answered++;
+                    if (selectedOpt.id === `q${i}o${q.answer}`) {
+                        correct++;
                     }
                 }
             });
-            alert(`Score: ${score}/${quizQuestions.length}`);
-            loadVault();
+            
+            if (answered < quizQuestions.length) {
+                alert(`You've answered ${answered} of ${quizQuestions.length} questions. Please answer all questions for a complete score.`);
+            } else {
+                const percentage = Math.round((correct / quizQuestions.length) * 100);
+                alert(`Quiz Complete!\n\nScore: ${correct}/${quizQuestions.length} (${percentage}%)\n\nCheck the Wrong Answer Vault for any questions you missed.`);
+            }
         }
 
         function loadVault() {
