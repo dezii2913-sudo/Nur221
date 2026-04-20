@@ -897,6 +897,43 @@
             background: #f8d7da;
             border-color: var(--error);
         }
+        .quiz-option.selected {
+            background: var(--ocean-light);
+            border-color: var(--ocean-dark);
+            color: white;
+            transform: scale(1.02);
+        }
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .feedback-box {
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback-box.correct {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        .feedback-box.incorrect {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         .hint-box {
             background: #fff3cd;
@@ -1989,36 +2026,36 @@
 
         // Quiz Data
         const quizQuestions = [
-            { q: "Which lymphoid organ filters blood and stores RBCs?", options: ["Thymus", "Spleen", "Tonsils", "Lymph nodes"], answer: 1, hint: "This is the largest lymphoid organ.", whereToFind: "Chapter 11: Lymphatic System" },
-            { q: "Hodgkin disease is characterized by the presence of:", options: ["Lymphocytes", "Plasma cells", "Reed-Sternberg cells", "Macrophages"], answer: 2, hint: "These are large multinucleated cells.", whereToFind: "Chapter 11: Lymphatic Disorders" },
-            { q: "Which heart valve is located between the left atrium and left ventricle?", options: ["Tricuspid", "Pulmonary", "Mitral", "Aortic"], answer: 2, hint: "Also called the bicuspid valve.", whereToFind: "Chapter 12: Heart Valves" },
-            { q: "Left-sided heart failure primarily affects:", options: ["Liver", "Lungs", "Kidneys", "Brain"], answer: 1, hint: "Think about where blood backs up from the left ventricle.", whereToFind: "Chapter 12: Heart Failure" },
-            { q: "Gas exchange occurs in the:", options: ["Bronchi", "Bronchioles", "Trachea", "Alveoli"], answer: 3, hint: "These are tiny air sacs at the end of bronchioles.", whereToFind: "Chapter 13: Respiratory Structures" },
-            { q: "Respiratory acidosis is characterized by:", options: ["Low pH, high CO2", "High pH, low CO2", "Low pH, low CO2", "High pH, high CO2"], answer: 0, hint: "Acidosis means low pH; respiratory means CO2 problem.", whereToFind: "Chapter 13: ABG Interpretation" },
-            { q: "Which respiratory disorder is reversible?", options: ["COPD", "Emphysema", "Asthma", "Chronic bronchitis"], answer: 2, hint: "This disorder is triggered by allergens and responds to bronchodilators.", whereToFind: "Chapter 13: Respiratory Disorders" },
-            { q: "The thymus is the site where which cells mature?", options: ["B cells", "T cells", "NK cells", "Plasma cells"], answer: 1, hint: "These cells are responsible for cell-mediated immunity.", whereToFind: "Chapter 11: Lymphatic System" },
-            { q: "Normal arterial blood pH is:", options: ["7.25-7.35", "7.35-7.45", "7.45-7.55", "7.55-7.65"], answer: 1, hint: "This is the normal range for arterial blood.", whereToFind: "Chapter 13: ABG Values" },
-            { q: "Which valve prevents backflow from the right ventricle to the right atrium?", options: ["Tricuspid", "Pulmonary", "Mitral", "Aortic"], answer: 0, hint: "This is the right atrioventricular valve.", whereToFind: "Chapter 12: Heart Valves" },
-            { q: "Right-sided heart failure causes:", options: ["Pulmonary edema", "Crackles in lungs", "Peripheral edema", "Orthopnea"], answer: 2, hint: "Blood backs up into the systemic circulation.", whereToFind: "Chapter 12: Heart Failure" },
-            { q: "The main muscle of respiration is the:", options: ["Intercostal muscles", "Diaphragm", "Abdominal muscles", "Sternocleidomastoid"], answer: 1, hint: "This dome-shaped muscle contracts during inspiration.", whereToFind: "Chapter 13: Respiratory Muscles" },
-            { q: "COPD includes:", options: ["Asthma only", "Emphysema only", "Emphysema and chronic bronchitis", "Pneumonia and bronchitis"], answer: 2, hint: "Both conditions cause airflow limitation.", whereToFind: "Chapter 13: COPD" },
-            { q: "Which is NOT a function of the lymphatic system?", options: ["Fluid balance", "Immune defense", "Oxygen transport", "Fat absorption"], answer: 2, hint: "This is a function of the cardiovascular system.", whereToFind: "Chapter 11: Lymphatic Functions" },
-            { q: "Normal PaCO2 is:", options: ["25-35 mmHg", "35-45 mmHg", "45-55 mmHg", "55-65 mmHg"], answer: 1, hint: "This measures carbon dioxide in arterial blood.", whereToFind: "Chapter 13: ABG Values" },
-            { q: "The aortic valve is located between:", options: ["RA and RV", "RV and PA", "LA and LV", "LV and aorta"], answer: 3, hint: "This valve leads to the body's largest artery.", whereToFind: "Chapter 12: Heart Valves" },
-            { q: "Lymphedema is characterized by:", options: ["Fever", "Swelling", "Cough", "Chest pain"], answer: 1, hint: "This occurs due to lymphatic obstruction.", whereToFind: "Chapter 11: Lymphatic Disorders" },
-            { q: "Metabolic acidosis shows:", options: ["Low pH, low HCO3-", "High pH, high HCO3-", "Low pH, high HCO3-", "High pH, low HCO3-"], answer: 0, hint: "Acidosis = low pH; metabolic = bicarbonate problem.", whereToFind: "Chapter 13: ABG Interpretation" },
-            { q: "Which structure produces sound for speech?", options: ["Pharynx", "Larynx", "Trachea", "Bronchi"], answer: 1, hint: "This contains the vocal cords.", whereToFind: "Chapter 13: Respiratory Structures" },
-            { q: "Normal respiratory rate for adults is:", options: ["8-12 breaths/min", "12-20 breaths/min", "20-30 breaths/min", "30-40 breaths/min"], answer: 1, hint: "This is the normal range for resting adults.", whereToFind: "Chapter 13: Respiratory Values" },
-            { q: "The pulmonary valve prevents backflow from:", options: ["RA to RV", "RV to PA", "LA to LV", "LV to aorta"], answer: 1, hint: "This valve leads to the lungs.", whereToFind: "Chapter 12: Heart Valves" },
-            { q: "Which is a sign of respiratory distress?", options: ["Bradypnea", "Tachypnea", "Normal breathing", "Slow breathing"], answer: 1, hint: "This means rapid breathing.", whereToFind: "Chapter 13: Respiratory Assessment" },
-            { q: "Non-Hodgkin lymphoma:", options: ["Has Reed-Sternberg cells", "Has no Reed-Sternberg cells", "Only affects children", "Is always curable"], answer: 1, hint: "This distinguishes it from Hodgkin disease.", whereToFind: "Chapter 11: Lymphatic Disorders" },
-            { q: "The myocardium is the:", options: ["Outer layer", "Middle muscular layer", "Inner lining", "Fibrous sac"], answer: 1, hint: "This layer contracts to pump blood.", whereToFind: "Chapter 12: Heart Structure" },
-            { q: "Orthopnea is difficulty breathing when:", options: ["Exercising", "Lying flat", "Sitting up", "Standing"], answer: 1, hint: "This is common in left-sided heart failure.", whereToFind: "Chapter 12: Heart Failure Signs" },
-            { q: "Normal HCO3- is:", options: ["18-22 mEq/L", "22-26 mEq/L", "26-30 mEq/L", "30-34 mEq/L"], answer: 1, hint: "This measures bicarbonate in blood.", whereToFind: "Chapter 13: ABG Values" },
-            { q: "Which lymphoid tissue is found in the throat?", options: ["Spleen", "Thymus", "Tonsils", "Liver"], answer: 2, hint: "These trap pathogens entering through mouth/nose.", whereToFind: "Chapter 11: Lymphatic System" },
-            { q: "Pulmonary embolism typically causes:", options: ["Gradual onset dyspnea", "Sudden onset dyspnea", "Chronic cough", "Wheezing"], answer: 1, hint: "This is a sudden blockage of pulmonary artery.", whereToFind: "Chapter 13: Respiratory Disorders" },
-            { q: "The endocardium lines the:", options: ["Outside of heart", "Heart chambers", "Pericardial sac", "Coronary arteries"], answer: 1, hint: "This is the innermost layer of the heart wall.", whereToFind: "Chapter 12: Heart Structure" },
-            { q: "Cyanosis indicates:", options: ["High oxygen", "Low oxygen", "Normal oxygen", "High carbon dioxide"], answer: 1, hint: "This causes bluish discoloration of skin/mucous membranes.", whereToFind: "Chapter 13: Respiratory Assessment" }
+            { q: "Which lymphoid organ filters blood and stores RBCs?", options: ["Thymus", "Spleen", "Tonsils", "Lymph nodes"], answer: 1, hint: "This is the largest lymphoid organ.", whereToFind: "Chapter 11: Lymphatic System", rationale: "The spleen is the largest lymphoid organ and filters blood, removing old/damaged RBCs and pathogens. It also stores platelets and acts as a reservoir for blood." },
+            { q: "Hodgkin disease is characterized by the presence of:", options: ["Lymphocytes", "Plasma cells", "Reed-Sternberg cells", "Macrophages"], answer: 2, hint: "These are large multinucleated cells.", whereToFind: "Chapter 11: Lymphatic Disorders", rationale: "Reed-Sternberg cells are large, abnormal multinucleated cells that are the hallmark of Hodgkin lymphoma. Their presence distinguishes Hodgkin from non-Hodgkin lymphoma." },
+            { q: "Which heart valve is located between the left atrium and left ventricle?", options: ["Tricuspid", "Pulmonary", "Mitral", "Aortic"], answer: 2, hint: "Also called the bicuspid valve.", whereToFind: "Chapter 12: Heart Valves", rationale: "The mitral valve (bicuspid valve) is located between the left atrium and left ventricle. It has two cusps and prevents backflow of blood into the left atrium during ventricular contraction." },
+            { q: "Left-sided heart failure primarily affects:", options: ["Liver", "Lungs", "Kidneys", "Brain"], answer: 1, hint: "Think about where blood backs up from the left ventricle.", whereToFind: "Chapter 12: Heart Failure", rationale: "Left-sided heart failure causes blood to back up into the lungs, leading to pulmonary congestion, pulmonary edema, and symptoms like dyspnea, orthopnea, and crackles." },
+            { q: "Gas exchange occurs in the:", options: ["Bronchi", "Bronchioles", "Trachea", "Alveoli"], answer: 3, hint: "These are tiny air sacs at the end of bronchioles.", whereToFind: "Chapter 13: Respiratory Structures", rationale: "Alveoli are tiny, thin-walled air sacs where gas exchange occurs between air and blood. Their large surface area and thin walls facilitate efficient diffusion of oxygen and carbon dioxide." },
+            { q: "Respiratory acidosis is characterized by:", options: ["Low pH, high CO2", "High pH, low CO2", "Low pH, low CO2", "High pH, high CO2"], answer: 0, hint: "Acidosis means low pH; respiratory means CO2 problem.", whereToFind: "Chapter 13: ABG Interpretation", rationale: "Respiratory acidosis occurs when CO2 retention causes the blood to become acidic. CO2 combines with water to form carbonic acid, lowering pH. Causes include hypoventilation, COPD, and airway obstruction." },
+            { q: "Which respiratory disorder is reversible?", options: ["COPD", "Emphysema", "Asthma", "Chronic bronchitis"], answer: 2, hint: "This disorder is triggered by allergens and responds to bronchodilators.", whereToFind: "Chapter 13: Respiratory Disorders", rationale: "Asthma is characterized by reversible airway obstruction due to bronchospasm, inflammation, and mucus production. Unlike COPD, asthma attacks can be reversed with bronchodilators and anti-inflammatory medications." },
+            { q: "The thymus is the site where which cells mature?", options: ["B cells", "T cells", "NK cells", "Plasma cells"], answer: 1, hint: "These cells are responsible for cell-mediated immunity.", whereToFind: "Chapter 11: Lymphatic System", rationale: "The thymus is a primary lymphoid organ where T lymphocytes mature and differentiate. T cells are essential for cell-mediated immunity and help regulate immune responses." },
+            { q: "Normal arterial blood pH is:", options: ["7.25-7.35", "7.35-7.45", "7.45-7.55", "7.55-7.65"], answer: 1, hint: "This is the normal range for arterial blood.", whereToFind: "Chapter 13: ABG Values", rationale: "Normal arterial blood pH is 7.35-7.45. Values below 7.35 indicate acidosis, while values above 7.45 indicate alkalosis. The body tightly regulates pH through respiratory and renal mechanisms." },
+            { q: "Which valve prevents backflow from the right ventricle to the right atrium?", options: ["Tricuspid", "Pulmonary", "Mitral", "Aortic"], answer: 0, hint: "This is the right atrioventricular valve.", whereToFind: "Chapter 12: Heart Valves", rationale: "The tricuspid valve is the right atrioventricular valve with three cusps. It prevents backflow of blood from the right ventricle into the right atrium during ventricular contraction." },
+            { q: "Right-sided heart failure causes:", options: ["Pulmonary edema", "Crackles in lungs", "Peripheral edema", "Orthopnea"], answer: 2, hint: "Blood backs up into the systemic circulation.", whereToFind: "Chapter 12: Heart Failure", rationale: "Right-sided heart failure causes blood to back up into the systemic venous circulation, leading to peripheral edema, jugular venous distension, hepatomegaly, and ascites." },
+            { q: "The main muscle of respiration is the:", options: ["Intercostal muscles", "Diaphragm", "Abdominal muscles", "Sternocleidomastoid"], answer: 1, hint: "This dome-shaped muscle contracts during inspiration.", whereToFind: "Chapter 13: Respiratory Muscles", rationale: "The diaphragm is the primary muscle of respiration. During inspiration, it contracts and flattens, increasing thoracic cavity volume and decreasing pressure to draw air into the lungs." },
+            { q: "COPD includes:", options: ["Asthma only", "Emphysema only", "Emphysema and chronic bronchitis", "Pneumonia and bronchitis"], answer: 2, hint: "Both conditions cause airflow limitation.", whereToFind: "Chapter 13: COPD", rationale: "COPD (Chronic Obstructive Pulmonary Disease) includes emphysema and chronic bronchitis, both causing irreversible airflow limitation. Patients often have features of both conditions." },
+            { q: "Which is NOT a function of the lymphatic system?", options: ["Fluid balance", "Immune defense", "Oxygen transport", "Fat absorption"], answer: 2, hint: "This is a function of the cardiovascular system.", whereToFind: "Chapter 11: Lymphatic Functions", rationale: "Oxygen transport is a function of the cardiovascular system via RBCs and hemoglobin. The lymphatic system maintains fluid balance, supports immune defense, and absorbs dietary fats from the intestines." },
+            { q: "Normal PaCO2 is:", options: ["25-35 mmHg", "35-45 mmHg", "45-55 mmHg", "55-65 mmHg"], answer: 1, hint: "This measures carbon dioxide in arterial blood.", whereToFind: "Chapter 13: ABG Values", rationale: "Normal PaCO2 (partial pressure of carbon dioxide in arterial blood) is 35-45 mmHg. Values above 45 indicate hypercapnia (CO2 retention), while values below 35 indicate hypocapnia." },
+            { q: "The aortic valve is located between:", options: ["RA and RV", "RV and PA", "LA and LV", "LV and aorta"], answer: 3, hint: "This valve leads to the body's largest artery.", whereToFind: "Chapter 12: Heart Valves", rationale: "The aortic valve is located between the left ventricle and the aorta. It has three semilunar cusps and prevents backflow of blood from the aorta into the left ventricle during diastole." },
+            { q: "Lymphedema is characterized by:", options: ["Fever", "Swelling", "Cough", "Chest pain"], answer: 1, hint: "This occurs due to lymphatic obstruction.", whereToFind: "Chapter 11: Lymphatic Disorders", rationale: "Lymphedema is swelling caused by accumulation of lymph fluid in tissues due to lymphatic obstruction or damage. It commonly occurs after lymph node removal or radiation therapy for cancer." },
+            { q: "Metabolic acidosis shows:", options: ["Low pH, low HCO3-", "High pH, high HCO3-", "Low pH, high HCO3-", "High pH, low HCO3-"], answer: 0, hint: "Acidosis = low pH; metabolic = bicarbonate problem.", whereToFind: "Chapter 13: ABG Interpretation", rationale: "Metabolic acidosis is characterized by low pH (acidemia) and low bicarbonate (HCO3-). Causes include diabetic ketoacidosis, renal failure, diarrhea, and lactic acidosis." },
+            { q: "Which structure produces sound for speech?", options: ["Pharynx", "Larynx", "Trachea", "Bronchi"], answer: 1, hint: "This contains the vocal cords.", whereToFind: "Chapter 13: Respiratory Structures", rationale: "The larynx (voice box) contains the vocal cords and is responsible for producing sound for speech. Air passing through the vocal cords causes them to vibrate, generating sound." },
+            { q: "Normal respiratory rate for adults is:", options: ["8-12 breaths/min", "12-20 breaths/min", "20-30 breaths/min", "30-40 breaths/min"], answer: 1, hint: "This is the normal range for resting adults.", whereToFind: "Chapter 13: Respiratory Values", rationale: "Normal respiratory rate for adults at rest is 12-20 breaths per minute. Rates below 12 (bradypnea) or above 20 (tachypnea) may indicate respiratory dysfunction." },
+            { q: "The pulmonary valve prevents backflow from:", options: ["RA to RV", "RV to PA", "LA to LV", "LV to aorta"], answer: 1, hint: "This valve leads to the lungs.", whereToFind: "Chapter 12: Heart Valves", rationale: "The pulmonary valve is located between the right ventricle and pulmonary artery. It prevents backflow of blood from the pulmonary artery into the right ventricle during diastole." },
+            { q: "Which is a sign of respiratory distress?", options: ["Bradypnea", "Tachypnea", "Normal breathing", "Slow breathing"], answer: 1, hint: "This means rapid breathing.", whereToFind: "Chapter 13: Respiratory Assessment", rationale: "Tachypnea (rapid breathing >20 breaths/min) is a sign of respiratory distress. The body increases respiratory rate to compensate for inadequate oxygenation or ventilation." },
+            { q: "Non-Hodgkin lymphoma:", options: ["Has Reed-Sternberg cells", "Has no Reed-Sternberg cells", "Only affects children", "Is always curable"], answer: 1, hint: "This distinguishes it from Hodgkin disease.", whereToFind: "Chapter 11: Lymphatic Disorders", rationale: "Non-Hodgkin lymphoma (NHL) lacks Reed-Sternberg cells, which distinguishes it from Hodgkin lymphoma. NHL includes many subtypes with varying prognoses and can affect any age group." },
+            { q: "The myocardium is the:", options: ["Outer layer", "Middle muscular layer", "Inner lining", "Fibrous sac"], answer: 1, hint: "This layer contracts to pump blood.", whereToFind: "Chapter 12: Heart Structure", rationale: "The myocardium is the middle, muscular layer of the heart wall. It's composed of cardiac muscle tissue and is responsible for the pumping action of the heart." },
+            { q: "Orthopnea is difficulty breathing when:", options: ["Exercising", "Lying flat", "Sitting up", "Standing"], answer: 1, hint: "This is common in left-sided heart failure.", whereToFind: "Chapter 12: Heart Failure Signs", rationale: "Orthopnea is difficulty breathing when lying flat, relieved by sitting up. It occurs in left-sided heart failure due to increased venous return and pulmonary congestion in the recumbent position." },
+            { q: "Normal HCO3- is:", options: ["18-22 mEq/L", "22-26 mEq/L", "26-30 mEq/L", "30-34 mEq/L"], answer: 1, hint: "This measures bicarbonate in blood.", whereToFind: "Chapter 13: ABG Values", rationale: "Normal bicarbonate (HCO3-) level is 22-26 mEq/L. Bicarbonate is a metabolic indicator in ABG analysis. Low levels suggest metabolic acidosis; high levels suggest metabolic alkalosis." },
+            { q: "Which lymphoid tissue is found in the throat?", options: ["Spleen", "Thymus", "Tonsils", "Liver"], answer: 2, hint: "These trap pathogens entering through mouth/nose.", whereToFind: "Chapter 11: Lymphatic System", rationale: "Tonsils are masses of lymphoid tissue located in the throat (pharynx). They trap and destroy pathogens entering through the mouth and nose, playing a role in immune defense." },
+            { q: "Pulmonary embolism typically causes:", options: ["Gradual onset dyspnea", "Sudden onset dyspnea", "Chronic cough", "Wheezing"], answer: 1, hint: "This is a sudden blockage of pulmonary artery.", whereToFind: "Chapter 13: Respiratory Disorders", rationale: "Pulmonary embolism (PE) typically causes sudden onset dyspnea due to acute obstruction of pulmonary blood flow by a blood clot. It's a medical emergency requiring immediate intervention." },
+            { q: "The endocardium lines the:", options: ["Outside of heart", "Heart chambers", "Pericardial sac", "Coronary arteries"], answer: 1, hint: "This is the innermost layer of the heart wall.", whereToFind: "Chapter 12: Heart Structure", rationale: "The endocardium is the thin, smooth innermost layer of the heart wall that lines the chambers and covers the valves. It provides a smooth surface for blood flow and reduces friction." },
+            { q: "Cyanosis indicates:", options: ["High oxygen", "Low oxygen", "Normal oxygen", "High carbon dioxide"], answer: 1, hint: "This causes bluish discoloration of skin/mucous membranes.", whereToFind: "Chapter 13: Respiratory Assessment", rationale: "Cyanosis is a bluish discoloration of skin and mucous membranes caused by inadequate oxygenation of blood. It indicates hypoxia (low oxygen) and is a sign of respiratory or cardiovascular dysfunction." }
         ];
 
         let currentQuizQuestion = 0;
@@ -2039,6 +2076,7 @@
                             </div>
                         `).join('')}
                     </div>
+                    <div class="feedback-box" id="feedback${i}"></div>
                     <div class="hint-box" id="hint${i}">
                         <strong>Hint:</strong> ${q.hint}<br>
                         <strong>Find in:</strong> ${q.whereToFind}
@@ -2052,8 +2090,50 @@
         function selectAnswer(qIndex, aIndex) {
             const question = quizQuestions[qIndex];
             const options = document.querySelectorAll(`#q${qIndex}o0, #q${qIndex}o1, #q${qIndex}o2, #q${qIndex}o3`);
-            options.forEach(opt => opt.classList.remove('selected'));
-            document.getElementById(`q${qIndex}o${aIndex}`).classList.add('selected');
+            const feedbackBox = document.getElementById(`feedback${qIndex}`);
+            const isCorrect = aIndex === question.answer;
+            
+            // Disable all options for this question
+            options.forEach(opt => {
+                opt.classList.add('disabled');
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Mark the selected answer
+            const selectedOpt = document.getElementById(`q${qIndex}o${aIndex}`);
+            selectedOpt.classList.add('selected');
+            
+            // Mark correct answer
+            const correctOpt = document.getElementById(`q${qIndex}o${question.answer}`);
+            correctOpt.classList.add('correct');
+            
+            // If wrong, also mark selected as incorrect
+            if (!isCorrect) {
+                selectedOpt.classList.add('incorrect');
+                // Add to wrong answers vault
+                if (!wrongAnswers.find(w => w.q === question.q)) {
+                    wrongAnswers.push({
+                        q: question.q,
+                        userAnswer: question.options[aIndex],
+                        correctAnswer: question.options[question.answer],
+                        whereToFind: question.whereToFind
+                    });
+                    localStorage.setItem('unit2part2vault', JSON.stringify(wrongAnswers));
+                }
+            }
+            
+            // Show feedback
+            feedbackBox.className = `feedback-box show ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedbackBox.innerHTML = `
+                <div class="feedback-title">
+                    ${isCorrect ? '✅ Correct!' : '❌ Incorrect'}
+                </div>
+                <p><strong>Rationale:</strong> ${question.rationale}</p>
+                <p><em>Reference: ${question.whereToFind}</em></p>
+            `;
+            
+            // Update vault display
+            loadVault();
         }
 
         function showHint(index) {
@@ -2061,35 +2141,25 @@
         }
 
         function submitQuiz() {
-            let score = 0;
+            // Count answered questions
+            let answered = 0;
+            let correct = 0;
             quizQuestions.forEach((q, i) => {
-                const options = document.querySelectorAll(`[id^="q${i}o"]`);
-                
-                options.forEach(opt => {
-                    opt.classList.remove('correct', 'incorrect');
-                    if (opt.id === `q${i}o${q.answer}`) {
-                        opt.classList.add('correct');
-                    }
-                });
-
-                const userAnswer = document.querySelector(`[id^="q${i}o"].selected`);
-                if (userAnswer && userAnswer.id === `q${i}o${q.answer}`) {
-                    score++;
-                } else if (userAnswer) {
-                    userAnswer.classList.add('incorrect');
-                    if (!wrongAnswers.find(w => w.q === q.q)) {
-                        wrongAnswers.push({
-                            q: q.q,
-                            userAnswer: q.options[parseInt(userAnswer.id.slice(-1))],
-                            correctAnswer: q.options[q.answer],
-                            whereToFind: q.whereToFind
-                        });
-                        localStorage.setItem('unit2part2vault', JSON.stringify(wrongAnswers));
+                const selectedOpt = document.querySelector(`.quiz-option.selected[id^="q${i}o"]`);
+                if (selectedOpt) {
+                    answered++;
+                    if (selectedOpt.id === `q${i}o${q.answer}`) {
+                        correct++;
                     }
                 }
             });
-            alert(`Score: ${score}/${quizQuestions.length}`);
-            loadVault();
+            
+            if (answered < quizQuestions.length) {
+                alert(`You've answered ${answered} of ${quizQuestions.length} questions. Please answer all questions for a complete score.`);
+            } else {
+                const percentage = Math.round((correct / quizQuestions.length) * 100);
+                alert(`Quiz Complete!\n\nScore: ${correct}/${quizQuestions.length} (${percentage}%)\n\nCheck the Wrong Answer Vault for any questions you missed.`);
+            }
         }
 
         function loadVault() {
