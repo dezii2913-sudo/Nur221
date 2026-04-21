@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3 Part 2 - Digestive, Urinary & Reproductive Systems | NCLEX Study Guide</title>
+    <style>
+        :root {
+            --pink-dark: #d53f8c;
+            --pink-medium: #ed64a6;
+            --pink-light: #f687b3;
+            --pink-pale: #fff5f7;
+            --blue-dark: #2c5282;
+            --blue-medium: #4299e1;
+            --blue-light: #63b3ed;
+            --blue-pale: #ebf8ff;
+            --coral: #f56565;
+            --gold: #ecc94b;
+            --mint: #9ae6b4;
+            --purple: #805ad5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--pink-pale) 0%, #f0f4ff 50%, var(--blue-pale) 100%);
+            color: #2d3748;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, var(--pink-dark) 0%, var(--pink-medium) 50%, var(--blue-medium) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        header h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 0.5rem; }
+        header .badge { display: inline-block; background: var(--blue-medium); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.9rem; margin: 0.25rem; }
+        .global-progress { background: linear-gradient(90deg, var(--pink-dark), var(--blue-dark)); padding: 1rem; position: sticky; top: 0; z-index: 100; }
+        .progress-container { max-width: 1400px; margin: 0 auto; }
+        .progress-label { color: white; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .progress-bar { height: 12px; background: rgba(255,255,255,0.2); border-radius: 6px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--pink-light), var(--blue-light), var(--mint)); width: 0%; transition: width 0.5s ease; border-radius: 6px; }
+        nav { background: linear-gradient(90deg, var(--blue-dark), var(--pink-dark)); position: sticky; top: 56px; z-index: 99; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .nav-tabs { display: flex; overflow-x: auto; max-width: 1400px; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+        .nav-tab { flex: 0 0 auto; padding: 1rem 1.5rem; color: white; text-decoration: none; font-weight: 500; border-bottom: 3px solid transparent; transition: all 0.3s; white-space: nowrap; }
+        .nav-tab:hover, .nav-tab.active { background: rgba(255,255,255,0.1); border-bottom-color: var(--pink-light); }
+        main { max-width: 1400px; margin: 2rem auto; padding: 0 1rem; }
+        .section { display: none; animation: fadeIn 0.5s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .card { background: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid var(--pink-medium); }
+        .card h2 { color: var(--pink-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card h3 { color: var(--blue-dark); margin: 1.5rem 0 1rem; border-bottom: 2px solid var(--pink-pale); padding-bottom: 0.5rem; }
+        .card h4 { color: var(--pink-medium); margin: 1rem 0 0.5rem; }
+        .collapsible { background: linear-gradient(135deg, var(--pink-pale), white); border: none; width: 100%; padding: 1.2rem 1.5rem; text-align: left; font-size: 1.1rem; font-weight: 600; color: var(--pink-dark); cursor: pointer; border-radius: 12px; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
+        .collapsible:hover { background: linear-gradient(135deg, #ffe0eb, white); transform: translateX(5px); }
+        .collapsible .arrow { transition: transform 0.3s; }
+        .collapsible.open .arrow { transform: rotate(180deg); }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; background: white; border-radius: 0 0 12px 12px; margin-bottom: 0.5rem; }
+        .collapsible-content.open { max-height: 50000px; padding: 1.5rem; border: 1px solid var(--pink-pale); }
+        .term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .term-card { background: linear-gradient(135deg, var(--pink-pale), white); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--pink-medium); cursor: pointer; transition: all 0.3s; }
+        .term-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .term-card .term-name { font-weight: 700; color: var(--pink-dark); }
+        .term-card .term-def { font-size: 0.9rem; color: #4a5568; margin-top: 0.5rem; }
+        .tiles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .tile { background: linear-gradient(135deg, var(--pink-medium), var(--blue-medium)); color: white; padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.3s; border: none; font-size: 1rem; }
+        .tile:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .alert { padding: 1rem 1.5rem; border-radius: 12px; margin: 1rem 0; display: flex; align-items: flex-start; gap: 0.75rem; }
+        .alert-warning { background: linear-gradient(135deg, #fffaf0, #fff5e6); border-left: 4px solid var(--gold); }
+        .alert-danger { background: linear-gradient(135deg, #fff5f5, #fed7d7); border-left: 4px solid var(--coral); }
+        .alert-success { background: linear-gradient(135deg, #f0fff4, #c6f6d5); border-left: 4px solid var(--mint); }
+        .alert-info { background: linear-gradient(135deg, var(--blue-pale), #e6f3ff); border-left: 4px solid var(--blue-light); }
+        .alert-icon { font-size: 1.5rem; }
+        .ms-highlight { background: linear-gradient(135deg, #faf5ff, #e9d8fd); border: 2px solid var(--pink-dark); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; }
+        .ms-highlight h3 { color: var(--pink-dark); border-bottom: 2px solid var(--pink-dark); }
+        .teacher-focus { background: linear-gradient(135deg, #fff5f5, #fed7d7); border: 3px solid var(--coral); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; }
+        .teacher-focus h3 { color: var(--coral); border-bottom: 2px solid var(--coral); }
+        .disease-box { background: linear-gradient(135deg, #f7fafc, white); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .disease-box h4 { color: var(--coral); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .signs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.5rem; margin: 0.5rem 0; }
+        .sign-item { background: var(--pink-pale); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.95rem; }
+        .mnemonic-box { background: linear-gradient(135deg, #fffaf0, #fef3c7); border: 2px dashed var(--gold); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; text-align: center; }
+        .mnemonic-box .mnemonic-text { font-size: 1.3rem; font-weight: 700; color: var(--pink-dark); }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--pink-pale); }
+        th { background: linear-gradient(90deg, var(--pink-dark), var(--blue-dark)); color: white; font-weight: 600; }
+        tr:hover { background: var(--pink-pale); }
+        ul, ol { margin: 1rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .image-container { text-align: center; margin: 1.5rem 0; }
+        .image-container img { max-width: 100%; max-height: 600px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
+        .image-container img:hover { transform: scale(1.02); }
+        .image-caption { font-size: 0.9rem; color: #718096; margin-top: 0.5rem; font-style: italic; }
+        .image-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; }
+        .image-modal.active { display: flex; }
+        .image-modal img { max-width: 95%; max-height: 95%; border-radius: 8px; }
+        .game-container { background: white; border-radius: 16px; padding: 2rem; margin: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .game-header { text-align: center; margin-bottom: 2rem; }
+        .game-header h2 { color: var(--pink-dark); }
+        .game-score { display: flex; justify-content: center; gap: 2rem; margin: 1rem 0; }
+        .score-box { background: var(--pink-pale); padding: 0.5rem 2rem; border-radius: 20px; font-weight: 600; }
+        .game-btn { background: linear-gradient(135deg, var(--pink-medium), var(--blue-medium)); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-size: 1rem; cursor: pointer; transition: all 0.3s; margin: 0.5rem; }
+        .game-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .game-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .hint-btn { background: linear-gradient(135deg, var(--gold), #d69e2e); color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; margin-left: 1rem; }
+        .hint-btn:hover { transform: scale(1.05); }
+        .hint-text { background: linear-gradient(135deg, #fef3c7, #fff); border: 2px solid var(--gold); border-radius: 8px; padding: 1rem; margin-top: 0.5rem; display: none; }
+        .hint-text.show { display: block; }
+        .quiz-container { background: white; border-radius: 16px; padding: 2rem; margin: 1rem 0; }
+        .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--pink-pale); }
+        .quiz-question h4 { color: var(--pink-dark); margin-bottom: 1rem; font-size: 1.1rem; display: flex; flex-wrap: wrap; align-items: center; }
+        .quiz-options { display: grid; gap: 0.75rem; }
+        .quiz-option { padding: 1rem; border: 2px solid var(--pink-pale); border-radius: 10px; cursor: pointer; transition: all 0.3s; background: white; }
+        .quiz-option:hover { border-color: var(--pink-light); background: var(--pink-pale); }
+        .quiz-option.selected { border-color: var(--pink-medium); background: var(--pink-pale); }
+        .quiz-option.correct { border-color: var(--mint); background: #c6f6d5; }
+        .quiz-option.incorrect { border-color: var(--coral); background: #fed7d7; }
+        .feedback { padding: 1rem; border-radius: 10px; margin-top: 1rem; display: none; }
+        .feedback.show { display: block; }
+        .flashcard-container { perspective: 1000px; margin: 1rem auto; max-width: 500px; }
+        .flashcard { width: 100%; height: 250px; position: relative; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .flashcard-front, .flashcard-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center; font-size: 1.2rem; }
+        .flashcard-front { background: linear-gradient(135deg, var(--pink-medium), var(--pink-dark)); color: white; }
+        .flashcard-back { background: linear-gradient(135deg, var(--blue-medium), var(--blue-dark)); color: white; transform: rotateY(180deg); }
+        .vault-item { background: linear-gradient(135deg, #fff5f5, white); border-left: 4px solid var(--coral); padding: 1rem; margin-bottom: 0.5rem; border-radius: 0 8px 8px 0; }
+        .vault-question { font-weight: 600; color: var(--pink-dark); }
+        .vault-answer { color: var(--mint); font-weight: 600; }
+        .interactive-fb { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+        .fb-btn { padding: 0.75rem 1.5rem; border: 2px solid var(--pink-pale); border-radius: 25px; background: white; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+        .fb-btn:hover { background: var(--pink-pale); }
+        .fb-btn.correct { background: var(--mint); border-color: var(--mint); color: white; }
+        .fb-btn.incorrect { background: var(--coral); border-color: var(--coral); color: white; }
+        .drag-container { display: flex; flex-wrap: wrap; gap: 1rem; padding: 1rem; background: var(--pink-pale); border-radius: 12px; min-height: 100px; }
+        .drag-item { padding: 0.75rem 1.5rem; background: white; border-radius: 8px; cursor: grab; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .drag-item:active { cursor: grabbing; transform: scale(1.05); }
+        .drop-zone { min-width: 150px; min-height: 60px; border: 2px dashed var(--pink-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+        .drop-zone.active { background: var(--pink-pale); border-color: var(--pink-medium); }
+        .millionaire-question { font-size: 1.2rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; }
+        .millionaire-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .millionaire-btn { padding: 1rem; background: linear-gradient(135deg, var(--blue-medium), var(--pink-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .millionaire-btn:hover { transform: scale(1.02); }
+        .jeopardy-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 1rem; }
+        .jeopardy-header { background: linear-gradient(90deg, var(--pink-dark), var(--blue-dark)); color: white; padding: 1rem; text-align: center; font-weight: 700; border-radius: 8px; }
+        .jeopardy-cell { background: linear-gradient(135deg, var(--blue-medium), var(--pink-medium)); color: var(--gold); padding: 1.5rem; text-align: center; cursor: pointer; border-radius: 8px; font-weight: 700; font-size: 1.2rem; transition: all 0.3s; }
+        .jeopardy-cell:hover { background: linear-gradient(135deg, var(--pink-light), var(--blue-light)); transform: scale(1.05); }
+        .jeopardy-cell.used { background: #4a5568; color: #718096; cursor: not-allowed; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .nav-tabs { flex-wrap: nowrap; }
+            .nav-tab { padding: 0.75rem 1rem; font-size: 0.9rem; }
+            .card { padding: 1.5rem; }
+            .millionaire-options { grid-template-columns: 1fr; }
+            .jeopardy-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🫀 Unit 3 Part 2 - NCLEX Study Guide</h1>
+        <p class="subtitle">Digestive System • Urinary System • Reproductive System</p>
+        <div><span class="badge">📚 Chapters 17, 18, 19</span><span class="badge">📝 55 NCLEX Questions</span><span class="badge">🎮 4 Games</span></div>
+    </header>
+
+    <div class="global-progress">
+        <div class="progress-container">
+            <div class="progress-label">📊 Study Progress: <span id="progress-percent">0%</span></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-tabs">
+            <a href="#overview" class="nav-tab active" data-section="overview">📋 Overview</a>
+            <a href="#exam-focus" class="nav-tab" data-section="exam-focus">🎯 Exam Focus</a>
+            <a href="#chapter17" class="nav-tab" data-section="chapter17">🍽️ Ch. 17 Digestive</a>
+            <a href="#chapter18" class="nav-tab" data-section="chapter18">🫘 Ch. 18 Urinary</a>
+            <a href="#chapter19" class="nav-tab" data-section="chapter19">🧬 Ch. 19 Reproductive</a>
+            <a href="#games" class="nav-tab" data-section="games">🎮 Games</a>
+            <a href="#quiz" class="nav-tab" data-section="quiz">📝 Quiz (55 Q)</a>
+            <a href="#flashcards" class="nav-tab" data-section="flashcards">🃏 Flashcards</a>
+            <a href="#vault" class="nav-tab" data-section="vault">🔐 Vault</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- OVERVIEW SECTION -->
+        <section id="overview" class="section active">
+            <div class="card">
+                <h2>📋 Unit 3 Part 2 Overview</h2>
+                <p>Welcome to your comprehensive ADHD-friendly study guide for Unit 3 Part 2! This guide covers three interconnected body systems and their common disorders you'll encounter on the NCLEX and in clinical practice. <strong>ALL content from your PowerPoint is included here!</strong></p>
+                
+                <div class="alert alert-info">
+                    <span class="alert-icon">💡</span>
+                    <div>
+                        <strong>Study Tip!</strong> Use the navigation tabs above to jump between sections. Click on collapsible items to reveal detailed content. Click any image to enlarge it. Your progress is saved automatically!
+                    </div>
+                </div>
+
+                <h3>📚 Chapters Covered</h3>
+                <div class="tiles-grid">
+                    <div class="tile" onclick="showSection('chapter17')">
+                        <strong>Chapter 17</strong><br>Digestive System Disorders<br><small>37 slides covered!</small>
+                    </div>
+                    <div class="tile" onclick="showSection('chapter18')">
+                        <strong>Chapter 18</strong><br>Urinary System Disorders<br><small>20 slides covered!</small>
+                    </div>
+                    <div class="tile" onclick="showSection('chapter19')">
+                        <strong>Chapter 19</strong><br>Reproductive System Disorders<br><small>21 slides covered!</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teacher-focus">
+                <h3>⭐ TEACHER'S MUST-KNOW CONTENT</h3>
+                <p>Your instructor specifically emphasized these topics - they WILL be on the exam!</p>
+                <div class="signs-list">
+                    <div class="sign-item"><strong>🍽️ GERD Management</strong> - Lifestyle modifications, positioning after meals</div>
+                    <div class="sign-item"><strong>🫘 Cirrhosis & Lactulose</strong> - Decreases ammonia levels, prevents hepatic encephalopathy</div>
+                    <div class="sign-item"><strong>🧬 Corpus Luteum</strong> - Produces progesterone, maintains early pregnancy</div>
+                    <div class="sign-item"><strong>🫘 CKD Monitoring</strong> - Daily weight for fluid retention assessment</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🔢 Quick Numbers to Memorize</h3>
+                <table>
+                    <tr><th>Item</th><th>Value</th><th>Why It Matters</th></tr>
+                    <tr><td>Normal Urine Output</td><td>750-2000 mL/day</td><td>Below 750 = oliguria</td></tr>
+                    <tr><td>Stool Transit Time</td><td>2-5 days</td><td>From ingestion to elimination</td></tr>
+                    <tr><td>Cardiac Output to Kidneys</td><td>20-25%</td><td>~1000 mL blood/min</td></tr>
+                    <tr><td>Essential Amino Acids</td><td>9</td><td>Must be consumed in diet</td></tr>
+                    <tr><td>Small Intestine pH</td><td>~7</td><td>Neutral for enzyme function</td></tr>
+                    <tr><td>Ovulation Cycle</td><td>21-40 days (avg 28)</td><td> follicular + luteal phases</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- EXAM FOCUS SECTION -->
+        <section id="exam-focus" class="section">
+            <div class="card">
+                <h2>🎯 High-Yield Exam Focus</h2>
+                <p>These are the MOST TESTED concepts from your instructor's PowerPoint. Master these first!</p>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🍽️ Digestive System - MUST KNOW
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>GERD (Gastroesophageal Reflux Disease) - HIGH YIELD</h4>
+                    <div class="disease-box">
+                        <h4>🔥 GERD Management</h4>
+                        <p><strong>Pathophysiology:</strong> Lower esophageal sphincter allows stomach acid to reflux into esophagus</p>
+                        <p><strong>NCLEX Tips:</strong></p>
+                        <ul>
+                            <li>Wait 1 hour after eating before lying down</li>
+                            <li>Eat 4-6 small meals instead of 3 large</li>
+                            <li>Avoid trigger foods (spicy, fatty, caffeine, alcohol)</li>
+                            <li>Elevate head of bed 6-8 inches</li>
+                            <li>Sleep on LEFT side to reduce reflux</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Cirrhosis - VERY HIGH YIELD</h4>
+                    <div class="disease-box">
+                        <h4>🫘 Cirrhosis & Lactulose</h4>
+                        <p><strong>Why Lactulose?</strong> Cirrhosis impairs the liver's ability to convert ammonia to urea. Lactulose traps ammonia in the gut and eliminates it through stool.</p>
+                        <p><strong>NCLEX Alert:</strong> If a patient with cirrhosis says "I'm not constipated, I don't need lactulose" - educate that it's used to decrease AMMONIA levels, not just for constipation!</p>
+                        <p><strong>Signs of Advanced Cirrhosis:</strong></p>
+                        <ul>
+                            <li>Petechiae (low platelets)</li>
+                            <li>Ascites</li>
+                            <li>Jaundice</li>
+                            <li>Hepatic encephalopathy</li>
+                            <li>Portal hypertension</li>
+                        </ul>
+                    </div>
+
+                    <h4>Bowel Obstruction - CRITICAL!</h4>
+                    <div class="disease-box">
+                        <h4>🚨 Small Bowel Obstruction</h4>
+                        <p><strong>Withhold medications:</strong> Laxatives (Senna), stimulants - they can worsen obstruction!</p>
+                        <p><strong>Paralytic Ileus Prevention:</strong> Increase ambulation post-op to promote peristalsis</p>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🫘 Urinary System - MUST KNOW
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Chronic Kidney Disease (CKD) - HIGH YIELD</h4>
+                    <div class="disease-box">
+                        <h4>🫘 CKD Monitoring</h4>
+                        <p><strong>Best measure of fluid retention:</strong> DAILY WEIGHT (most reliable!)</p>
+                        <p><strong>Lab Findings in AKI/CKD:</strong></p>
+                        <ul>
+                            <li>Elevated BUN</li>
+                            <li>Elevated Creatinine</li>
+                            <li>Hyperkalemia (dangerous!)</li>
+                            <li>Metabolic acidosis</li>
+                            <li>Anemia (decreased erythropoietin)</li>
+                        </ul>
+                    </div>
+
+                    <h4>Urinalysis Findings</h4>
+                    <table>
+                        <tr><th>Finding</th><th>Indicates</th></tr>
+                        <tr><td><strong>Hematuria</strong></td><td>Glomerular damage, hemorrhage, infection</td></tr>
+                        <tr><td><strong>Proteinuria</strong></td><td>Glomerular inflammation, increased permeability</td></tr>
+                        <tr><td><strong>Bacteriuria</strong></td><td>Urinary tract infection</td></tr>
+                        <tr><td><strong>Low Specific Gravity</strong></td><td>Renal failure (dilute urine)</td></tr>
+                        <tr><td><strong>Casts</strong></td><td>Kidney tubule inflammation</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🧬 Reproductive System - MUST KNOW
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="teacher-focus">
+                        <h4>🧬 CORPUS LUTEUM - Teacher's Focus!</h4>
+                        <table>
+                            <tr><th>Structure</th><th>Source</th><th>Function</th></tr>
+                            <tr><td><strong>Corpus Luteum</strong></td><td>Formed from ruptured ovarian follicle after ovulation</td><td>Produces PROGESTERONE to maintain early pregnancy until placenta takes over (~10-14 weeks)</td></tr>
+                        </table>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Temporary endocrine structure</li>
+                            <li>Secretes progesterone AND estrogen</li>
+                            <li>If pregnancy: functions until placenta takes over</li>
+                            <li>If no pregnancy: degenerates → menstruation</li>
+                        </ul>
+                    </div>
+
+                    <h4>Female Hormones</h4>
+                    <table>
+                        <tr><th>Hormone</th><th>Source</th><th>Function</th></tr>
+                        <tr><td><strong>Estrogen</strong></td><td>Ovaries (follicular cells)</td><td>Female secondary sex characteristics, reproductive organ development, endometrial proliferation</td></tr>
+                        <tr><td><strong>Progesterone</strong></td><td>Corpus luteum, then placenta</td><td>Maintains endometrium, supports pregnancy, relaxes uterine smooth muscle</td></tr>
+                        <tr><td><strong>hCG</strong></td><td>Zygote (after implantation)</td><td>Detected by pregnancy tests, maintains corpus luteum</td></tr>
+                        <tr><td><strong>Oxytocin</strong></td><td>Posterior pituitary</td><td>Uterine contractions during labor, milk ejection</td></tr>
+                    </table>
+
+                    <h4>Menstrual Cycle Phases</h4>
+                    <div class="mnemonic-box">
+                        <div class="mnemonic-text">Proliferative → Secretory → Menstrual</div>
+                    </div>
+                    <ul>
+                        <li><strong>Proliferative Phase:</strong> Estrogen causes endometrium to thicken (6-8x)</li>
+                        <li><strong>Secretory Phase:</strong> Progesterone makes lining vascular and ready for implantation</li>
+                        <li><strong>Menstrual Phase:</strong> Without fertilization, corpus luteum degenerates → hormone drop → shedding</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 17 - DIGESTIVE SYSTEM -->
+        <section id="chapter17" class="section">
+            <div class="card">
+                <h2>🍽️ Chapter 17: Digestive System Disorders</h2>
+                
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    📖 Key Terms - Digestive System (From PowerPoint)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="term-grid">
+                        <div class="term-card"><div class="term-name">Nutrition</div><div class="term-def">The process of ingesting and utilizing nutrients for energy</div></div>
+                        <div class="term-card"><div class="term-name">Nutrient</div><div class="term-def">Food or liquid that supplies the body with chemicals needed for metabolism</div></div>
+                        <div class="term-card"><div class="term-name">Macronutrients</div><div class="term-def">Proteins, lipids (fats), and carbohydrates</div></div>
+                        <div class="term-card"><div class="term-name">Micronutrients</div><div class="term-def">Vitamins and minerals</div></div>
+                        <div class="term-card"><div class="term-name">Essential Nutrients</div><div class="term-def">Nutrients that must be consumed regularly because the body cannot synthesize them in sufficient quantities</div></div>
+                        <div class="term-card"><div class="term-name">Satiety</div><div class="term-def">A feeling of fullness</div></div>
+                        <div class="term-card"><div class="term-name">Digestion</div><div class="term-def">Process by which food is broken down mechanically and chemically in the GI tract into absorbable components</div></div>
+                        <div class="term-card"><div class="term-name">Absorption</div><div class="term-def">The process of taking in nutrients and moving them to systemic circulation</div></div>
+                        <div class="term-card"><div class="term-name">Glycogenesis</div><div class="term-def">The formation of glycogen (stored glucose) from glucose molecules</div></div>
+                        <div class="term-card"><div class="term-name">Gluconeogenesis</div><div class="term-def">When the body manufactures glucose by breaking down muscle proteins; continued process causes muscle wasting</div></div>
+                        <div class="term-card"><div class="term-name">Chyme</div><div class="term-def">Semiliquid mixture of partially digested food formed in the stomach before moving to small intestine</div></div>
+                        <div class="term-card"><div class="term-name">Steatorrhea</div><div class="term-def">"Fatty diarrhea" - frequent bulky, greasy, loose stools with foul odor; indicates malabsorption</div></div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🔄 GI Tract Structure & Function
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images2/image7.png" alt="Digestive System Anatomy" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Complete digestive system anatomy</p>
+                    </div>
+                    
+                    <h4>Intake and Storage</h4>
+                    <p><strong>Hunger and Satiety Regulation:</strong> Controlled by the hypothalamus based on feedback from the GI tract</p>
+                    <ul>
+                        <li>Low blood glucose or empty GI tract → induces hunger</li>
+                        <li>Food in GI tract → triggers stretch receptors and insulin secretion → reduces appetite</li>
+                        <li>Fat stimulates cholecystokinin (CCK) → contributes to satiety</li>
+                        <li>Increased fat stores → leptin release → suppresses appetite, increases metabolism</li>
+                    </ul>
+                    
+                    <h4>Storage Sites</h4>
+                    <ul>
+                        <li><strong>Adipocytes:</strong> Store lipids as energy source</li>
+                        <li><strong>Liver:</strong> Stores vitamins A, B12, D, E, K, iron, copper, and glycogen</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🔬 Digestion & Absorption Process
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Digestion Process</h4>
+                    <table>
+                        <tr><th>Stage</th><th>Location</th><th>Process</th></tr>
+                        <tr><td><strong>Mechanical</strong></td><td>Mouth, Stomach</td><td>Chewing, churning of food</td></tr>
+                        <tr><td><strong>Chemical</strong></td><td>Mouth → Stomach → Small Intestine</td><td>Enzymes + bile convert substances into absorbable components</td></tr>
+                    </table>
+                    
+                    <p><strong>Digestion Pathway:</strong></p>
+                    <ol>
+                        <li>Chewing → food mixes with saliva (salivary amylase initiates carb digestion)</li>
+                        <li>Stomach → mixes with HCl, pepsin (protein digestion initiated)</li>
+                        <li>Small intestine → bile + pancreatic enzymes (final digestion)</li>
+                    </ol>
+
+                    <h4>Macronutrient Digestion</h4>
+                    
+                    <div class="image-container">
+                        <img src="images2/image10.png" alt="Carbohydrate Digestion" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Carbohydrate digestion flowchart</p>
+                    </div>
+
+                    <div class="image-container">
+                        <img src="images2/image8.png" alt="Protein Digestion" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Protein digestion pathway</p>
+                    </div>
+
+                    <div class="image-container">
+                        <img src="images2/image9.png" alt="Fat Digestion" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Fat digestion and absorption</p>
+                    </div>
+
+                    <h4>Macronutrients Breakdown</h4>
+                    <table>
+                        <tr><th>Nutrient</th><th>Digestion</th><th>Functions</th></tr>
+                        <tr><td><strong>Protein</strong></td><td>Broken down into amino acids (9 essential)</td><td>Build/maintain tissues, blood, enzymes, hormones, immune factors</td></tr>
+                        <tr><td><strong>Lipids (Fats)</strong></td><td>Require emulsification by bile salts</td><td>Energy source, organ protection, insulation, fat-soluble vitamin absorption</td></tr>
+                        <tr><td><strong>Carbohydrates</strong></td><td>Converted primarily to glucose</td><td>Primary energy source; fiber aids motility and reduces cholesterol</td></tr>
+                    </table>
+
+                    <h4>Micronutrients</h4>
+                    <table>
+                        <tr><th>Type</th><th>Examples</th><th>Key Points</th></tr>
+                        <tr><td><strong>Fat-Soluble Vitamins</strong></td><td>A, D, E, K</td><td>Stored in body; require fat for absorption</td></tr>
+                        <tr><td><strong>Water-Soluble Vitamins</strong></td><td>C, B1, B2, B3, B5, B6, B7, B9, B12</td><td>Not stored; excess excreted</td></tr>
+                        <tr><td><strong>Macrominerals</strong></td><td>Na+, K+, Ca+, P, Mg+, S</td><td>Needed in larger amounts</td></tr>
+                        <tr><td><strong>Microminerals</strong></td><td>Iron, zinc, fluoride, copper</td><td>Needed in trace amounts</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🚽 Stool Production & Elimination
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Normal Stool Characteristics</h4>
+                    <ul>
+                        <li>Firm, moist, semi-solid</li>
+                        <li>Brown color (stercobilin - bilirubin pigment)</li>
+                        <li>Transit time: 2-5 days from ingestion to elimination</li>
+                    </ul>
+
+                    <h4>Elimination Process</h4>
+                    <ol>
+                        <li>Fecal matter enters cecum via ileocecal valve</li>
+                        <li>Propelled toward rectum via peristalsis</li>
+                        <li>Water and electrolytes removed in large intestine</li>
+                        <li>Parasympathetic stimulation → internal anal sphincter relaxation</li>
+                        <li>Pudendal nerve allows voluntary control of external sphincter</li>
+                    </ol>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🤢 Vomiting & Clinical Manifestations
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images2/image12.png" alt="Vomiting Reflex" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Vomiting reflex mechanism</p>
+                    </div>
+
+                    <h4>Vomitus Characteristics</h4>
+                    <table>
+                        <tr><th>Appearance</th><th>Indicates</th></tr>
+                        <tr><td><strong>Hematemesis (coffee grounds)</strong></td><td>Blood partially digested in stomach</td></tr>
+                        <tr><td><strong>Yellow/Green</strong></td><td>Bile from duodenum</td></tr>
+                        <tr><td><strong>Dark Brown</strong></td><td>Content from lower intestine (obstruction)</td></tr>
+                        <tr><td><strong>Undigested Food</strong></td><td>Gastric emptying problem (pyloric obstruction)</td></tr>
+                    </table>
+
+                    <h4>Clinical Manifestations of GI Issues</h4>
+                    <table>
+                        <tr><th>Problem</th><th>Manifestations</th></tr>
+                        <tr><td><strong>Undernutrition</strong></td><td>Weight loss, muscle weakness/wasting, dehydration, fatigue, vitamin deficiencies</td></tr>
+                        <tr><td><strong>Malabsorption (carbs)</strong></td><td>Weight loss, diarrhea, bloating, cramping, flatulence</td></tr>
+                        <tr><td><strong>Malabsorption (fat)</strong></td><td>Steatorrhea - foul-smelling, greasy, diarrhea stools</td></tr>
+                        <tr><td><strong>Excessive Intake</strong></td><td>Weight gain, increased body fat, vitamin toxicity</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    ⚠️ Altered Nutrition & Bowel Elimination
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Causes of Malabsorption</h4>
+                    <ul>
+                        <li><strong>Processing problems:</strong> Pancreatic dysfunction, enzyme deficiencies, inadequate bile</li>
+                        <li><strong>Mucosal transport problems:</strong> Inflammatory conditions, GI atrophy, medications</li>
+                        <li><strong>Lymphatic obstruction:</strong> Neoplasms, infections</li>
+                    </ul>
+
+                    <h4>Food Allergies</h4>
+                    <p>Immune-mediated adverse reactions. Most common: eggs, peanuts, milk, soy, fish, shellfish, tree nuts, wheat</p>
+
+                    <h4>Altered Bowel Elimination</h4>
+                    <table>
+                        <tr><th>Cause</th><th>Consequences</th></tr>
+                        <tr><td><strong>Altered Motility</strong></td><td>Altered water/vitamin absorption, dumping syndrome, fecal impaction</td></tr>
+                        <tr><td><strong>Altered Perfusion</strong></td><td>Global (erosion of blood vessels) or Focal (clot, mass pressure) → ischemia, infarction, pain</td></tr>
+                        <tr><td><strong>Altered Patency</strong></td><td>Blockage (tumor, impaction) → distention, impaired motility, perforation</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🏥 Digestive System Disorders
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Upper GI Tract Disorders</h4>
+                    <table>
+                        <tr><th>Disorder</th><th>Key Points</th></tr>
+                        <tr><td><strong>GERD</strong></td><td>Reflux of gastric contents; manage with small meals, wait 1 hr before lying down</td></tr>
+                        <tr><td><strong>Gastritis</strong></td><td>Inflammation of stomach lining; caused by NSAIDs, alcohol, H. pylori</td></tr>
+                        <tr><td><strong>Peptic Ulcer</strong></td><td>Erosion in stomach/duodenum; H. pylori is major cause</td></tr>
+                        <tr><td><strong>Dumping Syndrome</strong></td><td>Rapid gastric emptying; causes weakness, dizziness, sweating after eating</td></tr>
+                    </table>
+
+                    <h4>Liver & Pancreas Disorders</h4>
+                    <table>
+                        <tr><th>Disorder</th><th>Key Points</th></tr>
+                        <tr><td><strong>Cholelithiasis</strong></td><td>Gallstones; risk factors: 4 F's (Fat, Female, Forty, Fertile)</td></tr>
+                        <tr><td><strong>Cirrhosis</strong></td><td>Liver fibrosis; lactulose decreases ammonia levels</td></tr>
+                        <tr><td><strong>Pancreatitis</strong></td><td>Inflammation; causes: alcohol, gallstones; severe abdominal pain</td></tr>
+                    </table>
+
+                    <h4>Lower GI Tract Disorders</h4>
+                    <table>
+                        <tr><th>Disorder</th><th>Key Points</th></tr>
+                        <tr><td><strong>IBS</strong></td><td>Functional disorder; pain, bloating, altered bowel habits</td></tr>
+                        <tr><td><strong>Appendicitis</strong></td><td>Inflammation; RLQ pain, rebound tenderness, fever</td></tr>
+                        <tr><td><strong>Diverticulitis</strong><//td><td>Inflammation of diverticula; LLQ pain, fever, avoid nuts/seeds during flare</td></tr>
+                        <tr><td><strong>SBO</strong></td><td>Obstruction; WITHHOLD laxatives! NPO, NG tube, monitor for perforation</td></tr>
+                    </table>
+                </div>
+
+                <div class="teacher-focus">
+                    <h3>⭐ NCLEX Connection Questions (From PowerPoint)</h3>
+                    <div class="disease-box">
+                        <h4>GERD Question</h4>
+                        <p><strong>A nurse is providing teaching for a client who has GERD. Which instruction should the nurse include?</p>
+                        <ol type="1">
+                            <li>"Sleep on your left side."</li>
+                            <li>"Drink milk to soothe your stomach."</li>
+                            <li>"Eat four small meals each day."</li>
+                            <li>"Wait to go to bed for 1 hr after eating."</li>
+                        </ol>
+                        <p><strong>Answer: 4</strong> - Wait at least 1 hour after eating before lying down to prevent reflux</p>
+                    </div>
+
+                    <div class="disease-box">
+                        <h4>Cirrhosis Question</h4>
+                        <p><strong>A nurse is administering lactulose to a client with cirrhosis who states, "I don't need this medication. I am not constipated." The nurse should explain that lactulose is used to decrease levels of which component?</p>
+                        <ol type="1">
+                            <li>Glucose</li>
+                            <li>Ammonia</li>
+                            <li>Potassium</li>
+                            <li>Bicarbonate</li>
+                        </ol>
+                        <p><strong>Answer: 2</strong> - Lactulose decreases ammonia levels by trapping it in the gut for elimination</p>
+                    </div>
+
+                    <div class="disease-box">
+                        <h4>Bowel Obstruction Question</h4>
+                        <p><strong>A nurse is reviewing medications for a client with a small bowel obstruction. Which medication should be withheld?</p>
+                        <ol type="1">
+                            <li>Senna</li>
+                            <li>Ibuprofen</li>
+                            <li>Omeprazole</li>
+                            <li>Zolpidem</li>
+                        </ol>
+                        <p><strong>Answer: 1</strong> - Senna is a laxative and should be withheld in bowel obstruction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 18 - URINARY SYSTEM -->
+        <section id="chapter18" class="section">
+            <div class="card">
+                <h2>🫘 Chapter 18: Urinary System Disorders</h2>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    📖 Key Terms - Urinary System (From PowerPoint)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="term-grid">
+                        <div class="term-card"><div class="term-name">Nephrons</div><div class="term-def">The functional units of the kidneys, forming urine through filtration, reabsorption, and secretion</div></div>
+                        <div class="term-card"><div class="term-name">Microscopic Hematuria</div><div class="term-def">Small amounts of blood in urine; associated with infection, inflammation, or tumors</div></div>
+                        <div class="term-card"><div class="term-name">Gross Hematuria</div><div class="term-def">Large numbers of RBCs visible in urine; indicates glomerular permeability or hemorrhage</div></div>
+                        <div class="term-card"><div class="term-name">Proteinuria/Albuminuria</div><div class="term-def">Leakage of albumin or plasma proteins into filtrate; indicates inflammation and increased glomerular permeability</div></div>
+                        <div class="term-card"><div class="term-name">Bacteriuria</div><div class="term-def">Bacteria in the urine; indicates UTI (pyuria = pus in urine)</div></div>
+                        <div class="term-card"><div class="term-name">Urinary Casts</div><div class="term-def">Microscopic molds of tubules; indicates kidney tubule inflammation</div></div>
+                        <div class="term-card"><div class="term-name">Specific Gravity</div><div class="term-def">Indicates tubules' ability to concentrate urine; very low = renal failure (assuming normal hydration)</div></div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🫘 Urine Production & Renal Function
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images2/image13.png" alt="Urinary System Anatomy" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Urinary system anatomy (kidneys, ureters, bladder)</p>
+                    </div>
+
+                    <h4>Renal System Functions</h4>
+                    <ul>
+                        <li>Regulation of body fluid volume and composition</li>
+                        <li>Elimination of metabolic wastes</li>
+                        <li>Synthesis, release, or activation of hormones:
+                            <ul>
+                                <li><strong>Erythropoietin:</strong> Stimulates RBC production</li>
+                                <li><strong>Renin:</strong> Blood pressure regulation</li>
+                                <li><strong>Vitamin D activation:</strong> Calcium metabolism</li>
+                            </ul>
+                        </li>
+                        <li>Regulation of blood pressure</li>
+                    </ul>
+
+                    <h4>Nephron Function</h4>
+                    <p><strong>The kidneys process 20-25% of cardiac output (~1000 mL blood/minute)</strong></p>
+                    <ol>
+                        <li><strong>Filtration:</strong> Filter substances from blood</li>
+                        <li><strong>Reabsorption:</strong> Return filtered nutrients and water to blood</li>
+                        <li><strong>Secretion:</strong> Move waste into tubules for excretion</li>
+                    </ol>
+
+                    <h4>Normal Urine Characteristics</h4>
+                    <ul>
+                        <li>Color: Straw to yellow</li>
+                        <li>Clarity: Clear</li>
+                        <li>Odor: Slight ammonia smell</li>
+                        <li>Volume: 750-2000 mL/day</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🚽 Urine Removal Process
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Micturition Reflex</h4>
+                    <ol>
+                        <li>Urine enters ureters → propelled by peristalsis to bladder</li>
+                        <li>Bladder filling activates stretch receptors</li>
+                        <li>Parasympathetic fibers stimulate detrusor muscle contraction</li>
+                        <li>Internal and external urethral sphincters relax</li>
+                        <li>Micturition (voiding) occurs</li>
+                    </ol>
+
+                    <h4>Altered Urinary Elimination - Causes</h4>
+                    <table>
+                        <tr><th>Alteration</th><th>Consequences</th></tr>
+                        <tr><td><strong>Motility</strong></td><td>Reduced contraction → stasis, cast formation, obstruction risk</td></tr>
+                        <tr><td><strong>Neuromuscular</strong></td><td>Failure of neural signals → retention or incontinence</td></tr>
+                        <tr><td><strong>Perfusion</strong></td><td>Global (vasoconstriction, low volume) or Focal (embolism) → ischemia, pain</td></tr>
+                        <tr><td><strong>Patency</strong></td><td>Blockage → dilation proximal to obstruction, stasis, infection</td></tr>
+                    </table>
+
+                    <h4>Clinical Manifestations</h4>
+                    <div class="signs-list">
+                        <div class="sign-item">Altered volume (<750 mL or >2000 mL/day)</div>
+                        <div class="sign-item">Cloudy or amber urine</div>
+                        <div class="sign-item">Hematuria (blood)</div>
+                        <div class="sign-item">Dysuria (painful urination)</div>
+                        <div class="sign-item">Distention</div>
+                        <div class="sign-item">Nausea, vomiting, anorexia</div>
+                        <div class="sign-item">Fever (infection)</div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    ⚠️ Urinary Tract Disorders
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Types of Urinary Disorders</h4>
+                    <table>
+                        <tr><th>Category</th><th>Examples</th></tr>
+                        <tr><td><strong>Infection</strong></td><td>UTI (simple or complicated)</td></tr>
+                        <tr><td><strong>Inflammation</strong></td><td>Nephrotic syndrome</td></tr>
+                        <tr><td><strong>Obstruction</strong></td><td>Calculi (kidney stones), tumors</td></tr>
+                        <tr><td><strong>Malfunction/Failure</strong></td><td>Acute Kidney Injury (AKI) vs Chronic Kidney Disease (CKD)</td></tr>
+                    </table>
+
+                    <div class="disease-box">
+                        <h4>🫘 Chronic Kidney Disease (CKD)</h4>
+                        <p><strong>Best Measure of Fluid Retention:</strong> DAILY WEIGHT (most reliable!)</p>
+                        <p><strong>Lab Findings:</strong></p>
+                        <ul>
+                            <li>↑ BUN and Creatinine</li>
+                            <li>↑ Potassium (hyperkalemia) - dangerous!</li>
+                            <li>Metabolic acidosis</li>
+                            <li>↓ Calcium, ↑ Phosphorus</li>
+                            <li>Anemia (↓ erythropoietin)</li>
+                        </ul>
+                    </div>
+
+                    <div class="disease-box">
+                        <h4>🫘 Acute Kidney Injury (AKI)</h4>
+                        <p><strong>Lab Findings:</strong></p>
+                        <ul>
+                            <li>Elevated BUN</li>
+                            <li>Hyperkalemia</li>
+                            <li>Metabolic acidosis</li>
+                            <li>Fluid retention</li>
+                        </ul>
+                        <div class="alert alert-danger">
+                            <span class="alert-icon">🚨</span>
+                            <div><strong>Monitor for:</strong> Hyperkalemia can cause life-threatening cardiac arrhythmias!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="teacher-focus">
+                    <h3>⭐ NCLEX Connection Questions (From PowerPoint)</h3>
+                    <div class="disease-box">
+                        <h4>CKD Fluid Monitoring</h4>
+                        <p><strong>A nurse is assessing a client who has chronic kidney disease for fluid volume increase. Which provides a reliable measure of fluid retention?</p>
+                        <ol type="1">
+                            <li>Daily weight</li>
+                            <li>Sodium level</li>
+                            <li>Tissue turgor</li>
+                            <li>Intake and output</li>
+                        </ol>
+                        <p><strong>Answer: 1</strong> - Daily weight is the most reliable measure of fluid retention</p>
+                    </div>
+
+                    <div class="disease-box">
+                        <h4>AKI Lab Findings</h4>
+                        <p><strong>A nurse is monitoring a client who has acute kidney injury. Which laboratory finding should the nurse expect?</p>
+                        <ol type="1">
+                            <li>Hypokalemia</li>
+                            <li>Metabolic alkalosis</li>
+                            <li>Hypercalcemia</li>
+                            <li>Elevated BUN</li>
+                        </ol>
+                        <p><strong>Answer: 4</strong> - Elevated BUN is expected in AKI due to decreased kidney function</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 19 - REPRODUCTIVE SYSTEM -->
+        <section id="chapter19" class="section">
+            <div class="card">
+                <h2>🧬 Chapter 19: Reproductive System Disorders</h2>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    📖 Key Terms - Reproductive System (From PowerPoint)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="term-grid">
+                        <div class="term-card"><div class="term-name">Spermatogenesis</div><div class="term-def">Process by which sperm are formed in the testes</div></div>
+                        <div class="term-card"><div class="term-name">Oogenesis</div><div class="term-def">Process by which oocytes are formed in the ovaries</div></div>
+                        <div class="term-card"><div class="term-name">Estrogen(s)</div><div class="term-def">Primary female sex hormones (estrone E1, estradiol E2, estriol E3); dominate from menstruation to ovulation</div></div>
+                        <div class="term-card"><div class="term-name">Progesterone</div><div class="term-def">Female sex hormone secreted in large amounts from ovulation to menstruation</div></div>
+                        <div class="term-card"><div class="term-name">Endometrium</div><div class="term-def">Lining of the uterus; growth allows zygote implantation and nourishment</div></div>
+                        <div class="term-card"><div class="term-name">Infertility</div><div class="term-def">Inability to achieve pregnancy after 1 year of unprotected regular intercourse</div></div>
+                        <div class="term-card"><div class="term-name">Amenorrhea</div><div class="term-def">Absence of menstruation; primary (never occurred) or secondary (cessation after previous cycles)</div></div>
+                        <div class="term-card"><div class="term-name">Dysmenorrhea</div><div class="term-def">Painful menstruation; primary (begins with ovulation) or secondary (from pelvic disorders)</div></div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    ♂️ Male Reproductive System
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Male Reproductive Structures</h4>
+                    <p>Testes, epididymis, vas deferens, seminal vesicles, prostate, penis</p>
+
+                    <h4>Male Hormones (Not Cyclic!)</h4>
+                    <table>
+                        <tr><th>Hormone</th><th>Source</th><th>Function</th></tr>
+                        <tr><td><strong>FSH</strong></td><td>Pituitary</td><td>Acts on nurse cells (Sertoli cells) → secrete inhibin → suppresses GnRH</td></tr>
+                        <tr><td><strong>LH</strong></td><td>Pituitary</td><td>Acts on Leydig cells → produce testosterone</td></tr>
+                        <tr><td><strong>Testosterone</strong></td><td>Leydig cells (testes)</td><td>Primary male sex hormone; reproductive organ development, sperm production, muscle mass, deep voice, body hair</td></tr>
+                    </table>
+
+                    <h4>Testosterone Functions</h4>
+                    <ul>
+                        <li>Development and function of reproductive organs</li>
+                        <li>Sperm production and maturation</li>
+                        <li>Protein metabolism and muscle mass</li>
+                        <li>Skin thickness</li>
+                        <li>Sebaceous gland activity</li>
+                        <li>Growth of pubic, chest, and facial hair</li>
+                        <li>Maturation of larynx (deeper voice)</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    ♀️ Female Reproductive System
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>External Genitalia</h4>
+                    <p>Mons pubis, labia majora, labia minora, clitoris, vestibule, Bartholin glands, Skene glands, vaginal orifice, perineum</p>
+                    <p><strong>Primary purpose:</strong> Protection and lubrication</p>
+
+                    <h4>Internal Structures</h4>
+                    <p>Vagina, uterus, uterine tubes (fallopian tubes), ovaries</p>
+
+                    <h4>Female Hormones</h4>
+                    <table>
+                        <tr><th>Hormone</th><th>Source</th><th>Function</th></tr>
+                        <tr><td><strong>Estrogen</strong></td><td>Ovaries (follicular cells)</td><td>Reproductive organ development, secondary sex characteristics, endometrial proliferation, ovulation support, bone integrity</td></tr>
+                        <tr><td><strong>Progesterone</strong></td><td>Corpus luteum → placenta</td><td>Thickens endometrium for implantation, maintains pregnancy, relaxes uterine smooth muscle</td></tr>
+                        <tr><td><strong>hCG</strong></td><td>Zygote (after implantation)</td><td>Detected by pregnancy tests, maintains corpus luteum early in pregnancy</td></tr>
+                        <tr><td><strong>Oxytocin</strong></td><td>Posterior pituitary</td><td>Uterine contractions during labor, milk ejection during lactation</td></tr>
+                        <tr><td><strong>Prolactin</strong></td><td>Anterior pituitary</td><td>Lactation during and after pregnancy</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🔄 Ovulation & Menstrual Cycle
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="teacher-focus">
+                        <h4>🧬 CORPUS LUTEUM - MUST KNOW!</h4>
+                        <p>The corpus luteum is formed from the ruptured ovarian follicle after ovulation. It is a <strong>temporary endocrine structure</strong> that:</p>
+                        <ul>
+                            <li>Secretes large amounts of <strong>progesterone and estrogen</strong></li>
+                            <li><strong>If pregnancy occurs:</strong> Maintains pregnancy until placenta takes over (~10-14 weeks)</li>
+                            <li><strong>If no pregnancy:</strong> Degenerates within ~14 days → hormone levels drop → menstruation</li>
+                        </ul>
+                    </div>
+
+                    <h4>Follicular Phase</h4>
+                    <ol>
+                        <li>FSH and LH stimulate secondary follicles</li>
+                        <li>Follicles enlarge and secrete estrogen</li>
+                        <li>Dominant follicle continues secreting estrogen</li>
+                        <li>Pituitary decreases FSH</li>
+                        <li>Oocyte breaks through follicle (ovulation)</li>
+                    </ol>
+
+                    <h4>Luteal Phase</h4>
+                    <ol>
+                        <li>Ruptured follicle forms corpus luteum</li>
+                        <li>Corpus luteum secretes progesterone and estrogen</li>
+                        <li><strong>If pregnancy:</strong> Progesterone supports pregnancy until placenta forms</li>
+                        <li><strong>If no pregnancy:</strong> Corpus luteum degenerates → hormone drop → menstruation</li>
+                    </ol>
+
+                    <h4>Endometrial Cycle</h4>
+                    <table>
+                        <tr><th>Phase</th><th>Timing</th><th>Hormone</th><th>Endometrium Changes</th></tr>
+                        <tr><td><strong>Proliferative</strong></td><td>End of menstruation to ovulation</td><td>Estrogen</td><td>Thickness increases 6-8x</td></tr>
+                        <tr><td><strong>Secretory</strong></td><td>Ovulation to beginning of menstruation</td><td>Progesterone</td><td>Becomes thick, vascular, swollen; ready for implantation</td></tr>
+                        <tr><td><strong>Menstrual</strong></td><td>Without fertilization</td><td>Hormone drop</td><td>Shedding of superficial layer</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    ⚠️ Altered Reproductive Function
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Female Infertility Causes</h4>
+                    <table>
+                        <tr><th>Cause</th><th>Examples</th></tr>
+                        <tr><td><strong>Hormonal Imbalance</strong></td><td>Absence of or infrequent ovulation (amenorrhea, anovulation)</td></tr>
+                        <tr><td><strong>Motility Impairment</strong></td><td>Adhesions or obstruction (endometriosis, leiomyoma)</td></tr>
+                        <tr><td><strong>Immune Problems</strong></td><td>Antibodies to sperm (destroy sperm before reaching oocyte)</td></tr>
+                        <tr><td><strong>Pain</strong></td><td>Infection, inflammation, painful intercourse (STI, PID)</td></tr>
+                    </table>
+
+                    <h4>Male Infertility Causes</h4>
+                    <table>
+                        <tr><th>Cause</th><th>Examples</th></tr>
+                        <tr><td><strong>Hormonal Imbalance</strong></td><td>Low testosterone impairs sperm production</td></tr>
+                        <tr><td><strong>Pain</strong></td><td>Infection or inflammation (STI, scrotal/testicular pain)</td></tr>
+                        <tr><td><strong>Temperature Issues</strong></td><td>Cryptorchidism (undescended testes), excessive heat to scrotum</td></tr>
+                    </table>
+
+                    <h4>Reproductive System Disorders</h4>
+                    <table>
+                        <tr><th>Male</th><th>Female</th></tr>
+                        <tr><td>Testicular torsion</td><td>Endometriosis</td></tr>
+                        <tr><td>Prostatitis</td><td>Vaginal yeast infection</td></tr>
+                        <tr><td>Benign prostatic hyperplasia (BPH)</td><td>Pelvic inflammatory disease (PID)</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAMES SECTION -->
+        <section id="games" class="section">
+            <div class="card">
+                <h2>🎮 Interactive Games</h2>
+                <p>Practice your knowledge with these fun, interactive games! All games now have multiple choice format with clear right/wrong feedback.</p>
+
+                <div class="tiles-grid">
+                    <div class="tile" onclick="showGame('speed')">⚡ Speed Round</div>
+                    <div class="tile" onclick="showGame('match')">🔗 Term Match</div>
+                    <div class="tile" onclick="showGame('millionaire')">💰 Millionaire</div>
+                    <div class="tile" onclick="showGame('jeopardy')">🏆 Jeopardy</div>
+                </div>
+
+                <div id="game-area"></div>
+            </div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section id="quiz" class="section">
+            <div class="card">
+                <h2>📝 NCLEX Practice Quiz (55 Questions)</h2>
+                <p>Test your knowledge with these Next Gen NCLEX-style questions. Click the HINT button if you need help!</p>
+                
+                <div class="quiz-container" id="quiz-container">
+                    <!-- Questions will be loaded by JavaScript -->
+                </div>
+                
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="game-btn" onclick="submitQuiz()">Submit Quiz</button>
+                    <button class="game-btn" onclick="resetQuiz()" style="background: linear-gradient(135deg, var(--coral), #c53030);">Reset Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS SECTION -->
+        <section id="flashcards" class="section">
+            <div class="card">
+                <h2>🃏 Interactive Flashcards</h2>
+                <p>Click on a card to flip it and see the answer. Use these to memorize key terms!</p>
+                
+                <div id="flashcard-area"></div>
+                
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="game-btn" onclick="prevFlashcard()">← Previous</button>
+                    <button class="game-btn" onclick="nextFlashcard()">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VAULT SECTION -->
+        <section id="vault" class="section">
+            <div class="card">
+                <h2>🔐 Wrong Answer Vault</h2>
+                <p>Questions you answer incorrectly will appear here. Review them to improve!</p>
+                
+                <div class="alert alert-info">
+                    <span class="alert-icon">💡</span>
+                    <div>
+                        <strong>How it works:</strong> When you answer quiz questions incorrectly, they automatically get saved here. Review these to focus your studying!
+                    </div>
+                </div>
+                
+                <div id="vault-container">
+                    <p style="text-align: center; color: #718096; font-style: italic;">No wrong answers yet - take the quiz to populate your vault!</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="game-btn" onclick="clearVault()" style="background: linear-gradient(135deg, var(--coral), #c53030);">Clear Vault</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeModal()">
+        <img src="" alt="Enlarged image">
+    </div>
+
+    <script>
+        // Quiz Questions Data - 55 Questions
+        const quizQuestions = [
+            // Chapter 17 - Digestive System (20 questions)
+            {
+                question: "A nurse is providing teaching for a client who has gastroesophageal reflux disease (GERD). Which instruction should the nurse include?",
+                options: ["Sleep on your left side", "Drink milk to soothe your stomach", "Eat four small meals each day", "Wait to go to bed for 1 hour after eating"],
+                correct: 3,
+                hint: "GERD is worsened by lying down shortly after eating. What time frame would prevent reflux?",
+                explanation: "Clients with GERD should wait at least 1 hour after eating before lying down to prevent reflux."
+            },
+            {
+                question: "A nurse is preparing to administer lactulose to a client with cirrhosis. The client states, 'I don't need this medication. I am not constipated.' The nurse should explain that lactulose is used to decrease levels of which component?",
+                options: ["Glucose", "Ammonia", "Potassium", "Bicarbonate"],
+                correct: 1,
+                hint: "In cirrhosis, the liver cannot convert this waste product to urea. Lactulose helps eliminate it through the GI tract.",
+                explanation: "Lactulose decreases ammonia levels by trapping it in the gut for elimination, preventing hepatic encephalopathy."
+            },
+            {
+                question: "A nurse is assessing a client who has advanced cirrhosis. Which manifestation should the nurse expect?",
+                options: ["Petechiae", "Hypertension", "Osteoarthritis", "Peripheral ulcers"],
+                correct: 0,
+                hint: "Cirrhosis affects the liver's ability to produce clotting factors and platelets.",
+                explanation: "Petechiae occur in cirrhosis due to decreased platelet production (thrombocytopenia) and impaired clotting factor synthesis."
+            },
+            {
+                question: "A nurse is reviewing the medication list for a client who has a new diagnosis of a small bowel obstruction. The nurse should withhold which medication?",
+                options: ["Senna", "Ibuprofen", "Omeprazole", "Zolpidem"],
+                correct: 0,
+                hint: "This medication stimulates bowel motility, which could worsen an obstruction.",
+                explanation: "Senna is a stimulant laxative that should be withheld in bowel obstruction as it could worsen the blockage or cause perforation."
+            },
+            {
+                question: "A nurse is planning care for a client who is postoperative and at risk for paralytic ileus. Which intervention should the nurse plan to promote peristalsis?",
+                options: ["Increase ambulation", "Decrease fluid intake", "Increase protein intake", "Offer the client the bedpan every 2 hours"],
+                correct: 0,
+                hint: "Movement and activity help stimulate the digestive system after surgery.",
+                explanation: "Early and increased ambulation stimulates peristalsis and helps prevent paralytic ileus in postoperative patients."
+            },
+            {
+                question: "What is the process by which food is broken down mechanically and chemically in the gastrointestinal tract?",
+                options: ["Absorption", "Digestion", "Peristalsis", "Glycogenesis"],
+                correct: 1,
+                hint: "This process converts food into absorbable components.",
+                explanation: "Digestion is the process by which food is broken down mechanically and chemically into absorbable components."
+            },
+            {
+                question: "Which term describes 'fatty diarrhea' with bulky, greasy, foul-smelling stools?",
+                options: ["Melena", "Hematemesis", "Steatorrhea", "Chyme"],
+                correct: 2,
+                hint: "This condition is characteristic of malabsorption syndromes.",
+                explanation: "Steatorrhea is 'fatty diarrhea' marked by frequent bulky, greasy, loose stools with foul odor, indicating fat malabsorption."
+            },
+            {
+                question: "What are the three macronutrients?",
+                options: ["Vitamins, minerals, water", "Proteins, lipids, carbohydrates", "Iron, calcium, zinc", "A, B, C, D vitamins"],
+                correct: 1,
+                hint: "These are the nutrients needed in large amounts for energy.",
+                explanation: "Macronutrients are proteins, lipids (fats), and carbohydrates - nutrients required in large amounts for energy and body functions."
+            },
+            {
+                question: "The formation of glycogen from glucose molecules is called:",
+                options: ["Gluconeogenesis", "Glycogenesis", "Glycolysis", "Glycogenolysis"],
+                correct: 1,
+                hint: "This process stores glucose for later use.",
+                explanation: "Glycogenesis is the formation of glycogen (stored glucose) from glucose molecules."
+            },
+            {
+                question: "Which hormone contributes to satiety and suppresses appetite?",
+                options: ["Ghrelin", "Leptin", "Gastrin", "Secretin"],
+                correct: 1,
+                hint: "This hormone is released from fat stores.",
+                explanation: "Leptin is released from adipose tissue and suppresses appetite, increases energy expenditure, and increases metabolism."
+            },
+            {
+                question: "What is the normal transit time for stool from ingestion to elimination?",
+                options: ["6-12 hours", "12-24 hours", "2-5 days", "1 week"],
+                correct: 2,
+                hint: "This varies based on diet but typically takes several days.",
+                explanation: "The time from ingestion to elimination varies from 2 to 5 days and depends on dietary intake of nutrients."
+            },
+            {
+                question: "Yellow or greenish-stained vomitus usually contains:",
+                options: ["Blood", "Bile", "Undigested food", "Gastric acid"],
+                correct: 1,
+                hint: "This color indicates contents from the duodenum.",
+                explanation: "Yellow- or greenish-stained vomitus usually contains bile from the duodenum."
+            },
+            {
+                question: "Which fat-soluble vitamins are stored in the liver?",
+                options: ["Vitamins B and C", "Vitamins A, D, E, and K", "Vitamins B1, B2, and B3", "Vitamin C only"],
+                correct: 1,
+                hint: "These vitamins require fat for absorption and can be stored in the body.",
+                explanation: "Fat-soluble vitamins A, D, E, and K are stored in the liver along with vitamins B12 and folic acid."
+            },
+            {
+                question: "Which digestive enzyme begins carbohydrate digestion in the mouth?",
+                options: ["Pepsin", "Salivary amylase", "Lipase", "Trypsin"],
+                correct: 1,
+                hint: "This enzyme is found in saliva.",
+                explanation: "Salivary amylase initiates carbohydrate digestion in the mouth by splitting starch into disaccharides."
+            },
+            {
+                question: "A client with GERD should avoid which of the following?",
+                options: ["Small, frequent meals", "Lying down after eating", "Elevating the head of the bed", "Weight loss if overweight"],
+                correct: 1,
+                hint: "This position worsens reflux by allowing acid to flow backward.",
+                explanation: "Clients with GERD should avoid lying down for at least 1 hour after eating to prevent reflux."
+            },
+            {
+                question: "What is the main purpose of lactulose in cirrhosis?",
+                options: ["To treat constipation", "To decrease ammonia levels", "To increase bile production", "To reduce ascites"],
+                correct: 1,
+                hint: "The liver cannot detoxify this substance in cirrhosis.",
+                explanation: "In cirrhosis, lactulose is used to decrease ammonia levels by trapping it in the gut for elimination."
+            },
+            {
+                question: "What is the most common cause of peptic ulcers?",
+                options: ["Stress", "Spicy foods", "H. pylori infection", "Alcohol consumption"],
+                correct: 2,
+                hint: "This is a bacterial infection that damages the stomach lining.",
+                explanation: "Helicobacter pylori (H. pylori) infection is the most common cause of peptic ulcers."
+            },
+            {
+                question: "Which of the following is a risk factor for gallstones (cholelithiasis)?",
+                options: ["Male gender", "Young age", "Low-fat diet", "Female gender, age over 40, obesity, multiparity"],
+                correct: 3,
+                hint: "Remember the '4 F's' risk factors.",
+                explanation: "Risk factors for gallstones include the '4 Fs': Fat, Female, Forty (age), and Fertile (multiparity)."
+            },
+            {
+                question: "What indicates the presence of blood in stool that is not visible to the eye?",
+                options: ["Melena", "Frank blood", "Occult blood", "Hematemesis"],
+                correct: 2,
+                hint: "This type of blood is detected by laboratory tests like guaiac.",
+                explanation: "Occult blood refers to small, hidden amounts of blood in stool that are detectable by tests but not visible."
+            },
+            {
+                question: "Dumping syndrome is characterized by:",
+                options: ["Slow gastric emptying", "Rapid gastric emptying", "Delayed intestinal motility", "Increased gastric acid secretion"],
+                correct: 1,
+                hint: "This occurs after gastric surgery when food moves too quickly into the small intestine.",
+                explanation: "Dumping syndrome involves rapid gastric emptying, causing weakness, dizziness, and sweating after eating."
+            },
+            // Chapter 18 - Urinary System (18 questions)
+            {
+                question: "A nurse is assessing a client who has chronic kidney disease for fluid volume increase. Which provides a reliable measure of fluid retention?",
+                options: ["Daily weight", "Sodium level", "Tissue turgor", "Intake and output"],
+                correct: 0,
+                hint: "This measurement is the most objective and reliable for detecting fluid changes.",
+                explanation: "Daily weight is the most reliable measure of fluid retention in CKD patients."
+            },
+            {
+                question: "A nurse is monitoring a client who has acute kidney injury. Which laboratory finding should the nurse expect?",
+                options: ["Hypokalemia", "Metabolic alkalosis", "Hypercalcemia", "Elevated BUN"],
+                correct: 3,
+                hint: "This lab value increases when the kidneys cannot filter waste products.",
+                explanation: "Elevated BUN is expected in AKI due to the kidneys' decreased ability to excrete waste products."
+            },
+            {
+                question: "What are the functional units of the kidneys?",
+                options: ["Glomeruli", "Nephrons", "Tubules", "Calyces"],
+                correct: 1,
+                hint: "These structures perform filtration, reabsorption, and secretion.",
+                explanation: "Nephrons are the functional units of the kidneys, forming urine through filtration, reabsorption, and secretion."
+            },
+            {
+                question: "What does proteinuria indicate?",
+                options: ["Normal kidney function", "Glomerular inflammation and increased permeability", "Excessive water intake", "Kidney stones"],
+                correct: 1,
+                hint: "Proteins should not normally pass through the glomerular membrane.",
+                explanation: "Proteinuria indicates leakage of albumin or plasma proteins into the filtrate due to inflammation and increased glomerular permeability."
+            },
+            {
+                question: "What does a very low specific gravity indicate?",
+                options: ["Dehydration", "Renal failure (dilute urine)", "Diabetes mellitus", "Urinary tract infection"],
+                correct: 1,
+                hint: "The kidneys lose their ability to concentrate urine.",
+                explanation: "A very low specific gravity indicates dilute urine, usually related to renal failure (assuming normal hydration)."
+            },
+            {
+                question: "What percentage of cardiac output do the kidneys receive?",
+                options: ["5-10%", "10-15%", "20-25%", "30-35%"],
+                correct: 2,
+                hint: "The kidneys receive a significant portion of blood flow for filtration.",
+                explanation: "The kidneys process 20-25% of cardiac output, approximately 1000 mL of blood per minute."
+            },
+            {
+                question: "Normal urine output per day is:",
+                options: ["250-500 mL", "750-2000 mL", "2000-3000 mL", "3000-4000 mL"],
+                correct: 1,
+                hint: "This is the normal range for daily urine production in adults.",
+                explanation: "Normal urine output is 750-2000 mL/day. Less than 750 mL indicates oliguria."
+            },
+            {
+                question: "What are urinary casts?",
+                options: ["Kidney stones", "Microscopic molds of tubules", "Blood clots in urine", "Bacterial colonies"],
+                correct: 1,
+                hint: "These indicate inflammation of the kidney tubules.",
+                explanation: "Urinary casts are microscopic-sized molds of the tubules that may indicate inflammation of the kidney tubules."
+            },
+            {
+                question: "Which hormone is produced by the kidneys to stimulate red blood cell production?",
+                options: ["Renin", "Erythropoietin", "ADH", "Aldosterone"],
+                correct: 1,
+                hint: "This hormone acts on the bone marrow.",
+                explanation: "Erythropoietin is produced by the kidneys to stimulate red blood cell production in the bone marrow."
+            },
+            {
+                question: "What is the most dangerous electrolyte imbalance in kidney failure?",
+                options: ["Hyponatremia", "Hypocalcemia", "Hyperkalemia", "Hypomagnesemia"],
+                correct: 2,
+                hint: "This electrolyte imbalance can cause life-threatening cardiac arrhythmias.",
+                explanation: "Hyperkalemia is the most dangerous electrolyte imbalance in kidney failure as it can cause cardiac arrhythmias and death."
+            },
+            {
+                question: "What is the term for bacteria in the urine?",
+                options: ["Hematuria", "Proteinuria", "Bacteriuria", "Pyuria"],
+                correct: 2,
+                hint: "This finding indicates a possible urinary tract infection.",
+                explanation: "Bacteriuria is the presence of bacteria in the urine, which may indicate infection. Pyuria refers to pus in urine."
+            },
+            {
+                question: "Large numbers of red blood cells visible in urine is called:",
+                options: ["Microscopic hematuria", "Gross hematuria", "Proteinuria", "Bacteriuria"],
+                correct: 1,
+                hint: "This type of hematuria is visible to the naked eye.",
+                explanation: "Gross hematuria involves large numbers of RBCs visible in urine, indicating increased glomerular permeability or hemorrhage."
+            },
+            {
+                question: "What is the primary purpose of the micturition reflex?",
+                options: ["To produce urine", "To empty the bladder", "To filter blood", "To reabsorb water"],
+                correct: 1,
+                hint: "This reflex allows for voluntary urination.",
+                explanation: "The micturition reflex coordinates bladder contraction and sphincter relaxation to allow urination."
+            },
+            {
+                question: "Which finding would indicate a possible urinary tract obstruction?",
+                options: ["Increased urine output", "Dilation of structures proximal to obstruction", "Decreased specific gravity", "Increased erythropoietin"],
+                correct: 1,
+                hint: "Blockage causes backup of urine.",
+                explanation: "Urinary obstruction causes dilation of structures proximal to the blockage, stasis of urine, and risk of infection."
+            },
+            {
+                question: "Metabolic acidosis in kidney failure is caused by:",
+                options: ["Excessive bicarbonate production", "Accumulation of acids and inability to excrete them", "Excessive potassium retention", "Increased carbon dioxide levels"],
+                correct: 1,
+                hint: "The kidneys normally excrete acid waste products.",
+                explanation: "In kidney failure, metabolic acidosis occurs due to accumulation of acids and inability to excrete hydrogen ions."
+            },
+            {
+                question: "What is nephrotic syndrome characterized by?",
+                options: ["Hematuria and flank pain", "Massive proteinuria, hypoalbuminemia, and edema", "Frequent UTIs", "Kidney stones"],
+                correct: 1,
+                hint: "This involves significant protein loss in urine.",
+                explanation: "Nephrotic syndrome is characterized by massive proteinuria, hypoalbuminemia, and edema."
+            },
+            {
+                question: "Which is a cause of acute kidney injury?",
+                options: ["Chronic hypertension", "Diabetes mellitus", "Severe dehydration or shock", "Long-term NSAID use"],
+                correct: 2,
+                hint: "This cause leads to decreased renal perfusion.",
+                explanation: "Severe dehydration or shock can cause acute kidney injury by decreasing renal blood flow and perfusion."
+            },
+            {
+                question: "What is the normal color and clarity of urine?",
+                options: ["Dark amber and cloudy", "Straw to yellow and clear", "Red-tinged and hazy", "Colorless and foamy"],
+                correct: 1,
+                hint: "Normal urine should be transparent and pale.",
+                explanation: "Normal urine is straw to yellow in color, clear in clarity, with a slight ammonia smell."
+            },
+            // Chapter 19 - Reproductive System (17 questions)
+            {
+                question: "What is the process by which sperm are formed in the testes?",
+                options: ["Oogenesis", "Spermatogenesis", "Fertilization", "Meiosis"],
+                correct: 1,
+                hint: "This process occurs continuously in males after puberty.",
+                explanation: "Spermatogenesis is the process by which sperm are formed in the testes."
+            },
+            {
+                question: "What is the corpus luteum's primary function?",
+                options: ["Produce estrogen only", "Produce progesterone to maintain early pregnancy", "Release the oocyte", "Produce FSH and LH"],
+                correct: 1,
+                hint: "This temporary structure forms after ovulation.",
+                explanation: "The corpus luteum produces progesterone to maintain the endometrium and support early pregnancy until the placenta takes over."
+            },
+            {
+                question: "Which hormone is detected by pregnancy tests?",
+                options: ["Estrogen", "Progesterone", "Human chorionic gonadotropin (hCG)", "Luteinizing hormone"],
+                correct: 2,
+                hint: "This hormone is produced by the zygote after implantation.",
+                explanation: "hCG is produced by the zygote after implantation and is detected by pregnancy tests."
+            },
+            {
+                question: "What is the definition of infertility?",
+                options: ["Inability to conceive after 6 months of trying", "Inability to achieve pregnancy after 1 year of unprotected regular intercourse", "Having multiple miscarriages", "Absence of menstrual periods"],
+                correct: 1,
+                hint: "This is the clinical definition involving a specific time frame.",
+                explanation: "Infertility is defined as the inability to achieve pregnancy after 1 year of unprotected regular intercourse."
+            },
+            {
+                question: "Which phase of the menstrual cycle is characterized by endometrial thickening due to estrogen?",
+                options: ["Menstrual phase", "Proliferative phase", "Secretory phase", "Luteal phase"],
+                correct: 1,
+                hint: "This phase occurs from the end of menstruation to ovulation.",
+                explanation: "The proliferative phase is characterized by endometrial thickening (6-8x) due to estrogen stimulation."
+            },
+            {
+                question: "What is the primary male sex hormone?",
+                options: ["FSH", "LH", "Testosterone", "Inhibin"],
+                correct: 2,
+                hint: "This hormone is produced by Leydig cells in the testes.",
+                explanation: "Testosterone is the primary male sex hormone, responsible for reproductive development, sperm production, and male characteristics."
+            },
+            {
+                question: "Absence of menstruation is called:",
+                options: ["Dysmenorrhea", "Amenorrhea", "Menorrhagia", "Oligomenorrhea"],
+                correct: 1,
+                hint: "This term describes the complete absence of menstrual periods.",
+                explanation: "Amenorrhea is the absence of menstruation. Primary = never occurred; Secondary = cessation after previous cycles."
+            },
+            {
+                question: "Which hormone causes uterine contractions during labor and milk ejection during lactation?",
+                options: ["Prolactin", "Estrogen", "Oxytocin", "Progesterone"],
+                correct: 2,
+                hint: "This hormone is also known as the 'love hormone'.",
+                explanation: "Oxytocin stimulates uterine contractions during labor and milk ejection during lactation."
+            },
+            {
+                question: "What is the average length of the ovulation cycle?",
+                options: ["14 days", "21 days", "28 days", "35 days"],
+                correct: 2,
+                hint: "This is considered the 'textbook' cycle length.",
+                explanation: "The ovulation cycle averages 28 days, but can range from 21-40 days."
+            },
+            {
+                question: "Which of the following is a cause of male infertility?",
+                options: ["Excessive physical activity", "Cryptorchidism (undescended testes)", "High protein diet", "Frequent ejaculation"],
+                correct: 1,
+                hint: "This condition affects the temperature required for sperm production.",
+                explanation: "Cryptorchidism causes inadequate scrotal temperature, impairing sperm production and leading to infertility."
+            },
+            {
+                question: "The endometrial phase that occurs from ovulation to menstruation is called:",
+                options: ["Proliferative phase", "Secretory phase", "Follicular phase", "Menstrual phase"],
+                correct: 1,
+                hint: "Progesterone dominates this phase, making the lining vascular and ready for implantation.",
+                explanation: "The secretory phase occurs from ovulation to menstruation, when progesterone makes the endometrium thick and vascular."
+            },
+            {
+                question: "Which female hormones are secreted by the ovaries?",
+                options: ["FSH and LH", "Estrogen and progesterone", "hCG and prolactin", "Testosterone and inhibin"],
+                correct: 1,
+                hint: "These are the primary female sex hormones.",
+                explanation: "Estrogen and progesterone are the primary female sex hormones secreted by the ovaries."
+            },
+            {
+                question: "Painful menstruation is called:",
+                options: ["Amenorrhea", "Dysmenorrhea", "Menorrhagia", "Metrorrhagia"],
+                correct: 1,
+                hint: "This term refers to painful periods.",
+                explanation: "Dysmenorrhea refers to painful menstruation. Primary = begins with ovulation; Secondary = caused by pelvic disorders."
+            },
+            {
+                question: "What is the role of FSH in males?",
+                options: ["Produce testosterone", "Stimulate nurse cells (Sertoli cells)", "Cause sperm release", "Produce LH"],
+                correct: 1,
+                hint: "FSH acts on specific cells in the testes.",
+                explanation: "FSH acts on nurse cells (Sertoli cells) in the testes to support sperm development and secrete inhibin."
+            },
+            {
+                question: "Which condition involves endometrial tissue growing outside the uterus?",
+                options: ["Endometriosis", "Pelvic inflammatory disease", "Leiomyoma", "Adenomyosis"],
+                correct: 0,
+                hint: "This condition causes pain and can lead to infertility.",
+                explanation: "Endometriosis involves endometrial tissue growing outside the uterus, causing pain, adhesions, and potential infertility."
+            },
+            {
+                question: "What happens to the corpus luteum if pregnancy does NOT occur?",
+                options: ["It continues producing hormones", "It degenerates into corpus albicans", "It becomes the placenta", "It releases another oocyte"],
+                correct: 1,
+                hint: "Without pregnancy, hormone levels drop.",
+                explanation: "If no pregnancy occurs, the corpus luteum degenerates into corpus albicans, causing progesterone and estrogen levels to drop and menstruation to begin."
+            },
+            {
+                question: "Which male condition involves benign enlargement of the prostate gland?",
+                options: ["Prostatitis", "Testicular torsion", "Benign prostatic hyperplasia (BPH)", "Prostate cancer"],
+                correct: 2,
+                hint: "This common condition in older men causes urinary symptoms.",
+                explanation: "BPH is benign enlargement of the prostate gland, common in older men, causing urinary frequency, urgency, and hesitancy."
+            }
+        ];
+
+        // Flashcards Data
+        const flashcards = [
+            { front: "Nutrition", back: "The process of ingesting and utilizing nutrients for energy" },
+            { front: "Macronutrients", back: "Proteins, lipids (fats), and carbohydrates" },
+            { front: "Micronutrients", back: "Vitamins and minerals" },
+            { front: "Digestion", back: "Process by which food is broken down mechanically and chemically into absorbable components" },
+            { front: "Absorption", back: "The process of taking in nutrients and moving them to systemic circulation" },
+            { front: "Steatorrhea", back: "'Fatty diarrhea' - bulky, greasy, foul-smelling stools indicating malabsorption" },
+            { front: "Chyme", back: "Semiliquid mixture of partially digested food formed in the stomach" },
+            { front: "Glycogenesis", back: "The formation of glycogen (stored glucose) from glucose molecules" },
+            { front: "Nephrons", back: "The functional units of the kidneys, forming urine through filtration, reabsorption, and secretion" },
+            { front: "Hematuria", back: "Blood in the urine; microscopic (small amounts) or gross (visible)" },
+            { front: "Proteinuria", back: "Leakage of proteins into urine; indicates glomerular damage" },
+            { front: "Specific Gravity", back: "Indicates the ability of tubules to concentrate urine; very low = renal failure" },
+            { front: "Spermatogenesis", back: "Process by which sperm are formed in the testes" },
+            { front: "Oogenesis", back: "Process by which oocytes are formed in the ovaries" },
+            { front: "Corpus Luteum", back: "Temporary structure that produces progesterone to maintain early pregnancy" },
+            { front: "Estrogen", back: "Primary female sex hormone; promotes secondary sex characteristics and endometrial proliferation" },
+            { front: "Progesterone", back: "Female hormone that maintains the endometrium and supports pregnancy" },
+            { front: "hCG", back: "Human chorionic gonadotropin; produced by zygote, detected by pregnancy tests" },
+            { front: "Amenorrhea", back: "Absence of menstruation; primary (never occurred) or secondary (cessation)" },
+            { front: "Dysmenorrhea", back: "Painful menstruation" }
+        ];
+
+        // Speed Round Questions
+        const speedQuestions = [
+            { q: "What process breaks down food in the GI tract?", options: ["Digestion", "Absorption", "Peristalsis", "Mastication"], correct: 0 },
+            { q: "What are the functional units of the kidneys?", options: ["Glomeruli", "Nephrons", "Tubules", "Calyces"], correct: 1 },
+            { q: "What hormone maintains early pregnancy?", options: ["Estrogen", "hCG", "Progesterone", "LH"], correct: 2 },
+            { q: "What is 'fatty diarrhea' called?", options: ["Melena", "Steatorrhea", "Hematemesis", "Chyme"], correct: 1 },
+            { q: "What percentage of cardiac output do kidneys receive?", options: ["10-15%", "20-25%", "30-35%", "40-45%"], correct: 1 },
+            { q: "What is the primary male sex hormone?", options: ["FSH", "LH", "Testosterone", "Inhibin"], correct: 2 },
+            { q: "Normal urine output per day is:", options: ["250-500 mL", "750-2000 mL", "2000-3000 mL", "3000-4000 mL"], correct: 1 },
+            { q: "What hormone is detected by pregnancy tests?", options: ["Estrogen", "Progesterone", "hCG", "LH"], correct: 2 },
+            { q: "What structure produces progesterone after ovulation?", options: ["Follicle", "Corpus luteum", "Placenta", "Ovary"], correct: 1 },
+            { q: "What causes labor contractions?", options: ["Estrogen", "Progesterone", "Oxytocin", "Prolactin"], correct: 2 }
+        ];
+
+        // Millionaire Questions
+        const millionaireQuestions = [
+            { q: "What is the best measure of fluid retention in CKD?", options: ["Daily weight", "Sodium level", "Tissue turgor", "Intake/output"], correct: 0 },
+            { q: "Lactulose in cirrhosis decreases which level?", options: ["Glucose", "Ammonia", "Potassium", "Bicarbonate"], correct: 1 },
+            { q: "GERD clients should wait how long before lying down after eating?", options: ["30 minutes", "1 hour", "2 hours", "3 hours"], correct: 1 },
+            { q: "What medication should be withheld in small bowel obstruction?", options: ["Omeprazole", "Ibuprofen", "Senna", "Zolpidem"], correct: 2 },
+            { q: "Which lab finding is expected in acute kidney injury?", options: ["Hypokalemia", "Metabolic alkalosis", "Elevated BUN", "Hypercalcemia"], correct: 2 }
+        ];
+
+        // Jeopardy Categories and Questions
+        const jeopardyCategories = ["Digestive", "Urinary", "Reproductive", "Mixed"];
+        const jeopardyQuestions = [
+            // Digestive
+            { q: "This process breaks down food mechanically and chemically", a: "What is digestion?", options: ["What is absorption?", "What is digestion?", "What is peristalsis?", "What is mastication?"], correct: 1 },
+            { q: "This term describes fatty, foul-smelling stools", a: "What is steatorrhea?", options: ["What is melena?", "What is steatorrhea?", "What is hematemesis?", "What is chyme?"], correct: 1 },
+            { q: "This medication decreases ammonia in cirrhosis", a: "What is lactulose?", options: ["What is omeprazole?", "What is lactulose?", "What is furosemide?", "What is spironolactone?"], correct: 1 },
+            // Urinary
+            { q: "These are the functional units of the kidney", a: "What are nephrons?", options: ["What are glomeruli?", "What are nephrons?", "What are tubules?", "What are calyces?"], correct: 1 },
+            { q: "This is the most reliable measure of fluid retention", a: "What is daily weight?", options: ["What is daily weight?", "What is sodium level?", "What is tissue turgor?", "What is intake/output?"], correct: 0 },
+            { q: "Normal urine output range per day", a: "What is 750-2000 mL?", options: ["What is 250-500 mL?", "What is 750-2000 mL?", "What is 2000-3000 mL?", "What is 3000-4000 mL?"], correct: 1 },
+            // Reproductive
+            { q: "This temporary structure produces progesterone after ovulation", a: "What is corpus luteum?", options: ["What is the follicle?", "What is corpus luteum?", "What is the placenta?", "What is the ovary?"], correct: 1 },
+            { q: "This hormone is detected by pregnancy tests", a: "What is hCG?", options: ["What is estrogen?", "What is progesterone?", "What is hCG?", "What is LH?"], correct: 2 },
+            { q: "This hormone causes uterine contractions during labor", a: "What is oxytocin?", options: ["What is estrogen?", "What is progesterone?", "What is oxytocin?", "What is prolactin?"], correct: 2 },
+            // Mixed
+            { q: "Wait this long after eating before lying down with GERD", a: "What is 1 hour?", options: ["What is 30 minutes?", "What is 1 hour?", "What is 2 hours?", "What is 3 hours?"], correct: 1 },
+            { q: "This is the primary male sex hormone", a: "What is testosterone?", options: ["What is FSH?", "What is LH?", "What is testosterone?", "What is inhibin?"], correct: 2 },
+            { q: "Withhold this medication in bowel obstruction", a: "What is Senna?", options: ["What is omeprazole?", "What is ibuprofen?", "What is Senna?", "What is zolpidem?"], correct: 2 }
+        ];
+
+        // Game State Variables
+        let currentFlashcard = 0;
+        let answeredQuestions = {};
+        let vault = JSON.parse(localStorage.getItem('unit3part2_vault')) || [];
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+            loadQuiz();
+            loadFlashcards();
+            loadVault();
+            loadProgress();
+        });
+
+        // Navigation Functions
+        function initNavigation() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            // Update nav tabs
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+            // Save progress
+            saveProgress();
+        }
+
+        // Collapsible Functions
+        function toggleCollapsible(btn) {
+            btn.classList.toggle('open');
+            const content = btn.nextElementSibling;
+            content.classList.toggle('open');
+            saveProgress();
+        }
+
+        // Image Modal Functions
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            modal.querySelector('img').src = src;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        // Quiz Functions
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = quizQuestions.map((q, i) => `
+                <div class="quiz-question" id="q${i}">
+                    <h4>Question ${i + 1}: ${q.question}
+                        <button class="hint-btn" onclick="showHint(${i})">💡 HINT</button>
+                    </h4>
+                    <div class="hint-text" id="hint${i}">${q.hint}</div>
+                    <div class="quiz-options">
+                        ${q.options.map((opt, j) => `
+                            <div class="quiz-option" onclick="selectAnswer(${i}, ${j})" id="opt${i}-${j}">
+                                ${String.fromCharCode(65 + j)}. ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback${i}"></div>
+                </div>
+            `).join('');
+        }
+
+        function showHint(index) {
+            document.getElementById(`hint${index}`).classList.toggle('show');
+        }
+
+        function selectAnswer(qIndex, aIndex) {
+            if (answeredQuestions[qIndex] !== undefined) return;
+            
+            answeredQuestions[qIndex] = aIndex;
+            const question = quizQuestions[qIndex];
+            const isCorrect = aIndex === question.correct;
+            
+            // Mark selected
+            document.querySelectorAll(`#q${qIndex} .quiz-option`).forEach((opt, i) => {
+                opt.classList.remove('selected');
+                if (i === aIndex) opt.classList.add(isCorrect ? 'correct' : 'incorrect');
+                if (i === question.correct && !isCorrect) opt.classList.add('correct');
+            });
+            
+            // Show feedback
+            const feedback = document.getElementById(`feedback${qIndex}`);
+            feedback.innerHTML = isCorrect 
+                ? `<div class="alert alert-success"><span class="alert-icon">✅</span><div><strong>Correct!</strong> ${question.explanation}</div></div>`
+                : `<div class="alert alert-danger"><span class="alert-icon">❌</span><div><strong>Incorrect.</strong> The correct answer is ${String.fromCharCode(65 + question.correct)}. ${question.explanation}</div></div>`;
+            feedback.classList.add('show');
+            
+            // Add to vault if wrong
+            if (!isCorrect) {
+                addToVault(qIndex);
+            }
+            
+            saveProgress();
+        }
+
+        function submitQuiz() {
+            const total = quizQuestions.length;
+            const answered = Object.keys(answeredQuestions).length;
+            
+            if (answered < total) {
+                alert(`Please answer all questions. You have answered ${answered} of ${total}.`);
+                return;
+            }
+            
+            let correct = 0;
+            for (let key in answeredQuestions) {
+                if (answeredQuestions[key] === quizQuestions[key].correct) {
+                    correct++;
+                }
+            }
+            
+            const percent = Math.round((correct / total) * 100);
+            alert(`Quiz Complete!\n\nScore: ${correct}/${total} (${percent}%)\n\nWrong answers have been added to your Vault for review.`);
+            updateProgress();
+        }
+
+        function resetQuiz() {
+            answeredQuestions = {};
+            loadQuiz();
+            updateProgress();
+        }
+
+        // Flashcard Functions
+        function loadFlashcards() {
+            displayFlashcard();
+        }
+
+        function displayFlashcard() {
+            const container = document.getElementById('flashcard-area');
+            const card = flashcards[currentFlashcard];
+            container.innerHTML = `
+                <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                        <div class="flashcard-front">
+                            <strong>${card.front}</strong>
+                        </div>
+                        <div class="flashcard-back">
+                            ${card.back}
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; color: #718096;">Card ${currentFlashcard + 1} of ${flashcards.length} - Click card to flip</p>
+            `;
+        }
+
+        function nextFlashcard() {
+            currentFlashcard = (currentFlashcard + 1) % flashcards.length;
+            displayFlashcard();
+        }
+
+        function prevFlashcard() {
+            currentFlashcard = (currentFlashcard - 1 + flashcards.length) % flashcards.length;
+            displayFlashcard();
+        }
+
+        // Vault Functions
+        function loadVault() {
+            vault = JSON.parse(localStorage.getItem('unit3part2_vault')) || [];
+            displayVault();
+        }
+
+        function addToVault(qIndex) {
+            const question = quizQuestions[qIndex];
+            if (!vault.find(v => v.question === question.question)) {
+                vault.push({
+                    question: question.question,
+                    correctAnswer: question.options[question.correct],
+                    explanation: question.explanation
+                });
+                localStorage.setItem('unit3part2_vault', JSON.stringify(vault));
+                displayVault();
+            }
+        }
+
+        function displayVault() {
+            const container = document.getElementById('vault-container');
+            if (vault.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #718096; font-style: italic;">No wrong answers yet - take the quiz to populate your vault!</p>';
+                return;
+            }
+            
+            container.innerHTML = vault.map((v, i) => `
+                <div class="vault-item">
+                    <div class="vault-question">${i + 1}. ${v.question}</div>
+                    <div class="vault-answer">✅ Correct Answer: ${v.correctAnswer}</div>
+                    <div style="font-size: 0.9rem; color: #4a5568; margin-top: 0.5rem;">${v.explanation}</div>
+                </div>
+            `).join('');
+        }
+
+        function clearVault() {
+            if (confirm('Are you sure you want to clear your vault?')) {
+                vault = [];
+                localStorage.setItem('unit3part2_vault', JSON.stringify(vault));
+                displayVault();
+            }
+        }
+
+        // Games Functions
+        function showGame(gameType) {
+            const area = document.getElementById('game-area');
+            
+            switch(gameType) {
+                case 'speed':
+                    showSpeedRound(area);
+                    break;
+                case 'match':
+                    showTermMatch(area);
+                    break;
+                case 'millionaire':
+                    showMillionaire(area);
+                    break;
+                case 'jeopardy':
+                    showJeopardy(area);
+                    break;
+            }
+        }
+
+        function showSpeedRound(area) {
+            let currentQ = 0;
+            let score = 0;
+            
+            function displaySpeedQ() {
+                if (currentQ >= speedQuestions.length) {
+                    area.innerHTML = `
+                        <div class="game-container">
+                            <div class="game-header">
+                                <h2>⚡ Speed Round Complete!</h2>
+                                <div class="game-score">
+                                    <div class="score-box">Score: ${score}/${speedQuestions.length}</div>
+                                </div>
+                                <button class="game-btn" onclick="showGame('speed')">Play Again</button>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const q = speedQuestions[currentQ];
+                area.innerHTML = `
+                    <div class="game-container">
+                        <div class="game-header">
+                            <h2>⚡ Speed Round</h2>
+                            <div class="game-score">
+                                <div class="score-box">Score: ${score}</div>
+                                <div class="score-box">Question: ${currentQ + 1}/${speedQuestions.length}</div>
+                            </div>
+                        </div>
+                        <p class="millionaire-question">${q.q}</p>
+                        <div class="quiz-options">
+                            ${q.options.map((opt, i) => `
+                                <div class="quiz-option" id="speed-opt-${i}" onclick="checkSpeedAnswer(${currentQ}, ${i}, ${q.correct})">${opt}</div>
+                            `).join('')}
+                        </div>
+                        <div id="speed-feedback" style="margin-top: 1rem;"></div>
+                    </div>
+                `;
+            }
+            
+            window.checkSpeedAnswer = function(qIdx, selected, correct) {
+                const options = document.querySelectorAll('.quiz-option');
+                options.forEach((opt, i) => {
+                    opt.onclick = null;
+                    if (i === correct) opt.classList.add('correct');
+                    if (i === selected && selected !== correct) opt.classList.add('incorrect');
+                });
+                
+                if (selected === correct) {
+                    score++;
+                    document.getElementById('speed-feedback').innerHTML = '<div class="alert alert-success"><span class="alert-icon">✅</span><div>Correct!</div></div>';
+                } else {
+                    document.getElementById('speed-feedback').innerHTML = '<div class="alert alert-danger"><span class="alert-icon">❌</span><div>Incorrect. The correct answer is: ' + speedQuestions[qIdx].options[correct] + '</div></div>';
+                }
+                
+                setTimeout(() => {
+                    currentQ++;
+                    displaySpeedQ();
+                }, 1500);
+            };
+            
+            displaySpeedQ();
+        }
+
+        function showTermMatch(area) {
+            const terms = [
+                { term: "Digestion", match: "Break down food" },
+                { term: "Nephrons", match: "Kidney functional units" },
+                { term: "Corpus Luteum", match: "Produces progesterone" },
+                { term: "Steatorrhea", match: "Fatty diarrhea" },
+                { term: "hCG", match: "Pregnancy test hormone" },
+                { term: "Proteinuria", match: "Protein in urine" }
+            ];
+            
+            let matched = 0;
+            let score = 0;
+            
+            area.innerHTML = `
+                <div class="game-container">
+                    <div class="game-header">
+                        <h2>🔗 Term Match</h2>
+                        <p>Match each term with its correct definition</p>
+                        <div class="game-score">
+                            <div class="score-box" id="match-score">Matched: 0/${terms.length}</div>
+                        </div>
+                    </div>
+                    <div id="match-game">
+                        <p style="font-weight: bold; margin-bottom: 0.5rem;">Terms:</div>
+                        <div class="interactive-fb" id="terms-area">
+                            ${terms.map((t, i) => `<button class="fb-btn" id="term-${i}" onclick="selectTerm(${i})">${t.term}</button>`).join('')}
+                        </div>
+                        <p style="font-weight: bold; margin: 1rem 0 0.5rem;">Definitions:</p>
+                        <div class="interactive-fb" id="defs-area">
+                            ${terms.map((t, i) => `<button class="fb-btn" id="def-${i}" onclick="selectDef(${i})">${t.match}</button>`).join('')}
+                        </div>
+                        <div id="match-feedback" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            `;
+            
+            let selectedTerm = null;
+            
+            window.selectTerm = function(idx) {
+                document.querySelectorAll('#terms-area .fb-btn').forEach(b => b.classList.remove('selected'));
+                document.getElementById(`term-${idx}`).classList.add('selected');
+                selectedTerm = idx;
+            };
+            
+            window.selectDef = function(defIdx) {
+                if (selectedTerm === null) return;
+                
+                const correctDef = terms.findIndex(t => t.term === terms[selectedTerm].term);
+                
+                if (defIdx === selectedTerm) {
+                    document.getElementById(`term-${selectedTerm}`).classList.add('correct');
+                    document.getElementById(`term-${selectedTerm}`).disabled = true;
+                    document.getElementById(`def-${defIdx}`).classList.add('correct');
+                    document.getElementById(`def-${defIdx}`).disabled = true;
+                    matched++;
+                    score++;
+                    document.getElementById('match-score').textContent = `Matched: ${matched}/${terms.length}`;
+                    
+                    if (matched === terms.length) {
+                        document.getElementById('match-feedback').innerHTML = '<div class="alert alert-success"><span class="alert-icon">🎉</span><div>Congratulations! You matched all terms!</div></div>';
+                    }
+                } else {
+                    document.getElementById(`term-${selectedTerm}`).classList.add('incorrect');
+                    document.getElementById(`def-${defIdx}`).classList.add('incorrect');
+                    setTimeout(() => {
+                        document.getElementById(`term-${selectedTerm}`).classList.remove('incorrect');
+                        document.getElementById(`def-${defIdx}`).classList.remove('incorrect');
+                    }, 500);
+                }
+                
+                selectedTerm = null;
+                document.querySelectorAll('#terms-area .fb-btn').forEach(b => b.classList.remove('selected'));
+            };
+        }
+
+        function showMillionaire(area) {
+            let currentQ = 0;
+            let winnings = 0;
+            const levels = [100, 200, 300, 500, 1000];
+            
+            function displayMillionaireQ() {
+                if (currentQ >= millionaireQuestions.length) {
+                    area.innerHTML = `
+                        <div class="game-container">
+                            <div class="game-header">
+                                <h2>💰 Millionaire Complete!</h2>
+                                <div class="game-score">
+                                    <div class="score-box">Total Winnings: $${winnings}</div>
+                                </div>
+                                <button class="game-btn" onclick="showGame('millionaire')">Play Again</button>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const q = millionaireQuestions[currentQ];
+                area.innerHTML = `
+                    <div class="game-container">
+                        <div class="game-header">
+                            <h2>💰 Millionaire</h2>
+                            <div class="game-score">
+                                <div class="score-box">Question ${currentQ + 1} - $${levels[currentQ]}</div>
+                                <div class="score-box">Total: $${winnings}</div>
+                            </div>
+                        </div>
+                        <p class="millionaire-question">${q.q}</p>
+                        <div class="millionaire-options">
+                            ${q.options.map((opt, i) => `
+                                <button class="millionaire-btn" id="mill-opt-${i}" onclick="checkMillionaire(${currentQ}, ${i}, ${q.correct})">${String.fromCharCode(65 + i)}: ${opt}</button>
+                            `).join('')}
+                        </div>
+                        <div id="mill-feedback" style="margin-top: 1rem;"></div>
+                    </div>
+                `;
+            }
+            
+            window.checkMillionaire = function(qIdx, selected, correct) {
+                const buttons = document.querySelectorAll('.millionaire-btn');
+                buttons.forEach((btn, i) => {
+                    btn.onclick = null;
+                    if (i === correct) {
+                        btn.style.background = 'linear-gradient(135deg, #48bb78, #38a169)';
+                    }
+                    if (i === selected && selected !== correct) {
+                        btn.style.background = 'linear-gradient(135deg, #f56565, #e53e3e)';
+                    }
+                });
+                
+                if (selected === correct) {
+                    winnings += levels[currentQ];
+                    document.getElementById('mill-feedback').innerHTML = '<div class="alert alert-success"><span class="alert-icon">✅</span><div>Correct! You won $' + levels[currentQ] + '!</div></div>';
+                    setTimeout(() => {
+                        currentQ++;
+                        displayMillionaireQ();
+                    }, 2000);
+                } else {
+                    document.getElementById('mill-feedback').innerHTML = '<div class="alert alert-danger"><span class="alert-icon">❌</span><div>Wrong! Game Over. The correct answer was: ' + millionaireQuestions[qIdx].options[correct] + '</div></div>';
+                    setTimeout(() => {
+                        area.innerHTML = `
+                            <div class="game-container">
+                                <div class="game-header">
+                                    <h2>💰 Game Over!</h2>
+                                    <div class="game-score">
+                                        <div class="score-box">Total Winnings: $${winnings}</div>
+                                    </div>
+                                    <button class="game-btn" onclick="showGame('millionaire')">Play Again</button>
+                                </div>
+                            </div>
+                        `;
+                    }, 2500);
+                }
+            };
+            
+            displayMillionaireQ();
+        }
+
+        function showJeopardy(area) {
+            let score = 0;
+            let usedQuestions = [];
+            
+            area.innerHTML = `
+                <div class="game-container">
+                    <div class="game-header">
+                        <h2>🏆 Jeopardy</h2>
+                        <div class="game-score">
+                            <div class="score-box">Score: $<span id="jeopardy-score">0</span></div>
+                        </div>
+                    </div>
+                    <div class="jeopardy-grid">
+                        ${jeopardyCategories.map(cat => `<div class="jeopardy-header">${cat}</div>`).join('')}
+                        ${[100, 200, 300].map(points => 
+                            jeopardyCategories.map((_, col) => {
+                                const qIdx = col * 3 + (points / 100 - 1);
+                                return `<div class="jeopardy-cell" id="jeopardy-${qIdx}" onclick="showJeopardyQuestion(${qIdx}, ${points})">$${points}</div>`;
+                            }).join('')
+                        ).join('')}
+                    </div>
+                    <div id="jeopardy-question-area" style="margin-top: 1.5rem;"></div>
+                </div>
+            `;
+            
+            window.showJeopardyQuestion = function(qIdx, points) {
+                if (usedQuestions.includes(qIdx)) return;
+                
+                const q = jeopardyQuestions[qIdx];
+                document.getElementById('jeopardy-question-area').innerHTML = `
+                    <div class="card" style="border-left-color: var(--pink-medium);">
+                        <h3 style="color: var(--pink-medium);">$${points} Question</h3>
+                        <p style="font-size: 1.1rem; margin: 1rem 0;">${q.q}</p>
+                        <div class="quiz-options">
+                            ${q.options.map((opt, i) => `
+                                <div class="quiz-option" id="jeopardy-opt-${i}" onclick="checkJeopardyAnswer(${qIdx}, ${i}, ${q.correct}, ${points})">${opt}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            };
+            
+            window.checkJeopardyAnswer = function(qIdx, selected, correct, points) {
+                if (usedQuestions.includes(qIdx)) return;
+                usedQuestions.push(qIdx);
+                
+                const options = document.querySelectorAll('#jeopardy-question-area .quiz-option');
+                options.forEach((opt, i) => {
+                    opt.onclick = null;
+                    if (i === correct) opt.classList.add('correct');
+                    if (i === selected && selected !== correct) opt.classList.add('incorrect');
+                });
+                
+                document.getElementById(`jeopardy-${qIdx}`).classList.add('used');
+                
+                if (selected === correct) {
+                    score += points;
+                    document.getElementById('jeopardy-score').textContent = score;
+                } else {
+                    score -= points;
+                    document.getElementById('jeopardy-score').textContent = score;
+                }
+            };
+        }
+
+        // Progress Functions
+        function saveProgress() {
+            const progress = {
+                answeredQuestions: answeredQuestions,
+                currentFlashcard: currentFlashcard,
+                timestamp: Date.now()
+            };
+            localStorage.setItem('unit3part2_progress', JSON.stringify(progress));
+            updateProgress();
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('unit3part2_progress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                answeredQuestions = progress.answeredQuestions || {};
+                currentFlashcard = progress.currentFlashcard || 0;
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const totalQuestions = quizQuestions.length;
+            const answered = Object.keys(answeredQuestions).length;
+            const percent = Math.round((answered / totalQuestions) * 100);
+            
+            document.getElementById('progress-percent').textContent = percent + '%';
+            document.getElementById('progress-fill').style.width = percent + '%';
+        }
+    </script>
+</body>
+</html>
