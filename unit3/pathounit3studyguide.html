@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3 Part 1 - Nervous System, Eyes/Ears & Endocrine Disorders | NCLEX Study Guide</title>
+    <style>
+        :root {
+            --ocean-dark: #1a365d;
+            --ocean-medium: #2c5282;
+            --ocean-light: #4299e1;
+            --ocean-pale: #ebf8ff;
+            --navy: #0d1b2a;
+            --teal: #38b2ac;
+            --coral: #f56565;
+            --gold: #ecc94b;
+            --mint: #9ae6b4;
+            --purple: #805ad5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--ocean-pale) 0%, #e6f3ff 50%, var(--ocean-pale) 100%);
+            color: #2d3748;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--ocean-dark) 50%, var(--ocean-medium) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        header h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 0.5rem; }
+        header .badge { display: inline-block; background: var(--teal); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.9rem; margin: 0.25rem; }
+        .global-progress { background: var(--navy); padding: 1rem; position: sticky; top: 0; z-index: 100; }
+        .progress-container { max-width: 1400px; margin: 0 auto; }
+        .progress-label { color: white; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .progress-bar { height: 12px; background: rgba(255,255,255,0.2); border-radius: 6px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--ocean-light), var(--mint)); width: 0%; transition: width 0.5s ease; border-radius: 6px; }
+        nav { background: var(--ocean-dark); position: sticky; top: 56px; z-index: 99; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .nav-tabs { display: flex; overflow-x: auto; max-width: 1400px; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+        .nav-tab { flex: 0 0 auto; padding: 1rem 1.5rem; color: white; text-decoration: none; font-weight: 500; border-bottom: 3px solid transparent; transition: all 0.3s; white-space: nowrap; }
+        .nav-tab:hover, .nav-tab.active { background: rgba(255,255,255,0.1); border-bottom-color: var(--teal); }
+        main { max-width: 1400px; margin: 2rem auto; padding: 0 1rem; }
+        .section { display: none; animation: fadeIn 0.5s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .card { background: white; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 5px solid var(--ocean-light); }
+        .card h2 { color: var(--ocean-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card h3 { color: var(--ocean-medium); margin: 1.5rem 0 1rem; border-bottom: 2px solid var(--ocean-pale); padding-bottom: 0.5rem; }
+        .card h4 { color: var(--teal); margin: 1rem 0 0.5rem; }
+        .collapsible { background: linear-gradient(135deg, var(--ocean-pale), white); border: none; width: 100%; padding: 1.2rem 1.5rem; text-align: left; font-size: 1.1rem; font-weight: 600; color: var(--ocean-dark); cursor: pointer; border-radius: 12px; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
+        .collapsible:hover { background: linear-gradient(135deg, #d6e4ff, white); transform: translateX(5px); }
+        .collapsible .arrow { transition: transform 0.3s; }
+        .collapsible.open .arrow { transform: rotate(180deg); }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; background: white; border-radius: 0 0 12px 12px; margin-bottom: 0.5rem; }
+        .collapsible-content.open { max-height: 50000px; padding: 1.5rem; border: 1px solid var(--ocean-pale); }
+        .term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .term-card { background: linear-gradient(135deg, var(--ocean-pale), white); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal); cursor: pointer; transition: all 0.3s; }
+        .term-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .term-card .term-name { font-weight: 700; color: var(--ocean-dark); }
+        .term-card .term-def { font-size: 0.9rem; color: #4a5568; margin-top: 0.5rem; }
+        .tiles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .tile { background: linear-gradient(135deg, var(--ocean-medium), var(--ocean-dark)); color: white; padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.3s; border: none; font-size: 1rem; }
+        .tile:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .alert { padding: 1rem 1.5rem; border-radius: 12px; margin: 1rem 0; display: flex; align-items: flex-start; gap: 0.75rem; }
+        .alert-warning { background: linear-gradient(135deg, #fffaf0, #fff5e6); border-left: 4px solid var(--gold); }
+        .alert-danger { background: linear-gradient(135deg, #fff5f5, #fed7d7); border-left: 4px solid var(--coral); }
+        .alert-success { background: linear-gradient(135deg, #f0fff4, #c6f6d5); border-left: 4px solid var(--mint); }
+        .alert-info { background: linear-gradient(135deg, var(--ocean-pale), #e6f3ff); border-left: 4px solid var(--ocean-light); }
+        .alert-icon { font-size: 1.5rem; }
+        .ms-highlight { background: linear-gradient(135deg, #faf5ff, #e9d8fd); border: 2px solid var(--purple); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; }
+        .ms-highlight h3 { color: var(--purple); border-bottom: 2px solid var(--purple); }
+        .teacher-focus { background: linear-gradient(135deg, #fff5f5, #fed7d7); border: 3px solid var(--coral); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; }
+        .teacher-focus h3 { color: var(--coral); border-bottom: 2px solid var(--coral); }
+        .disease-box { background: linear-gradient(135deg, #f7fafc, white); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .disease-box h4 { color: var(--coral); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .signs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.5rem; margin: 0.5rem 0; }
+        .sign-item { background: var(--ocean-pale); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.95rem; }
+        .mnemonic-box { background: linear-gradient(135deg, #fffaf0, #fef3c7); border: 2px dashed var(--gold); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; text-align: center; }
+        .mnemonic-box .mnemonic-text { font-size: 1.3rem; font-weight: 700; color: var(--ocean-dark); }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--ocean-pale); }
+        th { background: var(--ocean-dark); color: white; font-weight: 600; }
+        tr:hover { background: var(--ocean-pale); }
+        ul, ol { margin: 1rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .image-container { text-align: center; margin: 1.5rem 0; }
+        .image-container img { max-width: 100%; max-height: 600px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
+        .image-container img:hover { transform: scale(1.02); }
+        .image-caption { font-size: 0.9rem; color: #718096; margin-top: 0.5rem; font-style: italic; }
+        .image-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; }
+        .image-modal.active { display: flex; }
+        .image-modal img { max-width: 95%; max-height: 95%; border-radius: 8px; }
+        .game-container { background: white; border-radius: 16px; padding: 2rem; margin: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .game-header { text-align: center; margin-bottom: 2rem; }
+        .game-header h2 { color: var(--ocean-dark); }
+        .game-score { display: flex; justify-content: center; gap: 2rem; margin: 1rem 0; }
+        .score-box { background: var(--ocean-pale); padding: 0.5rem 2rem; border-radius: 20px; font-weight: 600; }
+        .game-btn { background: linear-gradient(135deg, var(--teal), var(--ocean-medium)); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-size: 1rem; cursor: pointer; transition: all 0.3s; margin: 0.5rem; }
+        .game-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .game-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .hint-btn { background: linear-gradient(135deg, var(--gold), #d69e2e); color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; margin-left: 1rem; }
+        .hint-btn:hover { transform: scale(1.05); }
+        .hint-text { background: linear-gradient(135deg, #fef3c7, #fff); border: 2px solid var(--gold); border-radius: 8px; padding: 1rem; margin-top: 0.5rem; display: none; }
+        .hint-text.show { display: block; }
+        .quiz-container { background: white; border-radius: 16px; padding: 2rem; margin: 1rem 0; }
+        .quiz-question { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--ocean-pale); }
+        .quiz-question h4 { color: var(--ocean-dark); margin-bottom: 1rem; font-size: 1.1rem; display: flex; flex-wrap: wrap; align-items: center; }
+        .quiz-options { display: grid; gap: 0.75rem; }
+        .quiz-option { padding: 1rem; border: 2px solid var(--ocean-pale); border-radius: 10px; cursor: pointer; transition: all 0.3s; background: white; }
+        .quiz-option:hover { border-color: var(--ocean-light); background: var(--ocean-pale); }
+        .quiz-option.selected { border-color: var(--ocean-medium); background: var(--ocean-pale); }
+        .quiz-option.correct { border-color: var(--mint); background: #c6f6d5; }
+        .quiz-option.incorrect { border-color: var(--coral); background: #fed7d7; }
+        .feedback { padding: 1rem; border-radius: 10px; margin-top: 1rem; display: none; }
+        .feedback.show { display: block; }
+        .flashcard-container { perspective: 1000px; margin: 1rem auto; max-width: 500px; }
+        .flashcard { width: 100%; height: 250px; position: relative; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .flashcard-front, .flashcard-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center; font-size: 1.2rem; }
+        .flashcard-front { background: linear-gradient(135deg, var(--ocean-medium), var(--ocean-dark)); color: white; }
+        .flashcard-back { background: linear-gradient(135deg, var(--teal), #2c7a7b); color: white; transform: rotateY(180deg); }
+        .vault-item { background: linear-gradient(135deg, #fff5f5, white); border-left: 4px solid var(--coral); padding: 1rem; margin-bottom: 0.5rem; border-radius: 0 8px 8px 0; }
+        .vault-question { font-weight: 600; color: var(--ocean-dark); }
+        .vault-answer { color: var(--mint); font-weight: 600; }
+        .interactive-fb { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+        .fb-btn { padding: 0.75rem 1.5rem; border: 2px solid var(--ocean-pale); border-radius: 25px; background: white; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+        .fb-btn:hover { background: var(--ocean-pale); }
+        .fb-btn.correct { background: var(--mint); border-color: var(--mint); color: white; }
+        .fb-btn.incorrect { background: var(--coral); border-color: var(--coral); color: white; }
+        .drag-container { display: flex; flex-wrap: wrap; gap: 1rem; padding: 1rem; background: var(--ocean-pale); border-radius: 12px; min-height: 100px; }
+        .drag-item { padding: 0.75rem 1.5rem; background: white; border-radius: 8px; cursor: grab; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .drag-item:active { cursor: grabbing; transform: scale(1.05); }
+        .drop-zone { min-width: 150px; min-height: 60px; border: 2px dashed var(--ocean-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+        .drop-zone.active { background: var(--ocean-pale); border-color: var(--teal); }
+        .millionaire-question { font-size: 1.2rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; }
+        .millionaire-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .millionaire-btn { padding: 1rem; background: linear-gradient(135deg, var(--ocean-medium), var(--ocean-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .millionaire-btn:hover { transform: scale(1.02); }
+        .jeopardy-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 1rem; }
+        .jeopardy-header { background: var(--navy); color: white; padding: 1rem; text-align: center; font-weight: 700; border-radius: 8px; }
+        .jeopardy-cell { background: var(--ocean-medium); color: var(--gold); padding: 1.5rem; text-align: center; cursor: pointer; border-radius: 8px; font-weight: 700; font-size: 1.2rem; transition: all 0.3s; }
+        .jeopardy-cell:hover { background: var(--ocean-light); transform: scale(1.05); }
+        .jeopardy-cell.used { background: #4a5568; color: #718096; cursor: not-allowed; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .nav-tabs { flex-wrap: nowrap; }
+            .nav-tab { padding: 0.75rem 1rem; font-size: 0.9rem; }
+            .card { padding: 1.5rem; }
+            .millionaire-options { grid-template-columns: 1fr; }
+            .jeopardy-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🧠 Unit 3 Part 1 - NCLEX Study Guide</h1>
+        <p class="subtitle">Nervous System Disorders • Eyes, Ears & Sensory Organs • Endocrine System</p>
+        <div><span class="badge">📚 Chapters 14, 15, 16</span><span class="badge">📝 50 NCLEX Questions</span><span class="badge">🎮 4 Games</span></div>
+    </header>
+
+    <div class="global-progress">
+        <div class="progress-container">
+            <div class="progress-label">📊 Study Progress: <span id="progress-percent">0%</span></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-tabs">
+            <a href="#overview" class="nav-tab active" data-section="overview">📋 Overview</a>
+            <a href="#exam-focus" class="nav-tab" data-section="exam-focus">🎯 Exam Focus</a>
+            <a href="#chapter14" class="nav-tab" data-section="chapter14">🧠 Ch. 14 Nervous</a>
+            <a href="#chapter15" class="nav-tab" data-section="chapter15">👁️ Ch. 15 Eyes/Ears</a>
+            <a href="#chapter16" class="nav-tab" data-section="chapter16">🩺 Ch. 16 Endocrine</a>
+            <a href="#games" class="nav-tab" data-section="games">🎮 Games</a>
+            <a href="#quiz" class="nav-tab" data-section="quiz">📝 Quiz (50 Q)</a>
+            <a href="#flashcards" class="nav-tab" data-section="flashcards">🎴 Flashcards</a>
+            <a href="#vault" class="nav-tab" data-section="vault">🔒 Vault</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- OVERVIEW SECTION -->
+        <section id="overview" class="section active">
+            <div class="card">
+                <h2>📋 Unit 3 Part 1 Overview</h2>
+                <p>Welcome to your comprehensive ADHD-friendly study guide for Unit 3 Part 1! This guide covers three interconnected body systems and their common disorders you'll encounter on the NCLEX and in clinical practice. <strong>ALL content from your PowerPoint is included here!</strong></p>
+                
+                <div class="alert alert-info">
+                    <span class="alert-icon">💡</span>
+                    <div>
+                        <strong>Study Tip!</strong> Use the navigation tabs above to jump between sections. Click on collapsible items to reveal detailed content. Click any image to enlarge it. Your progress is saved automatically!
+                    </div>
+                </div>
+
+                <h3>📚 Chapters Covered</h3>
+                <div class="tiles-grid">
+                    <div class="tile" onclick="showSection('chapter14')">
+                        <strong>Chapter 14</strong><br>Nervous System Disorders<br><small>95 slides covered!</small>
+                    </div>
+                    <div class="tile" onclick="showSection('chapter15')">
+                        <strong>Chapter 15</strong><br>Eyes, Ears & Sensory
+                    </div>
+                    <div class="tile" onclick="showSection('chapter16')">
+                        <strong>Chapter 16</strong><br>Endocrine System
+                    </div>
+                </div>
+            </div>
+
+            <div class="teacher-focus">
+                <h3>⭐ TEACHER'S MUST-KNOW CONTENT</h3>
+                <p>Your instructor specifically emphasized these topics - they WILL be on the exam!</p>
+                <div class="signs-list">
+                    <div class="sign-item"><strong>🧠 Multiple Sclerosis (MS)</strong> - Know Uhthoff's phenomenon, Lhermitte's sign, pathophysiology</div>
+                    <div class="sign-item"><strong>🤱 Oxytocin</strong> - Uterus contractions, milk ejection, "love hormone"</div>
+                    <div class="sign-item"><strong>🌸 Corpus Luteum</strong> - Produces progesterone, maintains early pregnancy</div>
+                    <div class="sign-item"><strong>💄 Estrogen</strong> - Female secondary sex characteristics, reproductive organ development</div>
+                </div>
+            </div>
+
+            <div class="ms-highlight">
+                <h3>⭐ MULTIPLE SCLEROSIS (MS) - Teacher's #1 Focus!</h3>
+                <p>Your instructor keeps bringing up MS - this is a guaranteed exam topic!</p>
+                <ul>
+                    <li><strong>Pathophysiology:</strong> Autoimmune demyelination of CNS neurons</li>
+                    <li><strong>Key Symptoms:</strong> Visual disturbances, motor weakness, sensory changes, coordination problems</li>
+                    <li><strong>Unique Feature:</strong> Symptoms worsen with heat (Uhthoff's phenomenon)</li>
+                    <li><strong>Nursing Priority:</strong> Prevent injury, manage fatigue, patient education</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🔢 Quick Numbers to Memorize</h3>
+                <table>
+                    <tr><th>Item</th><th>Value</th><th>Why It Matters</th></tr>
+                    <tr><td>tPA Window</td><td>3-4.5 hours</td><td>Time is brain!</td></tr>
+                    <tr><td>HbA1c Target</td><td><7%</td><td>Reflects 3-4 months glucose control</td></tr>
+                    <tr><td>Status Epilepticus</td><td>>5 minutes</td><td>Medical emergency</td></tr>
+                    <tr><td>TIA Resolution</td><td><24 hours</td><td>Warning sign for stroke</td></tr>
+                    <tr><td>HHS Glucose</td><td>>600 mg/dL</td><td>Extreme hyperglycemia</td></tr>
+                    <tr><td>Cranial Nerves</td><td>12 pairs</td><td>Know functions!</td></tr>
+                    <tr><td>Spinal Nerves</td><td>31 pairs</td><td>8C, 12T, 5L, 5S, 1Co</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- EXAM FOCUS SECTION -->
+        <section id="exam-focus" class="section">
+            <div class="card">
+                <h2>🎯 High-Yield Exam Focus</h2>
+                <p>These are the MOST TESTED concepts from your instructor's PowerPoint. Master these first!</p>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🧠 Nervous System - MUST KNOW
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Stroke (CVA) - HIGH YIELD</h4>
+                    <div class="disease-box">
+                        <h4>🚨 Stroke (Cerebrovascular Accident)</h4>
+                        <p><strong>Definition:</strong> Interruption of cerebral blood flow leading to brain tissue death</p>
+                        <p><strong>Key Concept:</strong> Symptoms depend on LOCATION of brain injury!</p>
+                        <div class="mnemonic-box">
+                            <div class="mnemonic-text">FAST = Face, Arms, Speech, Time</div>
+                        </div>
+                        <h5>TIA (Transient Ischemic Attack)</h5>
+                        <ul>
+                            <li>Temporary deficits lasting <24 hours</li>
+                            <li>WARNING SIGN for future stroke</li>
+                            <li>Needs immediate evaluation</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Aphasia Types - MEMORIZE!</h4>
+                    <table>
+                        <tr><th>Type</th><th>Damage Location</th><th>Manifestation</th><th>NCLEX Tip</th></tr>
+                        <tr><td><strong>Expressive (Motor)</strong></td><td>Broca's area (left frontal lobe)</td><td>Cannot speak/write fluently; comprehension INTACT</td><td>Knows what they want to say but can't get it out</td></tr>
+                        <tr><td><strong>Receptive (Sensory)</strong></td><td>Wernicke's area (left temporal)</td><td>Cannot understand written/spoken language</td><td>Speaks fluently but words don't make sense</td></tr>
+                        <tr><td><strong>Global</strong></td><td>Major brain damage (both areas)</td><td>Combination of both; most severe</td><td>Neither understands nor speaks appropriately</td></tr>
+                    </table>
+
+                    <h4>Increased ICP - Cushing's Triad</h4>
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">🚨</span>
+                        <div>
+                            <strong>Cushing's Triad = LATE SIGN of increased ICP:</strong>
+                            <ul>
+                                <li><strong>B</strong>radycardia</li>
+                                <li><strong>I</strong>rregular respirations</li>
+                                <li><strong>W</strong>idened pulse pressure</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    👁️ Eyes/Ears - MUST KNOW
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Vision Disorders Comparison</h4>
+                    <table>
+                        <tr><th>Condition</th><th>Pathophysiology</th><th>Key Signs</th><th>Nursing Priority</th></tr>
+                        <tr><td><strong>Glaucoma</strong></td><td>Increased IOP damages optic nerve</td><td>Peripheral vision loss, halos, eye pain</td><td>Medication adherence, monitor IOP</td></tr>
+                        <tr><td><strong>Cataracts</strong></td><td>Clouding of the lens</td><td>Progressive vision loss, glare sensitivity</td><td>Safety, prepare for surgery</td></tr>
+                        <tr><td><strong>Macular Degeneration</strong></td><td>Deterioration of macula</td><td>Central vision loss, wavy lines</td><td>Safety, low-vision aids</td></tr>
+                        <tr><td><strong>Retinal Detachment</strong></td><td>Sensory retina separates from pigment layer</td><td>Flashes, floaters, "curtain"</td><td>EMERGENCY - immediate surgery!</td></tr>
+                    </table>
+
+                    <h4>Ménière's Disease</h4>
+                    <div class="mnemonic-box">
+                        <div class="mnemonic-text">Triad: Vertigo + Tinnitus + Hearing Loss</div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🩺 Endocrine - MUST KNOW (Teacher Emphasis!)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="teacher-focus">
+                        <h4>🤱 OXYTOCIN - Teacher's Focus!</h4>
+                        <table>
+                            <tr><th>Source</th><th>Target</th><th>Function</th></tr>
+                            <tr><td>Hypothalamus → Posterior Pituitary</td><td>Uterus and Breasts</td><td>Stimulates uterine contractions during labor; Milk ejection from breasts after childbirth</td></tr>
+                        </table>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Produced in hypothalamus, stored/released from posterior pituitary</li>
+                            <li>Also called the "love hormone" - involved in bonding</li>
+                            <li>Used clinically to induce/augment labor</li>
+                            <li><strong>NCLEX Alert:</strong> Monitor for water intoxication (has ADH-like effect at high doses)</li>
+                        </ul>
+                    </div>
+
+                    <div class="teacher-focus">
+                        <h4>🌸 CORPUS LUTEUM & ESTROGEN - Teacher's Focus!</h4>
+                        <table>
+                            <tr><th>Structure/Hormone</th><th>Source</th><th>Function</th></tr>
+                            <tr><td><strong>Corpus Luteum</strong></td><td>Formed from ovarian follicle after ovulation</td><td>Produces PROGESTERONE to maintain early pregnancy until placenta takes over</td></tr>
+                            <tr><td><strong>Estrogen</strong></td><td>Ovaries (follicular cells)</td><td>Promotes development of reproductive organs and secondary sex characteristics</td></tr>
+                        </table>
+                        <p><strong>Corpus Luteum Key Points:</strong></p>
+                        <ul>
+                            <li>Temporary endocrine structure</li>
+                            <li>Secretes progesterone and estrogen</li>
+                            <li>If pregnancy occurs, functions until ~10-12 weeks when placenta takes over</li>
+                            <li>If no pregnancy, degenerates into corpus albicans</li>
+                        </ul>
+                        <p><strong>Estrogen Key Points:</strong></p>
+                        <ul>
+                            <li>Promotes endometrial proliferation</li>
+                            <li>Responsible for female secondary sex characteristics</li>
+                            <li>Regulates menstrual cycle with progesterone</li>
+                        </ul>
+                    </div>
+
+                    <h4>Diabetes Mellitus - VERY HIGH YIELD</h4>
+                    <table>
+                        <tr><th>Feature</th><th>Type 1 DM</th><th>Type 2 DM</th></tr>
+                        <tr><td>Onset</td><td>Sudden, usually young</td><td>Gradual, usually adults</td></tr>
+                        <tr><td>Cause</td><td>Autoimmune destruction of beta cells</td><td>Insulin resistance</td></tr>
+                        <tr><td>Insulin</td><td>Absolutely required</td><td>May or may not be needed</td></tr>
+                        <tr><td>Ketosis</td><td>Prone to DKA</td><td>Rare</td></tr>
+                    </table>
+
+                    <h4>Hypo vs Hyperglycemia - CRITICAL!</h4>
+                    <div class="mnemonic-box">
+                        <div class="mnemonic-text">
+                            Hypoglycemia: "Cold and clammy - need candy!"<br>
+                            Hyperglycemia: "Hot and dry - sugar high!"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 14 - NERVOUS SYSTEM -->
+        <section id="chapter14" class="section">
+            <div class="card">
+                <h2>🧠 Chapter 14: Nervous System Disorders</h2>
+                
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    📖 Key Terms - Nervous System (From PowerPoint)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="term-grid">
+                        <div class="term-card"><div class="term-name">Neuron</div><div class="term-def">Nerve cell; fundamental unit composed of cell body, axon, and dendrites</div></div>
+                        <div class="term-card"><div class="term-name">Cell Body (Soma)</div><div class="term-def">Contains nucleus and organelles; supports metabolic needs of the cell</div></div>
+                        <div class="term-card"><div class="term-name">Dendrite</div><div class="term-def">Multiple, branched extensions that TRANSMIT impulses TO the cell body</div></div>
+                        <div class="term-card"><div class="term-name">Axon</div><div class="term-def">Carries impulses AWAY from the cell body</div></div>
+                        <div class="term-card"><div class="term-name">Sensory Neurons (Afferent)</div><div class="term-def">Carry impulses from receptors in periphery TO the CNS</div></div>
+                        <div class="term-card"><div class="term-name">Motor Neurons (Efferent)</div><div class="term-def">Carry signals AWAY from brain/spinal cord to regulate activity</div></div>
+                        <div class="term-card"><div class="term-name">Interneurons</div><div class="term-def">Most abundant; provide connections between afferent and efferent neurons</div></div>
+                        <div class="term-card"><div class="term-name">Neuroglia</div><div class="term-def">Neural support cells; provide nutrition, form myelin, maintain homeostasis</div></div>
+                        <div class="term-card"><div class="term-name">Myelin</div><div class="term-def">Insulating protein high in lipid; increases speed of nerve impulses</div></div>
+                        <div class="term-card"><div class="term-name">Action Potential</div><div class="term-def">Electrical signal; 3 phases: Resting → Depolarization (Na+ in) → Repolarization (K+ out)</div></div>
+                        <div class="term-card"><div class="term-name">Synapse</div><div class="term-def">Junction between neurons; electrical (fast, gap junctions) or chemical (neurotransmitters)</div></div>
+                        <div class="term-card"><div class="term-name">Dermatome</div><div class="term-def">Sensory region innervated by single pair of dorsal root ganglia</div></div>
+                        <div class="term-card"><div class="term-name">Serotonin</div><div class="term-def">Neurotransmitter involved in mood, emotions, and sleep</div></div>
+                        <div class="term-card"><div class="term-name">Local (Focal) Effects</div><div class="term-def">Signs related to specific area of brain/spinal cord where lesion is located</div></div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🏗️ CNS Structure & Protection
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Central Nervous System (CNS)</h4>
+                    <p>Composed of the <strong>brain</strong> and <strong>spinal cord</strong></p>
+                    <ul>
+                        <li><strong>Brain:</strong> Receives and processes sensory information, initiates motor responses</li>
+                        <li><strong>Spinal Cord:</strong> Conducts sensory information from PNS and motor information to muscles</li>
+                    </ul>
+
+                    <h4>Brain Anatomy - 4 Lobes + 2 Hemispheres</h4>
+                    <div class="image-container">
+                        <img src="images/image11.png" alt="Brain lobes and functional areas" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Brain functional areas including Broca's and Wernicke's areas</p>
+                    </div>
+                    <table>
+                        <tr><th>Lobe</th><th>Location</th><th>Function</th><th>Damage Signs</th></tr>
+                        <tr><td>Frontal</td><td>Anterior</td><td>Motor function, speech (Broca's), personality, judgment, intellect</td><td>Personality changes, motor deficits, expressive aphasia</td></tr>
+                        <tr><td>Parietal</td><td>Superior</td><td>Sensory processing, spatial awareness</td><td>Sensory deficits, neglect syndrome</td></tr>
+                        <tr><td>Temporal</td><td>Lateral</td><td>Speech comprehension (Wernicke's), memory, hearing, auditory area</td><td>Receptive aphasia, memory problems</td></tr>
+                        <tr><td>Occipital</td><td>Posterior</td><td>Vision processing, visual area, visual association</td><td>Visual field deficits, blindness</td></tr>
+                    </table>
+
+                    <h4>Spinal Cord Structure</h4>
+                    <div class="image-container">
+                        <img src="images/image10.png" alt="Spinal cord cross-section" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Spinal cord cross-section showing gray and white matter</p>
+                    </div>
+                    <table>
+                        <tr><th>Structure</th><th>Contents</th><th>Function</th></tr>
+                        <tr><td>Ventral Horns</td><td>Efferent motor neurons</td><td>Motor signals leave the cord</td></tr>
+                        <tr><td>Dorsal Horns</td><td>Sensory neurons</td><td>Receive afferent impulses</td></tr>
+                        <tr><td>White Matter</td><td>Myelinated axons</td><td>Fast signal transmission</td></tr>
+                        <tr><td>Gray Matter</td><td>Cell bodies, synapses</td><td>Integration center between sensory, motor, interneurons</td></tr>
+                    </table>
+
+                    <h4>Spinal Nerves</h4>
+                    <div class="image-container">
+                        <img src="images/image12.png" alt="Spinal nerves table" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Spinal nerves by region and function</p>
+                    </div>
+                    <p><strong>31 pairs total:</strong> 8 Cervical, 12 Thoracic, 5 Lumbar, 5 Sacral, 1 Coccygeal</p>
+
+                    <h4>Three Layers of CNS Protection</h4>
+                    <ol>
+                        <li><strong>Cerebrovascular Circulation:</strong> Circle of Willis (connects vertebral and carotid circulations) provides collateral blood flow</li>
+                        <li><strong>Blood-Brain Barrier:</strong> Reduced permeability in capillaries; selectively transports materials to protect brain</li>
+                        <li><strong>CSF & Meninges:</strong> Cushioning, nutrient transport, waste removal; produced in ventricles</li>
+                    </ol>
+
+                    <h4>Cranial Nerves (12 Pairs)</h4>
+                    <div class="image-container">
+                        <img src="images/image13.png" alt="Cranial nerves table" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - All 12 cranial nerves with locations, types, and functions</p>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🔌 Communication: Action Potentials & Synapses
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Action Potentials - How Neurons Communicate</h4>
+                    <p>Neurons communicate via electrical events across cell membranes:</p>
+                    <ol>
+                        <li><strong>Resting Membrane Potential (RMP):</strong> Cell at rest; Na+/K+ ATPase maintains balance</li>
+                        <li><strong>Depolarization Phase:</strong> Rapid movement of Na+ INTO the cell through sodium channels; triggers release of neurotransmitters</li>
+                        <li><strong>Repolarization Phase:</strong> K+ flows OUT of the cell; returns to RMP</li>
+                    </ol>
+
+                    <h4>Synapse Types</h4>
+                    <div class="image-container">
+                        <img src="images/image14.png" alt="Synapse diagram" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Synapse structure showing presynaptic and postsynaptic cells</p>
+                    </div>
+                    <table>
+                        <tr><th>Electrical Synapses</th><th>Chemical Synapses</th></tr>
+                        <tr><td>Fast and direct</td><td>Unidirectional</td></tr>
+                        <tr><td>Multidirectional</td><td>Use neurotransmitters</td></tr>
+                        <tr><td>Gap junctions</td><td>Synaptic cleft separates neurons</td></tr>
+                        <tr><td>Example: Cardiac contractions</td><td>More common in nervous system</td></tr>
+                    </table>
+                    <p><strong>Key Structures:</strong></p>
+                    <ul>
+                        <li><strong>Presynaptic terminal:</strong> Contains neurotransmitters in vesicles, mitochondria</li>
+                        <li><strong>Synaptic cleft:</strong> Space between neurons (synaptic gap)</li>
+                        <li><strong>Postsynaptic membrane:</strong> Receives signal, binds neurotransmitter</li>
+                    </ul>
+
+                    <h4>Neural Injury Types</h4>
+                    <div class="disease-box">
+                        <p><strong>Important:</strong> Neurons are permanent cells - they do NOT regenerate!</p>
+                        <table>
+                            <tr><th>Type</th><th>Description</th></tr>
+                            <tr><td>Chromatolysis</td><td>Swelling of neuron due to injury</td></tr>
+                            <tr><td>Atrophy</td><td>Decrease in neuron size</td></tr>
+                            <tr><td>Neuronophagia</td><td>Phagocytosis and inflammatory responses from dead neuron</td></tr>
+                            <tr><td>Intraneural Inclusions</td><td>Distinctive structures formed in nucleus or cytoplasm</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🔌 Peripheral Nervous System (PNS)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images/image9.png" alt="PNS diagram" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Peripheral Nervous System showing cranial nerves, spinal nerves, ganglia</p>
+                    </div>
+                    
+                    <h4>PNS Components</h4>
+                    <table>
+                        <tr><th>Component</th><th>Function</th></tr>
+                        <tr><td><strong>Somatic Nervous System</strong></td><td>Coordination of body movement, external stimuli, conscious activities</td></tr>
+                        <tr><td><strong>Cranial Nerves (12 pairs)</strong></td><td>Mediate peripheral responses, originate in brain</td></tr>
+                        <tr><td><strong>Spinal Nerves (31 pairs)</strong></td><td>8 cervical, 12 thoracic, 5 lumbar, 5 sacral, 1 coccygeal</td></tr>
+                    </table>
+
+                    <h4>Autonomic Nervous System</h4>
+                    <table>
+                        <tr><th>Sympathetic (Fight or Flight)</th><th>Parasympathetic (Rest & Digest)</th></tr>
+                        <tr><td>↑ Heart rate and contractility</td><td>↓ Heart rate, contractility, conduction velocity</td></tr>
+                        <tr><td>Bronchiole smooth muscle relaxation</td><td>Bronchial smooth muscle constriction</td></tr>
+                        <tr><td>↓ GI peristalsis, anal sphincter constriction</td><td>↑ GI peristalsis and tone, anal sphincter relaxation</td></tr>
+                        <tr><td>↓ Bladder tone, urinary sphincter constriction</td><td>↑ Bladder tone, urinary sphincter relaxation</td></tr>
+                        <tr><td>Vasoconstriction, ↑ BP</td><td>Vasodilation of arteries to external genitalia</td></tr>
+                        <tr><td>↑ Respiratory rate</td><td>Pupil constriction</td></tr>
+                        <tr><td>Pupil dilation, ciliary muscle relaxation</td><td></td></tr>
+                        <tr><td>↓ Pancreas secretion</td><td></td></tr>
+                        <tr><td>↑ Sweat gland secretion</td><td></td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🧠 Mechanisms of Injury & Neurological Disorders
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Mechanisms of CNS Injury</h4>
+                    <table>
+                        <tr><th>Type</th><th>Description</th></tr>
+                        <tr><td>Traumatic</td><td>Effect depends on injured part of brain/spinal cord</td></tr>
+                        <tr><td>Ischemic</td><td>Inadequate perfusion to neurologic tissue</td></tr>
+                        <tr><td>Excitation</td><td>May result from inability to meet metabolic demands → hypoxia</td></tr>
+                        <tr><td>Pressure</td><td>Increased CSF, tumor, edema → increased ICP</td></tr>
+                    </table>
+
+                    <h4>Neurological Disorders Overview</h4>
+                    <table>
+                        <tr><th>Category</th><th>Examples</th></tr>
+                        <tr><td>Movement</td><td>Tardive Dyskinesia</td></tr>
+                        <tr><td>Acute</td><td>Tumor, Infection</td></tr>
+                        <tr><td>Vascular</td><td>TIA, CVA, Aneurysm</td></tr>
+                        <tr><td>Congenital</td><td>Hydrocephalus, Spina Bifida, Cerebral Palsy, Seizures</td></tr>
+                        <tr><td>Chronic</td><td><strong>MS</strong>, Huntington's, Parkinson's, ALS, MG, Alzheimer's</td></tr>
+                    </table>
+                </div>
+
+                <div class="ms-highlight">
+                    <h3>⭐ MULTIPLE SCLEROSIS (MS) - Teacher's #1 Focus!</h3>
+                    <div class="disease-box">
+                        <h4>Pathophysiology</h4>
+                        <p>Autoimmune disorder causing <strong>demyelination</strong> of CNS neurons. Myelin is destroyed, forming scar tissue (sclerosis) that slows/blocks nerve impulses.</p>
+                        
+                        <h4>Classic Signs & Symptoms</h4>
+                        <div class="signs-list">
+                            <div class="sign-item">👁️ Visual changes (optic neuritis, diplopia)</div>
+                            <div class="sign-item">💪 Motor weakness, spasticity</div>
+                            <div class="sign-item">🤚 Sensory changes (numbness, tingling)</div>
+                            <div class="sign-item">🚶 Coordination problems (ataxia)</div>
+                            <div class="sign-item">😴 Profound fatigue (worse with heat)</div>
+                            <div class="sign-item">🧠 Cognitive changes</div>
+                            <div class="sign-item">🚽 Bladder/bowel dysfunction</div>
+                        </div>
+
+                        <h4>Key Concepts for NCLEX</h4>
+                        <div class="alert alert-info">
+                            <span class="alert-icon">🌡️</span>
+                            <div><strong>Uhthoff's Phenomenon:</strong> MS symptoms temporarily worsen with increased body temperature (hot baths, exercise, fever). Avoid heat exposure!</div>
+                        </div>
+                        <div class="alert alert-warning">
+                            <span class="alert-icon">⚡</span>
+                            <div><strong>Lhermitte's Sign:</strong> Electric shock sensation down spine when bending neck forward - classic MS finding!</div>
+                        </div>
+
+                        <h4>Nursing Priorities</h4>
+                        <ul>
+                            <li>Prevent injury (fall precautions, vision aids)</li>
+                            <li>Manage fatigue (energy conservation, rest periods)</li>
+                            <li>Promote mobility (PT, assistive devices)</li>
+                            <li>Address bladder/bowel function</li>
+                            <li>Patient education about heat avoidance</li>
+                            <li>Medication adherence (immunomodulators)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🚨 Stroke & Aphasia
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Transient Ischemic Attack (TIA)</h4>
+                    <div class="disease-box">
+                        <p>Temporary localized reduction of blood flow in brain; recovery usually within 24 hours. May occur as single event or in series. <strong>WARNING SIGN for stroke!</strong></p>
+                    </div>
+
+                    <h4>Cerebrovascular Accident (CVA/Stroke)</h4>
+                    <div class="disease-box">
+                        <p>Infarction of brain tissue from lack of blood. Tissue necrosis may be from:</p>
+                        <ul>
+                            <li>Total occlusion by atheroma or embolus → ischemia</li>
+                            <li>Ruptured cerebral vessel → hemorrhage and increased ICP</li>
+                        </ul>
+                    </div>
+
+                    <h4>Aphasia Types</h4>
+                    <table>
+                        <tr><th>Type</th><th>Location</th><th>Manifestation</th></tr>
+                        <tr><td><strong>Expressive (Motor)</strong></td><td>Broca's area (left frontal lobe)</td><td>Cannot speak/write fluently; comprehension INTACT</td></tr>
+                        <tr><td><strong>Receptive (Sensory)</strong></td><td>Wernicke's area (left temporal/prefrontal)</td><td>Cannot understand written/spoken language</td></tr>
+                        <tr><td><strong>Global</strong></td><td>Major damage to both areas</td><td>Combination of both; most severe</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🧓 Chronic Neurological Disorders
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Parkinson's Disease</h4>
+                    <div class="disease-box">
+                        <h4>Pathophysiology</h4>
+                        <p>Degeneration of dopamine-producing neurons in substantia nigra → dopamine deficiency</p>
+                        <div class="mnemonic-box">
+                            <div class="mnemonic-text">TRAP: Tremor, Rigidity, Akinesia (bradykinesia), Postural instability</div>
+                        </div>
+                    </div>
+
+                    <h4>Myasthenia Gravis</h4>
+                    <div class="disease-box">
+                        <p>Antibodies block acetylcholine receptors at neuromuscular junction</p>
+                        <p><strong>Key Feature:</strong> Weakness worsens with activity, improves with rest!</p>
+                        <p>Signs: Ptosis, diplopia, dysphagia, respiratory weakness</p>
+                    </div>
+
+                    <h4>Guillain-Barré Syndrome</h4>
+                    <div class="disease-box">
+                        <p>Autoimmune demyelination of peripheral nerves (PNS)</p>
+                        <div class="mnemonic-box">
+                            <div class="mnemonic-text">Ascending paralysis - starts in legs, moves UP!</div>
+                        </div>
+                        <p><strong>Danger:</strong> Respiratory compromise - monitor closely!</p>
+                    </div>
+
+                    <h4>Comparison Table</h4>
+                    <table>
+                        <tr><th>Disorder</th><th>Pathophysiology</th><th>Classic Signs</th><th>Key Feature</th></tr>
+                        <tr><td><strong>Parkinson's</strong></td><td>Dopamine deficiency</td><td>Tremor, Rigidity, Bradykinesia</td><td>Resting tremor, shuffling gait</td></tr>
+                        <tr><td><strong>Myasthenia Gravis</strong></td><td>ACh receptor antibodies</td><td>Ptosis, diplopia, weakness</td><td>Worse with activity, better with rest</td></tr>
+                        <tr><td><strong>Guillain-Barré</strong></td><td>Autoimmune demyelination (PNS)</td><td>Ascending paralysis</td><td>Starts in legs, moves up</td></tr>
+                        <tr><td><strong>ALS</strong></td><td>Motor neuron degeneration</td><td>Progressive weakness</td><td>Both upper and lower motor neurons</td></tr>
+                        <tr><td><strong>MS</strong></td><td>Autoimmune demyelination (CNS)</td><td>Visual, motor, sensory changes</td><td>Worse with heat (Uhthoff's)</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 15 - EYES/EARS -->
+        <section id="chapter15" class="section">
+            <div class="card">
+                <h2>👁️ Chapter 15: Eyes, Ears & Sensory Organs</h2>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    📖 Key Terms (From PowerPoint)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="term-grid">
+                        <div class="term-card"><div class="term-name">Thermoreceptors</div><div class="term-def">Receptors recognizing temperature sensation; cold, warmth, pain receptors under skin</div></div>
+                        <div class="term-card"><div class="term-name">Photoreceptors</div><div class="term-def">Cells sensitive to light; Rods (dim light) and Cones (color, visual acuity)</div></div>
+                        <div class="term-card"><div class="term-name">Cones</div><div class="term-def">Provide ability to see bright light and color; involved in visual acuity (clarity)</div></div>
+                        <div class="term-card"><div class="term-name">Proprioceptors</div><div class="term-def">AKA muscle sense; provide information about body movement, orientation, muscle stretch</div></div>
+                        <div class="term-card"><div class="term-name">Photophobia</div><div class="term-def">Sensitivity to light</div></div>
+                        <div class="term-card"><div class="term-name">Ototoxic</div><div class="term-def">Drugs causing hearing damage: aminoglycosides, vancomycin, furosemide, high-dose aspirin</div></div>
+                        <div class="term-card"><div class="term-name">Tinnitus</div><div class="term-def">Ringing or buzzing in the ears; no known cure, managed with noise suppression therapy</div></div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🔬 Sensory Receptor Types
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images/image16.png" alt="Sensory receptor types" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Types of sensory receptors</p>
+                    </div>
+                    <table>
+                        <tr><th>Receptor Type</th><th>Function</th><th>Examples</th></tr>
+                        <tr><td><strong>Mechanoreceptors</strong></td><td>Mechanical forces - stretching alters membrane permeability</td><td>Vibration, acceleration, sound, baroreceptors, osmoreceptors</td></tr>
+                        <tr><td><strong>Thermoreceptors</strong></td><td>Varying degrees of heat</td><td>Cold receptors, warm receptors</td></tr>
+                        <tr><td><strong>Chemoreceptors</strong></td><td>Chemical detection</td><td>Oxygen, pH, organic molecules, taste, smell</td></tr>
+                        <tr><td><strong>Nociceptors</strong></td><td>Pain and itch</td><td>Tissue damage detection</td></tr>
+                        <tr><td><strong>Photoreceptors</strong></td><td>Light detection</td><td>Rods (dim light), Cones (color, acuity)</td></tr>
+                    </table>
+
+                    <h4>Neuron Types and Sensation</h4>
+                    <div class="image-container">
+                        <img src="images/image15.png" alt="Neuron types and sensation" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Neuron types and their sensory functions</p>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    👁️ Eye Structure & Function
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Photoreceptors</h4>
+                    <ul>
+                        <li><strong>Rods:</strong> Produce rhodopsin, allowing vision in dim light</li>
+                        <li><strong>Cones:</strong> Provide ability to see bright light and color; involved in visual acuity (clarity)</li>
+                    </ul>
+
+                    <h4>Extraocular Eye Muscles (6 muscles)</h4>
+                    <div class="image-container">
+                        <img src="images/image17.png" alt="Extraocular eye muscles" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Extraocular muscles and their movements</p>
+                    </div>
+                    <p>Innervated by oculomotor (III), trochlear (IV), and abducens (VI) cranial nerves</p>
+                    <table>
+                        <tr><th>Muscle</th><th>Eye Movement</th></tr>
+                        <tr><td>Lateral rectus</td><td>Outward, away from nose</td></tr>
+                        <tr><td>Medial rectus</td><td>Inward, toward the nose</td></tr>
+                        <tr><td>Superior rectus</td><td>Upward, slightly outward</td></tr>
+                        <tr><td>Inferior rectus</td><td>Downward, slightly inward</td></tr>
+                        <tr><td>Superior oblique</td><td>Inward and downward</td></tr>
+                        <tr><td>Inferior oblique</td><td>Outward and upward</td></tr>
+                    </table>
+
+                    <h4>Protective Eye Structures</h4>
+                    <p><strong>Physical Barriers:</strong></p>
+                    <ul>
+                        <li><strong>Eyelids:</strong> Blinking removes debris, moistens eye surface</li>
+                        <li><strong>Eyelashes:</strong> Protect eye, remove debris</li>
+                        <li><strong>Conjunctiva:</strong> Mucous membrane lining eyelid and front of eye</li>
+                    </ul>
+                    <p><strong>Chemical Barriers:</strong></p>
+                    <ul>
+                        <li><strong>Tears:</strong> Produced by lacrimal glands; protect against infection, provide nutrients/moisture, remove debris</li>
+                        <li><strong>Aqueous Humor:</strong> Maintains eye pressure, provides nutrients to cornea and lens</li>
+                    </ul>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    👁️ Altered Vision - Disorders
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Refraction Problems</h4>
+                    <table>
+                        <tr><th>Condition</th><th>Description</th></tr>
+                        <tr><td><strong>Hyperopia</strong></td><td>Focusing of image behind retina (farsightedness)</td></tr>
+                        <tr><td><strong>Astigmatism</strong></td><td>Irregular curvature of cornea or lens, prevents focusing, blurs vision</td></tr>
+                        <tr><td><strong>Presbyopia</strong></td><td>Age-related; inability of ciliary muscle and lens to accommodate for near vision</td></tr>
+                    </table>
+
+                    <h4>Movement Disorders</h4>
+                    <table>
+                        <tr><th>Condition</th><th>Description</th></tr>
+                        <tr><td><strong>Strabismus</strong></td><td>Lack of coordinated eye muscle function; eyes don't line up (crossed eyes)</td></tr>
+                        <tr><td><strong>Amblyopia</strong></td><td>Lazy eye; loss of visual detail from uncoordinated movement</td></tr>
+                        <tr><td><strong>Diplopia</strong></td><td>Double vision from lack of coordination</td></tr>
+                        <tr><td><strong>Nystagmus</strong></td><td>Involuntary oscillations of the eye</td></tr>
+                    </table>
+
+                    <h4>Eye Structure Disorders</h4>
+                    <div class="disease-box">
+                        <h4>Conjunctivitis Types</h4>
+                        <table>
+                            <tr><th>Type</th><th>Symptoms</th><th>Treatment</th></tr>
+                            <tr><td><strong>Viral</strong></td><td>1 eye, watery/excessive tears</td><td>Supportive; contagious!</td></tr>
+                            <tr><td><strong>Bacterial</strong></td><td>Both eyes, heavy discharge</td><td>Antibiotic drops</td></tr>
+                            <tr><td><strong>Allergic</strong></td><td>Both eyes, itchy/red/watery</td><td>Antihistamines</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="disease-box">
+                        <h4>Cataracts</h4>
+                        <p>Progressive clouding (opaqueness) of the lens from protein clumping; scatters incoming light</p>
+                        <p><strong>Types:</strong></p>
+                        <ul>
+                            <li><strong>Nuclear Sclerotic:</strong> Slow, age-related</li>
+                            <li><strong>Cortical:</strong> Minimal vision loss</li>
+                            <li><strong>Posterior Subcapsular:</strong> Rapid (within months)</li>
+                        </ul>
+                    </div>
+
+                    <div class="disease-box">
+                        <h4>Glaucoma</h4>
+                        <p>Increased IOP damages optic nerve; peripheral vision loss first</p>
+                    </div>
+
+                    <div class="disease-box">
+                        <h4>Retinal Detachment - EMERGENCY!</h4>
+                        <div class="alert alert-danger">
+                            <span class="alert-icon">🚨</span>
+                            <div>Sensory retina separates from pigment layer; Classic signs: Flashes + Floaters + "Curtain" effect - Immediate surgery needed!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    👂 Hearing & Balance Disorders
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Ear Disorders by Location</h4>
+                    <table>
+                        <tr><th>Location</th><th>Disorder</th><th>Description</th></tr>
+                        <tr><td><strong>External Ear</strong></td><td>Obstruction</td><td>Cerumen accumulation, tumor</td></tr>
+                        <tr><td></td><td>Otitis externa</td><td>Swimmer's ear; moisture in canal, altered skin integrity</td></tr>
+                        <tr><td><strong>Middle Ear</strong></td><td>Barotrauma</td><td>Sudden atmospheric pressure changes (flying, diving)</td></tr>
+                        <tr><td></td><td>Otitis media</td><td>Acute or recurrent; effusion (fluid) in middle ear</td></tr>
+                        <tr><td></td><td>Mastoiditis</td><td>Bacterial infection of mastoid bone air cells</td></tr>
+                        <tr><td><strong>Internal Ear</strong></td><td>Tinnitus</td><td>Noise-induced hearing loss, presbycusis, HTN, head injury</td></tr>
+                        <tr><td></td><td>Ménière's disease</td><td>Overproduction/decreased absorption of endolymph</td></tr>
+                        <tr><td></td><td>Labyrinthitis</td><td>Inflammation of labyrinth; severe vertigo, sensorineural hearing loss</td></tr>
+                    </table>
+
+                    <h4>Ménière's Disease</h4>
+                    <div class="disease-box">
+                        <div class="mnemonic-box">
+                            <div class="mnemonic-text">Triad: Vertigo + Tinnitus + Sensorineural Hearing Loss</div>
+                        </div>
+                        <p><strong>Associated with:</strong> Severe vertigo (spinning sensation), tinnitus, hearing loss</p>
+                        <p><strong>Treatment:</strong> Low sodium diet, diuretics, avoid sudden movements</p>
+                    </div>
+
+                    <h4>Ototoxic Medications</h4>
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">💊</span>
+                        <div>
+                            <strong>Monitor hearing with these medications:</strong>
+                            <ul>
+                                <li>Antibiotics: Streptomycin, Neomycin, Vancomycin</li>
+                                <li>Analgesics: Aspirin, Ibuprofen (high doses)</li>
+                                <li>Diuretics: Furosemide</li>
+                                <li>Some antineoplastic agents</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 16 - ENDOCRINE -->
+        <section id="chapter16" class="section">
+            <div class="card">
+                <h2>🩺 Chapter 16: Endocrine System Disorders</h2>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    📖 Key Terms (From PowerPoint)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="term-grid">
+                        <div class="term-card"><div class="term-name">Hormone</div><div class="term-def">Chemicals affecting growth/function of target tissues/organs; can be simple (thyroid) or complex (cortisol)</div></div>
+                        <div class="term-card"><div class="term-name">Endocrine System</div><div class="term-def">Collective group of tissues capable of secreting hormones (pancreas, thyroid, thymus, pituitary, etc.)</div></div>
+                        <div class="term-card"><div class="term-name">Hypothalamus</div><div class="term-def">"Smart control center"; synthesizes inhibiting and releasing hormones to act on anterior pituitary</div></div>
+                        <div class="term-card"><div class="term-name">Stress</div><div class="term-def">Body's reaction to harmful forces (stressors) disturbing homeostasis</div></div>
+                        <div class="term-card"><div class="term-name">General Adaptation Syndrome</div><div class="term-def">Body's neuroendocrine response to stress; 3 stages: alarm, resistance, exhaustion</div></div>
+                        <div class="term-card"><div class="term-name">Insulin</div><div class="term-def">Anabolic hormone for glucose uptake by liver, muscle, adipose tissue cells</div></div>
+                        <div class="term-card"><div class="term-name">Alpha Cells</div><div class="term-def">Secrete glucagon; mobilizes glycogen from liver, suppresses insulin</div></div>
+                        <div class="term-card"><div class="term-name">Beta Cells</div><div class="term-def">Secrete insulin; promotes glucose utilization</div></div>
+                        <div class="term-card"><div class="term-name">Delta Cells</div><div class="term-def">Secrete somatostatin and gastrin; regulate alpha/beta cell function</div></div>
+                        <div class="term-card"><div class="term-name">Diabetes Mellitus</div><div class="term-def">Group of disorders characterized by inability to regulate glucose; inadequate metabolism of proteins, fats, carbs</div></div>
+                        <div class="term-card"><div class="term-name">Hyperglycemia</div><div class="term-def">Significant elevation in blood glucose; inability to transport glucose into insulin-dependent cells</div></div>
+                        <div class="term-card"><div class="term-name">HbA1C</div><div class="term-def">Glycosylated hemoglobin; determines glucose exposure over 3-4 months</div></div>
+                        <div class="term-card"><div class="term-name">Polydipsia</div><div class="term-def">Excessive thirst</div></div>
+                        <div class="term-card"><div class="term-name">Polyuria</div><div class="term-def">Excessive urination</div></div>
+                        <div class="term-card"><div class="term-name">Polyphagia</div><div class="term-def">Excessive hunger</div></div>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🔬 Hypothalamic-Pituitary Axis (TEACHER EMPHASIS!)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images/image20.png" alt="Hypothalamic-Pituitary Axis" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Complete hypothalamic-pituitary axis with all hormones</p>
+                    </div>
+
+                    <h4>Control Center</h4>
+                    <p>The hypothalamic-pituitary axis controls synthesis and secretion of many hormones.</p>
+
+                    <h4>Hypothalamus - Releasing Hormones</h4>
+                    <ul>
+                        <li><strong>GHRH:</strong> Growth hormone-releasing hormone</li>
+                        <li><strong>TRH:</strong> Thyrotropin-releasing hormone</li>
+                        <li><strong>CRH:</strong> Corticotropin-releasing hormone</li>
+                        <li><strong>GnRH:</strong> Gonadotropin-releasing hormone</li>
+                    </ul>
+
+                    <h4>Hypothalamus - Inhibiting Hormones</h4>
+                    <ul>
+                        <li><strong>Somatostatin:</strong> Inhibits GH and TSH</li>
+                        <li><strong>Dopamine:</strong> Inhibits prolactin</li>
+                    </ul>
+
+                    <div class="teacher-focus">
+                        <h4>🤱 OXYTOCIN - Teacher's MUST KNOW!</h4>
+                        <table>
+                            <tr><th>Source</th><th>Target</th><th>Function</th></tr>
+                            <tr><td>Hypothalamus → Posterior Pituitary (stored/released)</td><td>Uterus and Breasts</td><td><strong>Uterus:</strong> Stimulates contractions during labor<br><strong>Breasts:</strong> Milk ejection after childbirth</td></tr>
+                        </table>
+                        <p><strong>Key NCLEX Points:</strong></p>
+                        <ul>
+                            <li>Also called the "love hormone" - involved in bonding</li>
+                            <li>Used to induce/augment labor</li>
+                            <li><strong>NCLEX Alert:</strong> Monitor for water intoxication (ADH-like effect at high doses)</li>
+                            <li>Triggers let-down reflex for breastfeeding</li>
+                        </ul>
+                    </div>
+
+                    <h4>Posterior Pituitary Hormones</h4>
+                    <p>ADH and oxytocin travel along nerve axons to posterior pituitary for unchanged release into systemic circulation.</p>
+
+                    <h4>Anterior Pituitary Actions</h4>
+                    <ol>
+                        <li>Hormone travels to APG → released as-is (ex: Prolactin)</li>
+                        <li>Releasing hormone acts on APG → APG produces different hormone (ex: Growth Hormone)</li>
+                        <li>Releasing hormone → APG releases stimulating hormone → acts on gland to produce another hormone (ex: Thyroid Hormone)</li>
+                    </ol>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    📊 Complete Hormone Table (From PowerPoint)
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images/image19.png" alt="Complete hormone table" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Complete hormone reference table</p>
+                    </div>
+
+                    <div class="teacher-focus">
+                        <h4>🌸 CORPUS LUTEUM & ESTROGEN - Teacher's MUST KNOW!</h4>
+                        <table>
+                            <tr><th>Structure</th><th>Source</th><th>Function</th></tr>
+                            <tr><td><strong>Corpus Luteum</strong></td><td>Formed from ovarian follicle after ovulation</td><td>Produces <strong>PROGESTERONE</strong> to maintain early pregnancy until placenta takes over (~10-12 weeks)</td></tr>
+                            <tr><td><strong>Estrogen</strong></td><td>Ovaries (follicular cells)</td><td>Promotes development of reproductive organs and secondary sex characteristics; affects menstrual cycle</td></tr>
+                        </table>
+                        <p><strong>Corpus Luteum Key Points:</strong></p>
+                        <ul>
+                            <li>Temporary endocrine structure</li>
+                            <li>Secretes progesterone AND estrogen</li>
+                            <li>If pregnancy occurs: functions until placenta takes over</li>
+                            <li>If no pregnancy: degenerates into corpus albicans → menstruation</li>
+                        </ul>
+                        <p><strong>Estrogen Key Points:</strong></p>
+                        <ul>
+                            <li>Promotes endometrial proliferation</li>
+                            <li>Responsible for female secondary sex characteristics</li>
+                            <li>Works with progesterone to regulate menstrual cycle</li>
+                            <li>Important for bone health (prevents osteoporosis)</li>
+                        </ul>
+                    </div>
+
+                    <h4>Key Hormones Summary</h4>
+                    <table>
+                        <tr><th>Hormone</th><th>Source</th><th>Target</th><th>Function</th></tr>
+                        <tr><td><strong>Antidiuretic Hormone (ADH)</strong></td><td>Hypothalamus-Posterior Pituitary</td><td>Kidneys</td><td>Promotes water reabsorption (fluid retention)</td></tr>
+                        <tr><td><strong>Oxytocin</strong></td><td>Hypothalamus-Posterior Pituitary</td><td>Uterus, Breasts</td><td>Uterine contractions, milk ejection</td></tr>
+                        <tr><td><strong>Cortisol</strong></td><td>Adrenal cortex</td><td>Multiple</td><td>Metabolism, blood glucose regulation, anti-inflammatory</td></tr>
+                        <tr><td><strong>Aldosterone</strong></td><td>Adrenal cortex</td><td>Kidney</td><td>Increases Na+ reabsorption, K+ loss</td></tr>
+                        <tr><td><strong>Insulin</strong></td><td>Pancreatic beta cells</td><td>Blood glucose</td><td>Facilitates glucose transport into cells</td></tr>
+                        <tr><td><strong>Glucagon</strong></td><td>Pancreatic alpha cells</td><td>Blood glucose</td><td>Stimulates glycogen breakdown, increases blood glucose</td></tr>
+                        <tr><td><strong>Thyroid Hormones (T3, T4)</strong></td><td>Thyroid gland</td><td>Multiple</td><td>Increase metabolic rate; needed for growth/development</td></tr>
+                        <tr><td><strong>Parathyroid Hormone</strong></td><td>Parathyroid glands</td><td>Bone, blood</td><td>Regulates calcium levels in blood</td></tr>
+                    </table>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    ⚖️ Feedback Mechanisms
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Negative Feedback (Most Common)</h4>
+                    <p>Like a thermostat - when levels are high, production turns off; when low, production turns on.</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Aldosterone levels adjust based on Na+ and K+ levels</li>
+                        <li>Thyroid hormone (T3, T4) levels alert hypothalamus and anterior pituitary to adjust TRH and TSH secretion</li>
+                    </ul>
+
+                    <h4>Positive Feedback (Less Common)</h4>
+                    <p>Hormone stimulates increased production of the same hormone.</p>
+                    <p><strong>Example:</strong> Dilation/stretch of cervix triggers oxytocin release → promotes continued stretch + contractions → increases oxytocin release until birth</p>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    😰 Stress Response & General Adaptation Syndrome
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Neurologic Response to Stress</h4>
+                    <table>
+                        <tr><th>Structure</th><th>Response</th></tr>
+                        <tr><td><strong>Autonomic Nervous System</strong></td><td>↑HR, ↑BP, ↑RR, pupil dilation, ↑ sweating, ↓ GI function; may cause "stress ulcers"</td></tr>
+                        <tr><td><strong>Cerebral Cortex</strong></td><td>Intense focus, planning, attention, persistence</td></tr>
+                        <tr><td><strong>Limbic System</strong></td><td>Fear, anxiety, anger, excitement</td></tr>
+                        <tr><td><strong>Thalamus</strong></td><td>Intensifies sensory input (vision, hearing, smell)</td></tr>
+                        <tr><td><strong>Hypothalamus</strong></td><td>Releases hormones for neuroendocrine response</td></tr>
+                        <tr><td><strong>Reticular Activating System</strong></td><td>↑ Alertness, muscle tension</td></tr>
+                    </table>
+
+                    <h4>Hormonal Response to Stress</h4>
+                    <p>Stress → CRH from hypothalamus → ACTH from pituitary → Cortisol from adrenal cortex</p>
+                    <p><strong>Cortisol Effects:</strong> Increases metabolism, regulates blood glucose, anti-inflammatory</p>
+
+                    <h4>General Adaptation Syndrome - 3 Stages</h4>
+                    <div class="disease-box">
+                        <h4>1. Alarm Stage (Fight or Flight)</h4>
+                        <p>Catecholamines and cortisol released; other hormones decrease (reproductive, TH, GH) or increase (ADH); hormone levels return to baseline if stressor removed</p>
+                    </div>
+                    <div class="disease-box">
+                        <h4>2. Resistance Stage</h4>
+                        <p>Persistent stress → cortisol levels decrease through negative feedback; hypercortisolism is detrimental: exhaustion of inflammatory/immune responses, tissue breakdown, glucose intolerance</p>
+                    </div>
+                    <div class="disease-box">
+                        <h4>3. Exhaustion Stage</h4>
+                        <p>Chronic overwhelming stress → energy depletion, degeneration of cells, tissues, organs, organ systems</p>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🍬 Diabetes Mellitus - HIGH YIELD
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <div class="image-container">
+                        <img src="images/image22.png" alt="Diabetes types comparison" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Type 1, Type 2, and Gestational Diabetes comparison</p>
+                    </div>
+
+                    <h4>Type 1 vs Type 2 Comparison</h4>
+                    <table>
+                        <tr><th>Feature</th><th>Type 1 DM</th><th>Type 2 DM</th></tr>
+                        <tr><td>Onset</td><td>Puberty/childhood (peaks 10-14 years); increasing in adults</td><td>Adult years (peaks 45); increasing in those <45</td></tr>
+                        <tr><td>Cause</td><td>Insulin deficit (autoimmune)</td><td>Insulin resistance; insufficient insulin for body needs</td></tr>
+                        <tr><td>Treatment</td><td>Insulin replacement balanced with exercise and diet</td><td>Diet, exercise, oral glycemic agents, possibly insulin</td></tr>
+                        <tr><td>Ketosis</td><td>Prone to DKA</td><td>Rare</td></tr>
+                    </table>
+
+                    <h4>Gestational Diabetes</h4>
+                    <p>Peaks at 5th-6th month gestation; caused by insulin resistance from placental hormone production; treat with diet, exercise, sometimes insulin, and delivery of baby</p>
+
+                    <h4>Classic 3 P's of Diabetes</h4>
+                    <div class="mnemonic-box">
+                        <div class="mnemonic-text">Polydipsia + Polyuria + Polyphagia</div>
+                    </div>
+
+                    <h4>Clinical Manifestations</h4>
+                    <div class="image-container">
+                        <img src="images/image23.png" alt="Hyperglycemia manifestations" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Clinical manifestations and pathophysiology of hyperglycemia</p>
+                    </div>
+
+                    <h4>Hypo vs Hyperglycemia</h4>
+                    <div class="mnemonic-box">
+                        <div class="mnemonic-text">
+                            Hypoglycemia: "Cold and clammy - need candy!"<br>
+                            Hyperglycemia: "Hot and dry - sugar high!"
+                        </div>
+                    </div>
+
+                    <h4>Diabetic Complications</h4>
+                    <div class="image-container">
+                        <img src="images/image24.png" alt="Diabetes complications" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Systemic complications of diabetes mellitus</p>
+                    </div>
+                </div>
+
+                <button class="collapsible" onclick="toggleCollapsible(this)">
+                    🦋 Thyroid & Adrenal Disorders
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="collapsible-content">
+                    <h4>Thyroid Disorders</h4>
+                    <table>
+                        <tr><th>Feature</th><th>Hypothyroidism</th><th>Hyperthyroidism</th></tr>
+                        <tr><td>Metabolism</td><td>↓ Decreased</td><td>↑ Increased</td></tr>
+                        <tr><td>Weight</td><td>Gain</td><td>Loss</td></tr>
+                        <tr><td>Temperature</td><td>Cold intolerance</td><td>Heat intolerance</td></tr>
+                        <tr><td>Heart Rate</td><td>Bradycardia</td><td>Tachycardia</td></tr>
+                        <tr><td>Bowel</td><td>Constipation</td><td>Diarrhea</td></tr>
+                        <tr><td>Skin/Hair</td><td>Dry, coarse, hair loss</td><td>Warm, moist, fine hair</td></tr>
+                        <tr><td>Mood</td><td>Depression, fatigue</td><td>Anxiety, irritability</td></tr>
+                    </table>
+
+                    <h4>Adrenal Disorders - Hormonal Imbalances</h4>
+                    <div class="image-container">
+                        <img src="images/image21.png" alt="Hormonal imbalances table" onclick="openModal(this.src)">
+                        <p class="image-caption">Click to enlarge - Effects of hormone excess and deficit</p>
+                    </div>
+
+                    <h4>Cushing Syndrome vs Addison Disease</h4>
+                    <table>
+                        <tr><th>Feature</th><th>Cushing Syndrome</th><th>Addison Disease</th></tr>
+                        <tr><td>Pathophysiology</td><td>EXCESS cortisol</td><td>DEFICIENT cortisol & aldosterone</td></tr>
+                        <tr><td>Appearance</td><td>Moon face, buffalo hump, striae</td><td>Hyperpigmentation (bronze skin)</td></tr>
+                        <tr><td>Blood Pressure</td><td>Hypertension</td><td>Hypotension</td></tr>
+                        <tr><td>Electrolytes</td><td>Hypokalemia, hyperglycemia</td><td>Hyponatremia, hyperkalemia</td></tr>
+                        <tr><td>Key Nursing Action</td><td>Monitor for infection</td><td>STRESS-DOSE steroids during illness!</td></tr>
+                    </table>
+
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">🚨</span>
+                        <div><strong>Addisonian Crisis:</strong> Never stop steroids abruptly! Patients need STRESS-DOSE steroids during illness, surgery, or trauma!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAMES SECTION -->
+        <section id="games" class="section">
+            <div class="card">
+                <h2>🎮 Interactive Study Games</h2>
+                <p>Reinforce your learning with these fun, interactive games!</p>
+                <div class="tiles-grid">
+                    <button class="tile" onclick="startSpeedRound()">⚡ Speed Round</button>
+                    <button class="tile" onclick="startTermMatch()">🎯 Term Match</button>
+                    <button class="tile" onclick="startMillionaire()">💰 Millionaire</button>
+                    <button class="tile" onclick="startJeopardy()">🏆 Jeopardy</button>
+                </div>
+                <div id="game-area"></div>
+            </div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section id="quiz" class="section">
+            <div class="card">
+                <h2>📝 50 Next Gen NCLEX-Style Practice Questions</h2>
+                <p>Each question has a <strong>HINT</strong> button to help guide your thinking!</p>
+                <div class="game-score">
+                    <div class="score-box">Score: <span id="quiz-score">0</span>/50</div>
+                </div>
+                <div id="quiz-container"></div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="game-btn" onclick="submitQuiz()">Submit Quiz</button>
+                    <button class="game-btn" onclick="resetQuiz()">Reset Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS SECTION -->
+        <section id="flashcards" class="section">
+            <div class="card">
+                <h2>🎴 Interactive Flashcards</h2>
+                <p>Click on a card to flip it!</p>
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="flashcard-front" id="card-front"></div>
+                        <div class="flashcard-back" id="card-back"></div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="game-btn" onclick="prevCard()">◀ Previous</button>
+                    <span id="card-counter" style="margin: 0 1rem; font-weight: 600;">1/50</span>
+                    <button class="game-btn" onclick="nextCard()">Next ▶</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VAULT SECTION -->
+        <section id="vault" class="section">
+            <div class="card">
+                <h2>🔒 Wrong Answer Vault</h2>
+                <p>Questions you answer incorrectly will be saved here for focused review.</p>
+                <div id="vault-container">
+                    <p style="text-align: center; color: #718096;">Answer quiz questions to populate your vault!</p>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="game-btn" onclick="clearVault()">Clear Vault</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeModal()">
+        <img src="" id="modalImage" alt="Enlarged image">
+    </div>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = tab.dataset.section;
+                showSection(section);
+            });
+        });
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleCollapsible(btn) {
+            btn.classList.toggle('open');
+            btn.nextElementSibling.classList.toggle('open');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const totalSections = 9;
+            let visited = JSON.parse(localStorage.getItem('visitedSections') || '[]');
+            const currentSection = document.querySelector('.section.active').id;
+            if (!visited.includes(currentSection)) {
+                visited.push(currentSection);
+                localStorage.setItem('visitedSections', JSON.stringify(visited));
+            }
+            const percent = Math.round((visited.length / totalSections) * 100);
+            document.getElementById('progress-percent').textContent = percent + '%';
+            document.getElementById('progress-fill').style.width = percent + '%';
+        }
+
+        // Image Modal
+        function openModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        // Quiz Data with Hints
+        const allQuestions = [
+            {question: "A patient with MS reports increased fatigue after a hot bath. The nurse explains this is:", options: ["Lhermitte's sign", "Uhthoff's phenomenon", "Romberg's sign", "Babinski's reflex"], correct: 1, hint: "Think about what happens to MS symptoms when body temperature rises. This phenomenon is named after a doctor.", explanation: "Uhthoff's phenomenon is temporary worsening of MS symptoms with increased body temperature. This is why MS patients should avoid hot tubs and saunas."},
+            {question: "Expressive aphasia results from damage to which area of the brain?", options: ["Wernicke's area in the temporal lobe", "Broca's area in the frontal lobe", "Occipital lobe", "Cerebellum"], correct: 1, hint: "This area is named after a French physician. It's located in the frontal lobe and controls the motor aspect of speech.", explanation: "Broca's area (left frontal lobe) controls expressive speech. Damage causes inability to speak/write fluently while comprehension remains intact."},
+            {question: "Cushing's triad includes which three findings?", options: ["Hypertension, tachycardia, fever", "Bradycardia, irregular respirations, widened pulse pressure", "Hypotension, tachycardia, shallow respirations", "Hypertension, bradypnea, pinpoint pupils"], correct: 1, hint: "This triad is a LATE sign of increased intracranial pressure. Think about vital sign changes that occur when the brain is compressed.", explanation: "Cushing's triad indicates increased ICP: Bradycardia, Irregular respirations, Widened pulse pressure. This is a LATE sign!"},
+            {question: "A diabetic patient is cool and clammy. What is the priority action?", options: ["Administer insulin", "Check glucose, give carbs if low", "Prepare IV fluids", "Call rapid response"], correct: 1, hint: "Remember the mnemonic: 'Cold and clammy - need candy!' What does this tell you about their glucose level?", explanation: "Cold and clammy = hypoglycemia! Check glucose first. If low, give 15-20g fast-acting carbs."},
+            {question: "Myasthenia Gravis causes weakness that:", options: ["Worsens with activity, improves with rest", "Improves with activity", "Is constant throughout the day", "Affects only the lower extremities"], correct: 0, hint: "The name 'Myasthenia Gravis' means 'grave muscle weakness.' Think about what happens at the neuromuscular junction with repeated stimulation.", explanation: "MG is an autoimmune disorder where antibodies block ACh receptors. Weakness worsens with activity and improves with rest."},
+            {question: "Oxytocin is produced where and released from where?", options: ["Produced and released by the anterior pituitary", "Produced by hypothalamus, released by posterior pituitary", "Produced by ovaries, released by uterus", "Produced by adrenal glands"], correct: 1, hint: "Remember: ADH and oxytocin are the two hormones associated with the posterior pituitary. Where are they actually made?", explanation: "Oxytocin is PRODUCED in the hypothalamus and STORED/RELEASED from the posterior pituitary. Same for ADH!"},
+            {question: "The corpus luteum secretes which hormone to maintain early pregnancy?", options: ["Estrogen only", "Progesterone", "FSH", "LH"], correct: 1, hint: "The corpus luteum forms after ovulation. What hormone is needed to maintain the uterine lining for a developing embryo?", explanation: "Corpus luteum secretes PROGESTERONE to maintain early pregnancy until the placenta takes over around 10-12 weeks."},
+            {question: "Estrogen is primarily responsible for:", options: ["Maintaining pregnancy", "Development of female secondary sex characteristics", "Stimulating milk production", "Regulating calcium levels"], correct: 1, hint: "Think about the changes that occur during puberty in females. What hormone drives those changes?", explanation: "Estrogen promotes development of reproductive organs and female secondary sex characteristics (breast development, body fat distribution)."},
+            {question: "Ménière's disease management includes which dietary modification?", options: ["Increase sodium intake", "Avoid sudden movements, limit sodium", "Take aspirin daily", "Use cotton earplugs continuously"], correct: 1, hint: "This condition involves excess fluid in the inner ear. What dietary change helps reduce fluid retention?", explanation: "Low sodium diet helps reduce endolymph fluid retention. Also avoid sudden movements and use diuretics."},
+            {question: "Cushing syndrome causes which electrolyte imbalance?", options: ["Hyperkalemia", "Hyponatremia", "Hypokalemia", "Hypercalcemia"], correct: 2, hint: "Excess cortisol causes the kidneys to excrete which electrolyte? Think about the opposite of Addison disease.", explanation: "Excess cortisol causes potassium excretion → hypokalemia. Also causes hypernatremia and hyperglycemia."},
+            {question: "Addison disease during illness requires:", options: ["Fluid restriction", "Stress-dose steroids", "Potassium supplements", "Insulin administration"], correct: 1, hint: "In Addison disease, the adrenal glands can't produce enough cortisol. What happens to steroid needs during stress?", explanation: "Addison patients cannot produce adequate cortisol. During stress/illness, they need STRESS-DOSE steroids! Never stop steroids abruptly!"},
+            {question: "Autonomic dysreflexia occurs with spinal cord injuries at which level?", options: ["T6 or above", "T12 or below", "Cervical only", "Lumbar only"], correct: 0, hint: "This condition requires intact splanchnic innervation. The splanchnic nerves exit at T6 and below.", explanation: "T6 or above injuries risk autonomic dysreflexia. It's a medical emergency with severe HTN, headache, bradycardia, flushing above injury."},
+            {question: "DKA is characterized by:", options: ["Severe dehydration only", "Kussmaul respirations, fruity breath, ketones", "Weight gain", "Hypoglycemia"], correct: 1, hint: "In DKA, the body breaks down fat for energy, producing acidic byproducts. What do you smell and see?", explanation: "DKA: Kussmaul respirations (deep, rapid), fruity breath (acetone), positive ketones. Seen in Type 1 DM."},
+            {question: "tPA for acute ischemic stroke must be given within:", options: ["1 hour of symptom onset", "3-4.5 hours of symptom onset", "12 hours of symptom onset", "24 hours of symptom onset"], correct: 1, hint: "'Time is brain!' The window is relatively short - measured in hours, not days.", explanation: "Time is brain! tPA must be given within 3-4.5 hours of symptom onset for ischemic stroke."},
+            {question: "Parkinson's disease classic triad includes:", options: ["Tremor, rigidity, bradykinesia", "Weakness, ataxia, dysarthria", "Nystagmus, vertigo, tinnitus", "Fever, headache, stiff neck"], correct: 0, hint: "Remember TRAP: Tremor, Rigidity, Akinesia/bradykinesia, Postural instability.", explanation: "Parkinson's TRAP: Tremor (pill-rolling), Rigidity (cogwheel), Akinesia/bradykinesia, Postural instability."},
+            {question: "Retinal detachment signs include:", options: ["Gradual vision loss over months", "Flashes, floaters, curtain effect", "Eye pain with movement only", "Halos around lights at night"], correct: 1, hint: "The retina is peeling away from its normal position. What visual disturbances would this cause?", explanation: "Retinal detachment: flashes, floaters, 'curtain' over vision. This is a MEDICAL EMERGENCY requiring immediate surgery!"},
+            {question: "Hyperthyroidism causes:", options: ["Weight gain, cold intolerance", "Weight loss, heat intolerance", "Bradycardia", "Constipation"], correct: 1, hint: "When thyroid hormone is too high, metabolism speeds up. What would you expect?", explanation: "Hyperthyroidism increases metabolism: weight loss, heat intolerance, tachycardia, diarrhea, anxiety, exophthalmos (Graves')."},
+            {question: "Guillain-Barré syndrome causes:", options: ["Descending paralysis from head down", "Ascending paralysis from legs up", "Hemiplegia on one side", "Facial paralysis only"], correct: 1, hint: "This autoimmune condition affects peripheral nerves. Where does weakness typically start?", explanation: "GBS causes ascending paralysis starting in legs and moving up. Monitor respiratory function closely!"},
+            {question: "Status epilepticus is defined as seizure activity lasting:", options: ["1 minute", "3 minutes", "5 or more minutes", "15 minutes"], correct: 2, hint: "This is a medical emergency. The time threshold is longer than a typical seizure but short enough to be dangerous.", explanation: "Status epilepticus: continuous seizure activity >5 minutes or multiple seizures without return to baseline. MEDICAL EMERGENCY!"},
+            {question: "HbA1c reflects average blood glucose over what time period?", options: ["1 week", "1 month", "3-4 months", "1 year"], correct: 2, hint: "HbA1c measures glucose attached to hemoglobin. How long do red blood cells live?", explanation: "HbA1c (glycosylated hemoglobin) reflects glucose control over the lifespan of RBCs, approximately 3-4 months. Target is <7%."},
+            {question: "ALS (Amyotrophic Lateral Sclerosis) primarily affects:", options: ["Sensory neurons only", "Motor neurons (upper and lower)", "Both sensory and motor equally", "Autonomic nervous system"], correct: 1, hint: "ALS is also called 'Lou Gehrig's disease.' What type of neurons degenerate?", explanation: "ALS causes progressive degeneration of both upper and lower motor neurons. Sensation and cognition typically remain intact."},
+            {question: "Levothyroxine (Synthroid) should be taken:", options: ["With meals", "Empty stomach, 30 min before breakfast", "At bedtime with a snack", "With milk for better absorption"], correct: 1, hint: "This thyroid medication needs to be absorbed consistently. What substances interfere with its absorption?", explanation: "Take levothyroxine on empty stomach, 30 minutes before breakfast. Calcium, iron, and fiber can interfere with absorption."},
+            {question: "SIADH (Syndrome of Inappropriate ADH) causes:", options: ["Hypernatremia", "Hyponatremia", "Hyperkalemia", "Hypercalcemia"], correct: 1, hint: "Too much ADH means too much water retention. What happens to sodium concentration?", explanation: "SIADH causes excess water retention from too much ADH, leading to dilutional hyponatremia. Treatment: fluid restriction, hypertonic saline if severe."},
+            {question: "Diabetic foot care education should include:", options: ["Soak feet daily in warm water", "Inspect feet daily for cuts or sores", "Go barefoot at home to air out feet", "Use heating pads for cold feet"], correct: 1, hint: "Diabetics have neuropathy and poor circulation. What daily habit helps catch problems early?", explanation: "Daily foot inspection is critical for diabetics due to neuropathy and poor circulation. Never go barefoot, avoid hot water/heating pads."},
+            {question: "Cholinergic crisis signs include:", options: ["Muscle weakness improvement", "SLUDGE symptoms (salivation, lacrimation, etc.)", "Hypertension and tachycardia", "Dry mouth and constipation"], correct: 1, hint: "This is the opposite of a myasthenic crisis. Too much acetylcholine causes excessive parasympathetic activity.", explanation: "Cholinergic crisis from too much anticholinesterase: SLUDGE - Salivation, Lacrimation, Urination, Defecation, GI upset, Emesis. Give atropine!"},
+            {question: "Glaucoma medications work by:", options: ["Improving lens clarity", "Reducing intraocular pressure", "Replacing tears", "Dissolving cataracts"], correct: 1, hint: "Glaucoma damages the optic nerve due to elevated pressure. What's the treatment goal?", explanation: "Glaucoma medications (prostaglandin analogs, beta-blockers, etc.) reduce IOP to protect the optic nerve from further damage."},
+            {question: "DKA treatment priority is:", options: ["Insulin administration first", "IV fluids and potassium monitoring", "Oral glucose replacement", "Beta blocker administration"], correct: 1, hint: "These patients are severely dehydrated and have electrolyte imbalances. What needs to be corrected first?", explanation: "DKA treatment: FLUIDS first (dehydration is severe), then electrolytes (especially potassium), then insulin. Monitor potassium closely!"},
+            {question: "Bacterial meningitis classic signs include:", options: ["Gradual onset over weeks", "Nuchal rigidity, photophobia, fever", "Ascending paralysis", "Unilateral weakness"], correct: 1, hint: "Inflammation of the meninges causes specific neurological signs. What happens when you try to flex the neck?", explanation: "Meningitis: fever, severe headache, stiff neck (nuchal rigidity), photophobia. Kernig's and Brudzinski's signs are positive."},
+            {question: "Receptive aphasia affects:", options: ["Speech production only", "Language comprehension", "Motor function of the tongue", "Vision in one eye"], correct: 1, hint: "This is also called sensory aphasia. Which brain area is damaged (hint: it's not Broca's area)?", explanation: "Receptive (sensory) aphasia from Wernicke's area damage: cannot understand spoken or written language. Speech is fluent but nonsensical."},
+            {question: "Thyroid storm signs include:", options: ["Hypothermia and bradycardia", "Hyperthermia and tachycardia", "Weight gain and fatigue", "Cold intolerance"], correct: 1, hint: "This is extreme hyperthyroidism. What happens to body temperature and heart rate?", explanation: "Thyroid storm: extreme hyperthyroidism with hyperthermia, tachycardia, agitation. MEDICAL EMERGENCY!"},
+            {question: "Neurogenic shock signs include:", options: ["Tachycardia and pale, cool skin", "Bradycardia, hypotension, warm skin", "Hypertension and headache", "Normal vital signs"], correct: 1, hint: "In neurogenic shock, sympathetic tone is lost. What happens to blood vessels and heart rate?", explanation: "Neurogenic shock (from spinal cord injury above T6): loss of sympathetic tone causes bradycardia, hypotension, warm/dry skin (vasodilation)."},
+            {question: "GCS score indicating severe brain injury is:", options: ["13-15", "9-12", "3-8", "0"], correct: 2, hint: "The Glasgow Coma Scale ranges from 3-15. What score would indicate someone is barely responsive?", explanation: "Glasgow Coma Scale: 13-15 = mild, 9-12 = moderate, 3-8 = severe brain injury. Score of 8 or less often requires intubation."},
+            {question: "Mannitol is used to reduce:", options: ["Blood glucose levels", "Cerebral edema/increased ICP", "Heart rate", "Blood pressure"], correct: 1, hint: "This is an osmotic diuretic. Where would you want to remove fluid from in a neurological emergency?", explanation: "Mannitol is an osmotic diuretic that draws fluid from brain tissue into blood vessels, reducing cerebral edema and ICP."},
+            {question: "Hypoglycemia treatment in a conscious patient is:", options: ["15-20 grams of fast-acting carbohydrates", "Insulin injection", "IV fluids only", "Wait and monitor for 15 minutes"], correct: 0, hint: "Follow the Rule of 15. How much fast-acting sugar should you give?", explanation: "Rule of 15: Give 15-20g fast-acting carbs (4oz juice, glucose tabs), wait 15 min, recheck glucose. Repeat if needed."},
+            {question: "Circle of Willis provides:", options: ["CSF production", "Collateral blood flow to the brain", "Blood-brain barrier function", "Motor control coordination"], correct: 1, hint: "This is a circular arrangement of arteries at the base of the brain. Why is redundancy important?", explanation: "Circle of Willis is a cerebral arterial circle that connects carotid and vertebral circulations, providing collateral blood flow."},
+            {question: "Spinal shock causes:", options: ["Permanent paralysis below injury", "Temporary flaccid paralysis below injury", "Spasticity and hyperreflexia", "Pain sensation only"], correct: 1, hint: "This is the initial response to spinal cord injury. What happens to reflexes?", explanation: "Spinal shock: temporary loss of all spinal reflexes below injury level, causing flaccid paralysis, areflexia, and loss of sensation."},
+            {question: "Macular degeneration affects which part of vision?", options: ["Peripheral vision", "Central vision", "Color vision only", "Night vision only"], correct: 1, hint: "The macula is the central part of the retina. What type of vision would be affected?", explanation: "Macular degeneration causes central vision loss (macula is responsible for central/acuity). Peripheral vision remains intact."},
+            {question: "Diabetic neuropathy treatment includes:", options: ["Insulin only", "Gabapentin for neuropathic pain", "Antibiotics for infection", "Beta blockers for heart rate"], correct: 1, hint: "Nerve pain from diabetes requires specific medications. What class helps with neuropathic pain?", explanation: "Gabapentin, pregabalin, and duloxetine are used for diabetic neuropathic pain. Good glucose control helps prevent progression."},
+            {question: "Blood-brain barrier function is to:", options: ["Produce cerebrospinal fluid", "Protect brain from harmful substances", "Control voluntary movement", "Regulate body temperature"], correct: 1, hint: "The BBB is highly selective. What is it keeping out?", explanation: "BBB has reduced permeability in brain capillaries, selectively transporting materials to protect brain from potentially hazardous substances."},
+            {question: "TIA (Transient Ischemic Attack) resolves within:", options: ["1 hour", "24 hours without permanent damage", "1 week", "Is permanent"], correct: 1, hint: "The key word is 'transient.' How long do symptoms last?", explanation: "TIA resolves within 24 hours with no permanent brain damage. It's a WARNING SIGN for future stroke - needs immediate evaluation!"},
+            {question: "Autonomic dysreflexia trigger includes:", options: ["Full bladder or bowel", "Low blood sugar", "High altitude", "Mild exercise"], correct: 0, hint: "Any noxious stimulus below the level of injury can trigger this. What common problems cause irritation?", explanation: "Triggers for autonomic dysreflexia: full bladder, constipation, skin irritation, tight clothing. Remove trigger immediately!"},
+            {question: "Myxedema coma is a complication of:", options: ["Hyperthyroidism", "Severe hypothyroidism", "Cushing syndrome", "Addison disease"], correct: 1, hint: "Myxedema is associated with severe, long-standing hypothyroidism. What happens when it becomes life-threatening?", explanation: "Myxedema coma: severe, untreated hypothyroidism causing hypothermia, bradycardia, hypoventilation, altered mental status. EMERGENCY!"},
+            {question: "HHS (Hyperosmolar Hyperglycemic State) blood glucose is typically:", options: [">200 mg/dL", ">400 mg/dL", ">600 mg/dL", ">1000 mg/dL"], correct: 2, hint: "HHS is characterized by EXTREME hyperglycemia without ketosis. How high does glucose get?", explanation: "HHS glucose is typically >600 mg/dL, often much higher. No ketosis. Severe dehydration. More common in elderly Type 2 diabetics."},
+            {question: "Phenytoin (Dilantin) side effect requiring oral hygiene is:", options: ["Gingival hyperplasia", "Weight loss", "Hypotension", "Diarrhea"], correct: 0, hint: "This anti-seizure medication affects the gums. What overgrowth occurs?", explanation: "Phenytoin causes gum overgrowth (gingival hyperplasia). Good oral hygiene and regular dental care are essential."},
+            {question: "Addison disease causes which electrolyte imbalances?", options: ["Hypernatremia and hypokalemia", "Hyponatremia and hyperkalemia", "Hypercalcemia", "Hypermagnesemia"], correct: 1, hint: "In Addison disease, aldosterone is deficient. What does aldosterone normally do for sodium and potassium?", explanation: "Addison disease: deficient aldosterone causes sodium loss (hyponatremia) and potassium retention (hyperkalemia)."},
+            {question: "Type 1 diabetes mellitus onset is typically:", options: ["Gradual over years", "Sudden, often in childhood", "Asymptomatic", "Related to obesity only"], correct: 1, hint: "Type 1 is autoimmune. How quickly do beta cells get destroyed?", explanation: "Type 1 DM has sudden onset, often in youth. Autoimmune destruction of beta cells. Patients are insulin-dependent from diagnosis."},
+            {question: "Sympathetic nervous system activation causes:", options: ["Rest and digest functions", "Fight or flight response", "Decreased heart rate", "Increased digestion"], correct: 1, hint: "Think about what happens to your body during stress or danger.", explanation: "Sympathetic (fight or flight): increased HR, BP, RR, bronchodilation, pupil dilation, decreased GI motility, increased sweat."},
+            {question: "Parasympathetic nervous system activation causes:", options: ["Increased heart rate", "Decreased heart rate and digestion", "Bronchodilation", "Pupil dilation"], correct: 1, hint: "This is the 'rest and digest' system. What happens to heart rate and digestion?", explanation: "Parasympathetic (rest and digest): decreased HR, bronchoconstriction, increased GI motility, pupil constriction."},
+            {question: "A dermatome is:", options: ["A muscle group", "A sensory area supplied by one spinal nerve", "A type of motor neuron", "A reflex arc pathway"], correct: 1, hint: "This term relates to sensory innervation of the skin by spinal nerves.", explanation: "Dermatome: specific sensory area of skin innervated by a single pair of dorsal root ganglia from one spinal nerve level."},
+            {question: "Action potential phases include:", options: ["1 phase only", "2 phases", "3 phases: resting, depolarization, repolarization", "4 phases"], correct: 2, hint: "Think about the movement of sodium and potassium ions during nerve impulse transmission.", explanation: "Action potential: Resting → Depolarization (Na+ rushes in) → Repolarization (K+ moves out). Then returns to resting."},
+            {question: "Diabetes insipidus causes:", options: ["Concentrated, dark urine", "Large volumes of dilute urine", "Glucose in the urine", "Ketones in the urine"], correct: 1, hint: "This condition involves ADH deficiency. What happens to water reabsorption in the kidneys?", explanation: "Diabetes insipidus: ADH deficiency causes inability to concentrate urine → large volumes of very dilute urine. Not related to glucose!"},
+            {question: "Cataract treatment involves:", options: ["Eye drops to dissolve the cataract", "Surgical removal with lens replacement", "Laser treatment", "No treatment available"], correct: 1, hint: "The lens has become cloudy. How can this be fixed?", explanation: "Cataracts are treated surgically by removing the clouded lens and replacing it with an artificial intraocular lens."},
+            {question: "The FAST acronym for stroke stands for:", options: ["Fever, Aches, Sweating, Tiredness", "Face, Arms, Speech, Time", "Fluids, Airway, Security, Temperature", "Fall, Ambulation, Stability, Test"], correct: 1, hint: "This is used to quickly identify stroke symptoms in the field.", explanation: "FAST: Face drooping? Arm weakness? Speech difficulty? Time to call 911! Critical for early stroke recognition."},
+            {question: "Which hormone is produced by the corpus luteum?", options: ["FSH", "Progesterone", "LH", "Estrogen only"], correct: 1, hint: "The corpus luteum forms after ovulation and supports early pregnancy. What hormone maintains the uterine lining?", explanation: "Corpus luteum secretes PROGESTERONE to maintain early pregnancy until the placenta takes over at 10-12 weeks."}
+        ];
+
+        let quizAnswers = {};
+        let quizSubmitted = false;
+
+        function initQuiz() {
+            const container = document.getElementById('quiz-container');
+            let html = '';
+            allQuestions.forEach((q, i) => {
+                html += `<div class="quiz-question" id="q${i}">
+                    <h4>Question ${i + 1}: ${q.question} <button class="hint-btn" onclick="showHint(${i})">💡 Hint</button></h4>
+                    <div class="hint-text" id="hint${i}">${q.hint}</div>
+                    <div class="quiz-options">`;
+                q.options.forEach((opt, j) => {
+                    html += `<div class="quiz-option" onclick="selectAnswer(${i}, ${j})" id="q${i}opt${j}">
+                        ${String.fromCharCode(65 + j)}. ${opt}
+                    </div>`;
+                });
+                html += `</div><div class="feedback" id="feedback${i}"></div></div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function showHint(index) {
+            document.getElementById(`hint${index}`).classList.toggle('show');
+        }
+
+        function selectAnswer(qIndex, optIndex) {
+            if (quizSubmitted) return;
+            document.querySelectorAll(`#q${qIndex} .quiz-option`).forEach(opt => opt.classList.remove('selected'));
+            document.getElementById(`q${qIndex}opt${optIndex}`).classList.add('selected');
+            quizAnswers[qIndex] = optIndex;
+        }
+
+        function submitQuiz() {
+            quizSubmitted = true;
+            let score = 0;
+            const vault = JSON.parse(localStorage.getItem('wrongAnswers') || '[]');
+            allQuestions.forEach((q, i) => {
+                const feedback = document.getElementById(`feedback${i}`);
+                const options = document.querySelectorAll(`#q${i} .quiz-option`);
+                options.forEach((opt, j) => {
+                    opt.style.pointerEvents = 'none';
+                    if (j === q.correct) opt.classList.add('correct');
+                });
+                if (quizAnswers[i] === q.correct) {
+                    score++;
+                    feedback.className = 'feedback show alert alert-success';
+                    feedback.innerHTML = `<strong>✓ Correct!</strong> ${q.explanation}`;
+                } else {
+                    if (quizAnswers[i] !== undefined) options[quizAnswers[i]].classList.add('incorrect');
+                    feedback.className = 'feedback show alert alert-danger';
+                    feedback.innerHTML = `<strong>✗ Incorrect.</strong> The correct answer is: ${q.options[q.correct]}. ${q.explanation}`;
+                    vault.push({question: q.question, correctAnswer: q.options[q.correct], explanation: q.explanation});
+                }
+            });
+            localStorage.setItem('wrongAnswers', JSON.stringify(vault));
+            updateVault();
+            document.getElementById('quiz-score').textContent = score;
+        }
+
+        function resetQuiz() {
+            quizAnswers = {};
+            quizSubmitted = false;
+            initQuiz();
+            document.getElementById('quiz-score').textContent = '0';
+        }
+
+        // Flashcards
+        const flashcards = [
+            {front: "What is Uhthoff's phenomenon?", back: "MS symptoms worsen with heat (hot baths, exercise, fever)"},
+            {front: "Broca's area damage causes?", back: "Expressive (Motor) Aphasia - cannot speak/write fluently"},
+            {front: "Wernicke's area damage causes?", back: "Receptive (Sensory) Aphasia - cannot understand language"},
+            {front: "Cushing's Triad indicates?", back: "Increased ICP (Late sign!)"},
+            {front: "3 P's of diabetes?", back: "Polydipsia, Polyuria, Polyphagia"},
+            {front: "Hypoglycemia mnemonic?", back: "Cold and clammy - need candy!"},
+            {front: "Hyperglycemia mnemonic?", back: "Hot and dry - sugar high!"},
+            {front: "Guillain-Barré paralysis type?", back: "Ascending paralysis (legs up)"},
+            {front: "Parkinson's triad?", back: "TRAP: Tremor, Rigidity, Akinesia, Postural instability"},
+            {front: "Cushing syndrome cause?", back: "EXCESS cortisol"},
+            {front: "Addison disease cause?", back: "DEFICIENT cortisol and aldosterone"},
+            {front: "Ménière's triad?", back: "Vertigo, Tinnitus, Hearing Loss"},
+            {front: "Retinal detachment signs?", back: "Flashes, Floaters, Curtain - EMERGENCY!"},
+            {front: "DKA classic signs?", back: "Kussmaul respirations, fruity breath, ketones"},
+            {front: "HHS glucose level?", back: ">600 mg/dL"},
+            {front: "HbA1c time period?", back: "3-4 months"},
+            {front: "tPA window for stroke?", back: "3-4.5 hours"},
+            {front: "Status epilepticus?", back: "Seizure >5 minutes"},
+            {front: "FAST for stroke?", back: "Face, Arms, Speech, Time"},
+            {front: "Autonomic dysreflexia level?", back: "T6 or above"},
+            {front: "Oxytocin function?", back: "Uterine contractions, milk ejection"},
+            {front: "Corpus luteum produces?", back: "PROGESTERONE (maintains early pregnancy)"},
+            {front: "Estrogen function?", back: "Female secondary sex characteristics, reproductive organ development"},
+            {front: "Oxytocin source?", back: "Produced by hypothalamus, released by posterior pituitary"},
+            {front: "Neurogenic shock signs?", back: "Bradycardia, hypotension, warm/dry skin"},
+            {front: "Spinal shock causes?", back: "Temporary flaccid paralysis below injury"},
+            {front: "Myxedema coma?", back: "Severe hypothyroidism emergency"},
+            {front: "Thyroid storm?", back: "Severe hyperthyroidism emergency"},
+            {front: "SIADH causes?", back: "Hyponatremia (water retention)"},
+            {front: "Diabetes insipidus causes?", back: "Dilute polyuria (ADH deficiency)"},
+            {front: "Glaucoma affects?", back: "Peripheral vision first"},
+            {front: "Macular degeneration affects?", back: "Central vision"},
+            {front: "Ototoxic drugs?", back: "Aminoglycosides, loop diuretics, aspirin"},
+            {front: "Action potential phases?", back: "Resting → Depolarization → Repolarization"},
+            {front: "Sympathetic function?", back: "Fight or flight"},
+            {front: "Parasympathetic function?", back: "Rest and digest"},
+            {front: "GCS severe injury?", back: "3-8"},
+            {front: "Alpha cells secrete?", back: "Glucagon"},
+            {front: "Beta cells secrete?", back: "Insulin"},
+            {front: "Hypothyroidism signs?", back: "Weight gain, cold intolerance, bradycardia"},
+            {front: "Hyperthyroidism signs?", back: "Weight loss, heat intolerance, tachycardia"},
+            {front: "MG key feature?", back: "Weakness worse with activity, improves with rest"},
+            {front: "TIA resolves within?", back: "24 hours"},
+            {front: "BBB function?", back: "Protects brain from harmful substances"},
+            {front: "Circle of Willis?", back: "Collateral blood flow"},
+            {front: "Dermatome definition?", back: "Sensory area from one spinal nerve"},
+            {front: "Mannitol reduces?", back: "Cerebral edema"},
+            {front: "Phenytoin side effect?", back: "Gingival hyperplasia"},
+            {front: "Addisonian crisis?", back: "STRESS-DOSE steroids!"},
+            {front: "HbA1c target?", back: "<7%"}
+        ];
+
+        let currentCard = 0;
+
+        function initFlashcards() {
+            document.getElementById('card-front').textContent = flashcards[currentCard].front;
+            document.getElementById('card-back').textContent = flashcards[currentCard].back;
+            document.getElementById('card-counter').textContent = `${currentCard + 1}/${flashcards.length}`;
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            document.getElementById('flashcard').classList.remove('flipped');
+            currentCard = (currentCard + 1) % flashcards.length;
+            setTimeout(() => {
+                document.getElementById('card-front').textContent = flashcards[currentCard].front;
+                document.getElementById('card-back').textContent = flashcards[currentCard].back;
+                document.getElementById('card-counter').textContent = `${currentCard + 1}/${flashcards.length}`;
+            }, 100);
+        }
+
+        function prevCard() {
+            document.getElementById('flashcard').classList.remove('flipped');
+            currentCard = (currentCard - 1 + flashcards.length) % flashcards.length;
+            setTimeout(() => {
+                document.getElementById('card-front').textContent = flashcards[currentCard].front;
+                document.getElementById('card-back').textContent = flashcards[currentCard].back;
+                document.getElementById('card-counter').textContent = `${currentCard + 1}/${flashcards.length}`;
+            }, 100);
+        }
+
+        // Vault
+        function updateVault() {
+            const vault = JSON.parse(localStorage.getItem('wrongAnswers') || '[]');
+            const container = document.getElementById('vault-container');
+            if (vault.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #718096;">Answer quiz questions to populate your vault!</p>';
+                return;
+            }
+            let html = '';
+            vault.forEach((item, i) => {
+                html += `<div class="vault-item">
+                    <div class="vault-question">Q: ${item.question}</div>
+                    <div class="vault-answer">A: ${item.correctAnswer}</div>
+                    <div style="font-size: 0.9rem; color: #4a5568; margin-top: 0.5rem;">${item.explanation}</div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function clearVault() {
+            localStorage.removeItem('wrongAnswers');
+            updateVault();
+        }
+
+        // Games
+        function startSpeedRound() {
+            const area = document.getElementById('game-area');
+            let currentQ = 0;
+            let score = 0;
+            const questions = flashcards.slice(0, 10);
+            
+            function showQuestion() {
+                if (currentQ >= questions.length) {
+                    area.innerHTML = `<div class="game-container"><h3>⚡ Speed Round Complete!</h3><p style="font-size: 2rem; text-align: center;">Score: ${score}/${questions.length}</p><p style="text-align: center;"><button class="game-btn" onclick="startSpeedRound()">Play Again</button></p></div>`;
+                    return;
+                }
+                area.innerHTML = `<div class="game-container"><h3>⚡ Speed Round</h3><p>Question ${currentQ + 1}/${questions.length}</p><div class="flashcard-container"><div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-front">${questions[currentQ].front}</div><div class="flashcard-back">${questions[currentQ].back}</div></div></div><p style="text-align: center; margin-top: 1rem;"><button class="game-btn" onclick="speedCorrect()">✓ Got it!</button> <button class="game-btn" onclick="speedWrong()">✗ Missed it</button></p></div>`;
+            }
+            
+            window.speedCorrect = () => { score++; currentQ++; showQuestion(); };
+            window.speedWrong = () => { currentQ++; showQuestion(); };
+            
+            showQuestion();
+        }
+
+        function startTermMatch() {
+            const area = document.getElementById('game-area');
+            const terms = [
+                {term: "Broca's area", match: "Expressive aphasia"},
+                {term: "Wernicke's area", match: "Receptive aphasia"},
+                {term: "Cushing's Triad", match: "Increased ICP"},
+                {term: "Uhthoff's phenomenon", match: "MS worsens with heat"},
+                {term: "Oxytocin", match: "Uterine contractions"},
+                {term: "Corpus luteum", match: "Progesterone production"},
+                {term: "Beta cells", match: "Insulin secretion"},
+                {term: "Alpha cells", match: "Glucagon secretion"}
+            ];
+            
+            const shuffledTerms = [...terms].sort(() => Math.random() - 0.5);
+            const shuffledMatches = [...terms].sort(() => Math.random() - 0.5);
+            
+            let html = `<div class="game-container"><h3>🎯 Term Match</h3><p>Match each term with its definition!</p><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;"><div>`;
+            shuffledTerms.forEach((t, i) => {
+                html += `<div class="drag-item" draggable="true" id="term${i}" ondragstart="drag(event)">${t.term}</div>`;
+            });
+            html += `</div><div>`;
+            shuffledMatches.forEach((m, i) => {
+                html += `<div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="${m.match}">${m.match}</div>`;
+            });
+            html += `</div></div></div>`;
+            area.innerHTML = html;
+        }
+
+        function startMillionaire() {
+            const area = document.getElementById('game-area');
+            const questions = [
+                {q: "What is Uhthoff's phenomenon?", options: ["MS worsens with heat", "MS improves with heat", "MS causes tremor", "MS causes paralysis"], correct: 0, value: 100},
+                {q: "Oxytocin is produced where?", options: ["Anterior pituitary", "Posterior pituitary", "Hypothalamus", "Ovaries"], correct: 2, value: 200},
+                {q: "Corpus luteum produces mainly?", options: ["Estrogen", "Progesterone", "LH", "FSH"], correct: 1, value: 300},
+                {q: "Broca's area damage causes?", options: ["Receptive aphasia", "Expressive aphasia", "Global aphasia", "No aphasia"], correct: 1, value: 500},
+                {q: "HbA1c reflects glucose over?", options: ["1 week", "1 month", "3-4 months", "1 year"], correct: 2, value: 1000}
+            ];
+            
+            let current = 0;
+            let winnings = 0;
+            
+            function showQuestion() {
+                if (current >= questions.length) {
+                    area.innerHTML = `<div class="game-container"><h3>💰 Millionaire - Game Over!</h3><p style="font-size: 2rem; text-align: center;">You won: $${winnings}</p><p style="text-align: center;"><button class="game-btn" onclick="startMillionaire()">Play Again</button></p></div>`;
+                    return;
+                }
+                const q = questions[current];
+                area.innerHTML = `<div class="game-container"><h3>💰 Millionaire - $${q.value}</h3><div class="millionaire-question">${q.q}</div><div class="millionaire-options">${q.options.map((opt, i) => `<button class="millionaire-btn" onclick="millionaireAnswer(${i}, ${q.correct}, ${q.value})">${String.fromCharCode(65+i)}. ${opt}</button>`).join('')}</div></div>`;
+            }
+            
+            window.millionaireAnswer = (selected, correct, value) => {
+                if (selected === correct) {
+                    winnings = value;
+                    current++;
+                    showQuestion();
+                } else {
+                    area.innerHTML = `<div class="game-container"><h3>💰 Millionaire - Wrong!</h3><p style="font-size: 2rem; text-align: center;">You won: $${winnings}</p><p style="text-align: center;"><button class="game-btn" onclick="startMillionaire()">Play Again</button></p></div>`;
+                }
+            };
+            
+            showQuestion();
+        }
+
+        function startJeopardy() {
+            const area = document.getElementById('game-area');
+            const categories = ["Nervous System", "MS Focus", "Endocrine", "Diabetes"];
+            const questions = [
+                // Nervous System
+                [{q: "This area controls expressive speech", a: "What is Broca's area?", v: 100}, {q: "This triad indicates increased ICP", a: "What is Cushing's triad?", v: 200}, {q: "This type of paralysis ascends from legs", a: "What is Guillain-Barré?", v: 300}],
+                // MS Focus
+                [{q: "MS symptoms worsen with this phenomenon", a: "What is Uhthoff's phenomenon?", v: 100}, {q: "Electric shock down spine when bending neck", a: "What is Lhermitte's sign?", v: 200}, {q: "MS is this type of disorder affecting myelin", a: "What is autoimmune demyelinating?", v: 300}],
+                // Endocrine
+                [{q: "This hormone causes uterine contractions", a: "What is oxytocin?", v: 100}, {q: "This structure produces progesterone", a: "What is corpus luteum?", v: 200}, {q: "This hormone develops female characteristics", a: "What is estrogen?", v: 300}],
+                // Diabetes
+                [{q: "This test shows 3-4 month glucose control", a: "What is HbA1c?", v: 100}, {q: "This condition has glucose >600 without ketones", a: "What is HHS?", v: 200}, {q: "These cells secrete insulin", a: "What are beta cells?", v: 300}]
+            ];
+            
+            let score = 0;
+            let usedQuestions = new Set();
+            
+            function renderBoard() {
+                let html = `<div class="game-container"><h3>🏆 Jeopardy! Score: $${score}</h3><div class="jeopardy-grid">`;
+                categories.forEach(cat => {
+                    html += `<div class="jeopardy-header">${cat}</div>`;
+                });
+                for (let row = 0; row < 3; row++) {
+                    for (let col = 0; col < 4; col++) {
+                        const key = `${col}-${row}`;
+                        const v = questions[col][row].v;
+                        if (usedQuestions.has(key)) {
+                            html += `<div class="jeopardy-cell used">$${v}</div>`;
+                        } else {
+                            html += `<div class="jeopardy-cell" onclick="jeopardyClick(${col}, ${row}, ${v})">$${v}</div>`;
+                        }
+                    }
+                }
+                html += `</div></div>`;
+                area.innerHTML = html;
+            }
+            
+            window.jeopardyClick = (col, row, value) => {
+                const key = `${col}-${row}`;
+                const q = questions[col][row];
+                const answer = prompt(`Question: ${q.q}\n\nYour answer (start with 'What is...' or 'Who is...'):`);
+                if (answer && answer.toLowerCase().includes(q.a.toLowerCase().replace('what is ', '').replace('who is ', '').replace('?', ''))) {
+                    score += value;
+                    alert(`Correct! You earned $${value}`);
+                } else {
+                    score -= value;
+                    alert(`Incorrect. The answer was: ${q.a}`);
+                }
+                usedQuestions.add(key);
+                renderBoard();
+            };
+            
+            renderBoard();
+        }
+
+        // Drag and Drop functions
+        function allowDrop(ev) { ev.preventDefault(); }
+        function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const draggedElement = document.getElementById(data);
+            ev.target.appendChild(draggedElement);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initQuiz();
+            initFlashcards();
+            updateVault();
+            updateProgress();
+        });
+    </script>
+</body>
+</html>
