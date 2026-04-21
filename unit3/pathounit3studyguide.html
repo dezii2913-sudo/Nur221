@@ -1495,145 +1495,368 @@
         }
 
         // Games
+// ==================== ENHANCED GAMES ====================
+        
+        // Speed Round Game - 20 Questions with clear feedback
         function startSpeedRound() {
             const area = document.getElementById('game-area');
             let currentQ = 0;
             let score = 0;
-            const questions = flashcards.slice(0, 10);
+            const questions = [
+                {q: "What is Uhthoff's phenomenon?", a: "MS symptoms worsen with heat (hot baths, exercise, fever)"},
+                {q: "Broca's area damage causes what type of aphasia?", a: "Expressive (Motor) Aphasia - cannot speak/write fluently"},
+                {q: "Wernicke's area damage causes what type of aphasia?", a: "Receptive (Sensory) Aphasia - cannot understand language"},
+                {q: "What does Cushing's Triad indicate?", a: "Increased ICP (Late sign!)"},
+                {q: "What are the 3 P's of diabetes?", a: "Polydipsia, Polyuria, Polyphagia"},
+                {q: "What is the hypoglycemia mnemonic?", a: "Cold and clammy - need candy!"},
+                {q: "What is the hyperglycemia mnemonic?", a: "Hot and dry - sugar high!"},
+                {q: "Guillain-Barre causes what type of paralysis?", a: "Ascending paralysis (starts in legs, moves up)"},
+                {q: "What is the Parkinson's triad (TRAP)?", a: "Tremor, Rigidity, Akinesia, Postural instability"},
+                {q: "What causes Cushing syndrome?", a: "EXCESS cortisol"},
+                {q: "What causes Addison disease?", a: "DEFICIENT cortisol and aldosterone"},
+                {q: "What is Meniere's disease triad?", a: "Vertigo, Tinnitus, Hearing Loss"},
+                {q: "What are signs of retinal detachment?", a: "Flashes, Floaters, Curtain - EMERGENCY!"},
+                {q: "What are classic DKA signs?", a: "Kussmaul respirations, fruity breath, ketones"},
+                {q: "What glucose level indicates HHS?", a: ">600 mg/dL"},
+                {q: "What time period does HbA1c reflect?", a: "3-4 months"},
+                {q: "What is the tPA window for stroke?", a: "3-4.5 hours"},
+                {q: "What is status epilepticus?", a: "Seizure >5 minutes"},
+                {q: "What does FAST stand for in stroke?", a: "Face, Arms, Speech, Time"},
+                {q: "At what spinal level does autonomic dysreflexia occur?", a: "T6 or above"}
+            ];
             
             function showQuestion() {
                 if (currentQ >= questions.length) {
-                    area.innerHTML = `<div class="game-container"><h3>⚡ Speed Round Complete!</h3><p style="font-size: 2rem; text-align: center;">Score: ${score}/${questions.length}</p><p style="text-align: center;"><button class="game-btn" onclick="startSpeedRound()">Play Again</button></p></div>`;
+                    const percent = Math.round((score / questions.length) * 100);
+                    let message = percent >= 90 ? "OUTSTANDING!" : percent >= 70 ? "Great Job!" : percent >= 50 ? "Keep Studying!" : "Don't Give Up!";
+                    area.innerHTML = '<div class="game-container"><h3>Speed Round Complete!</h3><div style="text-align: center; padding: 2rem;"><div style="font-size: 3rem; margin-bottom: 1rem;">' + message + '</div><div style="font-size: 2rem; background: ' + (percent >= 70 ? 'var(--mint)' : 'var(--coral)') + '; color: white; padding: 1rem 2rem; border-radius: 12px; display: inline-block; margin-bottom: 1rem;">Score: ' + score + '/' + questions.length + ' (' + percent + '%)</div></div><p style="text-align: center;"><button class="game-btn" onclick="startSpeedRound()">Play Again</button></p></div>';
                     return;
                 }
-                area.innerHTML = `<div class="game-container"><h3>⚡ Speed Round</h3><p>Question ${currentQ + 1}/${questions.length}</p><div class="flashcard-container"><div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-front">${questions[currentQ].front}</div><div class="flashcard-back">${questions[currentQ].back}</div></div></div><p style="text-align: center; margin-top: 1rem;"><button class="game-btn" onclick="speedCorrect()">✓ Got it!</button> <button class="game-btn" onclick="speedWrong()">✗ Missed it</button></p></div>`;
+                
+                area.innerHTML = '<div class="game-container"><h3>Speed Round</h3><div style="background: var(--ocean-pale); padding: 0.5rem; border-radius: 8px; margin-bottom: 1rem;"><strong>Question ' + (currentQ + 1) + ' of ' + questions.length + '</strong> | Score: ' + score + '</div><div class="flashcard-container" style="max-width: 600px;"><div class="flashcard" id="speed-card" onclick="this.classList.toggle(\'flipped\')"><div class="flashcard-front" style="font-size: 1.1rem;">' + questions[currentQ].q + '</div><div class="flashcard-back" style="font-size: 1rem; background: linear-gradient(135deg, var(--teal), #2c7a7b);">' + questions[currentQ].a + '</div></div></div><p style="text-align: center; color: #718096; margin-top: 0.5rem;">Click card to flip</p><div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;"><button class="game-btn" style="background: linear-gradient(135deg, var(--mint), #38a169); min-width: 120px;" onclick="speedAnswer(true)">GOT IT!</button><button class="game-btn" style="background: linear-gradient(135deg, var(--coral), #c53030); min-width: 120px;" onclick="speedAnswer(false)">MISSED IT</button></div></div>';
             }
             
-            window.speedCorrect = () => { score++; currentQ++; showQuestion(); };
-            window.speedWrong = () => { currentQ++; showQuestion(); };
+            window.speedAnswer = (correct) => {
+                if (correct) { score++; }
+                currentQ++;
+                showQuestion();
+            };
             
             showQuestion();
         }
 
+        // Term Match Game - 16 Terms with Clear Feedback
         function startTermMatch() {
             const area = document.getElementById('game-area');
-            const terms = [
-                {term: "Broca's area", match: "Expressive aphasia"},
-                {term: "Wernicke's area", match: "Receptive aphasia"},
-                {term: "Cushing's Triad", match: "Increased ICP"},
-                {term: "Uhthoff's phenomenon", match: "MS worsens with heat"},
-                {term: "Oxytocin", match: "Uterine contractions"},
-                {term: "Corpus luteum", match: "Progesterone production"},
-                {term: "Beta cells", match: "Insulin secretion"},
-                {term: "Alpha cells", match: "Glucagon secretion"}
+            const allTerms = [
+                {term: "Broca's area", match: "Expressive aphasia", category: "Nervous"},
+                {term: "Wernicke's area", match: "Receptive aphasia", category: "Nervous"},
+                {term: "Cushing's Triad", match: "Increased ICP", category: "Nervous"},
+                {term: "Uhthoff's phenomenon", match: "MS worsens with heat", category: "MS"},
+                {term: "Lhermitte's sign", match: "Electric shock down spine", category: "MS"},
+                {term: "Oxytocin", match: "Uterine contractions & milk ejection", category: "Endocrine"},
+                {term: "Corpus luteum", match: "Progesterone production", category: "Endocrine"},
+                {term: "Estrogen", match: "Female secondary sex characteristics", category: "Endocrine"},
+                {term: "Beta cells", match: "Insulin secretion", category: "Diabetes"},
+                {term: "Alpha cells", match: "Glucagon secretion", category: "Diabetes"},
+                {term: "HbA1c", match: "3-4 month glucose average", category: "Diabetes"},
+                {term: "DKA", match: "Ketones & fruity breath", category: "Diabetes"},
+                {term: "Myxedema", match: "Severe hypothyroidism", category: "Endocrine"},
+                {term: "Thyroid storm", match: "Severe hyperthyroidism", category: "Endocrine"},
+                {term: "Addison disease", match: "Cortisol deficiency", category: "Endocrine"},
+                {term: "Cushing syndrome", match: "Cortisol excess", category: "Endocrine"}
             ];
             
+            // Shuffle and select 12 terms for the game
+            const shuffledAll = [...allTerms].sort(() => Math.random() - 0.5);
+            const terms = shuffledAll.slice(0, 12);
             const shuffledTerms = [...terms].sort(() => Math.random() - 0.5);
             const shuffledMatches = [...terms].sort(() => Math.random() - 0.5);
             
-            let html = `<div class="game-container"><h3>🎯 Term Match</h3><p>Match each term with its definition!</p><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;"><div>`;
-            shuffledTerms.forEach((t, i) => {
-                html += `<div class="drag-item" draggable="true" id="term${i}" ondragstart="drag(event)">${t.term}</div>`;
-            });
-            html += `</div><div>`;
-            shuffledMatches.forEach((m, i) => {
-                html += `<div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="${m.match}">${m.match}</div>`;
-            });
-            html += `</div></div></div>`;
-            area.innerHTML = html;
+            let matches = {};
+            let score = 0;
+            let answered = 0;
+            
+            function checkComplete() {
+                if (answered === terms.length) {
+                    const percent = Math.round((score / terms.length) * 100);
+                    let message = percent >= 90 ? "PERFECT!" : percent >= 70 ? "Great Job!" : percent >= 50 ? "Keep Practicing!" : "Try Again!";
+                    area.innerHTML = '<div class="game-container"><h3>Term Match Complete!</h3><div style="text-align: center; padding: 2rem;"><div style="font-size: 2rem; margin-bottom: 1rem;">' + message + '</div><div style="font-size: 1.5rem; background: ' + (percent >= 70 ? 'var(--mint)' : 'var(--coral)') + '; color: white; padding: 1rem 2rem; border-radius: 12px; display: inline-block;">' + score + '/' + terms.length + ' Correct (' + percent + '%)</div></div><p style="text-align: center;"><button class="game-btn" onclick="startTermMatch()">Play Again</button></p></div>';
+                }
+            }
+            
+            function renderGame() {
+                let html = '<div class="game-container"><h3>Term Match</h3><div style="background: var(--ocean-pale); padding: 0.5rem; border-radius: 8px; margin-bottom: 1rem;"><strong>Match each term to its definition!</strong> | Score: ' + score + '/' + terms.length + '</div><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;"><div><h4 style="color: var(--ocean-dark); margin-bottom: 0.5rem;">Terms</h4>';
+                
+                shuffledTerms.forEach((t, i) => {
+                    const matched = matches['term' + i];
+                    html += '<div class="drag-item" id="term' + i + '" style="background: ' + (matched ? (matched.correct ? 'var(--mint)' : 'var(--coral)') : 'white') + '; color: ' + (matched ? 'white' : 'inherit') + '; opacity: ' + (matched ? '0.6' : '1') + '; pointer-events: ' + (matched ? 'none' : 'auto') + ';"' + (!matched ? ' onclick="selectTerm(' + i + ')"' : '') + '>' + (matched ? (matched.correct ? '✓ ' : '✗ ') : '') + t.term + '</div>';
+                });
+                
+                html += '</div><div><h4 style="color: var(--ocean-dark); margin-bottom: 0.5rem;">Definitions</h4>';
+                
+                shuffledMatches.forEach((m, i) => {
+                    const matched = matches['match' + i];
+                    html += '<div class="drop-zone" id="match' + i + '" style="min-height: 50px; ' + (matched ? 'background: ' + (matched.correct ? 'var(--mint)' : 'var(--coral)') + '; color: white;' : '') + '"' + (!matched ? ' onclick="selectMatch(' + i + ')"' : '') + '>' + (matched ? '<strong>' + matched.term + '</strong><br>' + m.match : m.match) + '</div>';
+                });
+                
+                html += '</div></div><p style="text-align: center; margin-top: 1rem; color: #718096;">Click a term, then click its matching definition</p></div>';
+                
+                area.innerHTML = html;
+            }
+            
+            let selectedTerm = null;
+            
+            window.selectTerm = (i) => {
+                selectedTerm = i;
+                document.querySelectorAll('.drag-item').forEach((el, idx) => {
+                    if (!matches['term' + idx]) {
+                        el.style.border = idx === i ? '3px solid var(--ocean-light)' : '2px solid #e2e8f0';
+                    }
+                });
+            };
+            
+            window.selectMatch = (matchIdx) => {
+                if (selectedTerm === null) {
+                    alert('Please select a term first!');
+                    return;
+                }
+                
+                const termData = shuffledTerms[selectedTerm];
+                const matchData = shuffledMatches[matchIdx];
+                const isCorrect = termData.term === matchData.term;
+                
+                if (isCorrect) { score++; }
+                
+                matches['term' + selectedTerm] = {correct: isCorrect};
+                matches['match' + matchIdx] = {correct: isCorrect, term: termData.term};
+                answered++;
+                selectedTerm = null;
+                
+                renderGame();
+                checkComplete();
+            };
+            
+            renderGame();
         }
 
+        // Millionaire Game - 15 Questions with Clear Feedback
         function startMillionaire() {
             const area = document.getElementById('game-area');
             const questions = [
-                {q: "What is Uhthoff's phenomenon?", options: ["MS worsens with heat", "MS improves with heat", "MS causes tremor", "MS causes paralysis"], correct: 0, value: 100},
-                {q: "Oxytocin is produced where?", options: ["Anterior pituitary", "Posterior pituitary", "Hypothalamus", "Ovaries"], correct: 2, value: 200},
-                {q: "Corpus luteum produces mainly?", options: ["Estrogen", "Progesterone", "LH", "FSH"], correct: 1, value: 300},
-                {q: "Broca's area damage causes?", options: ["Receptive aphasia", "Expressive aphasia", "Global aphasia", "No aphasia"], correct: 1, value: 500},
-                {q: "HbA1c reflects glucose over?", options: ["1 week", "1 month", "3-4 months", "1 year"], correct: 2, value: 1000}
+                {q: "What is Uhthoff's phenomenon?", options: ["MS worsens with heat", "MS improves with heat", "MS causes tremor only", "MS causes paralysis"], correct: 0, value: 100},
+                {q: "Oxytocin is produced by which structure?", options: ["Anterior pituitary", "Posterior pituitary", "Hypothalamus (released by posterior pituitary)", "Ovaries"], correct: 2, value: 200},
+                {q: "The corpus luteum primarily produces which hormone?", options: ["Estrogen", "Progesterone", "LH", "FSH"], correct: 1, value: 300},
+                {q: "Damage to Broca's area causes what type of aphasia?", options: ["Receptive aphasia", "Expressive aphasia", "Global aphasia", "No aphasia"], correct: 1, value: 500},
+                {q: "HbA1c reflects blood glucose control over what time period?", options: ["1 week", "1 month", "3-4 months", "1 year"], correct: 2, value: 1000},
+                {q: "What are the 3 P's of diabetes?", options: ["Pain, Polyuria, Paresthesia", "Polydipsia, Polyuria, Polyphagia", "Pallor, Pulse, Pain", "Proteinuria, Polyuria, Pain"], correct: 1, value: 2000},
+                {q: "What does Cushing's Triad indicate?", options: ["Hypovolemic shock", "Increased ICP", "Diabetic ketoacidosis", "Myocardial infarction"], correct: 1, value: 4000},
+                {q: "Guillain-Barre syndrome causes what type of paralysis?", options: ["Descending paralysis", "Ascending paralysis", "Hemiplegia", "Paraplegia"], correct: 1, value: 8000},
+                {q: "What is the hypoglycemia mnemonic?", options: ["Hot and dry - sugar high", "Cold and clammy - need candy", "Warm and flushed - insulin rushed", "Pale and cold - blood sugar low"], correct: 1, value: 16000},
+                {q: "What glucose level is characteristic of HHS?", options: [">200 mg/dL", ">300 mg/dL", ">400 mg/dL", ">600 mg/dL"], correct: 3, value: 32000},
+                {q: "Estrogen is responsible for developing what?", options: ["Male secondary sex characteristics", "Female secondary sex characteristics", "Both male and female characteristics", "Only reproductive organs"], correct: 1, value: 64000},
+                {q: "What is the tPA administration window for acute ischemic stroke?", options: ["1-2 hours", "3-4.5 hours", "6-8 hours", "12-24 hours"], correct: 1, value: 125000},
+                {q: "Status epilepticus is defined as a seizure lasting longer than:", options: ["1 minute", "3 minutes", "5 minutes", "10 minutes"], correct: 2, value: 250000},
+                {q: "Autonomic dysreflexia occurs with spinal cord injury at what level or above?", options: ["T4", "T6", "T8", "T10"], correct: 1, value: 500000},
+                {q: "Beta cells in the pancreas secrete which hormone?", options: ["Glucagon", "Insulin", "Somatostatin", "Cortisol"], correct: 1, value: 1000000}
             ];
             
             let current = 0;
             let winnings = 0;
+            const milestones = [0, 0, 0, 1000, 1000, 1000, 1000, 8000, 8000, 8000, 32000, 32000, 32000, 32000, 1000000];
             
             function showQuestion() {
                 if (current >= questions.length) {
-                    area.innerHTML = `<div class="game-container"><h3>💰 Millionaire - Game Over!</h3><p style="font-size: 2rem; text-align: center;">You won: $${winnings}</p><p style="text-align: center;"><button class="game-btn" onclick="startMillionaire()">Play Again</button></p></div>`;
+                    area.innerHTML = '<div class="game-container"><h3>MILLIONAIRE WINNER!</h3><div style="text-align: center; padding: 2rem;"><div style="font-size: 4rem;">WINNER!</div><div style="font-size: 2rem; background: var(--gold); color: var(--navy); padding: 1rem 2rem; border-radius: 12px; display: inline-block; margin: 1rem;">YOU WON: $' + winnings.toLocaleString() + '!</div></div><p style="text-align: center;"><button class="game-btn" onclick="startMillionaire()">Play Again</button></p></div>';
                     return;
                 }
+                
                 const q = questions[current];
-                area.innerHTML = `<div class="game-container"><h3>💰 Millionaire - $${q.value}</h3><div class="millionaire-question">${q.q}</div><div class="millionaire-options">${q.options.map((opt, i) => `<button class="millionaire-btn" onclick="millionaireAnswer(${i}, ${q.correct}, ${q.value})">${String.fromCharCode(65+i)}. ${opt}</button>`).join('')}</div></div>`;
+                const safeHaven = milestones[current];
+                
+                let optionsHtml = '';
+                q.options.forEach((opt, i) => {
+                    optionsHtml += '<button class="millionaire-btn" id="mill-opt-' + i + '" onclick="millionaireAnswer(' + i + ', ' + q.correct + ', ' + q.value + ', ' + safeHaven + ')" style="padding: 1rem; text-align: left;"><strong>' + String.fromCharCode(65+i) + '.</strong> ' + opt + '</button>';
+                });
+                
+                area.innerHTML = '<div class="game-container"><h3>Who Wants to Be a Millionaire?</h3><div style="display: flex; justify-content: space-between; background: var(--ocean-pale); padding: 0.5rem 1rem; border-radius: 8px; margin-bottom: 1rem;"><span>Question ' + (current + 1) + '/15</span><span>Current Winnings: $' + winnings.toLocaleString() + '</span><span>Safe Haven: $' + safeHaven.toLocaleString() + '</span></div><div class="millionaire-question" style="background: var(--navy); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">' + q.q + '</div><div class="millionaire-options">' + optionsHtml + '</div></div>';
             }
             
-            window.millionaireAnswer = (selected, correct, value) => {
+            window.millionaireAnswer = (selected, correct, value, safeHaven) => {
+                // Disable all buttons
+                for (let i = 0; i < 4; i++) {
+                    const btn = document.getElementById('mill-opt-' + i);
+                    btn.disabled = true;
+                    btn.style.cursor = 'default';
+                }
+                
+                const selectedBtn = document.getElementById('mill-opt-' + selected);
+                const correctBtn = document.getElementById('mill-opt-' + correct);
+                
                 if (selected === correct) {
+                    // CORRECT ANSWER
+                    selectedBtn.style.background = 'var(--mint)';
+                    selectedBtn.innerHTML = '✓ ' + selectedBtn.innerHTML;
                     winnings = value;
-                    current++;
-                    showQuestion();
+                    
+                    setTimeout(() => {
+                        current++;
+                        showQuestion();
+                    }, 1500);
                 } else {
-                    area.innerHTML = `<div class="game-container"><h3>💰 Millionaire - Wrong!</h3><p style="font-size: 2rem; text-align: center;">You won: $${winnings}</p><p style="text-align: center;"><button class="game-btn" onclick="startMillionaire()">Play Again</button></p></div>`;
+                    // WRONG ANSWER
+                    selectedBtn.style.background = 'var(--coral)';
+                    selectedBtn.innerHTML = '✗ ' + selectedBtn.innerHTML;
+                    correctBtn.style.background = 'var(--mint)';
+                    correctBtn.innerHTML = '✓ ' + correctBtn.innerHTML;
+                    
+                    const finalWinnings = safeHaven;
+                    
+                    setTimeout(() => {
+                        area.innerHTML = '<div class="game-container"><h3>Millionaire - Wrong Answer!</h3><div style="text-align: center; padding: 2rem;"><div style="font-size: 3rem; color: var(--coral);">✗ INCORRECT</div><div style="font-size: 1.2rem; margin: 1rem; padding: 1rem; background: #fed7d7; border-radius: 8px;">The correct answer was:<br><strong>' + questions[current].options[correct] + '</strong></div><div style="font-size: 1.5rem; background: var(--ocean-medium); color: white; padding: 1rem 2rem; border-radius: 12px; display: inline-block;">You leave with: $' + finalWinnings.toLocaleString() + '</div></div><p style="text-align: center;"><button class="game-btn" onclick="startMillionaire()">Play Again</button></p></div>';
+                    }, 2000);
                 }
             };
             
             showQuestion();
         }
 
+        // Jeopardy Game - 20 Questions with Clear Feedback
         function startJeopardy() {
             const area = document.getElementById('game-area');
-            const categories = ["Nervous System", "MS Focus", "Endocrine", "Diabetes"];
+            const categories = ["Nervous System", "MS Focus", "Endocrine", "Diabetes", "Eye & Ear"];
             const questions = [
-                // Nervous System
-                [{q: "This area controls expressive speech", a: "What is Broca's area?", v: 100}, {q: "This triad indicates increased ICP", a: "What is Cushing's triad?", v: 200}, {q: "This type of paralysis ascends from legs", a: "What is Guillain-Barré?", v: 300}],
-                // MS Focus
-                [{q: "MS symptoms worsen with this phenomenon", a: "What is Uhthoff's phenomenon?", v: 100}, {q: "Electric shock down spine when bending neck", a: "What is Lhermitte's sign?", v: 200}, {q: "MS is this type of disorder affecting myelin", a: "What is autoimmune demyelinating?", v: 300}],
-                // Endocrine
-                [{q: "This hormone causes uterine contractions", a: "What is oxytocin?", v: 100}, {q: "This structure produces progesterone", a: "What is corpus luteum?", v: 200}, {q: "This hormone develops female characteristics", a: "What is estrogen?", v: 300}],
-                // Diabetes
-                [{q: "This test shows 3-4 month glucose control", a: "What is HbA1c?", v: 100}, {q: "This condition has glucose >600 without ketones", a: "What is HHS?", v: 200}, {q: "These cells secrete insulin", a: "What are beta cells?", v: 300}]
+                // Nervous System - 4 questions with multiple choice
+                [
+                    {q: "This area controls expressive speech", options: ["Wernicke's area", "Broca's area", "Hippocampus", "Cerebellum"], correct: 1, v: 100}, 
+                    {q: "This triad (bradycardia, HTN, irregular respirations) indicates increased ICP", options: ["Cushing's triad", "Cushing's syndrome", "Cushing's disease", "Addison's triad"], correct: 0, v: 200}, 
+                    {q: "This type of paralysis ascends from legs upward in Guillain-Barre", options: ["Descending paralysis", "Hemiplegia", "Ascending paralysis", "Paraplegia"], correct: 2, v: 300},
+                    {q: "This scale (3-15) assesses level of consciousness", options: ["NIHSS", "Glasgow Coma Scale", "Mini-Mental State Exam", "APGAR score"], correct: 1, v: 400}
+                ],
+                // MS Focus - 4 questions with multiple choice
+                [
+                    {q: "MS symptoms worsen with this phenomenon related to heat", options: ["Lhermitte's sign", "Babinski's sign", "Uhthoff's phenomenon", "Romberg's sign"], correct: 2, v: 100}, 
+                    {q: "Electric shock sensation down spine when bending neck in MS patients", options: ["Uhthoff's phenomenon", "Lhermitte's sign", "Babinski's sign", "Kernig's sign"], correct: 1, v: 200}, 
+                    {q: "MS is this type of disorder where immune system attacks myelin", options: ["Autoimmune demyelinating", "Bacterial infection", "Genetic disorder", "Vascular disease"], correct: 0, v: 300},
+                    {q: "This MS drug is given weekly via IM injection", options: ["Copaxone", "Rebif", "Interferon beta (Avonex)", "Tysabri"], correct: 2, v: 400}
+                ],
+                // Endocrine - 4 questions with multiple choice
+                [
+                    {q: "This hormone causes uterine contractions and milk ejection", options: ["Oxytocin", "Prolactin", "Estrogen", "Progesterone"], correct: 0, v: 100}, 
+                    {q: "This temporary structure produces progesterone to maintain early pregnancy", options: ["Placenta", "Corpus luteum", "Follicle", "Ovary"], correct: 1, v: 200}, 
+                    {q: "This hormone develops female secondary sex characteristics", options: ["Progesterone", "LH", "FSH", "Estrogen"], correct: 3, v: 300},
+                    {q: "Severe hypothyroidism emergency with myxedema and coma", options: ["Thyroid storm", "Myxedema coma", "Graves disease", "Hashimoto's crisis"], correct: 1, v: 400}
+                ],
+                // Diabetes - 4 questions with multiple choice
+                [
+                    {q: "This test shows 3-4 month average glucose control", options: ["Fasting glucose", "HbA1c", "Glucose tolerance test", "Random glucose"], correct: 1, v: 100}, 
+                    {q: "This diabetic emergency has glucose >600 without ketones", options: ["DKA", "HHS (Hyperosmolar Hyperglycemic Syndrome)", "Hypoglycemia", "Metabolic syndrome"], correct: 1, v: 200}, 
+                    {q: "These cells in the pancreas secrete insulin", options: ["Alpha cells", "Beta cells", "Delta cells", "Gamma cells"], correct: 1, v: 300},
+                    {q: "This type of respirations (deep, rapid) is seen in DKA", options: ["Cheyne-Stokes", "Biot's respirations", "Kussmaul respirations", "Apneustic breathing"], correct: 2, v: 400}
+                ],
+                // Eye & Ear - 4 questions with multiple choice
+                [
+                    {q: "This eye emergency has flashes, floaters, and a curtain effect", options: ["Cataracts", "Glaucoma", "Retinal detachment", "Macular degeneration"], correct: 2, v: 100},
+                    {q: "This disease triad includes vertigo, tinnitus, and hearing loss", options: ["Meniere's disease", "Otitis media", "Labyrinthitis", "Acoustic neuroma"], correct: 0, v: 200},
+                    {q: "This glaucoma type is an emergency with sudden eye pain and halos", options: ["Open-angle glaucoma", "Angle-closure glaucoma", "Normal-tension glaucoma", "Congenital glaucoma"], correct: 1, v: 300},
+                    {q: "These drugs (aminoglycosides, loop diuretics) can cause hearing damage", options: ["Nephrotoxic medications", "Ototoxic medications", "Hepatotoxic medications", "Cardiotoxic medications"], correct: 1, v: 400}
+                ]
             ];
             
             let score = 0;
             let usedQuestions = new Set();
             
             function renderBoard() {
-                let html = `<div class="game-container"><h3>🏆 Jeopardy! Score: $${score}</h3><div class="jeopardy-grid">`;
+                let html = '<div class="game-container"><h3>Jeopardy!</h3><div style="background: var(--gold); color: var(--navy); padding: 0.5rem 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center;"><strong>Score: $' + score + '</strong> | Questions Remaining: ' + (20 - usedQuestions.size) + '</div><div class="jeopardy-grid" style="grid-template-columns: repeat(5, 1fr);">';
+                
                 categories.forEach(cat => {
-                    html += `<div class="jeopardy-header">${cat}</div>`;
+                    html += '<div class="jeopardy-header" style="font-size: 0.85rem; padding: 0.75rem;">' + cat + '</div>';
                 });
-                for (let row = 0; row < 3; row++) {
-                    for (let col = 0; col < 4; col++) {
-                        const key = `${col}-${row}`;
+                
+                for (let row = 0; row < 4; row++) {
+                    for (let col = 0; col < 5; col++) {
+                        const key = col + '-' + row;
                         const v = questions[col][row].v;
                         if (usedQuestions.has(key)) {
-                            html += `<div class="jeopardy-cell used">$${v}</div>`;
+                            html += '<div class="jeopardy-cell used" style="font-size: 1rem;">-</div>';
                         } else {
-                            html += `<div class="jeopardy-cell" onclick="jeopardyClick(${col}, ${row}, ${v})">$${v}</div>`;
+                            html += '<div class="jeopardy-cell" onclick="jeopardyClick(' + col + ', ' + row + ', ' + v + ')" style="font-size: 1rem;">$' + v + '</div>';
                         }
                     }
                 }
-                html += `</div></div>`;
+                
+                html += '</div></div>';
                 area.innerHTML = html;
             }
             
-            window.jeopardyClick = (col, row, value) => {
-                const key = `${col}-${row}`;
+            function showQuestion(col, row, value) {
                 const q = questions[col][row];
-                const answer = prompt(`Question: ${q.q}\n\nYour answer (start with 'What is...' or 'Who is...'):`);
-                if (answer && answer.toLowerCase().includes(q.a.toLowerCase().replace('what is ', '').replace('who is ', '').replace('?', ''))) {
-                    score += value;
-                    alert(`Correct! You earned $${value}`);
-                } else {
-                    score -= value;
-                    alert(`Incorrect. The answer was: ${q.a}`);
+                let optionsHtml = '';
+                q.options.forEach((opt, i) => {
+                    optionsHtml += '<button class="millionaire-btn" id="jeop-opt-' + i + '" onclick="jeopardyAnswer(' + col + ', ' + row + ', ' + i + ', ' + q.correct + ', ' + value + ')" style="padding: 1rem; text-align: left; margin: 0.25rem;"><strong>' + String.fromCharCode(65+i) + '.</strong> ' + opt + '</button><br>';
+                });
+                
+                area.innerHTML = '<div class="game-container"><h3>Jeopardy! - $' + value + '</h3><div style="background: var(--navy); color: white; padding: 2rem; border-radius: 12px; margin: 1rem 0; text-align: center; font-size: 1.3rem;">' + q.q + '</div><div style="text-align: center; max-width: 500px; margin: 0 auto;">' + optionsHtml + '</div></div>';
+            }
+            
+            window.jeopardyClick = (col, row, value) => {
+                showQuestion(col, row, value);
+            };
+            
+            window.jeopardyAnswer = (col, row, selected, correct, value) => {
+                const key = col + '-' + row;
+                
+                // Disable all buttons
+                for (let i = 0; i < 4; i++) {
+                    const btn = document.getElementById('jeop-opt-' + i);
+                    btn.disabled = true;
+                    btn.style.cursor = 'default';
                 }
+                
+                const selectedBtn = document.getElementById('jeop-opt-' + selected);
+                const correctBtn = document.getElementById('jeop-opt-' + correct);
+                
                 usedQuestions.add(key);
-                renderBoard();
+                
+                if (selected === correct) {
+                    // CORRECT ANSWER
+                    score += value;
+                    selectedBtn.style.background = 'var(--mint)';
+                    selectedBtn.style.color = 'white';
+                    selectedBtn.innerHTML = '✓ ' + selectedBtn.innerHTML;
+                    
+                    setTimeout(() => {
+                        area.innerHTML = '<div class="game-container"><div style="text-align: center; padding: 2rem;"><div style="font-size: 4rem; color: var(--mint);">✓ CORRECT!</div><div style="font-size: 1.5rem; margin: 1rem; color: var(--mint);">+$' + value + '</div><div style="background: #c6f6d5; padding: 1rem; border-radius: 8px; margin: 1rem; font-size: 1.1rem;"><strong>The answer is:</strong> ' + questions[col][row].options[correct] + '</div></div><p style="text-align: center;"><button class="game-btn" onclick="jeopardyContinue()">Continue</button></p></div>';
+                    }, 1000);
+                } else {
+                    // WRONG ANSWER
+                    score -= value;
+                    selectedBtn.style.background = 'var(--coral)';
+                    selectedBtn.style.color = 'white';
+                    selectedBtn.innerHTML = '✗ ' + selectedBtn.innerHTML;
+                    correctBtn.style.background = 'var(--mint)';
+                    correctBtn.style.color = 'white';
+                    correctBtn.innerHTML = '✓ ' + correctBtn.innerHTML;
+                    
+                    setTimeout(() => {
+                        area.innerHTML = '<div class="game-container"><div style="text-align: center; padding: 2rem;"><div style="font-size: 4rem; color: var(--coral);">✗ INCORRECT</div><div style="font-size: 1.5rem; margin: 1rem; color: var(--coral);">-$' + value + '</div><div style="background: #fed7d7; padding: 1rem; border-radius: 8px; margin: 1rem; font-size: 1.1rem;"><strong>The correct answer was:</strong> ' + questions[col][row].options[correct] + '</div></div><p style="text-align: center;"><button class="game-btn" onclick="jeopardyContinue()">Continue</button></p></div>';
+                    }, 1500);
+                }
+            };
+            
+            window.jeopardyContinue = () => {
+                if (usedQuestions.size >= 20) {
+                    let message = score >= 2000 ? "JEOPARDY CHAMPION!" : score >= 0 ? "Good Game!" : "Better luck next time!";
+                    area.innerHTML = '<div class="game-container"><h3>Jeopardy Complete!</h3><div style="text-align: center; padding: 2rem;"><div style="font-size: 2rem;">' + message + '</div><div style="font-size: 2rem; background: ' + (score >= 0 ? 'var(--mint)' : 'var(--coral)') + '; color: white; padding: 1rem 2rem; border-radius: 12px; display: inline-block; margin: 1rem;">Final Score: $' + score + '</div></div><p style="text-align: center;"><button class="game-btn" onclick="startJeopardy()">Play Again</button></p></div>';
+                } else {
+                    renderBoard();
+                }
             };
             
             renderBoard();
         }
 
-        // Drag and Drop functions
+        // Drag and Drop functions (kept for compatibility)
         function allowDrop(ev) { ev.preventDefault(); }
         function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
         function drop(ev) {
