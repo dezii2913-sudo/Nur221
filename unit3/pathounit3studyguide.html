@@ -76,6 +76,9 @@
         .ms-highlight h3 { color: var(--purple); border-bottom: 2px solid var(--purple); }
         .teacher-focus { background: linear-gradient(135deg, #fff5f5, #fed7d7); border: 3px solid var(--coral); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; }
         .teacher-focus h3 { color: var(--coral); border-bottom: 2px solid var(--coral); }
+        .teacher-notes { background: linear-gradient(135deg, #fffaf0, #fef3c7); border: 3px solid var(--gold); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; }
+        .teacher-notes h3 { color: #b7791f; border-bottom: 2px solid var(--gold); margin-bottom: 1rem; }
+        .teacher-notes .note-item { background: white; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 3px solid var(--gold); }
         .disease-box { background: linear-gradient(135deg, #f7fafc, white); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
         .disease-box h4 { color: var(--coral); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
         .signs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.5rem; margin: 0.5rem 0; }
@@ -154,6 +157,35 @@
             .millionaire-options { grid-template-columns: 1fr; }
             .jeopardy-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        .mobile-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--teal), var(--ocean-medium));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            display: none;
+        }
+        .mobile-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .mobile-toggle.visible {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .mobile-toggle.visible {
+                display: block;
+            }
+        }
     </style>
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
@@ -173,6 +205,9 @@
         </div>
     </div>
 
+    <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobileMode()">
+        📱 Mobile View
+    </button>
     <nav>
         <div class="nav-tabs">
             <a href="#overview" class="nav-tab active" data-section="overview">📋 Overview</a>
@@ -387,6 +422,36 @@
         <section id="chapter14" class="section">
             <div class="card">
                 <h2>🧠 Chapter 14: Nervous System Disorders</h2>
+                
+                <div class="teacher-notes">
+                    <h3>📝 Teacher's Notes - Chapter 14</h3>
+                    <div class="note-item"><strong>Brain Lobes:</strong> Frontal (reasoning, planning, speech, movement - pink), Parietal (touch, pressure, temperature, pain - blue), Temporal (auditory and olfactory - tan), Occipital (vision - green)</div>
+                    <div class="note-item"><strong>Hemispheres:</strong> Connected by corpus callosum; Right controls left side of body, Left controls right side</div>
+                    <div class="note-item"><strong>Cerebellum:</strong> Body balance, position, coordinated movement</div>
+                    <div class="note-item"><strong>CNS Protection:</strong> Circle of Willis provides collateral blood flow between anterior and posterior circulations, protecting against ischemia</div>
+                    <div class="note-item"><strong>Blood-Brain Barrier:</strong> Tightly locked layer of cells that defend brain from harmful substances; maintains delicate chemical balance</div>
+                    <div class="note-item"><strong>CSF:</strong> Ultrafiltrate of plasma in ventricles and subarachnoid spaces; provides nourishment, waste removal, and protection</div>
+                    <div class="note-item"><strong>Ventricles:</strong> Produce and transport CSF; lined by ependymal cells forming choroid plexus; naturally enlarge with age but can indicate hydrocephalus or MS</div>
+                    <div class="note-item"><strong>Sulci:</strong> Shallow grooves on brain surface separating raised ridges (gyri)</div>
+                    <div class="note-item"><strong>Cranial Nerves Mnemonic:</strong> "Oh, Oh, Oh, To Take A Family Vacation Go Vegas After Hours" (12 nerves)</div>
+                    <div class="note-item"><strong>Spinal Nerves Mnemonic:</strong> "Breakfast at 8; lunch at 12; dinner at 5x2; 1 dessert" (Cervical 8, Thoracic 12, Lumbar 5, Sacral 5, Coccygeal 1)</div>
+                    <div class="note-item"><strong>Autonomic PNS:</strong> Sympathetic and Parasympathetic work in opposition toward homeostatic balance</div>
+                    <div class="note-item"><strong>Action Potential:</strong> Neuron transmits electrical charge down axon → releases neurotransmitters → communicates with other neurons via synapses</div>
+                    <div class="note-item"><strong>Neurons are permanent cells:</strong> Once damaged/gone, they cannot regenerate</div>
+                    <div class="note-item"><strong>Neural Tube:</strong> Precursor to CNS during embryonic development</div>
+                    <div class="note-item"><strong>Tardive Dyskinesia:</strong> Neurological disorder from long-term neuroleptic/antipsychotic use; repetitive involuntary movements (grimacing, tongue protrusion, lip smacking, rapid eye blinking)</div>
+                    <div class="note-item"><strong>Tumors:</strong> Space-occupying lesions cause increased ICP; benign or malignant can be life-threatening due to skull constraints</div>
+                    <div class="note-item"><strong>Meningitis:</strong> Often meningococcus from upper respiratory tract; signs: severe headache, nuchal rigidity, photophobia, lethargy, vomiting (CONCEPT MAP)</div>
+                    <div class="note-item"><strong>Encephalitis:</strong> Viral infection of brain parenchyma; early signs: headache, stiff neck, lethargy, vomiting, seizures, fever</div>
+                    <div class="note-item"><strong>TIA:</strong> Temporary blood supply reduction; brief speech/motor impairment; warning of impending obstruction</div>
+                    <div class="note-item"><strong>CVA:</strong> Total blood supply loss causing infarction; cerebral edema worsens deficit in first 48 hours</div>
+                    <div class="note-item"><strong>Hydrocephalus:</strong> Excessive CSF forces cranial bone separation in neonates; shunt reroutes CSF</div>
+                    <div class="note-item"><strong>Spina Bifida:</strong> Neural tube defect; myelomeningocele is most serious - spinal cord and nerves herniate through vertebral defect (CONCEPT MAP)</div>
+                    <div class="note-item"><strong>Cerebral Palsy:</strong> Group of disorders from fetal/neonatal brain damage; motor disability with possible seizures, cognitive impairment (CONCEPT MAP)</div>
+                    <div class="note-item"><strong>Somatosensory System:</strong> Network of neurons for recognizing objects, discriminating textures, sensory-motor feedback, social cues</div>
+                    <div class="note-item"><strong>Electrical Synapse Example:</strong> Retina - AII amacrine cells for rapid signal transmission and visual processing</div>
+                    <div class="note-item"><strong>Chemical Synapse Example:</strong> Neuromuscular junction - acetylcholine released from motor neuron stimulates muscle contraction</div>
+                </div>
                 
                 <button class="collapsible" onclick="toggleCollapsible(this)">
                     📖 Key Terms - Nervous System (From PowerPoint)
@@ -688,6 +753,13 @@
             <div class="card">
                 <h2>👁️ Chapter 15: Eyes, Ears & Sensory Organs</h2>
 
+                <div class="teacher-notes">
+                    <h3>📝 Teacher's Notes - Chapter 15</h3>
+                    <div class="note-item"><strong>Somatosensory System:</strong> Network of neurons for recognizing objects, discriminating textures, sensory-motor feedback, and social cues</div>
+                    <div class="note-item"><strong>Somatosensory Receptors:</strong> Specialized sensory nerves responding to stimuli - vision, hearing, taste, smell, plus general somatic senses (touch, proprioception, pain, temperature)</div>
+                    <div class="note-item"><strong>Refraction:</strong> Light unable to focus properly on retina; causes vision problems</div>
+                </div>
+
                 <button class="collapsible" onclick="toggleCollapsible(this)">
                     📖 Key Terms (From PowerPoint)
                     <span class="arrow">▼</span>
@@ -876,6 +948,13 @@
         <section id="chapter16" class="section">
             <div class="card">
                 <h2>🩺 Chapter 16: Endocrine System Disorders</h2>
+
+                <div class="teacher-notes">
+                    <h3>📝 Teacher's Notes - Chapter 16</h3>
+                    <div class="note-item"><strong>Hormones:</strong> Chemicals that coordinate body functions by carrying messages through blood to organs, skin, muscles, and tissues</div>
+                    <div class="note-item"><strong>Hormone Functions:</strong> Depend on type and location; various mechanisms and characteristics impact how hormones function</div>
+                    <div class="note-item"><strong>Diabetes Insipidus (DI):</strong> CONCEPT MAP - No glucose in urine, LOTS of water output</div>
+                </div>
 
                 <button class="collapsible" onclick="toggleCollapsible(this)">
                     📖 Key Terms (From PowerPoint)
@@ -1866,13 +1945,83 @@
             ev.target.appendChild(draggedElement);
         }
 
+        // Mobile Toggle Function
+        let mobileMode = false;
+        function toggleMobileMode() {
+            mobileMode = !mobileMode;
+            const toggle = document.getElementById('mobileToggle');
+            
+            if (mobileMode) {
+                document.body.style.fontSize = '16px';
+                document.body.style.overflowX = 'hidden';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.padding = '1rem';
+                    card.style.margin = '0.5rem';
+                });
+                document.querySelectorAll('table').forEach(table => {
+                    table.style.fontSize = '14px';
+                    table.style.display = 'block';
+                    table.style.overflowX = 'auto';
+                });
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.maxWidth = '100%';
+                    img.style.height = 'auto';
+                });
+                document.querySelectorAll('.collapsible-content').forEach(content => {
+                    content.style.padding = '1rem';
+                });
+                toggle.innerHTML = '🖥️ Desktop View';
+                toggle.style.background = 'linear-gradient(135deg, var(--purple), var(--ocean-dark))';
+                localStorage.setItem('mobileMode', 'true');
+            } else {
+                document.body.style.fontSize = '';
+                document.body.style.overflowX = '';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.padding = '';
+                    card.style.margin = '';
+                });
+                document.querySelectorAll('table').forEach(table => {
+                    table.style.fontSize = '';
+                    table.style.display = '';
+                    table.style.overflowX = '';
+                });
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.maxWidth = '';
+                    img.style.height = '';
+                });
+                document.querySelectorAll('.collapsible-content').forEach(content => {
+                    content.style.padding = '';
+                });
+                toggle.innerHTML = '📱 Mobile View';
+                toggle.style.background = 'linear-gradient(135deg, var(--teal), var(--ocean-medium))';
+                localStorage.setItem('mobileMode', 'false');
+            }
+        }
+
+        // Check if mobile on load
+        function checkMobile() {
+            const toggle = document.getElementById('mobileToggle');
+            if (window.innerWidth <= 768) {
+                toggle.classList.add('visible');
+                // Auto-enable mobile mode on small screens
+                if (localStorage.getItem('mobileMode') === 'true') {
+                    toggleMobileMode();
+                }
+            } else {
+                toggle.classList.remove('visible');
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             initQuiz();
             initFlashcards();
             updateVault();
             updateProgress();
+            checkMobile();
         });
+        
+        window.addEventListener('resize', checkMobile);
     </script>
 </body>
 </html>
