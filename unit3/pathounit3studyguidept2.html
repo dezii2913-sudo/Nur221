@@ -78,6 +78,9 @@
         .ms-highlight h3 { color: var(--pink-dark); border-bottom: 2px solid var(--pink-dark); }
         .teacher-focus { background: linear-gradient(135deg, #fff5f5, #fed7d7); border: 3px solid var(--coral); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; }
         .teacher-focus h3 { color: var(--coral); border-bottom: 2px solid var(--coral); }
+        .teacher-notes { background: linear-gradient(135deg, #fffaf0, #fef3c7); border: 3px solid var(--gold); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; }
+        .teacher-notes h3 { color: #b7791f; border-bottom: 2px solid var(--gold); margin-bottom: 1rem; }
+        .teacher-notes .note-item { background: white; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 3px solid var(--gold); }
         .disease-box { background: linear-gradient(135deg, #f7fafc, white); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
         .disease-box h4 { color: var(--coral); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
         .signs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.5rem; margin: 0.5rem 0; }
@@ -156,6 +159,35 @@
             .millionaire-options { grid-template-columns: 1fr; }
             .jeopardy-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        .mobile-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--pink-medium), var(--blue-medium));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            display: none;
+        }
+        .mobile-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .mobile-toggle.visible {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .mobile-toggle.visible {
+                display: block;
+            }
+        }
     </style>
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
@@ -175,6 +207,9 @@
         </div>
     </div>
 
+    <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobileMode()">
+        📱 Mobile View
+    </button>
     <nav>
         <div class="nav-tabs">
             <a href="#overview" class="nav-tab active" data-section="overview">📋 Overview</a>
@@ -366,6 +401,26 @@
         <section id="chapter17" class="section">
             <div class="card">
                 <h2>🍽️ Chapter 17: Digestive System Disorders</h2>
+                
+                <div class="teacher-notes">
+                    <h3>📝 Teacher's Notes - Chapter 17</h3>
+                    <div class="note-item"><strong>Digestion Pathway:</strong> Mouth → Esophagus → Stomach → Small Intestine → Large Intestine/Colon → Rectum; each portion has specific enzymes for breaking down substances</div>
+                    <div class="note-item"><strong>Neurovascular Control:</strong> Hypothalamus communicates with GI tract to signal when to eat and when enough nutrients are ingested</div>
+                    <div class="note-item"><strong>Nutrient Storage:</strong> Body stores nutrients in adipose (fat) tissue and liver for later use</div>
+                    <div class="note-item"><strong>Gluconeogenesis:</strong> Occurs in liver and kidneys after ~8 hours of fasting; supplies plasma glucose needs between meals</div>
+                    <div class="note-item"><strong>Water Survival:</strong> Adults survive ~10 days without water; children ~5 days</div>
+                    <div class="note-item"><strong>Mucous Membranes:</strong> Angular cheilitis (fissures in mouth corners) often indicates riboflavin (B2) deficiency; Purpura indicates vitamin K deficiency</div>
+                    <div class="note-item"><strong>Vomiting Reflex:</strong> 1) Deep breath, 2) Close glottis/raise soft palate, 3) Cease respiration (prevents aspiration), 4) Relax gastroesophageal sphincter, 5) Contract abdominal muscles, 6) Reverse peristaltic waves</div>
+                    <div class="note-item"><strong>Vomitus Colors:</strong> Hematemesis (coffee ground = bleeding), Yellow/green (bile from duodenum), Dark brown (lower intestine obstruction), Undigested food (gastric emptying problem)</div>
+                    <div class="note-item"><strong>GERD:</strong> CONCEPT MAP - Important disorder to know</div>
+                    <div class="note-item"><strong>Cirrhosis:</strong> CONCEPT MAP - Extensive fibrosis impairs metabolic processes</div>
+                    <div class="note-item"><strong>Intestinal Obstruction:</strong> CONCEPT MAP - Mechanical causes colicky pain/marked bowel sounds; paralytic ileus causes steady pain/absent bowel sounds</div>
+                    <div class="note-item"><strong>NCLEX GERD Teaching:</strong> Wait 3 hours after eating before bed; eat 4-6 small meals; elevate head of bed</div>
+                    <div class="note-item"><strong>Lactulose for Cirrhosis:</strong> Prevents ammonia absorption in colon; prevents hepatic encephalopathy</div>
+                    <div class="note-item"><strong>Cirrhosis Signs:</strong> Petechiae (impaired coagulation), hypotension, osteoporosis</div>
+                    <div class="note-item"><strong>SBO Medications:</strong> Withhold laxatives (Senna) - risk of perforation</div>
+                    <div class="note-item"><strong>Paralytic Ileus Prevention:</strong> Increase ambulation and fiber intake to promote peristalsis</div>
+                </div>
                 
                 <button class="collapsible" onclick="toggleCollapsible(this)">
                     📖 Key Terms - Digestive System (From PowerPoint)
@@ -622,6 +677,18 @@
                 <h2>🫘 Chapter 18: Urinary System Disorders</h2>
 
                 <button class="collapsible" onclick="toggleCollapsible(this)">
+                <div class="teacher-notes">
+                    <h3>📝 Teacher's Notes - Chapter 18</h3>
+                    <div class="note-item"><strong>System Interactions:</strong> Neurovascular, endocrine, and cardiovascular systems play important roles in urinary system function</div>
+                    <div class="note-item"><strong>UTI:</strong> CONCEPT MAP - Cystitis can ascend to pyelonephritis; E. coli is common cause; urinalysis confirms diagnosis</div>
+                    <div class="note-item"><strong>Inflammatory Disorders:</strong> APSGN (childhood inflammatory disease), Nephrotic syndrome (edema, proteinuria, lipiduria)</div>
+                    <div class="note-item"><strong>Obstructions:</strong> Urinary calculi (calcium salts) cause hydronephrosis and infection risk; renal cell carcinoma and bladder cancer show painless hematuria</div>
+                    <div class="note-item"><strong>Acute Renal Failure:</strong> Reversible; sudden oliguria, increased serum urea, acidosis; caused by bilateral inflammation, severe shock, or nephroxins</div>
+                    <div class="note-item"><strong>Chronic Renal Failure:</strong> Irreversible gradual nephron destruction → uremia; asymptomatic until renal insufficiency stage</div>
+                    <div class="note-item"><strong>CKD Fluid Measurement:</strong> Daily weight is most reliable measure of fluid retention</div>
+                    <div class="note-item"><strong>AKI Lab Findings:</strong> Elevated BUN, hyperkalemia, metabolic acidosis, hypocalcemia</div>
+                </div>
+
                     📖 Key Terms - Urinary System (From PowerPoint)
                     <span class="arrow">▼</span>
                 </button>
@@ -793,6 +860,17 @@
                 <button class="collapsible" onclick="toggleCollapsible(this)">
                     📖 Key Terms - Reproductive System (From PowerPoint)
                     <span class="arrow">▼</span>
+                <div class="teacher-notes">
+                    <h3>📝 Teacher's Notes - Chapter 19</h3>
+                    <div class="note-item"><strong>Male Puberty Process:</strong> Hypothalamus sends GnRH → anterior pituitary secretes FSH → Sertoli cells produce sperm (spermatogenesis) → Sertoli cells secrete inhibin → suppresses GnRH (feedback loop)</div>
+                    <div class="note-item"><strong>Testosterone Production:</strong> LH stimulates Leydig cells → produce testosterone → Leydig/Sertoli cells secrete inhibin when levels adequate → feedback loop</div>
+                    <div class="note-item"><strong>Female Reproduction:</strong> More complex than male; FSH and LH cause follicle growth on ovary surface; follicles release estrogens and progesterone</div>
+                    <div class="note-item"><strong>Follicular Phase:</strong> Primary (inactive) vs secondary follicles (active via FSH/LH); dominant follicle secretes estrogen → pituitary decreases FSH → oocyte breaks through (ovulation)</div>
+                    <div class="note-item"><strong>Luteal Phase:</strong> Ruptured follicle forms corpus luteum → secretes progesterone and estrogens → if pregnancy: supports until placenta forms (~14 weeks); if no pregnancy: hormone levels drop → menstruation</div>
+                    <div class="note-item"><strong>Male Disorders:</strong> Testicular torsion (emergency - prevent ischemic damage), Prostatitis (associated with UTIs/STDs), BPH (older men, urinary obstruction, not malignant)</div>
+                    <div class="note-item"><strong>Female Disorders:</strong> Endometriosis (dysmenorrhea, infertility), Candidiasis (opportunistic vaginal infection), PID (bacterial infection from Chlamydia → peritonitis → strictures/adhesions/infertility)</div>
+                </div>
+
                 </button>
                 <div class="collapsible-content">
                     <div class="term-grid">
@@ -1483,7 +1561,77 @@
             loadFlashcards();
             loadVault();
             loadProgress();
+            checkMobile();
         });
+
+        // Mobile Toggle Function
+        let mobileMode = false;
+        function toggleMobileMode() {
+            mobileMode = !mobileMode;
+            const toggle = document.getElementById('mobileToggle');
+            
+            if (mobileMode) {
+                document.body.style.fontSize = '16px';
+                document.body.style.overflowX = 'hidden';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.padding = '1rem';
+                    card.style.margin = '0.5rem';
+                });
+                document.querySelectorAll('table').forEach(table => {
+                    table.style.fontSize = '14px';
+                    table.style.display = 'block';
+                    table.style.overflowX = 'auto';
+                });
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.maxWidth = '100%';
+                    img.style.height = 'auto';
+                });
+                document.querySelectorAll('.collapsible-content').forEach(content => {
+                    content.style.padding = '1rem';
+                });
+                toggle.innerHTML = '🖥️ Desktop View';
+                toggle.style.background = 'linear-gradient(135deg, var(--purple), var(--pink-dark))';
+                localStorage.setItem('mobileMode', 'true');
+            } else {
+                document.body.style.fontSize = '';
+                document.body.style.overflowX = '';
+                document.querySelectorAll('.card').forEach(card => {
+                    card.style.padding = '';
+                    card.style.margin = '';
+                });
+                document.querySelectorAll('table').forEach(table => {
+                    table.style.fontSize = '';
+                    table.style.display = '';
+                    table.style.overflowX = '';
+                });
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.maxWidth = '';
+                    img.style.height = '';
+                });
+                document.querySelectorAll('.collapsible-content').forEach(content => {
+                    content.style.padding = '';
+                });
+                toggle.innerHTML = '📱 Mobile View';
+                toggle.style.background = 'linear-gradient(135deg, var(--pink-medium), var(--blue-medium))';
+                localStorage.setItem('mobileMode', 'false');
+            }
+        }
+
+        // Check if mobile on load
+        function checkMobile() {
+            const toggle = document.getElementById('mobileToggle');
+            if (window.innerWidth <= 768) {
+                toggle.classList.add('visible');
+                // Auto-enable mobile mode on small screens
+                if (localStorage.getItem('mobileMode') === 'true') {
+                    toggleMobileMode();
+                }
+            } else {
+                toggle.classList.remove('visible');
+            }
+        }
+        
+        window.addEventListener('resize', checkMobile);
 
         // Navigation Functions
         function initNavigation() {
