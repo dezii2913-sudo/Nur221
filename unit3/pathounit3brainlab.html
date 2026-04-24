@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Interactive Brain Mastery - NCLEX Study Tool</title>
+<style>
+:root {
+  --pink-dark: #d53f8c;
+  --pink-medium: #ed64a6;
+  --pink-light: #f687b3;
+  --pink-pale: #fff5f7;
+  --purple: #805ad5;
+  --purple-dark: #553c9a;
+  --blue-dark: #2c5282;
+  --blue-medium: #4299e1;
+  --blue-light: #63b3ed;
+  --blue-pale: #ebf8ff;
+  --coral: #f56565;
+  --gold: #ecc94b;
+  --mint: #9ae6b4;
+  --teal: #319795;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a202c 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+}
+header {
+  background: linear-gradient(135deg, var(--purple-dark) 0%, var(--pink-dark) 50%, var(--blue-dark) 100%);
+  color: white;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+header h1 { font-size: 1.75rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); line-height: 1.2; }
+header .subtitle { font-size: 0.95rem; opacity: 0.95; margin-top: 0.5rem; }
+.badge { display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; margin: 0.2rem; border: 1px solid rgba(255,255,255,0.3); }
+.container { max-width: 1200px; margin: 1rem auto; padding: 0 0.75rem; }
+@media (min-width: 768px) {
+  header { padding: 2rem; }
+  header h1 { font-size: 2.5rem; }
+  header .subtitle { font-size: 1.1rem; }
+  .badge { font-size: 0.85rem; padding: 0.3rem 1rem; }
+  .container { margin: 2rem auto; padding: 0 1rem; }
+}
+.difficulty-bar {
+  background: linear-gradient(90deg, var(--purple-dark), var(--pink-dark));
+  padding: 0.75rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+.diff-label {
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+.diff-btn {
+  padding: 0.85rem 1.25rem;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  min-height: 44px;
+  flex: 1;
+  max-width: 180px;
+}
+@media (min-width: 600px) {
+  .diff-label { width: auto; margin-bottom: 0; margin-right: 0.5rem; }
+  .diff-btn { flex: initial; }
+}
+.diff-btn.active {
+  background: white;
+  color: var(--pink-dark);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.4);
+}
+.diff-btn:hover:not(.active) { background: rgba(255,255,255,0.2); }
+
+nav {
+  background: #2d3748;
+  border-radius: 16px;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+nav::-webkit-scrollbar { height: 4px; }
+nav::-webkit-scrollbar-thumb { background: var(--pink-medium); border-radius: 2px; }
+.nav-inner {
+  display: flex;
+  gap: 0.4rem;
+  min-width: min-content;
+  padding: 0 0.25rem;
+}
+.nav-tab {
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: #cbd5e0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  white-space: nowrap;
+  min-height: 44px;
+  flex-shrink: 0;
+}
+.nav-tab:hover { background: rgba(237,100,166,0.15); color: white; }
+.nav-tab.active { background: linear-gradient(135deg, var(--pink-medium), var(--purple)); color: white; }
+@media (min-width: 768px) {
+  .nav-inner { flex-wrap: wrap; justify-content: center; }
+  .nav-tab { font-size: 0.95rem; padding: 0.75rem 1.25rem; }
+}
+
+.section { display: none; animation: fadeIn 0.4s; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.card {
+  background: #2d3748;
+  border-radius: 16px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  border-left: 5px solid var(--pink-medium);
+}
+@media (min-width: 768px) {
+  .card { padding: 1.5rem; margin-bottom: 1.5rem; }
+}
+.card h2 { color: var(--pink-light); margin-bottom: 1rem; font-size: 1.35rem; }
+.card h3 { color: var(--blue-light); margin: 1rem 0 0.75rem; border-bottom: 1px solid #4a5568; padding-bottom: 0.5rem; font-size: 1.1rem; }
+.card h4 { color: var(--mint); margin: 0.75rem 0 0.5rem; font-size: 1rem; }
+@media (min-width: 768px) {
+  .card h2 { font-size: 1.6rem; }
+  .card h3 { font-size: 1.25rem; }
+}
+
+/* Brain Anatomy Section */
+.brain-map {
+  background: #1a202c;
+  border-radius: 16px;
+  padding: 1rem;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.brain-svg { width: 100%; max-width: 600px; height: auto; margin: 0 auto; display: block; touch-action: manipulation; }
+.lobe-region {
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0.85;
+}
+.lobe-region:hover, .lobe-region:active { opacity: 1; filter: brightness(1.3); }
+.lobe-region.selected { stroke: white; stroke-width: 4; opacity: 1; }
+.brain-svg text { pointer-events: none; }
+
+.info-panel {
+  background: #1a202c;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+  border: 2px solid #4a5568;
+  min-height: 150px;
+}
+.info-panel h3 { color: var(--pink-light); border: none; }
+@media (min-width: 768px) { .info-panel { padding: 1.5rem; margin-top: 1.5rem; } }
+
+/* Buttons & Tiles */
+.tiles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+@media (min-width: 480px) {
+  .tiles-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 768px) {
+  .tiles-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+}
+.tile {
+  background: linear-gradient(135deg, var(--pink-medium), var(--purple));
+  color: white;
+  padding: 1.25rem 1rem;
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  min-height: 60px;
+  -webkit-appearance: none;
+}
+.tile:active { transform: scale(0.98); }
+@media (min-width: 768px) {
+  .tile:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(237,100,166,0.4); }
+  .tile { padding: 1.5rem; font-size: 1rem; }
+}
+
+.game-btn {
+  background: linear-gradient(135deg, var(--pink-medium), var(--purple));
+  color: white; border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0.25rem;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  min-height: 44px;
+  -webkit-appearance: none;
+}
+.game-btn:active { transform: scale(0.98); }
+@media (min-width: 768px) {
+  .game-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+}
+.game-btn.secondary { background: #4a5568; }
+
+.score-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.score-box {
+  background: #1a202c;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid #4a5568;
+  color: var(--pink-light);
+  font-size: 0.9rem;
+}
+@media (min-width: 768px) {
+  .score-box { padding: 0.5rem 1.5rem; font-size: 1rem; }
+  .score-bar { gap: 1rem; }
+}
+
+/* Quiz/MCQ Styles */
+.question-card {
+  background: #1a202c;
+  border: 2px solid #4a5568;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+@media (min-width: 768px) { .question-card { padding: 1.5rem; } }
+.scenario {
+  background: rgba(237,100,166,0.1);
+  border-left: 4px solid var(--pink-medium);
+  padding: 0.85rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+.question-text { font-size: 1rem; margin: 1rem 0; font-weight: 500; line-height: 1.5; }
+.options-grid { display: grid; gap: 0.65rem; }
+.option {
+  background: #2d3748;
+  border: 2px solid #4a5568;
+  color: #e2e8f0;
+  padding: 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-size: 0.95rem;
+  min-height: 50px;
+  -webkit-appearance: none;
+  line-height: 1.4;
+}
+.option:active { background: #4a5568; }
+@media (min-width: 768px) {
+  .option:hover { background: #4a5568; border-color: var(--pink-light); }
+}
+.option.selected { border-color: var(--pink-medium); background: rgba(237,100,166,0.15); }
+.option.correct { border-color: var(--mint); background: rgba(154,230,180,0.2); color: #c6f6d5; }
+.option.incorrect { border-color: var(--coral); background: rgba(245,101,101,0.2); color: #fed7d7; }
+.option.locked { pointer-events: none; }
+
+.feedback {
+  margin-top: 1rem;
+  padding: 0.85rem;
+  border-radius: 10px;
+  display: none;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.feedback.show { display: block; }
+.feedback.correct { background: rgba(154,230,180,0.15); border-left: 4px solid var(--mint); color: #c6f6d5; }
+.feedback.incorrect { background: rgba(245,101,101,0.15); border-left: 4px solid var(--coral); color: #fed7d7; }
+
+/* Drag and Drop */
+.dnd-container { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1rem 0; }
+@media (min-width: 900px) { .dnd-container { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+.dnd-pool, .dnd-targets {
+  background: #1a202c;
+  border: 2px dashed #4a5568;
+  border-radius: 12px;
+  padding: 0.75rem;
+  min-height: 200px;
+}
+.dnd-pool h4, .dnd-targets h4 { color: var(--pink-light); margin-bottom: 0.75rem; font-size: 1rem; }
+.draggable {
+  background: linear-gradient(135deg, var(--blue-medium), var(--purple));
+  color: white;
+  padding: 0.85rem;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+}
+.draggable.selected {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--pink-medium), var(--purple));
+  box-shadow: 0 0 0 3px rgba(236,201,75,0.3);
+}
+.drop-zone {
+  background: #2d3748;
+  border: 2px solid #4a5568;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  min-height: 60px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.drop-zone.ready {
+  border-color: var(--gold);
+  background: rgba(236,201,75,0.1);
+  animation: pulse-zone 1.2s infinite;
+}
+@keyframes pulse-zone { 0%,100%{box-shadow:0 0 0 0 rgba(236,201,75,0.4);} 50%{box-shadow:0 0 0 8px rgba(236,201,75,0);} }
+.drop-zone-label { color: var(--mint); font-weight: 600; margin-bottom: 0.4rem; font-size: 0.9rem; }
+.drop-zone.correct { background: rgba(154,230,180,0.15); border-color: var(--mint); }
+.drop-zone.incorrect { background: rgba(245,101,101,0.15); border-color: var(--coral); }
+.dropped-item {
+  background: linear-gradient(135deg, var(--blue-medium), var(--purple));
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  display: inline-block;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.dropped-item::after { content: " ↩"; opacity: 0.6; }
+.dnd-hint {
+  color: var(--gold);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: rgba(236,201,75,0.1);
+  border-radius: 8px;
+}
+
+/* Matching Game */
+.match-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 700px) { .match-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+.match-col h4 { color: var(--pink-light); margin-bottom: 0.5rem; font-size: 1rem; }
+.match-item {
+  background: #2d3748;
+  border: 2px solid #4a5568;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+.match-item:active:not(.matched) { background: #4a5568; }
+@media (min-width: 768px) {
+  .match-item:hover:not(.matched) { background: #4a5568; border-color: var(--pink-light); }
+}
+.match-item.selected { border-color: var(--pink-medium); background: rgba(237,100,166,0.15); }
+.match-item.matched { background: rgba(154,230,180,0.15); border-color: var(--mint); color: #c6f6d5; pointer-events: none; }
+.match-item.wrong-flash { background: rgba(245,101,101,0.2); border-color: var(--coral); }
+
+/* Puzzle (Sequence Game) */
+.sequence-pool {
+  background: #1a202c;
+  border: 2px solid #4a5568;
+  border-radius: 12px;
+  padding: 0.75rem;
+  min-height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-content: flex-start;
+}
+.sequence-item {
+  background: linear-gradient(135deg, var(--pink-medium), var(--purple));
+  color: white;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+  -webkit-user-select: none;
+  font-size: 0.9rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  -webkit-appearance: none;
+  border: none;
+}
+.sequence-item:active { transform: scale(0.96); }
+.sequence-item.in-sequence {
+  background: linear-gradient(135deg, var(--mint), var(--teal));
+  color: #1a202c;
+  cursor: default;
+}
+.sequence-slots {
+  background: #1a202c;
+  border: 2px dashed var(--pink-light);
+  border-radius: 12px;
+  padding: 0.75rem;
+  min-height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-content: flex-start;
+  margin-top: 1rem;
+}
+.sequence-number {
+  color: var(--gold);
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+/* Side Deficit Visualizer */
+.brain-halves {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  justify-content: center;
+  align-items: center;
+}
+.brain-half {
+  background: #1a202c;
+  border: 3px solid #4a5568;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  transition: all 0.5s;
+}
+.brain-half.damaged {
+  background: rgba(245,101,101,0.15);
+  border-color: var(--coral);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;}50%{opacity:0.7;} }
+.brain-half.affected {
+  background: rgba(236,201,75,0.15);
+  border-color: var(--gold);
+}
+.brain-half h4 { color: var(--pink-light); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.arrow-cross {
+  align-self: center;
+  font-size: 1.5rem;
+  color: var(--pink-light);
+}
+@media (min-width: 700px) {
+  .brain-halves { flex-direction: row; gap: 1rem; }
+  .brain-half { flex: 1; padding: 1.5rem; }
+  .brain-half h4 { font-size: 1.2rem; }
+  .arrow-cross { font-size: 2rem; }
+}
+
+.fact-box {
+  background: rgba(99,179,237,0.15);
+  border-left: 4px solid var(--blue-light);
+  padding: 0.85rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.warning-box {
+  background: rgba(245,101,101,0.15);
+  border-left: 4px solid var(--coral);
+  padding: 0.85rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.mnemonic-box {
+  background: rgba(236,201,75,0.15);
+  border: 2px dashed var(--gold);
+  padding: 0.85rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+}
+.mnemonic-text { font-weight: 700; font-size: 1rem; color: var(--gold); line-height: 1.4; }
+@media (min-width: 768px) {
+  .fact-box, .warning-box, .mnemonic-box { padding: 1rem; }
+  .mnemonic-text { font-size: 1.15rem; }
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+table { width: 100%; border-collapse: collapse; background: #1a202c; border-radius: 8px; overflow: hidden; font-size: 0.85rem; }
+th, td { padding: 0.6rem; text-align: left; border-bottom: 1px solid #4a5568; vertical-align: top; }
+th { background: linear-gradient(90deg, var(--pink-dark), var(--purple-dark)); color: white; white-space: nowrap; }
+tr:hover { background: rgba(237,100,166,0.05); }
+@media (min-width: 768px) {
+  table { font-size: 0.95rem; }
+  th, td { padding: 0.75rem; }
+}
+
+/* Cranial Nerves card layout for mobile */
+.cn-cards { display: none; }
+.cn-card {
+  background: #1a202c;
+  border: 2px solid #4a5568;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--gold);
+}
+.cn-card h4 { color: var(--gold); margin-bottom: 0.4rem; font-size: 1rem; }
+.cn-card .cn-row { margin: 0.4rem 0; font-size: 0.9rem; line-height: 1.4; }
+.cn-card .cn-row strong { color: var(--pink-light); }
+.cn-card .cn-lesion { color: #fed7d7; font-size: 0.88rem; }
+.cn-table-wrapper { display: block; }
+@media (max-width: 767px) {
+  .cn-cards { display: block; }
+  .cn-table-wrapper { display: none; }
+}
+
+ul, ol { margin-left: 1.25rem; margin-bottom: 0.5rem; font-size: 0.95rem; line-height: 1.5; }
+li { margin-bottom: 0.3rem; }
+
+.timer {
+  font-size: 1.3rem;
+  color: var(--gold);
+  font-weight: 700;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+@media (min-width: 768px) { .timer { font-size: 1.5rem; } }
+.progress-bar {
+  background: #1a202c;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink-medium), var(--mint));
+  transition: width 0.5s;
+}
+.hidden { display: none !important; }
+
+/* Pulse animation for difficulty indicator */
+.level-indicator {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.level-intermediate { background: var(--blue-medium); color: white; }
+.level-advanced { background: linear-gradient(135deg, var(--coral), var(--pink-dark)); color: white; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 Interactive Brain Mastery</h1>
+  <p class="subtitle">Clinical Application: Lobes, Deficits, Cranial Nerves & More</p>
+  <div>
+    <span class="badge">🎯 Clinical Scenarios</span>
+    <span class="badge">🔀 Contralateral Deficits</span>
+    <span class="badge">🧩 Puzzles & Drag-Drop</span>
+    <span class="badge">⚡ 2 Difficulty Levels</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Difficulty Selector -->
+  <div class="difficulty-bar">
+    <div class="diff-label">DIFFICULTY LEVEL</div>
+    <button class="diff-btn active" id="btn-intermediate" onclick="setDifficulty('intermediate')">📘 Intermediate</button>
+    <button class="diff-btn" id="btn-advanced" onclick="setDifficulty('advanced')">🔥 Advanced</button>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <button class="nav-tab active" data-section="overview" onclick="showSection('overview', this)">🏠 Overview</button>
+      <button class="nav-tab" data-section="anatomy" onclick="showSection('anatomy', this)">🧠 Anatomy</button>
+      <button class="nav-tab" data-section="lobes" onclick="showSection('lobes', this)">🎯 Lobe Lookup</button>
+      <button class="nav-tab" data-section="sides" onclick="showSection('sides', this)">🔀 Side Deficit</button>
+      <button class="nav-tab" data-section="mcq" onclick="showSection('mcq', this)">❓ Scenarios</button>
+      <button class="nav-tab" data-section="match" onclick="showSection('match', this)">🔗 Matching</button>
+      <button class="nav-tab" data-section="dnd" onclick="showSection('dnd', this)">🎯 Drag &amp; Drop</button>
+      <button class="nav-tab" data-section="puzzle" onclick="showSection('puzzle', this)">🧩 Puzzle</button>
+      <button class="nav-tab" data-section="speed" onclick="showSection('speed', this)">⚡ Speed</button>
+      <button class="nav-tab" data-section="cn" onclick="showSection('cn', this)">🔢 Cranial Nerves</button>
+    </div>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="section active">
+    <div class="card">
+      <h2>Welcome to Brain Mastery</h2>
+      <p>This tool is designed for <strong>clinical application</strong> — not just memorizing what a lobe does, but recognizing symptoms and reasoning backwards: "If a patient has this deficit, where's the lesion?" It's exactly how NCLEX and your professor will test you.</p>
+      <h3>🎮 Game Modes</h3>
+      <div class="tiles-grid">
+        <button class="tile" onclick="showSection('anatomy')">🧠 Interactive Brain Anatomy</button>
+        <button class="tile" onclick="showSection('lobes')">🎯 Lobe Function Deep-Dive</button>
+        <button class="tile" onclick="showSection('sides')">🔀 Contralateral Deficit Lab</button>
+        <button class="tile" onclick="showSection('mcq')">❓ Clinical Scenario Questions</button>
+        <button class="tile" onclick="showSection('match')">🔗 Symptom→Lobe Matching</button>
+        <button class="tile" onclick="showSection('dnd')">🎯 Drag &amp; Drop Deficits</button>
+        <button class="tile" onclick="showSection('puzzle')">🧩 Stroke Sequence Puzzle</button>
+        <button class="tile" onclick="showSection('speed')">⚡ Speed Diagnosis</button>
+        <button class="tile" onclick="showSection('cn')">🔢 Cranial Nerves</button>
+      </div>
+      <h3>🔥 About Difficulty Modes</h3>
+      <div class="fact-box">
+        <p><strong>📘 Intermediate:</strong> Identify primary function and classic deficits. Good for foundational learning.</p>
+        <p style="margin-top:0.5rem;"><strong>🔥 Advanced:</strong> Clinical vignettes, contralateral logic, subtle deficits, and multi-step reasoning. Mimics how your professor asks questions.</p>
+      </div>
+      <h3>💡 The Core Concept: Contralateral Control</h3>
+      <div class="mnemonic-box">
+        <div class="mnemonic-text">RIGHT BRAIN controls LEFT BODY<br>LEFT BRAIN controls RIGHT BODY</div>
+      </div>
+      <p>Motor fibers cross (decussate) at the medulla. This means a <strong>right-sided brain bleed causes LEFT-sided weakness</strong>. Sensory fibers cross too. The only non-crossers for most people: CN I (smell), and hearing goes to both sides.</p>
+    </div>
+  </section>
+
+  <!-- BRAIN ANATOMY (Interactive SVG) -->
+  <section id="anatomy" class="section">
+    <div class="card">
+      <h2>🧠 Interactive Brain Anatomy</h2>
+      <p>Superior (top-down) view showing BOTH hemispheres. Tap any region on either side. Remember the golden rule: <strong>the RIGHT hemisphere controls the LEFT body</strong>, and vice versa.</p>
+      <div class="brain-map">
+        <svg class="brain-svg" viewBox="0 0 600 620" xmlns="http://www.w3.org/2000/svg" aria-label="Top-down view of brain showing both hemispheres">
+          <defs>
+            <!-- Gradients for subtle depth -->
+            <linearGradient id="frontalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#f687b3"/>
+              <stop offset="100%" stop-color="#d53f8c"/>
+            </linearGradient>
+            <linearGradient id="parietalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#63b3ed"/>
+              <stop offset="100%" stop-color="#2c5282"/>
+            </linearGradient>
+            <linearGradient id="occipitalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#b794f4"/>
+              <stop offset="100%" stop-color="#553c9a"/>
+            </linearGradient>
+            <linearGradient id="temporalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#f6e05e"/>
+              <stop offset="100%" stop-color="#b7791f"/>
+            </linearGradient>
+            <linearGradient id="cerebellumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#9ae6b4"/>
+              <stop offset="100%" stop-color="#2f855a"/>
+            </linearGradient>
+            <linearGradient id="stemGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#fc8181"/>
+              <stop offset="100%" stop-color="#9b2c2c"/>
+            </linearGradient>
+            <!-- Pattern of gyri (brain folds) for realism -->
+            <pattern id="gyri" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+              <path d="M 0 4 Q 2 2, 4 4 T 8 4" stroke="rgba(0,0,0,0.15)" fill="none" stroke-width="0.7"/>
+            </pattern>
+          </defs>
+
+          <!-- ANTERIOR label -->
+          <text x="300" y="18" fill="#9ae6b4" font-size="14" font-weight="bold" text-anchor="middle">ANTERIOR (front / forehead)</text>
+          <!-- POSTERIOR label -->
+          <text x="300" y="540" fill="#9ae6b4" font-size="14" font-weight="bold" text-anchor="middle">POSTERIOR (back of head)</text>
+
+          <!-- Patient's LEFT label (on viewer's right) -->
+          <text x="560" y="195" fill="#ed64a6" font-size="14" font-weight="bold" text-anchor="middle">PATIENT'S</text>
+          <text x="560" y="212" fill="#ed64a6" font-size="20" font-weight="bold" text-anchor="middle">LEFT</text>
+          <text x="560" y="232" fill="#cbd5e0" font-size="11" text-anchor="middle">(language,</text>
+          <text x="560" y="246" fill="#cbd5e0" font-size="11" text-anchor="middle">analytic)</text>
+
+          <!-- Patient's RIGHT label (on viewer's left) -->
+          <text x="40" y="195" fill="#63b3ed" font-size="14" font-weight="bold" text-anchor="middle">PATIENT'S</text>
+          <text x="40" y="212" fill="#63b3ed" font-size="20" font-weight="bold" text-anchor="middle">RIGHT</text>
+          <text x="40" y="232" fill="#cbd5e0" font-size="11" text-anchor="middle">(spatial,</text>
+          <text x="40" y="246" fill="#cbd5e0" font-size="11" text-anchor="middle">creative)</text>
+
+          <!-- ============ CEREBRUM GROUP ============ -->
+          <!-- Drop shadow -->
+          <ellipse cx="300" cy="280" rx="200" ry="210" fill="rgba(0,0,0,0.3)" transform="translate(3,3)"/>
+
+          <!-- Brain outline — egg shape, narrower at front (top), wider at back -->
+          <!-- Using path to create organic asymmetric shape: narrower frontal poles, wider occipital -->
+
+          <!-- ==== RIGHT HEMISPHERE (viewer's LEFT — patient's right) ==== -->
+          <!-- Right FRONTAL LOBE (patient's right) -->
+          <path class="lobe-region" data-region="frontal" data-side="right"
+                d="M 300 75 Q 230 78 180 110 Q 140 140 125 180 Q 120 210 125 235 L 300 235 Z"
+                fill="url(#frontalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- Right PARIETAL LOBE (patient's right) -->
+          <path class="lobe-region" data-region="parietal" data-side="right"
+                d="M 125 235 Q 120 290 130 345 L 300 345 L 300 235 Z"
+                fill="url(#parietalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- Right TEMPORAL LOBE (patient's right) — peeks out laterally -->
+          <path class="lobe-region" data-region="temporal" data-side="right"
+                d="M 125 250 Q 105 275 98 305 Q 96 335 110 355 Q 130 370 155 365 L 155 260 Q 140 252 125 250 Z"
+                fill="url(#temporalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- Right OCCIPITAL LOBE (patient's right) -->
+          <path class="lobe-region" data-region="occipital" data-side="right"
+                d="M 130 345 Q 135 395 165 430 Q 210 460 280 460 L 300 460 L 300 345 Z"
+                fill="url(#occipitalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- ==== LEFT HEMISPHERE (viewer's RIGHT — patient's left) ==== -->
+          <!-- Left FRONTAL LOBE (patient's left) -->
+          <path class="lobe-region" data-region="frontal" data-side="left"
+                d="M 300 75 Q 370 78 420 110 Q 460 140 475 180 Q 480 210 475 235 L 300 235 Z"
+                fill="url(#frontalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- Left PARIETAL LOBE (patient's left) -->
+          <path class="lobe-region" data-region="parietal" data-side="left"
+                d="M 475 235 Q 480 290 470 345 L 300 345 L 300 235 Z"
+                fill="url(#parietalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- Left TEMPORAL LOBE (patient's left) -->
+          <path class="lobe-region" data-region="temporal" data-side="left"
+                d="M 475 250 Q 495 275 502 305 Q 504 335 490 355 Q 470 370 445 365 L 445 260 Q 460 252 475 250 Z"
+                fill="url(#temporalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- Left OCCIPITAL LOBE (patient's left) -->
+          <path class="lobe-region" data-region="occipital" data-side="left"
+                d="M 470 345 Q 465 395 435 430 Q 390 460 320 460 L 300 460 L 300 345 Z"
+                fill="url(#occipitalGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- Overlay gyri texture on all cerebral lobes -->
+          <path d="M 300 75 Q 230 78 180 110 Q 140 140 125 180 Q 120 210 125 235 Q 120 290 130 345 Q 135 395 165 430 Q 210 460 280 460 L 320 460 Q 390 460 435 430 Q 465 395 470 345 Q 480 290 475 235 Q 480 210 475 180 Q 460 140 420 110 Q 370 78 300 75 Z"
+                fill="url(#gyri)" pointer-events="none" opacity="0.6"/>
+
+          <!-- ==== LONGITUDINAL FISSURE (midline) ==== -->
+          <line x1="300" y1="75" x2="300" y2="460" stroke="#1a202c" stroke-width="3" opacity="0.8" pointer-events="none"/>
+          <text x="300" y="55" fill="#9ae6b4" font-size="10" text-anchor="middle" font-style="italic" pointer-events="none">← longitudinal fissure →</text>
+
+          <!-- ==== CENTRAL SULCUS (divides frontal from parietal) ==== -->
+          <path d="M 125 235 Q 210 232 300 235 Q 390 232 475 235" stroke="#1a202c" stroke-width="2" fill="none" opacity="0.6" pointer-events="none" stroke-dasharray="4,3"/>
+
+          <!-- ==== CEREBELLUM (bilateral) ==== -->
+          <!-- Right cerebellar hemisphere -->
+          <ellipse class="lobe-region" data-region="cerebellum" data-side="right"
+                   cx="245" cy="500" rx="55" ry="28"
+                   fill="url(#cerebellumGrad)" stroke="#1a202c" stroke-width="2"/>
+          <!-- Left cerebellar hemisphere -->
+          <ellipse class="lobe-region" data-region="cerebellum" data-side="left"
+                   cx="355" cy="500" rx="55" ry="28"
+                   fill="url(#cerebellumGrad)" stroke="#1a202c" stroke-width="2"/>
+          <!-- Cerebellar vermis (midline connection) -->
+          <ellipse cx="300" cy="500" rx="10" ry="22" fill="#2f855a" stroke="#1a202c" stroke-width="1" pointer-events="none"/>
+          <!-- Cerebellar folia (horizontal lines for realism) -->
+          <g pointer-events="none" opacity="0.35">
+            <path d="M 195 495 Q 245 490 295 495" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+            <path d="M 195 500 Q 245 495 295 500" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+            <path d="M 195 505 Q 245 500 295 505" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+            <path d="M 195 510 Q 245 505 295 510" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+            <path d="M 305 495 Q 355 490 405 495" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+            <path d="M 305 500 Q 355 495 405 500" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+            <path d="M 305 505 Q 355 500 405 505" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+            <path d="M 305 510 Q 355 505 405 510" stroke="#1a202c" fill="none" stroke-width="0.8"/>
+          </g>
+
+          <!-- ==== BRAINSTEM ==== -->
+          <path class="lobe-region" data-region="brainstem" data-side="midline"
+                d="M 285 540 Q 285 580 290 600 L 310 600 Q 315 580 315 540 Z"
+                fill="url(#stemGrad)" stroke="#1a202c" stroke-width="2"/>
+
+          <!-- ==== LOBE LABELS (small, anatomical style) ==== -->
+          <!-- Right hemisphere labels -->
+          <text x="210" y="165" fill="white" font-size="14" font-weight="bold" text-anchor="middle" pointer-events="none">Frontal</text>
+          <text x="200" y="290" fill="white" font-size="14" font-weight="bold" text-anchor="middle" pointer-events="none">Parietal</text>
+          <text x="128" y="310" fill="#1a202c" font-size="10" font-weight="bold" text-anchor="middle" pointer-events="none">Temp</text>
+          <text x="210" y="410" fill="white" font-size="13" font-weight="bold" text-anchor="middle" pointer-events="none">Occipital</text>
+
+          <!-- Left hemisphere labels -->
+          <text x="390" y="165" fill="white" font-size="14" font-weight="bold" text-anchor="middle" pointer-events="none">Frontal</text>
+          <text x="400" y="290" fill="white" font-size="14" font-weight="bold" text-anchor="middle" pointer-events="none">Parietal</text>
+          <text x="472" y="310" fill="#1a202c" font-size="10" font-weight="bold" text-anchor="middle" pointer-events="none">Temp</text>
+          <text x="390" y="410" fill="white" font-size="13" font-weight="bold" text-anchor="middle" pointer-events="none">Occipital</text>
+
+          <!-- Cerebellum labels -->
+          <text x="245" y="505" fill="#1a202c" font-size="11" font-weight="bold" text-anchor="middle" pointer-events="none">Cerebellum</text>
+          <text x="355" y="505" fill="#1a202c" font-size="11" font-weight="bold" text-anchor="middle" pointer-events="none">Cerebellum</text>
+
+          <!-- Brainstem label -->
+          <text x="300" y="575" fill="white" font-size="9" font-weight="bold" text-anchor="middle" pointer-events="none">Stem</text>
+
+          <!-- Broca's area marker (left frontal) -->
+          <circle cx="420" cy="220" r="5" fill="#fbd38d" stroke="#1a202c" stroke-width="1.5" pointer-events="none"/>
+          <text x="458" y="224" fill="#fbd38d" font-size="9" font-weight="bold" pointer-events="none">Broca's</text>
+
+          <!-- Wernicke's area marker (left temporal/parietal junction) -->
+          <circle cx="455" cy="320" r="5" fill="#fbd38d" stroke="#1a202c" stroke-width="1.5" pointer-events="none"/>
+          <text x="495" y="324" fill="#fbd38d" font-size="9" font-weight="bold" pointer-events="none">Wernicke's</text>
+        </svg>
+        <p style="margin-top:0.75rem;color:var(--mint);font-size:0.9rem;">👆 Tap any lobe to see its functions, deficits, and which side of the body is affected</p>
+        <div style="background:rgba(237,100,166,0.1);border:1px solid var(--pink-medium);padding:0.6rem 0.85rem;border-radius:8px;margin-top:0.75rem;font-size:0.88rem;line-height:1.4;">
+          <strong style="color:var(--pink-light);">Orientation:</strong> This is a top-down (superior) view, looking straight down at the top of the head. The patient's LEFT side is on YOUR RIGHT (like in radiology). Yellow dots mark Broca's (speech production) and Wernicke's (speech comprehension) areas — both on the LEFT hemisphere in ~95% of people.
+        </div>
+      </div>
+      <div class="info-panel" id="anatomy-info">
+        <h3>👆 Tap a brain region</h3>
+        <p>Each region has specific functions and signature deficits when damaged. Your teacher will expect you to recognize these by symptoms!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOBE LOOKUP -->
+  <section id="lobes" class="section">
+    <div class="card">
+      <h2>🎯 Lobe Function Deep-Dive</h2>
+      <p>Use the buttons to explore each lobe's functions and the DEFICITS that appear when damaged.</p>
+      <div class="tiles-grid">
+        <button class="tile" onclick="showLobe('frontal')" style="background:linear-gradient(135deg,#ed64a6,#d53f8c);">🧠 Frontal Lobe</button>
+        <button class="tile" onclick="showLobe('parietal')" style="background:linear-gradient(135deg,#4299e1,#2c5282);">🖐️ Parietal Lobe</button>
+        <button class="tile" onclick="showLobe('occipital')" style="background:linear-gradient(135deg,#805ad5,#553c9a);">👁️ Occipital Lobe</button>
+        <button class="tile" onclick="showLobe('temporal')" style="background:linear-gradient(135deg,#ecc94b,#d69e2e);color:#1a202c;">👂 Temporal Lobe</button>
+        <button class="tile" onclick="showLobe('cerebellum')" style="background:linear-gradient(135deg,#9ae6b4,#38a169);color:#1a202c;">⚖️ Cerebellum</button>
+        <button class="tile" onclick="showLobe('brainstem')" style="background:linear-gradient(135deg,#f56565,#c53030);">💓 Brainstem</button>
+      </div>
+      <div class="info-panel" id="lobe-info">
+        <h3>👆 Click a region</h3>
+        <p>Full breakdown appears here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIDE DEFICIT LAB -->
+  <section id="sides" class="section">
+    <div class="card">
+      <h2>🔀 Contralateral Deficit Lab</h2>
+      <p><strong>THE big concept:</strong> Motor fibers cross at the medulla. A bleed/stroke on one side of the brain causes symptoms on the OPPOSITE side of the body. Click a scenario to see exactly what you'd find on assessment.</p>
+
+      <div class="tiles-grid">
+        <button class="tile" onclick="showSide('rightBleed')" style="background:linear-gradient(135deg,#f56565,#c53030);">🩸 Right-Sided Bleed</button>
+        <button class="tile" onclick="showSide('leftBleed')" style="background:linear-gradient(135deg,#4299e1,#2c5282);">🩸 Left-Sided Bleed</button>
+        <button class="tile" onclick="showSide('rightMCA')" style="background:linear-gradient(135deg,#805ad5,#553c9a);">🧠 Right MCA Stroke</button>
+        <button class="tile" onclick="showSide('leftMCA')" style="background:linear-gradient(135deg,#ed64a6,#d53f8c);">🧠 Left MCA Stroke</button>
+      </div>
+
+      <div class="brain-halves">
+        <div class="brain-half" id="side-left">
+          <h4>LEFT Hemisphere</h4>
+          <p>Controls RIGHT body</p>
+          <p style="margin-top:0.5rem;font-size:0.9rem;opacity:0.7;">Dominant in ~95% — language lives here</p>
+        </div>
+        <div class="arrow-cross">❌</div>
+        <div class="brain-half" id="side-right">
+          <h4>RIGHT Hemisphere</h4>
+          <p>Controls LEFT body</p>
+          <p style="margin-top:0.5rem;font-size:0.9rem;opacity:0.7;">Spatial, creative, emotional</p>
+        </div>
+      </div>
+
+      <div class="info-panel" id="side-info">
+        <h3>👆 Click a scenario above</h3>
+        <p>You'll see exactly which body side shows deficits and what type.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLINICAL SCENARIOS (MCQ) -->
+  <section id="mcq" class="section">
+    <div class="card">
+      <h2>❓ Clinical Scenario Questions <span class="level-indicator" id="mcq-level">Intermediate</span></h2>
+      <p>Read each scenario carefully. Questions go beyond recall — ask "which lobe is damaged?" or "what deficit would you expect?"</p>
+      <div class="score-bar">
+        <div class="score-box">Correct: <span id="mcq-correct">0</span></div>
+        <div class="score-box">Answered: <span id="mcq-answered">0</span></div>
+      </div>
+      <div id="mcq-container"></div>
+    </div>
+  </section>
+
+  <!-- MATCHING -->
+  <section id="match" class="section">
+    <div class="card">
+      <h2>🔗 Symptom → Lobe Matching <span class="level-indicator" id="match-level">Intermediate</span></h2>
+      <p>Click a symptom on the left, then click the lobe/region on the right that matches.</p>
+      <div class="score-bar">
+        <div class="score-box">Matched: <span id="match-score">0</span>/<span id="match-total">0</span></div>
+      </div>
+      <div id="match-container" class="match-grid"></div>
+      <div style="text-align:center;margin-top:1rem;">
+        <button class="game-btn" onclick="initMatch()">🔄 Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRAG AND DROP (tap-based) -->
+  <section id="dnd" class="section">
+    <div class="card">
+      <h2>🎯 Deficits to Lobes <span class="level-indicator" id="dnd-level">Intermediate</span></h2>
+      <p style="font-size:0.95rem;">1️⃣ Tap an item to select it. 2️⃣ Tap a zone to drop it. Tap a dropped item to send it back.</p>
+      <div class="dnd-hint" id="dnd-hint">👆 Start by tapping an item below</div>
+      <div class="score-bar">
+        <div class="score-box">Correct: <span id="dnd-score">0</span>/<span id="dnd-total">0</span></div>
+      </div>
+      <div class="dnd-container">
+        <div class="dnd-pool" id="dnd-pool"><h4>📋 Items to place</h4></div>
+        <div class="dnd-targets" id="dnd-targets"><h4>🧠 Brain regions</h4></div>
+      </div>
+      <div style="text-align:center;margin-top:1rem;">
+        <button class="game-btn" onclick="checkDnD()">✓ Check Answers</button>
+        <button class="game-btn secondary" onclick="initDnD()">🔄 Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEQUENCE PUZZLE -->
+  <section id="puzzle" class="section">
+    <div class="card">
+      <h2>🧩 Sequence Puzzle <span class="level-indicator" id="puzzle-level">Intermediate</span></h2>
+      <p>Click the items in the correct order to build a clinical sequence. Get one wrong and the sequence resets.</p>
+      <div class="score-bar">
+        <div class="score-box">Current Puzzle: <span id="puzzle-num">1</span>/<span id="puzzle-total">0</span></div>
+      </div>
+      <div id="puzzle-container"></div>
+      <div style="text-align:center;margin-top:1rem;">
+        <button class="game-btn" onclick="nextPuzzle()">Next Puzzle ▶</button>
+        <button class="game-btn secondary" onclick="resetPuzzle()">🔄 Restart This Puzzle</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEED DIAGNOSIS -->
+  <section id="speed" class="section">
+    <div class="card">
+      <h2>⚡ Speed Diagnosis <span class="level-indicator" id="speed-level">Intermediate</span></h2>
+      <p>Given a symptom or finding, choose the affected region FAST. You have 10 seconds per question.</p>
+      <div class="score-bar">
+        <div class="score-box">Score: <span id="speed-score">0</span></div>
+        <div class="score-box">Question: <span id="speed-num">0</span>/<span id="speed-total">15</span></div>
+        <div class="score-box timer" id="speed-timer">10s</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="speed-progress" style="width:100%"></div></div>
+      <div id="speed-container"></div>
+      <div style="text-align:center;margin-top:1rem;">
+        <button class="game-btn" onclick="startSpeedGame()">🏁 Start Game</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRANIAL NERVES -->
+  <section id="cn" class="section">
+    <div class="card">
+      <h2>🔢 12 Cranial Nerves</h2>
+      <p>The mnemonic sacred to nursing students everywhere. Click each to reveal function.</p>
+      <div class="mnemonic-box">
+        <div class="mnemonic-text">On Old Olympus Towering Tops,<br>A Finn And German Viewed Some Hops</div>
+        <div style="margin-top:0.5rem;opacity:0.8;font-size:0.9rem;">(classic) — OR —</div>
+        <div class="mnemonic-text" style="margin-top:0.5rem;">Oh Oh Oh, To Touch And Feel Very Green Vegetables, AH!</div>
+      </div>
+      <p style="margin-top:1rem;"><strong>For type (Sensory/Motor/Both):</strong></p>
+      <div class="mnemonic-box">
+        <div class="mnemonic-text">Some Say Money Matters, But My Brother Says Big Brains Matter More</div>
+        <p style="font-size:0.9rem;margin-top:0.5rem;">(1=S, 2=S, 3=M, 4=M, 5=B, 6=M, 7=B, 8=S, 9=B, 10=B, 11=M, 12=M)</p>
+      </div>
+      <div id="cn-table"></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============ STATE ============ */
+let difficulty = 'intermediate';
+let mcqAnswered = {};
+let mcqCorrect = 0;
+let matchSelected = null;
+let matchScore = 0;
+let currentPuzzle = 0;
+let puzzleProgress = [];
+let speedIdx = 0, speedScore = 0, speedTimer = null, speedTime = 10;
+
+/* ============ DATA ============ */
+
+// LOBE INFO
+const lobes = {
+  frontal: {
+    name: "Frontal Lobe",
+    color: "#ed64a6",
+    functions: [
+      "Voluntary motor control (primary motor cortex / precentral gyrus)",
+      "Executive function — planning, judgment, problem-solving",
+      "Personality, social behavior, impulse control",
+      "Broca's area (dominant hemisphere, usually left) — expressive speech",
+      "Short-term memory",
+      "Micturition (voluntary bladder control)"
+    ],
+    deficits: [
+      "Contralateral hemiparesis/paralysis (motor cortex damage)",
+      "Broca's (expressive/non-fluent) aphasia — knows what to say but can't get it out",
+      "Personality changes, disinhibition, poor judgment (classic Phineas Gage)",
+      "Apathy, flat affect, loss of initiative",
+      "Urinary incontinence",
+      "Inability to plan, concentrate, or sequence tasks"
+    ],
+    classicCase: "Famous case: Phineas Gage (1848) — railroad worker survived a tamping iron through his frontal lobe but his personality changed dramatically. 'No longer Gage.'",
+    nclex: "Broca's aphasia = frustrating because patient understands but can't express. Be patient; use yes/no questions, picture boards. Depression/frustration are HIGH."
+  },
+  parietal: {
+    name: "Parietal Lobe",
+    color: "#4299e1",
+    functions: [
+      "Primary somatosensory cortex (postcentral gyrus) — touch, pressure, pain, temperature from the OPPOSITE side of body",
+      "Spatial awareness and navigation",
+      "Proprioception (body position sense)",
+      "Integration of sensory info",
+      "Reading, writing, calculation (dominant hemisphere)"
+    ],
+    deficits: [
+      "Contralateral sensory loss (numbness, paresthesias)",
+      "Loss of proprioception on affected side",
+      "Agnosia — inability to recognize objects by touch (astereognosis)",
+      "Left-sided NEGLECT (right parietal damage) — patient ignores entire left side of world, doesn't eat food on left half of plate, doesn't dress left side",
+      "Gerstmann's syndrome (dominant): dysgraphia, dyscalculia, finger agnosia, left-right confusion",
+      "Hemianopia (visual field cuts)"
+    ],
+    classicCase: "Unilateral neglect: A patient with a right parietal stroke may deny the left side of their body is theirs ('that's someone else's arm'), shave only right half of face, draw a clock with all 12 numbers squeezed to the right.",
+    nclex: "Neglect syndrome = SAFETY issue! Approach from the affected side, place important items on that side to force attention, guard against falls."
+  },
+  occipital: {
+    name: "Occipital Lobe",
+    color: "#805ad5",
+    functions: [
+      "Primary visual cortex — ALL vision processing",
+      "Visual recognition, color, motion, depth",
+      "Interprets images from the retina (via CN II and optic radiations)"
+    ],
+    deficits: [
+      "Cortical blindness — eyes work fine but brain can't process vision",
+      "Visual agnosia — can see but can't recognize what they're seeing",
+      "Homonymous hemianopia — loss of same half of visual field in both eyes",
+      "Prosopagnosia (face blindness)",
+      "Visual hallucinations (especially with seizures originating here)",
+      "Anton's syndrome — cortical blindness WITH denial (patient insists they can see)"
+    ],
+    classicCase: "A stroke in the posterior cerebral artery territory can cause contralateral homonymous hemianopia. Patient bumps into objects on one side, reads only half the page.",
+    nclex: "Test visual fields! Approach patient from the side they CAN see. Teach them to turn their head to scan the affected side. Fall risk is HIGH."
+  },
+  temporal: {
+    name: "Temporal Lobe",
+    color: "#ecc94b",
+    functions: [
+      "Primary auditory cortex — hearing",
+      "Wernicke's area (dominant hemisphere, usually left) — language COMPREHENSION",
+      "Memory formation (hippocampus lives here!)",
+      "Smell (olfactory processing)",
+      "Emotional processing (amygdala)"
+    ],
+    deficits: [
+      "Wernicke's (receptive/fluent) aphasia — speaks fluently but words are jumbled nonsense; doesn't understand what others say or what they themselves are saying ('word salad')",
+      "Auditory agnosia — can hear but can't interpret sounds",
+      "Memory impairment — especially forming NEW memories (anterograde amnesia) if hippocampus damaged",
+      "Déjà vu, olfactory hallucinations (classic seizure aura)",
+      "Emotional/personality changes",
+      "Hearing loss (bilateral damage)"
+    ],
+    classicCase: "Wernicke's aphasia: patient says 'Well, I was going to the banana store but the purple cat wouldn't let me' with a straight face. They have NO awareness their speech doesn't make sense.",
+    nclex: "Alzheimer's first hits the hippocampus → short-term memory loss is the earliest sign. Wernicke's patients don't know they're not making sense — frustrating for family."
+  },
+  cerebellum: {
+    name: "Cerebellum",
+    color: "#9ae6b4",
+    functions: [
+      "Coordination and fine motor control",
+      "Balance and equilibrium",
+      "Posture maintenance",
+      "Motor learning (practicing skills)",
+      "Muscle tone regulation"
+    ],
+    deficits: [
+      "ATAXIA — uncoordinated, staggering ('drunk') gait",
+      "Dysmetria — overshooting/undershooting when reaching for objects (finger-to-nose test)",
+      "Intention tremor — tremor WORSE with purposeful movement (opposite of Parkinson's resting tremor)",
+      "Dysdiadochokinesia — can't perform rapid alternating movements",
+      "Nystagmus — involuntary eye oscillations",
+      "Scanning/slurred speech (dysarthria)",
+      "Hypotonia (decreased muscle tone)"
+    ],
+    classicCase: "Cerebellar stroke looks like drunkenness — wide-based gait, falls toward affected side, slurred speech. Patients sometimes arrested for DUI when actually having a stroke!",
+    nclex: "Cerebellum is IPSILATERAL (same side!) — UNLIKE the rest of the brain. Right cerebellar damage = right-sided ataxia. Test with finger-to-nose, heel-to-shin, Romberg."
+  },
+  brainstem: {
+    name: "Brainstem (Midbrain + Pons + Medulla)",
+    color: "#f56565",
+    functions: [
+      "CARDIAC, RESPIRATORY, AND VASOMOTOR CENTERS — life itself",
+      "Most cranial nerves originate here (CN III-XII)",
+      "Reticular activating system (RAS) — consciousness and arousal",
+      "Motor fiber decussation (crossing) happens here",
+      "Reflex centers: sneeze, cough, gag, vomit, swallow"
+    ],
+    deficits: [
+      "Respiratory failure — apnea, abnormal breathing patterns (Cheyne-Stokes, ataxic)",
+      "Cardiovascular collapse",
+      "Coma (if RAS damaged)",
+      "Locked-in syndrome — awake and aware but paralyzed except for eye movements (pontine stroke)",
+      "Cranial nerve palsies (facial droop, dysphagia, dysarthria, eye movement problems)",
+      "Decerebrate posturing (worst than decorticate — indicates severe brainstem injury)"
+    ],
+    classicCase: "Locked-in syndrome: Ventral pontine stroke. Patient is fully conscious but can only blink and move eyes vertically. ALS patients may also experience this. Movie: 'The Diving Bell and the Butterfly.'",
+    nclex: "Brainstem damage is LIFE-THREATENING. Cushing's triad (HTN, bradycardia, irregular resps) is a LATE sign of brainstem compression. Intubate early, prepare for ICP management."
+  }
+};
+
+// MCQ QUESTIONS - INTERMEDIATE
+const mcqIntermediate = [
+  {
+    scenario: "A 68-year-old patient presents after a fall. On assessment, they cannot understand what the nurse is saying but they speak fluently in sentences that don't quite make sense.",
+    question: "Which area is most likely affected?",
+    options: ["Broca's area (frontal)", "Wernicke's area (temporal)", "Occipital cortex", "Cerebellum"],
+    correct: 1,
+    explanation: "Fluent speech + poor comprehension = Wernicke's aphasia, located in the TEMPORAL lobe (dominant hemisphere, usually left). Broca's (frontal) = non-fluent, choppy speech WITH preserved comprehension."
+  },
+  {
+    scenario: "A patient had a stroke and now has weakness and numbness on the left side of their body.",
+    question: "Where in the brain was the stroke?",
+    options: ["Right hemisphere", "Left hemisphere", "Both hemispheres", "Cerebellum"],
+    correct: 0,
+    explanation: "Motor and sensory fibers CROSS at the medulla. A stroke on the RIGHT side of the brain causes LEFT-sided deficits (contralateral)."
+  },
+  {
+    scenario: "A patient has trouble with balance, staggers when walking, and has an intention tremor when reaching for objects.",
+    question: "Which brain region is affected?",
+    options: ["Frontal lobe", "Occipital lobe", "Cerebellum", "Hippocampus"],
+    correct: 2,
+    explanation: "Ataxia + intention tremor + incoordination = CEREBELLUM. Remember: cerebellum is IPSILATERAL (damage on right = right-sided ataxia)."
+  },
+  {
+    scenario: "A patient with a stroke now bumps into doorframes on their right side and reads only the left half of a page.",
+    question: "Which brain region was affected?",
+    options: ["Left occipital lobe", "Right frontal lobe", "Left temporal lobe", "Cerebellum"],
+    correct: 0,
+    explanation: "Right-sided visual field loss (right homonymous hemianopia) = damage to the LEFT occipital cortex (contralateral!). Teach patient to scan with head turning."
+  },
+  {
+    scenario: "A patient is having trouble forming new memories but can recall events from 20 years ago.",
+    question: "Which structure is most likely damaged?",
+    options: ["Broca's area", "Hippocampus (temporal)", "Cerebellum", "Brainstem"],
+    correct: 1,
+    explanation: "The HIPPOCAMPUS in the temporal lobe forms NEW memories. Old memories are stored elsewhere. This is why Alzheimer's first hits short-term memory."
+  },
+  {
+    scenario: "Cushing's Triad is observed in a head-injury patient: BP 200/60, HR 48, irregular respirations.",
+    question: "Where is the pathology most concerning?",
+    options: ["Occipital lobe", "Frontal lobe", "Brainstem compression from increased ICP", "Cerebellum"],
+    correct: 2,
+    explanation: "Cushing's Triad indicates BRAINSTEM COMPRESSION from severe increased intracranial pressure. This is a LATE, life-threatening sign — herniation is imminent."
+  },
+  {
+    scenario: "A patient's family reports the patient has become inappropriate, impulsive, and shows poor judgment since the stroke.",
+    question: "Which lobe was affected?",
+    options: ["Frontal", "Parietal", "Occipital", "Temporal"],
+    correct: 0,
+    explanation: "Personality changes, disinhibition, poor judgment, apathy = FRONTAL LOBE. This lobe controls executive function and social behavior (think Phineas Gage)."
+  },
+  {
+    scenario: "A patient can see the eye chart but cannot recognize common objects placed in their hand without looking.",
+    question: "This is called astereognosis and indicates damage to which area?",
+    options: ["Occipital lobe", "Parietal lobe", "Temporal lobe", "Cerebellum"],
+    correct: 1,
+    explanation: "Astereognosis = inability to recognize objects by touch. PARIETAL LOBE processes somatosensory info. Agnosia (not recognizing things) is a parietal lobe classic."
+  },
+  {
+    scenario: "A patient has a CN VII (facial nerve) deficit. They cannot wrinkle their forehead or close their eye on the right side.",
+    question: "Where is the lesion?",
+    options: ["Left cerebral cortex (upper motor neuron)", "Right peripheral CN VII (lower motor neuron — Bell's palsy)", "Brainstem only", "Spinal cord"],
+    correct: 1,
+    explanation: "When the entire side of the face is affected (including forehead), it's a LOWER MOTOR NEURON problem — peripheral CN VII (Bell's palsy). In upper motor neuron lesions (stroke), forehead is SPARED because it gets bilateral innervation."
+  },
+  {
+    scenario: "A patient's only symptom after a stroke is homonymous hemianopia (loss of same half of visual field in both eyes).",
+    question: "Which vascular territory is involved?",
+    options: ["Middle cerebral artery (MCA)", "Anterior cerebral artery (ACA)", "Posterior cerebral artery (PCA)", "Basilar artery"],
+    correct: 2,
+    explanation: "PCA supplies the occipital lobe. Isolated homonymous hemianopia is the classic PCA stroke. MCA strokes affect more territory (motor, sensory, language)."
+  }
+];
+
+// MCQ QUESTIONS - ADVANCED
+const mcqAdvanced = [
+  {
+    scenario: "A 72-year-old man arrives in the ED. He fell at home 45 minutes ago. His wife reports he can follow commands but his speech is choppy, frustrating, and limited to 'yes,' 'no,' and occasional single words. Right-sided facial droop is noted. Right upper extremity weakness is 2/5; lower extremity 3/5. He can name objects when shown pictures, though slowly.",
+    question: "This clinical picture most specifically localizes to which vascular territory?",
+    options: [
+      "Right middle cerebral artery",
+      "Left middle cerebral artery (superior division)",
+      "Left posterior cerebral artery",
+      "Right anterior cerebral artery"
+    ],
+    correct: 1,
+    explanation: "Broca's aphasia (non-fluent, effortful speech WITH preserved comprehension) + contralateral face/arm weakness (>leg) = LEFT MCA superior division (Broca's area + motor cortex face/arm region). Right hemisphere lesions don't typically cause aphasia. ACA affects legs more than arms."
+  },
+  {
+    scenario: "A patient with a dense right-sided weakness after a stroke cannot tell the nurse what object she's holding in her right (affected) hand even with eyes closed. When she looks at the object, she immediately names it. There is no weakness or sensation deficit in the LEFT hand.",
+    question: "What is this finding called and where is the lesion?",
+    options: [
+      "Anomia — left frontal lobe",
+      "Astereognosis — LEFT parietal lobe",
+      "Prosopagnosia — right temporal lobe",
+      "Apraxia — left frontal lobe"
+    ],
+    correct: 1,
+    explanation: "ASTEREOGNOSIS = inability to recognize object by touch alone. Contralateral rule: RIGHT-sided deficit = LEFT parietal lobe (primary somatosensory cortex). Not weakness — she has a SENSORY/integrative deficit. Vision bypasses the problem."
+  },
+  {
+    scenario: "A nurse is caring for a patient 12 hours post-MCA stroke. The patient is neglecting the left side of their body — doesn't acknowledge the left arm, won't eat food on the left half of the plate, shaves only the right side of the face. The patient denies any deficit. Speech is fluent and appropriate.",
+    question: "Where is the lesion and what is the most concerning implication for nursing care?",
+    options: [
+      "Left parietal — aphasia risk",
+      "Right parietal — severe safety/fall risk from unilateral neglect",
+      "Left frontal — poor judgment",
+      "Right occipital — blindness"
+    ],
+    correct: 1,
+    explanation: "UNILATERAL NEGLECT (hemispatial neglect) is a classic RIGHT parietal finding. The patient literally doesn't register the left half of the world. HUGE fall risk, skin breakdown risk on neglected side, wandering toward the neglected side. Place important items (call light, food) on the affected side to FORCE attention."
+  },
+  {
+    scenario: "A patient with a stroke can move their right leg but not their right arm or face. Speech is preserved. Vision is intact. Sensation is intact.",
+    question: "Which specific vascular territory does this 'motor homunculus' pattern suggest?",
+    options: [
+      "Anterior cerebral artery (supplies medial frontal/parietal — leg area)",
+      "Middle cerebral artery (supplies lateral — face/arm dominant)",
+      "Posterior cerebral artery (supplies occipital)",
+      "Lacunar stroke in internal capsule"
+    ],
+    correct: 1,
+    explanation: "The motor homunculus is organized: LEG is on the MEDIAL side of the cortex (ACA territory); FACE and ARM are LATERAL (MCA territory). Face + arm weakness with leg spared = LEFT MCA stroke. Conversely, ACA strokes cause LEG weakness with arm sparing."
+  },
+  {
+    scenario: "A 34-year-old woman presents with sudden-onset severe ataxia — she's staggering, has intention tremor in the RIGHT arm, right-sided dysmetria on finger-to-nose, and slurred scanning speech. She has no weakness, no numbness, and her pupils are normal.",
+    question: "Where is the lesion?",
+    options: [
+      "Left cerebellum (contralateral rule)",
+      "Right cerebellum (ipsilateral — cerebellum is unique!)",
+      "Left frontal motor cortex",
+      "Right occipital lobe"
+    ],
+    correct: 1,
+    explanation: "The cerebellum is IPSILATERAL — unlike the cerebrum, which is contralateral. Right-sided ataxia = RIGHT cerebellar lesion. Always check: if you see symptoms NOT following the crossing rule, think cerebellum or CN deficits."
+  },
+  {
+    scenario: "Post-op day 2 after craniotomy, the nurse notes: GCS dropped from 15 to 11, BP 198/54, HR 46, respirations irregular with periods of apnea. Right pupil now sluggish and larger than left.",
+    question: "What is happening and what is the priority action?",
+    options: [
+      "Hypoglycemia — check glucose",
+      "Uncal herniation with brainstem compression — notify surgeon STAT and prepare for emergent intervention",
+      "Normal post-op changes — document and recheck in 1 hour",
+      "Seizure activity — administer lorazepam"
+    ],
+    correct: 1,
+    explanation: "Cushing's Triad (↑BP with widened pulse pressure, ↓HR, irregular respirations) + dilated pupil on one side = UNCAL HERNIATION. The medial temporal lobe is pushing down, compressing CN III (hence dilated pupil on the SAME side as the lesion) and brainstem. EMERGENCY. Prepare for mannitol, hyperventilation, emergent surgery."
+  },
+  {
+    scenario: "A patient with a left hemispheric stroke is noted to have: right-sided facial droop, right arm/leg weakness, expressive aphasia, AND the nurse notes the patient avoids looking to the right side.",
+    question: "The rightward gaze avoidance suggests additional involvement of which area?",
+    options: [
+      "Right frontal lobe",
+      "Left frontal eye fields (FEF) — lesion causes gaze toward the lesion, AWAY from weak side",
+      "Pontine reticular formation",
+      "Right occipital lobe"
+    ],
+    correct: 1,
+    explanation: "Key rule: With CEREBRAL (cortex) lesions, eyes deviate TOWARD the lesion (away from weak side). Left cortex = eyes go LEFT = weak side is right = patient 'avoids' looking right. With PONTINE lesions it's OPPOSITE (eyes deviate away from lesion)."
+  },
+  {
+    scenario: "A 55-year-old with hypertension presents with sudden severe headache, rapidly worsening LOC, and now has decerebrate (extensor) posturing. CT shows massive intraparenchymal hemorrhage.",
+    question: "Which level of neurologic injury does decerebrate posturing indicate?",
+    options: [
+      "Cortex only",
+      "Diencephalon (thalamus) — indicated by decorticate posturing",
+      "Brainstem (midbrain/upper pons) — WORSE than decorticate",
+      "Spinal cord"
+    ],
+    correct: 2,
+    explanation: "Decorticate (arms FLEXED toward core = 'to the cor') = lesion ABOVE brainstem. Decerebrate (arms EXTENDED outward) = BRAINSTEM injury — MORE severe. Progression from decorticate → decerebrate → flaccid = worsening. Decerebrate is a very bad sign."
+  },
+  {
+    scenario: "A patient has been intubated for 3 weeks after a severe pontine stroke. They are fully alert and aware, but the only voluntary movement they can make is vertical eye movements and blinking.",
+    question: "This is:",
+    options: [
+      "Coma",
+      "Persistent vegetative state",
+      "Locked-in syndrome — ventral pontine lesion",
+      "Akinetic mutism"
+    ],
+    correct: 2,
+    explanation: "LOCKED-IN SYNDROME: preserved consciousness, preserved vertical eye movement + blink, everything else paralyzed. The ventral pons is damaged — cutting off motor output to the body, but sparing the reticular activating system (consciousness) and the vertical gaze pathways in the midbrain. Communication via eye movements. Cognitively intact!"
+  },
+  {
+    scenario: "A patient's neuro assessment finds: preserved forehead wrinkling on BOTH sides, but the right corner of the mouth droops and the right nasolabial fold is flattened.",
+    question: "This is consistent with:",
+    options: [
+      "Bell's palsy (peripheral CN VII) — affects whole side including forehead",
+      "Left hemispheric stroke (upper motor neuron) — spares forehead due to bilateral cortical innervation",
+      "Right hemispheric stroke — spares forehead",
+      "Myasthenia gravis"
+    ],
+    correct: 1,
+    explanation: "Forehead is PRESERVED bilaterally in UPPER MOTOR NEURON (stroke) lesions because the forehead muscles receive innervation from BOTH hemispheres. Lower face only receives contralateral innervation. So: forehead SPARED = stroke (UMN); forehead DROOPS = peripheral CN VII (LMN, Bell's palsy)."
+  },
+  {
+    scenario: "A newborn's parents are told their baby has hydrocephalus. The nurse notes enlarging head circumference, bulging fontanelle, and 'sunset eyes.'",
+    question: "Which of the following is the KEY reason ICP signs are different in a neonate vs. adult?",
+    options: [
+      "Neonates have smaller brains",
+      "Neonates have unfused sutures and open fontanelles — skull can expand to accommodate rising volume",
+      "Neonates don't have Cushing's reflex",
+      "CSF doesn't circulate in neonates"
+    ],
+    correct: 1,
+    explanation: "In adults, the skull is rigid → any added volume (blood, CSF, swelling) rapidly spikes ICP → classic signs appear quickly. In neonates, OPEN sutures and fontanelles allow the skull to EXPAND. So early ICP signs are subtle (head growth, bulging fontanelle, sunset eyes, cerebral cry) — you have to catch them before the skull can no longer compensate."
+  },
+  {
+    scenario: "A patient with a left hemispheric stroke has right-sided weakness and aphasia. During feeding, the patient chokes and has a weak cough.",
+    question: "Which cranial nerves are implicated and what is the priority nursing intervention?",
+    options: [
+      "CN II, III — keep patient NPO pending ophthalmology",
+      "CN IX, X (glossopharyngeal, vagus) — swallow evaluation before any PO intake; aspiration precautions",
+      "CN V, VII — apply warm compresses",
+      "CN XI, XII — encourage neck strengthening"
+    ],
+    correct: 1,
+    explanation: "CN IX (glossopharyngeal) and CN X (vagus) control swallowing and gag reflex. Stroke patients commonly have dysphagia. KEY NURSING ACTION: NPO until formal swallow evaluation (bedside screening by SLP), aspiration precautions (HOB up during feeds, small bites, chin tuck). Aspiration pneumonia is the #1 killer of stroke patients."
+  }
+];
+
+// MATCHING GAME DATA
+const matchDataIntermediate = [
+  {symptom:"Can't understand speech, but talks in fluent nonsense", lobe:"Temporal lobe (Wernicke's)"},
+  {symptom:"Staggering gait, intention tremor", lobe:"Cerebellum"},
+  {symptom:"Loss of vision in right half of both eyes", lobe:"Left occipital lobe"},
+  {symptom:"Impulsivity, poor judgment, personality change", lobe:"Frontal lobe"},
+  {symptom:"Can't name objects placed in hand with eyes closed", lobe:"Parietal lobe"},
+  {symptom:"Irregular respirations + bradycardia + widened pulse pressure", lobe:"Brainstem"},
+  {symptom:"Choppy, effortful speech; understands fine", lobe:"Frontal lobe (Broca's)"},
+  {symptom:"Can't form new memories (anterograde amnesia)", lobe:"Temporal lobe (hippocampus)"}
+];
+
+const matchDataAdvanced = [
+  {symptom:"Patient ignores left half of world, shaves only right side of face", lobe:"RIGHT parietal (neglect)"},
+  {symptom:"Left-sided ataxia, intention tremor on left finger-to-nose", lobe:"LEFT cerebellum (ipsilateral!)"},
+  {symptom:"Right-sided weakness, face > arm > leg, preserved comprehension", lobe:"LEFT MCA (Broca's + motor face/arm)"},
+  {symptom:"Right leg weakness with sparing of arm and face", lobe:"LEFT ACA (medial motor homunculus)"},
+  {symptom:"Left homonymous hemianopia (no left-sided vision in either eye)", lobe:"RIGHT occipital (PCA)"},
+  {symptom:"Conscious, aware, only vertical eye movement + blink", lobe:"Ventral pons (locked-in)"},
+  {symptom:"Cushing's triad + ipsilateral dilated pupil", lobe:"Brainstem compression (herniation)"},
+  {symptom:"Decerebrate posturing (arms extended)", lobe:"Midbrain/upper pons (severe)"},
+  {symptom:"Forehead DROOP on right with lower face droop", lobe:"Peripheral right CN VII (Bell's palsy, LMN)"},
+  {symptom:"Forehead SPARED, right lower face droops, right arm weak", lobe:"Left cortical stroke (UMN)"}
+];
+
+// DRAG AND DROP DATA
+const dndDataIntermediate = {
+  zones: ["Frontal Lobe", "Parietal Lobe", "Occipital Lobe", "Temporal Lobe", "Cerebellum", "Brainstem"],
+  items: [
+    {text:"Poor judgment, impulsivity", target:"Frontal Lobe"},
+    {text:"Loss of touch sensation on opposite side", target:"Parietal Lobe"},
+    {text:"Cortical blindness", target:"Occipital Lobe"},
+    {text:"Wernicke's aphasia", target:"Temporal Lobe"},
+    {text:"Ataxia, intention tremor", target:"Cerebellum"},
+    {text:"Cushing's triad, respiratory failure", target:"Brainstem"},
+    {text:"Broca's aphasia", target:"Frontal Lobe"},
+    {text:"Memory formation problems", target:"Temporal Lobe"},
+    {text:"Homonymous hemianopia", target:"Occipital Lobe"},
+    {text:"Personality change", target:"Frontal Lobe"}
+  ]
+};
+
+const dndDataAdvanced = {
+  zones: ["LEFT MCA", "LEFT ACA", "RIGHT MCA", "PCA (Occipital)", "Cerebellum (Ipsilateral)", "Brainstem/Pons"],
+  items: [
+    {text:"Right face + arm weakness, Broca's aphasia", target:"LEFT MCA"},
+    {text:"Right LEG weakness with arm/face spared", target:"LEFT ACA"},
+    {text:"LEFT-sided neglect, preserved speech", target:"RIGHT MCA"},
+    {text:"Homonymous hemianopia alone", target:"PCA (Occipital)"},
+    {text:"Intention tremor on SAME side as lesion", target:"Cerebellum (Ipsilateral)"},
+    {text:"Locked-in syndrome", target:"Brainstem/Pons"},
+    {text:"Right-sided numbness + Gerstmann's (dysgraphia, dyscalculia)", target:"LEFT MCA"},
+    {text:"Urinary incontinence + leg weakness only", target:"LEFT ACA"},
+    {text:"Anosognosia (denies deficit), left hemiparesis", target:"RIGHT MCA"},
+    {text:"Decerebrate posturing + Cushing's triad", target:"Brainstem/Pons"},
+    {text:"Dysmetria, nystagmus, scanning speech", target:"Cerebellum (Ipsilateral)"},
+    {text:"Cortical blindness with denial (Anton's)", target:"PCA (Occipital)"}
+  ]
+};
+
+// SEQUENCE PUZZLES
+const puzzlesIntermediate = [
+  {
+    title: "🩸 Stroke Symptom Progression (untreated intracranial hemorrhage with rising ICP)",
+    items: ["Headache + nausea", "Changes in level of consciousness", "Pupil dilation (unilateral)", "Abnormal posturing (decorticate → decerebrate)", "Cushing's triad", "Herniation, coma, death"]
+  },
+  {
+    title: "🧠 Flow of CSF",
+    items: ["Lateral ventricles", "3rd ventricle", "Cerebral aqueduct", "4th ventricle", "Subarachnoid space", "Reabsorbed at arachnoid villi"]
+  },
+  {
+    title: "⚡ Normal Reflex Pathway (knee jerk)",
+    items: ["Stimulus (tap on patellar tendon)", "Sensory (afferent) neuron sends signal", "Spinal cord integrates at L2-L4", "Motor (efferent) neuron fires", "Quadriceps contracts, leg extends"]
+  },
+  {
+    title: "🧒 GCS Worsening Progression",
+    items: ["GCS 15 (fully alert)", "GCS 13-14 (mild confusion)", "GCS 9-12 (moderate)", "GCS 3-8 (severe, intubate!)", "GCS 3 (deep coma)"]
+  }
+];
+
+const puzzlesAdvanced = [
+  {
+    title: "🔥 Left MCA Stroke: Symptom Onset in Order",
+    items: [
+      "Sudden onset right face droop",
+      "Right arm weakness (>leg)",
+      "Expressive (Broca's) aphasia",
+      "Eyes deviate toward the lesion (LEFT)",
+      "Dysphagia concerns emerge",
+      "Possible left-gaze preference persists"
+    ]
+  },
+  {
+    title: "🧠 Increased ICP Pathophysiology (Monro-Kellie Doctrine collapse)",
+    items: [
+      "Insult (bleed, mass, edema) adds volume",
+      "CSF displaced to spinal canal (compensation)",
+      "Venous blood squeezed out (compensation)",
+      "Compensation exhausted — ICP rises rapidly",
+      "Cerebral perfusion pressure drops (CPP = MAP - ICP)",
+      "Brain ischemia + edema worsens",
+      "Herniation → brainstem compression → death"
+    ]
+  },
+  {
+    title: "💉 tPA Administration Sequence in Acute Stroke",
+    items: [
+      "Symptom onset time established",
+      "Non-contrast CT to r/o hemorrhage",
+      "Verify <4.5 hour window, no exclusion criteria",
+      "Obtain baseline labs (CBC, coags, glucose)",
+      "Two large-bore IVs, blood pressure <185/110",
+      "Administer tPA bolus then infusion over 60 min",
+      "Neuro checks q15min × 2h, then q30min × 6h, then q1h × 16h",
+      "Monitor for bleeding signs, no anticoagulants/antiplatelets × 24h"
+    ]
+  },
+  {
+    title: "🔄 Cerebellar Stroke vs Vestibular Cause: Diagnostic Reasoning",
+    items: [
+      "Sudden onset vertigo and ataxia",
+      "Assess for red flags: new headache, focal deficits",
+      "Perform HINTS exam (head impulse, nystagmus type, test of skew)",
+      "If central signs → stat MRI",
+      "Positive MRI cerebellum → ischemic or hemorrhagic?",
+      "Hemorrhagic → neurosurgical consult immediately (swelling → 4th ventricle compression)",
+      "Ischemic large → consider posterior fossa decompression"
+    ]
+  }
+];
+
+// SPEED DIAGNOSIS
+const speedIntermediate = [
+  {q:"Fluent nonsense speech, can't understand", opts:["Frontal (Broca)","Temporal (Wernicke)","Cerebellum"], correct:1},
+  {q:"Intention tremor + ataxia", opts:["Cerebellum","Frontal lobe","Occipital"], correct:0},
+  {q:"Right body weakness after stroke", opts:["Right hemisphere","LEFT hemisphere","Cerebellum"], correct:1},
+  {q:"Cushing's Triad findings", opts:["Frontal damage","Brainstem compression","Parietal stroke"], correct:1},
+  {q:"Cortical blindness", opts:["Frontal","Occipital","Temporal"], correct:1},
+  {q:"Loss of touch sensation", opts:["Occipital","Parietal","Frontal"], correct:1},
+  {q:"Poor judgment + impulsivity", opts:["Frontal","Parietal","Temporal"], correct:0},
+  {q:"Can't form new memories", opts:["Hippocampus","Cerebellum","Brainstem"], correct:0},
+  {q:"Staggering drunk-like gait", opts:["Cerebellum","Frontal","Occipital"], correct:0},
+  {q:"Broca's aphasia (choppy speech)", opts:["Temporal","Frontal","Parietal"], correct:1},
+  {q:"Unilateral neglect syndrome", opts:["LEFT parietal","RIGHT parietal","Occipital"], correct:1},
+  {q:"Homonymous hemianopia", opts:["Occipital (contralateral)","Cerebellum","Frontal"], correct:0},
+  {q:"Locked-in syndrome", opts:["Pons","Cerebellum","Frontal"], correct:0},
+  {q:"Pupil constriction controlled by", opts:["CN II","CN III","CN IV"], correct:1},
+  {q:"Hearing", opts:["CN VII","CN VIII","CN IX"], correct:1}
+];
+
+const speedAdvanced = [
+  {q:"Right face/arm weak + Broca's aphasia", opts:["Right MCA","LEFT MCA","Left ACA"], correct:1},
+  {q:"Right LEG weakness, arm spared", opts:["Right ACA","LEFT ACA","MCA"], correct:1},
+  {q:"Left visual field loss only", opts:["RIGHT PCA","Left MCA","Left ACA"], correct:0},
+  {q:"Left neglect, preserved speech, left hemiparesis", opts:["LEFT MCA","RIGHT MCA","ACA"], correct:1},
+  {q:"Eyes deviate left, right hemiparesis", opts:["RIGHT cortex","LEFT cortex","Pons"], correct:1},
+  {q:"Right-sided ataxia, no weakness", opts:["Left cerebellum","RIGHT cerebellum","Left frontal"], correct:1},
+  {q:"Cushing triad + dilated right pupil", opts:["Right-sided uncal herniation","Right MCA","Left PCA"], correct:0},
+  {q:"Forehead spared, lower face droop + arm weak", opts:["Bell's palsy","Cortical stroke","Myasthenia"], correct:1},
+  {q:"Forehead DROOPS on affected side", opts:["Cortical stroke","Peripheral CN VII (LMN)","Brainstem"], correct:1},
+  {q:"Decerebrate posturing implies", opts:["Cortex","Diencephalon","BRAINSTEM"], correct:2},
+  {q:"Decorticate posturing implies", opts:["Above brainstem","Brainstem","Cerebellum"], correct:0},
+  {q:"Gerstmann syndrome (dysgraphia, finger agnosia)", opts:["Right parietal","LEFT parietal","Occipital"], correct:1},
+  {q:"Anton's syndrome (cortical blindness with denial)", opts:["Occipital","Parietal","Temporal"], correct:0},
+  {q:"Ipsilateral facial droop + contralateral body weakness", opts:["Cortex","BRAINSTEM (crossed)","Cerebellum"], correct:1},
+  {q:"Dysarthria + dysmetria + scanning speech", opts:["Cortex","CEREBELLUM","Parietal"], correct:1}
+];
+
+// CRANIAL NERVES
+const cranialNerves = [
+  {num:"I", name:"Olfactory", type:"Sensory", function:"SMELL", test:"Close eyes, identify coffee, mint, etc.", lesion:"Anosmia — head trauma common cause"},
+  {num:"II", name:"Optic", type:"Sensory", function:"VISION", test:"Snellen chart, visual fields, pupillary response (afferent)", lesion:"Blindness, field cuts, optic neuritis (MS classic)"},
+  {num:"III", name:"Oculomotor", type:"Motor", function:"Eye movement (most), pupil constriction, upper eyelid elevation", test:"H-pattern eye movements, pupil response (efferent), ptosis check", lesion:"Down and out' eye, dilated pupil, ptosis — uncal herniation!"},
+  {num:"IV", name:"Trochlear", type:"Motor", function:"Superior oblique muscle (eye down and in)", test:"Look down and inward", lesion:"Vertical diplopia when looking down (walking stairs)"},
+  {num:"V", name:"Trigeminal", type:"Both", function:"FACE sensation (3 divisions: V1/V2/V3); muscles of mastication", test:"Touch face in 3 areas, clench jaw", lesion:"Trigeminal neuralgia — severe facial pain; jaw weakness"},
+  {num:"VI", name:"Abducens", type:"Motor", function:"Lateral rectus (eye abduction/outward)", test:"Look laterally", lesion:"Eye can't abduct; double vision — increased ICP!"},
+  {num:"VII", name:"Facial", type:"Both", function:"Facial expression muscles; taste anterior 2/3 tongue; tears/saliva", test:"Smile, raise eyebrows, close eyes tightly, puff cheeks; taste", lesion:"Bell's palsy (peripheral: whole side droops); stroke (lower face only)"},
+  {num:"VIII", name:"Vestibulocochlear", type:"Sensory", function:"HEARING + BALANCE", test:"Whisper test, Weber/Rinne, Romberg", lesion:"Hearing loss, vertigo; acoustic neuroma"},
+  {num:"IX", name:"Glossopharyngeal", type:"Both", function:"Swallow initiation, gag reflex, taste posterior 1/3 tongue, BP sensors", test:"Gag reflex, swallow", lesion:"Dysphagia, loss of gag — aspiration risk!"},
+  {num:"X", name:"Vagus", type:"Both", function:"Swallow/phonation, PARASYMPATHETIC to heart/gut, cough reflex", test:"Say 'ahh' (uvula midline), swallow, voice quality", lesion:"Hoarseness, dysphagia, loss of cough — aspiration risk!"},
+  {num:"XI", name:"Spinal Accessory", type:"Motor", function:"Sternocleidomastoid + trapezius (shrug, turn head)", test:"Shrug shoulders against resistance, turn head against resistance", lesion:"Shoulder droop, weak head turning"},
+  {num:"XII", name:"Hypoglossal", type:"Motor", function:"Tongue movement", test:"Stick out tongue (should be midline)", lesion:"Tongue deviates TOWARD side of lesion (LMN) — 'lick the lesion'"}
+];
+
+/* ============ UI LOGIC ============ */
+function setDifficulty(d) {
+  difficulty = d;
+  document.getElementById('btn-intermediate').classList.toggle('active', d==='intermediate');
+  document.getElementById('btn-advanced').classList.toggle('active', d==='advanced');
+
+  // Update all level indicators
+  ['mcq','match','dnd','puzzle','speed'].forEach(id => {
+    const el = document.getElementById(id+'-level');
+    if (el) {
+      el.textContent = d==='intermediate' ? 'Intermediate' : 'Advanced';
+      el.className = 'level-indicator ' + (d==='intermediate' ? 'level-intermediate' : 'level-advanced');
+    }
+  });
+
+  // Re-initialize all games
+  initMCQ();
+  initMatch();
+  initDnD();
+  initPuzzles();
+  renderCN();
+}
+
+function showSection(id, clickedEl) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const sec = document.getElementById(id);
+  if (sec) sec.classList.add('active');
+  if (clickedEl && clickedEl.classList) {
+    clickedEl.classList.add('active');
+    // Scroll the clicked tab into view in the horizontal nav
+    setTimeout(() => {
+      clickedEl.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    }, 50);
+  } else {
+    // If called programmatically (e.g. from a tile), find the tab by data-section
+    const tab = document.querySelector(`.nav-tab[data-section="${id}"]`);
+    if (tab) {
+      tab.classList.add('active');
+      setTimeout(() => {
+        tab.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      }, 50);
+    }
+  }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ============ BRAIN ANATOMY SVG ============ */
+document.querySelectorAll('.lobe-region').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.lobe-region').forEach(r => r.classList.remove('selected'));
+    el.classList.add('selected');
+    renderAnatomyInfo(el.dataset.region, el.dataset.side);
+  });
+});
+
+function renderAnatomyInfo(region, side) {
+  const d = lobes[region];
+  const panel = document.getElementById('anatomy-info');
+
+  // Determine contralateral side and hemisphere-specific deficits
+  let sideBlock = '';
+  if (side && region !== 'brainstem') {
+    const oppositeBody = side === 'right' ? 'LEFT' : 'RIGHT';
+    const hemisphereName = side === 'right' ? 'RIGHT hemisphere' : 'LEFT hemisphere';
+
+    // Cerebellum is IPSILATERAL — not contralateral!
+    if (region === 'cerebellum') {
+      const sameSide = side === 'right' ? 'RIGHT' : 'LEFT';
+      sideBlock = `
+        <div style="background:rgba(154,230,180,0.15);border:2px solid var(--mint);padding:0.85rem;border-radius:10px;margin:1rem 0;">
+          <strong style="color:var(--mint);">🎯 You clicked: ${sameSide} CEREBELLUM</strong>
+          <p style="margin-top:0.4rem;"><strong style="color:var(--gold);">⚠️ Cerebellum is IPSILATERAL!</strong> Unlike the cerebrum, cerebellar damage affects the SAME side of the body. So damage to the ${sameSide} cerebellum causes ${sameSide}-sided ataxia, dysmetria, and intention tremor.</p>
+        </div>`;
+    } else {
+      // Hemisphere-specific additions
+      let hemNote = '';
+      if (side === 'left') {
+        if (region === 'frontal') hemNote = '<p><strong style="color:var(--gold);">💬 Language alert:</strong> Broca\'s area is in the LEFT frontal lobe — damage causes expressive (Broca\'s) aphasia: choppy, effortful speech with preserved comprehension.</p>';
+        else if (region === 'temporal') hemNote = '<p><strong style="color:var(--gold);">💬 Language alert:</strong> Wernicke\'s area is in the LEFT temporal lobe — damage causes receptive (Wernicke\'s) aphasia: fluent nonsense speech, poor comprehension.</p>';
+        else if (region === 'parietal') hemNote = '<p><strong style="color:var(--gold);">💬 Gerstmann\'s:</strong> LEFT (dominant) parietal lesions cause dysgraphia, dyscalculia, finger agnosia, left-right confusion.</p>';
+      } else if (side === 'right') {
+        if (region === 'parietal') hemNote = '<p><strong style="color:var(--gold);">🚨 Neglect alert:</strong> RIGHT parietal damage classically causes LEFT-sided hemispatial neglect — patient ignores the left side of the world, doesn\'t eat food on left half of plate, shaves only right side of face. HUGE safety risk.</p>';
+        else if (region === 'frontal') hemNote = '<p><strong style="color:var(--gold);">😐 Flat affect:</strong> RIGHT frontal damage often causes flat affect, impaired emotional tone (prosody), and spatial-visual planning issues.</p>';
+      }
+
+      sideBlock = `
+        <div style="background:rgba(245,101,101,0.15);border:2px solid var(--coral);padding:0.85rem;border-radius:10px;margin:1rem 0;">
+          <strong style="color:var(--coral);">🩸 You clicked: ${hemisphereName} ${d.name.toUpperCase()}</strong>
+          <p style="margin-top:0.4rem;">Damage here causes symptoms on the <strong style="color:var(--gold);">${oppositeBody} side of the body</strong> (motor/sensory fibers cross at the medulla — contralateral rule).</p>
+          ${hemNote}
+        </div>`;
+    }
+  } else if (region === 'brainstem') {
+    sideBlock = `
+      <div style="background:rgba(245,101,101,0.15);border:2px solid var(--coral);padding:0.85rem;border-radius:10px;margin:1rem 0;">
+        <strong style="color:var(--coral);">⚠️ BRAINSTEM — Midline structure</strong>
+        <p style="margin-top:0.4rem;">The brainstem contains cardiac, respiratory, and vasomotor centers. Damage can affect BOTH sides of the body and is often life-threatening. This is where motor fibers cross (decussate).</p>
+      </div>`;
+  }
+
+  panel.innerHTML = `
+    <h3 style="color:${d.color}">${d.name}</h3>
+    ${sideBlock}
+    <h4>🎯 Functions:</h4>
+    <ul>${d.functions.map(f => `<li>${f}</li>`).join('')}</ul>
+    <h4>⚠️ When Damaged:</h4>
+    <ul>${d.deficits.map(f => `<li>${f}</li>`).join('')}</ul>
+    <div class="fact-box"><strong>Classic Case:</strong> ${d.classicCase}</div>
+    <div class="warning-box"><strong>NCLEX:</strong> ${d.nclex}</div>
+  `;
+}
+
+function showLobe(region) {
+  const d = lobes[region];
+  document.getElementById('lobe-info').innerHTML = `
+    <h3 style="color:${d.color}">${d.name}</h3>
+    <h4>🎯 Functions:</h4>
+    <ul>${d.functions.map(f => `<li>${f}</li>`).join('')}</ul>
+    <h4>⚠️ Deficits When Damaged:</h4>
+    <ul>${d.deficits.map(f => `<li>${f}</li>`).join('')}</ul>
+    <div class="fact-box"><strong>📖 Classic Case:</strong> ${d.classicCase}</div>
+    <div class="warning-box"><strong>🎯 NCLEX Pearl:</strong> ${d.nclex}</div>
+  `;
+}
+
+/* ============ SIDE DEFICIT LAB ============ */
+const sideScenarios = {
+  rightBleed: {
+    damaged: 'right',
+    affected: 'left',
+    title: "🩸 Right-Sided Intracranial Bleed",
+    findings: [
+      "<strong>LEFT-sided hemiparesis/hemiplegia</strong> (motor fibers crossed at medulla)",
+      "<strong>LEFT-sided sensory loss</strong>",
+      "<strong>LEFT-sided facial droop</strong> (lower face only if cortical — forehead spared)",
+      "<strong>LEFT homonymous hemianopia</strong> (loses left visual field in both eyes)",
+      "<strong>LEFT-sided neglect</strong> (ignores left side of world — right parietal involvement)",
+      "Speech usually PRESERVED (because language lives in the left hemisphere in most people)",
+      "Spatial and visual-spatial processing may be impaired",
+      "Eyes deviate TOWARD the lesion (to the RIGHT)"
+    ],
+    pearl: "The RIGHT brain has the body's LEFT side. Key phrase: 'Contralateral control.' Remember neglect is usually RIGHT parietal."
+  },
+  leftBleed: {
+    damaged: 'left',
+    affected: 'right',
+    title: "🩸 Left-Sided Intracranial Bleed",
+    findings: [
+      "<strong>RIGHT-sided hemiparesis/hemiplegia</strong>",
+      "<strong>RIGHT-sided sensory loss</strong>",
+      "<strong>RIGHT-sided facial droop</strong>",
+      "<strong>RIGHT homonymous hemianopia</strong>",
+      "<strong>APHASIA</strong> (most people's language center) — Broca's, Wernicke's, or global",
+      "Reading, writing, math (Gerstmann's if dominant parietal)",
+      "Memory issues if hippocampus affected",
+      "Eyes deviate TOWARD the lesion (to the LEFT)"
+    ],
+    pearl: "The LEFT brain has the body's RIGHT side AND language. Aphasia is a classic sign of LEFT hemisphere stroke."
+  },
+  rightMCA: {
+    damaged: 'right',
+    affected: 'left',
+    title: "🧠 Right MCA Stroke",
+    findings: [
+      "<strong>LEFT hemiparesis — face and arm more than leg</strong> (MCA territory)",
+      "<strong>LEFT sensory loss — face and arm more than leg</strong>",
+      "<strong>LEFT homonymous hemianopia</strong>",
+      "<strong>LEFT-sided NEGLECT / hemispatial inattention</strong> — the hallmark of right MCA stroke",
+      "<strong>Anosognosia</strong> — may deny the deficit entirely ('that's not my arm')",
+      "Flat affect, impaired spatial reasoning",
+      "Speech preserved (but prosody — emotional tone — may be flat)",
+      "Eyes deviate to the RIGHT (toward lesion)"
+    ],
+    pearl: "Right MCA = left face/arm > leg weakness + LEFT NEGLECT + denial of deficit. Fall risk is massive."
+  },
+  leftMCA: {
+    damaged: 'left',
+    affected: 'right',
+    title: "🧠 Left MCA Stroke",
+    findings: [
+      "<strong>RIGHT hemiparesis — face and arm more than leg</strong>",
+      "<strong>RIGHT sensory loss — face and arm more than leg</strong>",
+      "<strong>RIGHT homonymous hemianopia</strong>",
+      "<strong>APHASIA</strong> — can be Broca's (superior MCA division), Wernicke's (inferior), or global",
+      "<strong>DYSARTHRIA</strong>",
+      "Gerstmann's syndrome if dominant parietal involved (dysgraphia, dyscalculia, finger agnosia, left-right confusion)",
+      "Apraxia — can't perform learned motor tasks on command",
+      "Eyes deviate to the LEFT (toward lesion)"
+    ],
+    pearl: "Left MCA = right face/arm > leg weakness + APHASIA. Communication is severely affected. Frustrating for patient."
+  }
+};
+
+function showSide(scenarioKey) {
+  const s = sideScenarios[scenarioKey];
+  const left = document.getElementById('side-left');
+  const right = document.getElementById('side-right');
+  left.className = 'brain-half';
+  right.className = 'brain-half';
+
+  if (s.damaged === 'left') left.classList.add('damaged');
+  else right.classList.add('damaged');
+
+  if (s.affected === 'left') left.classList.add('affected');
+  else right.classList.add('affected');
+
+  // Update labels to show affected BODY side
+  left.innerHTML = `<h4>LEFT Hemisphere</h4>${s.damaged==='left'?'<p style="color:#f56565;"><strong>💥 LESION HERE</strong></p>':'<p style="opacity:0.7">Controls RIGHT body</p>'}`;
+  right.innerHTML = `<h4>RIGHT Hemisphere</h4>${s.damaged==='right'?'<p style="color:#f56565;"><strong>💥 LESION HERE</strong></p>':'<p style="opacity:0.7">Controls LEFT body</p>'}`;
+
+  document.getElementById('side-info').innerHTML = `
+    <h3>${s.title}</h3>
+    <p style="color:var(--gold);font-weight:600;">💥 Damage: ${s.damaged.toUpperCase()} hemisphere → Symptoms on ${s.affected.toUpperCase()} side of body</p>
+    <h4>Assessment Findings You'd Document:</h4>
+    <ul>${s.findings.map(f => `<li>${f}</li>`).join('')}</ul>
+    <div class="mnemonic-box"><div class="mnemonic-text">💡 ${s.pearl}</div></div>
+  `;
+}
+
+/* ============ MCQ ============ */
+function initMCQ() {
+  const data = difficulty === 'advanced' ? mcqAdvanced : mcqIntermediate;
+  mcqAnswered = {};
+  mcqCorrect = 0;
+  document.getElementById('mcq-correct').textContent = 0;
+  document.getElementById('mcq-answered').textContent = 0;
+  const c = document.getElementById('mcq-container');
+  c.innerHTML = data.map((q, i) => `
+    <div class="question-card">
+      <div class="scenario">📋 ${q.scenario}</div>
+      <div class="question-text"><strong>Q${i+1}:</strong> ${q.question}</div>
+      <div class="options-grid">
+        ${q.options.map((o, j) => `<button class="option" id="mcq_${i}_${j}" onclick="answerMCQ(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
+      </div>
+      <div class="feedback" id="mcqfb_${i}"></div>
+    </div>
+  `).join('');
+}
+
+function answerMCQ(qi, chosen) {
+  if (mcqAnswered[qi] !== undefined) return;
+  const data = difficulty === 'advanced' ? mcqAdvanced : mcqIntermediate;
+  const q = data[qi];
+  const isRight = chosen === q.correct;
+  mcqAnswered[qi] = chosen;
+  for (let j = 0; j < q.options.length; j++) {
+    const el = document.getElementById(`mcq_${qi}_${j}`);
+    el.classList.add('locked');
+    if (j === q.correct) el.classList.add('correct');
+    if (j === chosen && !isRight) el.classList.add('incorrect');
+  }
+  const fb = document.getElementById(`mcqfb_${qi}`);
+  fb.className = 'feedback show ' + (isRight ? 'correct' : 'incorrect');
+  fb.innerHTML = `<strong>${isRight?'✓ Correct!':'✗ Incorrect.'}</strong> ${q.explanation}`;
+  if (isRight) mcqCorrect++;
+  document.getElementById('mcq-correct').textContent = mcqCorrect;
+  document.getElementById('mcq-answered').textContent = Object.keys(mcqAnswered).length;
+}
+
+/* ============ MATCHING ============ */
+function initMatch() {
+  const data = difficulty === 'advanced' ? matchDataAdvanced : matchDataIntermediate;
+  matchSelected = null;
+  matchScore = 0;
+  document.getElementById('match-score').textContent = 0;
+  document.getElementById('match-total').textContent = data.length;
+  const shuffledLobes = [...data].sort(() => Math.random() - 0.5);
+  const c = document.getElementById('match-container');
+  c.innerHTML = `
+    <div class="match-col">
+      <h4>🩺 Symptom/Finding</h4>
+      ${data.map((d, i) => `<div class="match-item" data-type="symptom" data-idx="${i}" onclick="selectMatch('symptom',${i})">${d.symptom}</div>`).join('')}
+    </div>
+    <div class="match-col">
+      <h4>🧠 Region</h4>
+      ${shuffledLobes.map((d) => {
+        const origIdx = data.findIndex(x => x.lobe === d.lobe && x.symptom === d.symptom);
+        return `<div class="match-item" data-type="lobe" data-idx="${origIdx}" onclick="selectMatch('lobe',${origIdx})">${d.lobe}</div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
+function selectMatch(type, idx) {
+  const el = document.querySelector(`.match-item[data-type="${type}"][data-idx="${idx}"]`);
+  if (!el || el.classList.contains('matched')) return;
+
+  if (!matchSelected) {
+    document.querySelectorAll('.match-item.selected').forEach(x => x.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSelected = {type, idx, el};
+    return;
+  }
+
+  // If clicking same item, deselect
+  if (matchSelected.type === type && matchSelected.idx === idx) {
+    el.classList.remove('selected');
+    matchSelected = null;
+    return;
+  }
+
+  // Different type attempted?
+  if (matchSelected.type === type) {
+    document.querySelectorAll('.match-item.selected').forEach(x => x.classList.remove('selected'));
+    el.classList.add('selected');
+    matchSelected = {type, idx, el};
+    return;
+  }
+
+  // Check match
+  if (matchSelected.idx === idx) {
+    matchSelected.el.classList.remove('selected');
+    matchSelected.el.classList.add('matched');
+    el.classList.add('matched');
+    matchScore++;
+    document.getElementById('match-score').textContent = matchScore;
+    matchSelected = null;
+    const data = difficulty === 'advanced' ? matchDataAdvanced : matchDataIntermediate;
+    if (matchScore === data.length) {
+      setTimeout(() => alert('🎉 All matched! Great work!'), 300);
+    }
+  } else {
+    matchSelected.el.classList.add('wrong-flash');
+    el.classList.add('wrong-flash');
+    setTimeout(() => {
+      matchSelected.el.classList.remove('wrong-flash','selected');
+      el.classList.remove('wrong-flash');
+      matchSelected = null;
+    }, 700);
+  }
+}
+
+/* ============ TAP-TO-PLACE (DnD) ============ */
+let dndSelected = null; // stores the currently selected item {el, target, fromZone}
+
+function initDnD() {
+  const data = difficulty === 'advanced' ? dndDataAdvanced : dndDataIntermediate;
+  document.getElementById('dnd-score').textContent = 0;
+  document.getElementById('dnd-total').textContent = data.items.length;
+  document.getElementById('dnd-hint').textContent = '👆 Start by tapping an item below';
+  dndSelected = null;
+
+  const pool = document.getElementById('dnd-pool');
+  const targets = document.getElementById('dnd-targets');
+  pool.innerHTML = '<h4>📋 Items to place</h4>';
+  targets.innerHTML = '<h4>🧠 Brain regions</h4>';
+
+  const shuffled = [...data.items].sort(() => Math.random() - 0.5);
+
+  shuffled.forEach((item, i) => {
+    const d = document.createElement('div');
+    d.className = 'draggable';
+    d.id = `drag_${i}`;
+    d.textContent = item.text;
+    d.dataset.target = item.target;
+    d.addEventListener('click', () => selectItem(d));
+    pool.appendChild(d);
+  });
+
+  data.zones.forEach(zone => {
+    const dz = document.createElement('div');
+    dz.className = 'drop-zone';
+    dz.dataset.zone = zone;
+    dz.innerHTML = `<div class="drop-zone-label">📍 ${zone}</div>`;
+    dz.addEventListener('click', (e) => {
+      // only drop if clicked on zone itself, not a dropped item
+      if (e.target.classList.contains('dropped-item')) return;
+      dropItem(dz);
+    });
+    targets.appendChild(dz);
+  });
+}
+
+function selectItem(el) {
+  // If already selected, unselect
+  if (dndSelected && dndSelected.el === el) {
+    el.classList.remove('selected');
+    dndSelected = null;
+    clearZoneHighlight();
+    document.getElementById('dnd-hint').textContent = '👆 Start by tapping an item below';
+    return;
+  }
+  // Unselect any currently selected
+  document.querySelectorAll('.draggable.selected, .dropped-item.selected').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  dndSelected = {el: el, target: el.dataset.target, fromZone: null};
+  highlightZones();
+  document.getElementById('dnd-hint').textContent = '📍 Now tap a brain region to drop it there';
+}
+
+function highlightZones() {
+  document.querySelectorAll('.drop-zone').forEach(z => z.classList.add('ready'));
+}
+function clearZoneHighlight() {
+  document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('ready'));
+}
+
+function dropItem(zone) {
+  if (!dndSelected) return;
+  const newItem = document.createElement('div');
+  newItem.className = 'dropped-item';
+  newItem.textContent = dndSelected.el.textContent;
+  newItem.dataset.target = dndSelected.target;
+  newItem.addEventListener('click', () => returnToPool(newItem));
+  zone.appendChild(newItem);
+  dndSelected.el.remove();
+  dndSelected = null;
+  clearZoneHighlight();
+  document.getElementById('dnd-hint').textContent = '👆 Tap another item';
+}
+
+function returnToPool(item) {
+  const pool = document.getElementById('dnd-pool');
+  const d = document.createElement('div');
+  d.className = 'draggable';
+  d.id = `drag_ret_${Date.now()}`;
+  d.textContent = item.textContent.replace(' ↩', '');
+  d.dataset.target = item.dataset.target;
+  d.addEventListener('click', () => selectItem(d));
+  pool.appendChild(d);
+  item.remove();
+}
+
+function checkDnD() {
+  let correct = 0;
+  document.querySelectorAll('.drop-zone').forEach(zone => {
+    const zoneName = zone.dataset.zone;
+    let zoneCorrect = true;
+    let hasAny = false;
+    zone.querySelectorAll('.dropped-item').forEach(it => {
+      hasAny = true;
+      if (it.dataset.target === zoneName) {
+        correct++;
+        it.style.background = 'linear-gradient(135deg, #9ae6b4, #38a169)';
+        it.style.color = '#1a202c';
+      } else {
+        zoneCorrect = false;
+        it.style.background = 'linear-gradient(135deg, #f56565, #c53030)';
+      }
+    });
+    zone.classList.remove('correct','incorrect');
+    if (hasAny) {
+      zone.classList.add(zoneCorrect ? 'correct' : 'incorrect');
+    }
+  });
+  document.getElementById('dnd-score').textContent = correct;
+  const total = (difficulty === 'advanced' ? dndDataAdvanced : dndDataIntermediate).items.length;
+  document.getElementById('dnd-hint').textContent = correct === total
+    ? '🎉 All correct!'
+    : `✓ ${correct}/${total} correct. Green = right, red = wrong.`;
+}
+
+/* ============ SEQUENCE PUZZLE ============ */
+function initPuzzles() {
+  currentPuzzle = 0;
+  puzzleProgress = [];
+  const data = difficulty === 'advanced' ? puzzlesAdvanced : puzzlesIntermediate;
+  document.getElementById('puzzle-total').textContent = data.length;
+  renderPuzzle();
+}
+
+function renderPuzzle() {
+  const data = difficulty === 'advanced' ? puzzlesAdvanced : puzzlesIntermediate;
+  if (currentPuzzle >= data.length) currentPuzzle = 0;
+  const p = data[currentPuzzle];
+  document.getElementById('puzzle-num').textContent = currentPuzzle + 1;
+  puzzleProgress = [];
+  const shuffled = [...p.items].sort(() => Math.random() - 0.5);
+  const container = document.getElementById('puzzle-container');
+  container.innerHTML = `
+    <h3 style="color:var(--pink-light);">${p.title}</h3>
+    <p style="color:var(--mint);margin:0.5rem 0;">Click items in the correct order. Click wrong and the sequence resets.</p>
+    <h4 style="margin-top:1rem;">Available Items:</h4>
+    <div class="sequence-pool" id="puzzle-pool">
+      ${shuffled.map((s, i) => `<div class="sequence-item" data-text="${s}" onclick="addToSequence(this)">${s}</div>`).join('')}
+    </div>
+    <h4 style="margin-top:1rem;">Your Sequence:</h4>
+    <div class="sequence-slots" id="puzzle-slots"><em style="color:#718096;">Start clicking items above...</em></div>
+    <div id="puzzle-feedback" style="margin-top:1rem;"></div>
+  `;
+}
+
+function addToSequence(el) {
+  if (el.classList.contains('in-sequence')) return;
+  const data = difficulty === 'advanced' ? puzzlesAdvanced : puzzlesIntermediate;
+  const p = data[currentPuzzle];
+  const expectedNext = p.items[puzzleProgress.length];
+  const text = el.dataset.text;
+  if (text === expectedNext) {
+    el.classList.add('in-sequence');
+    puzzleProgress.push(text);
+    const slots = document.getElementById('puzzle-slots');
+    if (puzzleProgress.length === 1) slots.innerHTML = '';
+    const slot = document.createElement('div');
+    slot.className = 'sequence-item in-sequence';
+    slot.innerHTML = `<span class="sequence-number">${puzzleProgress.length}.</span>${text}`;
+    slots.appendChild(slot);
+    if (puzzleProgress.length === p.items.length) {
+      document.getElementById('puzzle-feedback').innerHTML =
+        `<div class="feedback show correct">🎉 Perfect sequence! Click "Next Puzzle" for the next one.</div>`;
+    }
+  } else {
+    el.style.background = 'linear-gradient(135deg, #f56565, #c53030)';
+    setTimeout(() => {
+      el.style.background = '';
+      resetPuzzle();
+    }, 800);
+    document.getElementById('puzzle-feedback').innerHTML =
+      `<div class="feedback show incorrect">❌ Wrong order! Resetting the sequence...</div>`;
+  }
+}
+
+function resetPuzzle() {
+  renderPuzzle();
+}
+
+function nextPuzzle() {
+  const data = difficulty === 'advanced' ? puzzlesAdvanced : puzzlesIntermediate;
+  currentPuzzle = (currentPuzzle + 1) % data.length;
+  renderPuzzle();
+}
+
+/* ============ SPEED DIAGNOSIS ============ */
+function startSpeedGame() {
+  speedIdx = 0;
+  speedScore = 0;
+  document.getElementById('speed-score').textContent = 0;
+  const data = difficulty === 'advanced' ? speedAdvanced : speedIntermediate;
+  document.getElementById('speed-total').textContent = data.length;
+  drawSpeedQ();
+}
+
+function drawSpeedQ() {
+  if (speedTimer) { clearInterval(speedTimer); speedTimer = null; }
+  const data = difficulty === 'advanced' ? speedAdvanced : speedIntermediate;
+  if (speedIdx >= data.length) {
+    document.getElementById('speed-container').innerHTML =
+      `<div class="question-card">
+        <h3 style="color:var(--mint);text-align:center;">🏁 Game Complete!</h3>
+        <p style="text-align:center;font-size:1.2rem;margin:1rem 0;">Final Score: ${speedScore}/${data.length}</p>
+        <div style="text-align:center;"><button class="game-btn" onclick="startSpeedGame()">🔁 Play Again</button></div>
+      </div>`;
+    document.getElementById('speed-progress').style.width = '0%';
+    return;
+  }
+  const q = data[speedIdx];
+  document.getElementById('speed-num').textContent = speedIdx + 1;
+  speedTime = 10;
+  document.getElementById('speed-timer').textContent = speedTime + 's';
+  document.getElementById('speed-progress').style.width = '100%';
+  document.getElementById('speed-container').innerHTML =
+    `<div class="question-card">
+      <div class="question-text" style="text-align:center;font-size:1.05rem;line-height:1.4;">${q.q}</div>
+      <div class="options-grid">
+        ${q.opts.map((o, j) => `<button class="option" onclick="answerSpeed(${j})">${o}</button>`).join('')}
+      </div>
+    </div>`;
+  speedTimer = setInterval(() => {
+    speedTime--;
+    document.getElementById('speed-timer').textContent = speedTime + 's';
+    document.getElementById('speed-progress').style.width = (speedTime*10) + '%';
+    if (speedTime <= 0) {
+      clearInterval(speedTimer);
+      speedTimer = null;
+      answerSpeed(-1);
+    }
+  }, 1000);
+}
+
+function answerSpeed(choice) {
+  if (speedTimer) { clearInterval(speedTimer); speedTimer = null; }
+  const data = difficulty === 'advanced' ? speedAdvanced : speedIntermediate;
+  const q = data[speedIdx];
+  const btns = document.querySelectorAll('#speed-container .option');
+  btns.forEach((b, j) => {
+    b.classList.add('locked');
+    if (j === q.correct) b.classList.add('correct');
+    if (j === choice && j !== q.correct) b.classList.add('incorrect');
+  });
+  if (choice === q.correct) {
+    speedScore++;
+    document.getElementById('speed-score').textContent = speedScore;
+  }
+  setTimeout(() => {
+    speedIdx++;
+    drawSpeedQ();
+  }, 1200);
+}
+
+/* ============ CRANIAL NERVES ============ */
+function renderCN() {
+  document.getElementById('cn-table').innerHTML = `
+    <div class="cn-table-wrapper table-scroll">
+      <table>
+        <tr><th>#</th><th>Name</th><th>Type</th><th>Function</th><th>How to Test</th><th>Lesion Signs</th></tr>
+        ${cranialNerves.map(cn => `<tr>
+          <td><strong style="color:var(--gold)">${cn.num}</strong></td>
+          <td><strong>${cn.name}</strong></td>
+          <td>${cn.type}</td>
+          <td>${cn.function}</td>
+          <td>${cn.test}</td>
+          <td style="color:#fed7d7;">${cn.lesion}</td>
+        </tr>`).join('')}
+      </table>
+    </div>
+    <div class="cn-cards">
+      ${cranialNerves.map(cn => `<div class="cn-card">
+        <h4>CN ${cn.num} — ${cn.name} <span style="font-size:0.8rem;font-weight:normal;color:var(--blue-light);">(${cn.type})</span></h4>
+        <div class="cn-row"><strong>Function:</strong> ${cn.function}</div>
+        <div class="cn-row"><strong>Test:</strong> ${cn.test}</div>
+        <div class="cn-row cn-lesion"><strong style="color:var(--coral);">Lesion:</strong> ${cn.lesion}</div>
+      </div>`).join('')}
+    </div>
+  `;
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', () => {
+  initMCQ();
+  initMatch();
+  initDnD();
+  initPuzzles();
+  renderCN();
+  // Auto-open LEFT frontal lobe info on anatomy section for first visit (shows Broca's area)
+  renderAnatomyInfo('frontal', 'left');
+  document.querySelector('.lobe-region[data-region="frontal"][data-side="left"]').classList.add('selected');
+});
+</script>
+</body>
+</html>
