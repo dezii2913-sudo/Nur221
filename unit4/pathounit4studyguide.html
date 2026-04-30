@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NUR 221 Unit 4 Part 1</title>
+<title>NUR 221 — Unit 4 Study Guide | Ch.20–23</title>
 <style>
 :root{--ch20:#6d28d9;--ch20-light:#ede9fe;--ch21:#059669;--ch21-light:#d1fae5;--ch22:#db2777;--ch22-light:#fce7f3;--correct:#16a34a;--incorrect:#dc2626;--bg:#f8f7ff;--card:#fff;--border:#e5e7eb;--text:#1f2937;--text-light:#6b7280;--radius:12px;--font:'Segoe UI',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#4c1d95,#7c3aed,#a21caf);color:white;padding:22px 20px;text-align:center}
 .hero{background:linear-gradient(135deg,#4c1d95,#7c3aed,#a21caf);color:white;text-align:center;padding:40px 20px 30px}
 .hero h1{font-size:2rem;font-weight:900;margin-bottom:8px}
 .hero p{opacity:.88;margin-bottom:16px}
@@ -73,6 +74,7 @@ tr:nth-child(even) td{background:#fafafa}
 .s20{background:linear-gradient(135deg,#5b21b6,#7c3aed)}
 .s21{background:linear-gradient(135deg,#065f46,#059669)}
 .s22{background:linear-gradient(135deg,#9d174d,#db2777)}
+.s23{background:linear-gradient(135deg,#0369a1,#0891b2)}
 .q-card{background:white;border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:18px}
 .q-header{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px}
 .q-num{background:#6d28d9;color:white;border-radius:8px;padding:3px 10px;font-size:.78rem;font-weight:700;white-space:nowrap}
@@ -227,7 +229,9 @@ tr:nth-child(even) td{background:#fafafa}
   .diff-medium{background:#fef3c7;color:#92400e}
   .diff-hard{background:#fee2e2;color:#991b1b}
   .match-diff{font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:12px;display:inline-block;margin-left:8px}
-  .ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+  .ov-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
+.ov-header{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:24px;text-align:center;margin-bottom:18px;color:white}
+.ov-title{font-size:1.4rem;font-weight:900;color:white}
 .ov-box{border-radius:var(--radius);padding:18px;text-align:center;cursor:pointer;transition:transform .15s}
 .ov-box:hover{transform:translateY(-2px)}
 .ov-box h3{font-size:1rem;font-weight:800;margin-bottom:6px}
@@ -247,11 +251,13 @@ tr:nth-child(even) td{background:#fafafa}
 .en20{background:linear-gradient(135deg,#5b21b6,#7c3aed)}
 .en21{background:linear-gradient(135deg,#065f46,#059669)}
 .en22{background:linear-gradient(135deg,#9d174d,#db2777)}
+.en23{background:linear-gradient(135deg,#0369a1,#0891b2)}
 .en-card{background:white;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:20px;overflow:hidden;border:1px solid var(--border)}
 .en-title{padding:13px 18px;font-size:1rem;font-weight:700;border-bottom:2px solid var(--border)}
 .en20-c .en-title{background:#f5f3ff;color:#4c1d95}
 .en21-c .en-title{background:#f0fdf4;color:#065f46}
 .en22-c .en-title{background:#fdf2f8;color:#9d174d}
+.en23-c .en-title{background:#e0f2fe;color:#0369a1}
 .en-body{padding:18px 22px;line-height:1.8;font-size:.9rem}
 .en-body h4{font-size:.84rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);margin:16px 0 8px;border-bottom:1px solid var(--border);padding-bottom:5px}
 .en-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
@@ -378,33 +384,82 @@ tr:nth-child(even) td{background:#fafafa}
   background: #fee2e2;
   border-color: #dc2626;
 }
+
+/* ── OVERVIEW EXTRAS ── */
+.ov-alert{background:#fef9c3;border:2px solid #ca8a04;border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:.85rem;line-height:1.6;color:#713f12}
+.ov-list{margin:8px 0 0 0;padding-left:18px;font-size:.8rem;line-height:1.7;color:#374151}
+.ov-list li{margin-bottom:2px}
+.ov-exam-box{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:22px;margin-top:24px}
+.ov-exam-title{color:#c7d2fe;font-size:1rem;font-weight:800;margin-bottom:16px;text-align:center}
+.ov-exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ov-exam-col{background:rgba(255,255,255,.07);border-radius:10px;padding:14px}
+.ov-exam-ch{color:#a5b4fc;font-weight:800;font-size:.82rem;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:5px}
+.ov-exam-item{color:#e0e7ff;font-size:.78rem;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.05);line-height:1.4}
+
+/* ── OV BOX CH.23 ── */
+.ov23{background:linear-gradient(135deg,#fff7ed,#fed7aa);border:2px solid #fb923c}
+.ov23:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(251,146,60,.25)}
+.ov-ch-icon{font-size:2rem;margin-bottom:6px}
+.ov-ch-name{font-size:.75rem;font-weight:700;opacity:.7;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.ov-ch-title{font-size:.95rem;font-weight:800;margin-bottom:10px}
+.ov-list{list-style:none;padding:0;margin:0;text-align:left;font-size:.78rem;line-height:1.7}
+.ov-list li::before{content:"• ";color:inherit;font-weight:700}
+.ov-alert{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:.85rem;line-height:1.6;color:#78350f}
+.ov-subtitle{font-size:.9rem;opacity:.8;margin-top:4px}
+/* ── DEEP NOTES EXTRAS ── */
+.en23-c{border-left:4px solid #fb923c}
+.en-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.82rem}
+.en-table th{background:#1e293b;color:white;padding:8px 10px;text-align:left;font-size:.8rem}
+.en-table td{padding:7px 10px;border-bottom:1px solid #e2e8f0;vertical-align:top;line-height:1.4}
+.en-table tr:nth-child(even) td{background:#f8fafc}
+.en-sub-title{font-size:.9rem;font-weight:800;color:#1e293b;margin:16px 0 8px;padding:6px 10px;background:#f1f5f9;border-radius:6px;border-left:3px solid #6d28d9}
+/* ── MILLIONAIRE GAME ── */
+.mil-opt:hover{border-color:#312e81!important;background:#eef2ff!important}
+/* ── GAMES TAB SCROLLABLE ON MOBILE ── */
+.g-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px}
+.g-tab-btn{white-space:nowrap}
+
+
+.hdr-inner{max-width:980px;margin:0 auto;padding:16px 20px;text-align:center}
+.hdr-title{font-size:1.4rem;font-weight:900;color:white}
+.hdr-sub{font-size:.88rem;opacity:.85;margin-top:4px;color:white}
+.hdr-badge{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:4px 12px;font-size:.78rem;font-weight:600;color:white}
+.hdr-progress{margin-top:12px}
+.hdr-prog-bar{background:rgba(255,255,255,.25);border-radius:50px;height:8px;max-width:400px;margin:0 auto 6px;overflow:hidden}
+.hdr-prog-fill{height:100%;background:white;border-radius:50px;transition:width .5s}
+.hdr-prog-text{font-size:.78rem;opacity:.8;color:white}
 </style>
 </head>
 <body>
-<div class="hero">
-  <h1>🎗️ NUR 221 Unit 4 Part 1</h1>
-  <p>Neoplasms & Cancer · Genetic Disorders · Pregnancy Complications</p>
-  <div class="hero-badges">
-    <span class="badge">📚 Chapters 20, 21, 22</span>
-    <span class="badge">❓ 50 Practice Questions</span>
-    <span class="badge">🎮 4 New Games</span>
-    <span class="badge">📖 Deep Notes</span>
+<header>
+  <div class="hdr-inner">
+    <div class="hdr-title">NUR 221 — Unit 4 Study Guide</div>
+    <div class="hdr-sub">Ch.20 Cancer &bull; Ch.21 Genetics &bull; Ch.22 Pregnancy &bull; Ch.23 Dev & Aging</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+      <span class="hdr-badge">&#128218; 4 Chapters</span>
+      <span class="hdr-badge">&#10067; 60 Questions</span>
+      <span class="hdr-badge">&#127918; 6 Games</span>
+      <span class="hdr-badge">&#128214; Deep Notes</span>
+    </div>
+    <div class="hdr-progress">
+      <div class="hdr-prog-bar"><div class="hdr-prog-fill" id="hero-progress" style="width:0%"></div></div>
+      <div class="hdr-prog-text" id="hero-progress-text">Quiz Progress: 0% &nbsp;|&nbsp; Answered: 0/60 &nbsp;|&nbsp; Vault: 0</div>
+    </div>
   </div>
-  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="hero-progress"></div></div>
-  <div class="progress-text" id="hero-progress-text">Quiz Progress: 0% | Questions Answered: 0/50 | Vault: 0</div>
-</div>
+</header>
 <div class="sticky-bar">
-  <span style="font-size:.8rem;color:var(--text-light);white-space:nowrap;">📊 Progress:</span>
+  <span style="font-size:.8rem;color:var(--text-light);white-space:nowrap;">&#128202; Progress:</span>
   <div class="sb-bar"><div class="sb-fill" id="sticky-fill" style="width:0%"></div></div>
-  <span class="sb-score" id="sticky-score">0/50</span>
-  <a href="#" onclick="switchTab('games');return false;" style="background:#6d28d9;color:white;border-radius:20px;padding:4px 13px;font-size:.77rem;font-weight:700;text-decoration:none;white-space:nowrap;">🎮 Games</a>
-  <a href="#" onclick="switchTab('notes');return false;" style="background:#059669;color:white;border-radius:20px;padding:4px 13px;font-size:.77rem;font-weight:700;text-decoration:none;white-space:nowrap;">📖 Notes</a>
+  <span class="sb-score" id="sticky-score">0/60</span>
+  <a href="#" onclick="switchTab('games');return false;" style="background:#6d28d9;color:white;border-radius:20px;padding:4px 13px;font-size:.77rem;font-weight:700;text-decoration:none;white-space:nowrap;">&#127918; Games</a>
+  <a href="#" onclick="switchTab('notes');return false;" style="background:#059669;color:white;border-radius:20px;padding:4px 13px;font-size:.77rem;font-weight:700;text-decoration:none;white-space:nowrap;">&#128214; Notes</a>
 </div>
 <div class="tab-nav" id="tab-nav-bar">
   <button class="tab-btn active" onclick="switchTab('overview')">🏠 Overview</button>
   <button class="tab-btn" onclick="switchTab('ch20')">🎗️ Ch.20 Cancer</button>
   <button class="tab-btn" onclick="switchTab('ch21')">🧬 Ch.21 Genetics</button>
   <button class="tab-btn" onclick="switchTab('ch22')">🤰 Ch.22 Pregnancy</button>
+  <button class="tab-btn" onclick="switchTab('ch23')">🧒 Ch.23 Dev & Aging</button>
   <button class="tab-btn" onclick="switchTab('quiz')">❓ Practice Quiz</button>
   <button class="tab-btn" onclick="switchTab('games')">🎮 Games</button>
   <button class="tab-btn" onclick="switchTab('notes')">📖 Deep Notes</button>
@@ -413,71 +468,138 @@ tr:nth-child(even) td{background:#fafafa}
 <div class="container">
 <!-- ====== OVERVIEW TAB ====== -->
 <div class="tab-panel active" id="tab-overview">
-  <div class="must-know">
-    <h3>⭐ TEACHER'S MUST-KNOW LIST — Guaranteed Exam Topics</h3>
-    <ul>
-      <li>Carcinogenesis: Inherited vs. Acquired (~5% vs ~95%)</li>
-      <li>Proto-oncogene → Oncogene conversion</li>
-      <li>Direct vs. Indirect Carcinogens</li>
-      <li>IPP Theory: Initiation→Promotion→Progression</li>
-      <li>Benign vs. Malignant (use the table!)</li>
-      <li>Cancer Nomenclature + Exceptions (glioblastoma, leukemia)</li>
-      <li>Cachexia = TNF-driven wasting, NOT just appetite loss</li>
-      <li>Palliative = COMFORT care only</li>
-      <li>DNA location + function vs RNA (copy/messenger)</li>
-      <li>22 pairs autosomes + 1 pair sex chromosomes</li>
-      <li>Genotype (genes) vs Phenotype (visible expression)</li>
-      <li>BRCA gene test — breast cancer risk</li>
-      <li>Homozygous vs Heterozygous alleles</li>
-      <li>Deletion/Duplication/Inversion/Insertion/Translocation mutations</li>
-      <li>Amniocentesis — what, when, why</li>
-      <li>Sex-linked dominant vs recessive vs mitochondrial</li>
-      <li>Turner Syndrome (45X) · Trisomy 21 = Down Syndrome</li>
-      <li>Cleft lip · Spina bifida · Congenital diabetes</li>
-      <li>Gravidity/Parity definitions (primigravida/multipara)</li>
-      <li>Ectopic = fallopian tube implantation</li>
-      <li>PIH = persistent ↑BP after 20 weeks; know preeclampsia/eclampsia</li>
-      <li>Placenta previa = painless bright red → C-section</li>
-      <li>Abruptio placentae = painful dark red</li>
-      <li>Hyperemesis gravidarum</li>
-      <li>Musculoskeletal (waddling gait, lordosis) + Cardiovascular changes</li>
-    </ul>
+  <div class="ov-header">
+    <div class="ov-title">&#127891; NUR 221 — Unit 4 Complete Study Guide</div>
+    <div class="ov-subtitle">Chapters 20 &bull; 21 &bull; 22 &bull; 23 &mdash; Exam 4 Prep</div>
   </div>
+
+  <div class="ov-alert">
+    &#127919; <strong>Professor's Must-Know List:</strong> Cachexia (severe tissue wasting via TNF-&alpha;) &bull; Sarcoma vs. Carcinoma vs. Adenocarcinoma &bull; Benign vs. Malignant differences &bull; CAUTION warning signs &bull; Carcinogenesis (IPP) &bull; Trisomy 21 &bull; TORCH infections &bull; Metabolic syndrome &bull; Telomere aging &bull; Osteoporosis predisposing factors
+  </div>
+
   <div class="ov-grid">
     <div class="ov-box ov20" onclick="switchTab('ch20')">
-      <h3>🎗️ Chapter 20</h3>
-      <p>Neoplasms & Cancer — Carcinogenesis, IPP Theory, Benign vs Malignant, Nomenclature, Cachexia</p>
+      <div class="ov-ch-icon">&#127991;&#65039;</div>
+      <div class="ov-ch-name">Chapter 20</div>
+      <div class="ov-ch-title">Neoplasms & Cancer</div>
+      <ul class="ov-list">
+        <li>Benign vs. Malignant tumors</li>
+        <li>Cancer nomenclature: Carcinoma, Sarcoma, Adenocarcinoma, Lymphoma, Leukemia</li>
+        <li>Carcinogenesis: Initiation → Promotion → Progression</li>
+        <li>Oncogenes & Tumor Suppressor genes</li>
+        <li>Cachexia — TNF-&alpha; tissue wasting (NOT reversed by eating)</li>
+        <li>CAUTION warning signs of cancer</li>
+        <li>Labile vs. Permanent cells</li>
+        <li>Anaplasia — loss of differentiation</li>
+        <li>Treatment: surgery, chemo, radiation, immunotherapy</li>
+        <li>Palliative vs. curative treatment</li>
+        <li>Epigenetics, carcinogens, tumor grading & staging</li>
+      </ul>
     </div>
     <div class="ov-box ov21" onclick="switchTab('ch21')">
-      <h3>🧬 Chapter 21</h3>
-      <p>Genetic Disorders — DNA/RNA, Chromosomes, Inheritance Patterns, Chromosomal Alterations, Congenital</p>
+      <div class="ov-ch-icon">&#129516;</div>
+      <div class="ov-ch-name">Chapter 21</div>
+      <div class="ov-ch-title">Congenital & Genetic Disorders</div>
+      <ul class="ov-list">
+        <li>DNA vs. RNA — structure, location, function</li>
+        <li>Mitosis (diploid) vs. Meiosis (haploid/gametes)</li>
+        <li>Chromosomes: 22 autosomes + 1 sex pair (XX/XY)</li>
+        <li>Genotype vs. Phenotype</li>
+        <li>Inheritance: Autosomal dominant/recessive, X-linked</li>
+        <li>Chromosomal mutations: deletion, insertion, translocation, inversion, duplication</li>
+        <li>Nondisjunction → trisomy/monosomy</li>
+        <li>Trisomy 21 (Down), Turner (45,X), Klinefelter (XXY)</li>
+        <li>Karyotype, Punnett square, pedigree</li>
+        <li>Amniocentesis & CVS — prenatal diagnosis</li>
+        <li>TORCH infections — teratogens during embryologic period (weeks 3–8)</li>
+        <li>Multifactorial/polygenic disorders</li>
+      </ul>
     </div>
     <div class="ov-box ov22" onclick="switchTab('ch22')">
-      <h3>🤰 Chapter 22</h3>
-      <p>Pregnancy Complications — Ectopic, PIH, GDM, Placental Disorders, Physiologic Changes</p>
+      <div class="ov-ch-icon">&#129328;</div>
+      <div class="ov-ch-name">Chapter 22</div>
+      <div class="ov-ch-title">Complications of Pregnancy</div>
+      <ul class="ov-list">
+        <li>Physiologic changes: hormonal, reproductive, cardiovascular, GI, musculoskeletal</li>
+        <li>Gravidity vs. Parity</li>
+        <li>Chadwick sign (purple cervix) vs. Goodell sign (soft cervix)</li>
+        <li>Ectopic pregnancy — most in fallopian tube</li>
+        <li>Preeclampsia triad: HTN + proteinuria + edema after 20 wks</li>
+        <li>Eclampsia = preeclampsia + grand mal seizures</li>
+        <li>HELLP syndrome: Hemolysis + Elevated Liver + Low Platelets</li>
+        <li>Gestational diabetes → macrosomia (high birth weight)</li>
+        <li>Placenta previa: painless bright red bleeding</li>
+        <li>Abruptio placentae: painful dark bleeding → risk of DIC</li>
+        <li>Rh incompatibility — 2nd+ pregnancy risk</li>
+        <li>Blood tests on neonates → identify immediate metabolic disorders</li>
+        <li>Hyperemesis gravidarum — severe vomiting</li>
+      </ul>
+    </div>
+    <div class="ov-box ov23" onclick="switchTab('ch23')">
+      <div class="ov-ch-icon">&#129490;</div>
+      <div class="ov-ch-name">Chapter 23</div>
+      <div class="ov-ch-title">Development & Aging</div>
+      <ul class="ov-list">
+        <li>Adolescence begins 10–12 yrs; driven by pituitary gonadotropins & sex hormones</li>
+        <li>Female puberty: breast → pubic hair → growth spurt → menarche</li>
+        <li>Male puberty: testicular enlargement → pubic hair → growth spurt (later)</li>
+        <li>Metabolic syndrome: obesity + insulin resistance + hypertension</li>
+        <li>Alopecia = hair loss; Obesity → all of these (physical, metabolic, psychological)</li>
+        <li>Klinefelter (XXY): small testes, no secondary sex characteristics</li>
+        <li>Turner (45,X): short stature, amenorrhea, infertile</li>
+        <li>Eating disorders: Anorexia nervosa (self-starvation) vs. Bulimia (binge-purge)</li>
+        <li>Scoliosis, JRA, acne, mononucleosis — adolescent complications</li>
+        <li>Aging theories: apoptosis, wear & tear, random errors, telomere shortening</li>
+        <li>Senescence: cell death outpaces replication</li>
+        <li>Telomeres shorten with each division → senescence/apoptosis</li>
+        <li>Sarcopenia (muscle loss), osteopenia/osteoporosis, arteriosclerosis with aging</li>
+        <li>Aging: ↓ GFR, ↓ lung elasticity, ↓ immune function, ↓ peristalsis</li>
+        <li>Osteoporosis: NOT caused by ↓ PTH (PTH ↑ = more resorption)</li>
+      </ul>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" style="background:#f5f3ff;color:#4c1d95">🔢 Quick Numbers to Memorize</div>
-    <div class="card-body">
-      <div class="tbl-wrap"><table>
-        <tr><th>Fact</th><th>Value</th><th>Why It Matters</th></tr>
-        <tr><td>Inherited cancers</td><td>~5%</td><td>Germline mutation — cancer earlier in life</td></tr>
-        <tr><td>Acquired cancers</td><td>~95%</td><td>Somatic mutation — environmental; cancer later in life</td></tr>
-        <tr><td>Human chromosome pairs</td><td>23 pairs (46 total)</td><td>22 autosomes + 1 sex pair (XX or XY)</td></tr>
-        <tr><td>Trisomy 21</td><td>3 copies of chr. 21</td><td>Down Syndrome</td></tr>
-        <tr><td>Turner Syndrome</td><td>45,X (only 1 sex chr.)</td><td>Female, short stature, amenorrhea</td></tr>
-        <tr><td>Klinefelter Syndrome</td><td>47,XXY</td><td>Male, small testes, infertility</td></tr>
-        <tr><td>Teratogen risk period</td><td>Weeks 3–8 gestation</td><td>Organogenesis — highest risk period</td></tr>
-        <tr><td>PIH diagnosis</td><td>After 20 weeks</td><td>Persistent elevated BP</td></tr>
-        <tr><td>Preeclampsia markers</td><td>BP ≥140/90 + proteinuria</td><td>+headache, visual changes, edema</td></tr>
-        <tr><td>Average pregnancy weight gain</td><td>25–30 lbs (11–14 kg)</td><td>Mostly in 3rd trimester</td></tr>
-      </table></div>
+
+  <div class="ov-exam-box">
+    <div class="ov-exam-title">&#127919; 23 Guaranteed Exam 4 Questions — Topic Map</div>
+    <div class="ov-exam-grid">
+      <div class="ov-exam-col">
+        <div class="ov-exam-ch">&#127991;&#65039; Ch.20 Cancer</div>
+        <div class="ov-exam-item">Benign vs. malignant — encapsulated & slow growing</div>
+        <div class="ov-exam-item">All CAUTION warning signs</div>
+        <div class="ov-exam-item">Warning sign EXCEPT: fever/nausea/diarrhea</div>
+        <div class="ov-exam-item">Radiation → rapidly dividing cells</div>
+        <div class="ov-exam-item">Carcinogenesis begins with irreversible DNA change</div>
+        <div class="ov-exam-item">Benign tumor: cells appear relatively normal</div>
+        <div class="ov-exam-item">Apoptosis = programmed cell death</div>
+      </div>
+      <div class="ov-exam-col">
+        <div class="ov-exam-ch">&#129516; Ch.21 Genetics</div>
+        <div class="ov-exam-item">23rd pair in male = XY</div>
+        <div class="ov-exam-item">Developmental disorders EXCEPT folic acid</div>
+        <div class="ov-exam-item">Karyotype = chromosome arrangement</div>
+        <div class="ov-exam-item">Mutation = spontaneous alteration in DNA</div>
+        <div class="ov-exam-item">Sickle cell heterozygous = incomplete dominance</div>
+        <div class="ov-exam-item">Amniocentesis detects ALL: chromosomal, metabolic, structural</div>
+      </div>
+      <div class="ov-exam-col">
+        <div class="ov-exam-ch">&#129328; Ch.22 Pregnancy</div>
+        <div class="ov-exam-item">Expanding uterus EXCEPT: low blood pressure</div>
+        <div class="ov-exam-item">Neonatal blood tests = identify metabolic disorders</div>
+        <div class="ov-exam-item">Gestational diabetes → high birth weight (macrosomia)</div>
+        <div class="ov-exam-item">Abruptio placentae → DIC (low clotting factors)</div>
+        <div class="ov-exam-item">Pregnancy edema = increased blood volume</div>
+      </div>
+      <div class="ov-exam-col">
+        <div class="ov-exam-ch">&#129490; Ch.23 Dev & Aging</div>
+        <div class="ov-exam-item">Cardiovascular aging = arteriosclerosis/atherosclerosis</div>
+        <div class="ov-exam-item">Metabolic syndrome: BMI≥85th + DM2 + HTN</div>
+        <div class="ov-exam-item">Alopecia = hair loss</div>
+        <div class="ov-exam-item">Obesity in adolescents = ALL of these</div>
+        <div class="ov-exam-item">Osteoporosis EXCEPT: ↓ PTH</div>
+      </div>
     </div>
   </div>
 </div>
-
-<!-- ====== CH 20 TAB ====== -->
 <div class="tab-panel" id="tab-ch20">
   <div class="sec-title s20">🎗️ Chapter 20 — Neoplasms & Cancer</div>
   <div class="hl hl-y">⭐ <strong>Key Terms to Know First:</strong> Proliferation
@@ -532,7 +654,7 @@ tr:nth-child(even) td{background:#fafafa}
         <tr><td>Dietary</td><td>Ingested</td><td>Stomach/intestinal</td><td>Smoked foods</td></tr>
         <tr><td>Radiation</td><td>Exposure</td><td>Thyroid cancer</td><td>Nuclear radiation</td></tr>
       </table></div>
-      <img src="slide20_img2.png" alt="Carcinogens diagram" class="slide-img" style="max-width:520px">
+      <img src="slide20_img2.png" alt="Carcinogens diagram" onerror="this.style.display='none'" class="slide-img" style="max-width:520px">
       <p class="img-cap">Carcinogens and their associated cancers — from your professor's slide</p>
     </div>
   </div>
@@ -559,7 +681,7 @@ tr:nth-child(even) td{background:#fafafa}
       </div>
       <div class="hl hl-p">🧠 Memory Trick: "<strong>I Put Pepper</strong> on my food" — I=Initiation, P=Promotion, P=Progression</div>
       <div class="hl hl-b">🚬 <strong>Smoking Example from Professor:</strong> Predisposition → Tobacco use (promoter) → Cell changes begin [<span style="background:#dcfce7;border-radius:4px;padding:1px 6px;color:#166534;font-weight:600">STOP HERE = no cancer</span>] → Prolonged use → Changes continue EVEN IF smoking stops → Lung cancer</div>
-      <img src="slide21_img2.png" alt="IPP Theory diagram" class="slide-img" style="max-width:380px">
+      <img src="slide21_img2.png" alt="IPP Theory diagram" onerror="this.style.display='none'" class="slide-img" style="max-width:380px">
       <p class="img-cap">IPP Diagram: Normal cell → Initiation (DNA damage) → Promotion (oncogene activation) → Progression → Malignant tumor</p>
     </div>
   </div>
@@ -577,7 +699,7 @@ tr:nth-child(even) td{background:#fafafa}
 
         <tr><td><strong>Real example</strong></td><td>Phyllodes breast tumor — must be surgically removed as it CAN keep growing</td><td>Invasive breast carcinoma — metastasizes if untreated</td></tr>
       </table></div>
-      <img src="slide24_img2.png" alt="Cancer nomenclature table" class="slide-img">
+      <img src="slide24_img2.png" alt="Cancer nomenclature table" onerror="this.style.display='none'" class="slide-img">
       <p class="img-cap">📊 Cancer Nomenclature Table from your professor's slide — Tissue type vs. Benign/Malignant names</p>
     </div>
   </div>
@@ -620,7 +742,7 @@ tr:nth-child(even) td{background:#fafafa}
         <tr><td>↑ Infection risk</td><td>Tissue necrosis + ulceration near tumor</td><td>Normal flora becomes opportunistic</td></tr>
       </table></div>
       <div class="hl hl-p">🧠 <strong>Palliative Care = COMFORT CARE ONLY.</strong> NOT curing, NOT extending life — it is about reducing suffering and improving quality of life. Patient who says "I hope this limits my discomfort" = CORRECT understanding. "This will help me live longer" = INCORRECT — palliative does NOT postpone death.</div>
-      <img src="slide27_img1.png" alt="Treatment strategies" class="slide-img">
+      <img src="slide27_img1.png" alt="Treatment strategies" onerror="this.style.display='none'" class="slide-img">
       <p class="img-cap">Cancer Treatment Strategies: Surgery, Chemotherapy, Radiation, Biologic Response Modifiers, Hormones</p>
     </div>
 </div>
@@ -857,13 +979,107 @@ tr:nth-child(even) td{background:#fafafa}
 </div>
   </div>
 </div>
+<!-- ====== CH 23 TAB — DEVELOPMENT & AGING ====== -->
+<div class="tab-panel" id="tab-ch23">
+  <div class="sec-title s23">🧒 Chapter 23 — Development & Aging</div>
+  <div class="hl hl-b">&#11088; <strong>Teacher Emphasis:</strong> Telomere shortening drives aging &bull; Puberty trigger = hypothalamus &rarr; pituitary &rarr; gonads<br>
+      <strong>M</strong>etabolic syndrome = obesity + insulin resistance + hypertension &bull; Osteoporosis: NOT caused by &darr;PTH<br>
+      <strong>S</strong>arcopenia = muscle loss &bull; Senescence = cell death outpaces replication &bull; Alopecia = hair loss
+    </div>
+
+  <!-- PUBERTY & ADOLESCENCE -->
+  <div class="acc-group">
+    <div class="acc-item" style="border-left:4px solid #0891b2">
+      <button class="acc-btn" onclick="toggleAcc(this)">🔵 Puberty & Adolescence — Hormones, Growth, Risk Factors <span class="acc-arrow">▼</span></button>
+      <div class="acc-content">
+        <div class="hl hl-b"><strong>Puberty Trigger — Hypothalamus:</strong> The hypothalamus initiates puberty by secreting GnRH (gonadotropin-releasing hormone) → stimulates pituitary → LH & FSH released → gonads produce sex hormones (estrogen/testosterone). <em>Without hypothalamic signaling, puberty cannot begin.</em></div>
+        <div class="hl hl-g"><strong>Female Puberty Sequence:</strong> Breast development (thelarche) → pubic hair (pubarche) → growth spurt → menarche (first period). Average onset: 8–13 years. Girls' growth spurt peaks BEFORE menarche.</div>
+        <div class="hl hl-r"><strong>Adolescent Pregnancy Risk Factors:</strong> Teen girls face increased pregnancy risk due to: early sexual activity without contraception, reluctance to tell parents (fear/shame), poor nutrition (skipping meals), failure to take prenatal vitamins, late or no prenatal care. These compound fetal and maternal health risks significantly.</div>
+        <div class="hl hl-p"><strong>Epiphyseal (Growth) Plate Damage:</strong> The epiphyseal plate (physis) at the ends of long bones is where longitudinal growth occurs. Damage to this plate during adolescence — from fracture, trauma, or infection — can prematurely close the growth plate and permanently stunt bone growth/limb length discrepancy.</div>
+      </div>
+    </div>
+
+    <!-- ADOLESCENT HEALTH CONDITIONS -->
+    <div class="acc-item" style="border-left:4px solid #7c3aed">
+      <button class="acc-btn" onclick="toggleAcc(this)">🟣 Adolescent Health Conditions — JRA, Eating Disorders, Scoliosis <span class="acc-arrow">▼</span></button>
+      <div class="acc-content">
+        <div class="hl hl-r"><strong>Juvenile Rheumatoid Arthritis (JRA) — AUTOIMMUNE:</strong> JRA is an <strong>autoimmune disease</strong> in which the body's immune system attacks synovial joints. Chronic inflammation leads to joint damage, pain, stiffness, and swelling. Onset before age 16. Systemic JRA (Still's disease) can affect internal organs. Treatment: NSAIDs, DMARDs, biologics.</div>
+        <div class="hl hl-g"><strong>Anorexia Nervosa:</strong> Self-starvation <strong>in the absence of another disease</strong> — this distinguishes it from malnutrition due to illness. Primarily affects adolescent females. Characterized by severely restricted food intake, distorted body image, intense fear of weight gain. Complications: electrolyte imbalances (hypokalemia), lanugo hair growth, amenorrhea, osteoporosis, cardiac arrhythmias.</div>
+        <div class="hl hl-y"><strong>Bulimia Nervosa:</strong> Binge eating followed by purging behaviors (vomiting, laxatives, excessive exercise). Key distinguishing sign: <strong>dental caries (cavities)</strong> from repeated exposure of teeth to gastric acid. Also: parotid gland swelling, Russell's sign (knuckle calluses), electrolyte disturbances (hypokalemia, metabolic alkalosis from vomiting).</div>
+        <div class="hl hl-b"><strong>Scoliosis — How to Assess:</strong> Abnormal lateral curvature of the spine. Assessment uses the <strong>Adam's Forward Bend Test</strong>: patient bends forward — examiner looks at the <strong>hips and rib cage asymmetry</strong>, NOT directly at the back surface. A rib hump (posterior prominence) or hip asymmetry indicates scoliosis. Screening at 10–14 years old.</div>
+        <div class="hl hl-p"><strong>Metabolic Syndrome:</strong> A cluster of metabolic disorders occurring together that dramatically increases cardiovascular risk. Requires ≥3 of: central obesity (waist >35" F / >40" M), hypertriglyceridemia, low HDL, hypertension, elevated fasting glucose. Think of it as having ALL types of metabolic diseases at once.</div>
+      </div>
+    </div>
+
+    <!-- DOWN SYNDROME -->
+    <div class="acc-item" style="border-left:4px solid #dc2626">
+      <button class="acc-btn" onclick="toggleAcc(this)">🔴 Down Syndrome (Trisomy 21) — Key Features <span class="acc-arrow">▼</span></button>
+      <div class="acc-content">
+        <div class="hl hl-r"><strong>Down Syndrome — MUST KNOW Features:</strong>
+          <ul style="margin:.5rem 0 0 1rem">
+            <li><strong>Protruding tongue</strong> (macroglossia + hypotonia of facial muscles)</li>
+            <li><strong>Congenital heart disease</strong> — most common cause of death (AV canal defects most frequent)</li>
+            <li><strong>Limited mental development</strong> — intellectual disability ranges from mild to moderate</li>
+            <li>Single palmar crease (simian crease), upslanting palpebral fissures, epicanthal folds</li>
+            <li>Trisomy 21 — extra chromosome 21 (nondisjunction during meiosis)</li>
+            <li>Increased risk of leukemia, Alzheimer's disease (early onset)</li>
+            <li>Atlanto-axial instability — neck must be protected</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SENESCENCE & AGING -->
+    <div class="acc-item" style="border-left:4px solid #0891b2">
+      <button class="acc-btn" onclick="toggleAcc(this)">🔵 Senescence, Telomeres & Aging — Cellular Mechanisms <span class="acc-arrow">▼</span></button>
+      <div class="acc-content">
+        <div class="hl hl-b"><strong>Senescence:</strong> The state in which <strong>cell destruction outpaces replication</strong>. Cells lose their ability to divide (due to DNA damage, telomere shortening, etc.) and accumulate, releasing inflammatory signals. Senescent cells are a key driver of aging and age-related disease.</div>
+        <div class="hl hl-g"><strong>Telomere Shortening & Aging:</strong> Telomeres are protective caps on chromosome ends. With each cell division, telomeres shorten. When critically short, cells undergo senescence or apoptosis (cannot divide further). This is a primary molecular clock of aging. <em>Telomerase</em> can rebuild telomeres — active in stem cells and cancer cells; largely inactive in somatic cells.</div>
+        <div class="hl hl-p"><strong>Life Span vs. Life Expectancy:</strong> <strong>Life span</strong> = the maximum possible age a species can reach (humans ~120 years). <strong>Life expectancy</strong> = the average age a person in a given population is expected to live, influenced by healthcare, environment, genetics, socioeconomic status. Life expectancy varies; life span is relatively fixed.</div>
+      </div>
+    </div>
+
+    <!-- FACTORS IMPACTING GROWTH & COMMON AGING CHANGES -->
+    <div class="acc-item" style="border-left:4px solid #059669">
+      <button class="acc-btn" onclick="toggleAcc(this)">🟢 Factors Impacting Growth & Common Changes in Aging <span class="acc-arrow">▼</span></button>
+      <div class="acc-content">
+        <div class="hl hl-g"><strong>Factors Impacting Growth (Expanded):</strong>
+          <ul style="margin:.5rem 0 0 1rem">
+            <li><strong>Genetics</strong> — primary determinant of final height potential</li>
+            <li><strong>Nutrition</strong> — protein, calories, zinc, iron essential; malnutrition stunts growth</li>
+            <li><strong>Hormones</strong> — GH (growth hormone), IGF-1, thyroid hormone, sex steroids</li>
+            <li><strong>Vitamin D</strong> — NOT solely for bone; also critical for immune function, muscle function, mood regulation, and calcium absorption</li>
+            <li><strong>Sleep</strong> — GH secreted in pulses during deep sleep; poor sleep = impaired growth in children</li>
+            <li><strong>Exercise</strong> — weight-bearing exercise promotes bone density; excessive exercise in adolescence can suppress puberty (female athlete triad)</li>
+            <li><strong>Chronic illness</strong> — inflammatory diseases, chronic hypoxia, renal failure all impair growth</li>
+          </ul>
+        </div>
+        <div class="hl hl-b"><strong>Common Changes in Aging:</strong>
+          <ul style="margin:.5rem 0 0 1rem">
+            <li><strong>Cardiovascular:</strong> ↑ arterial stiffness, ↑ systolic BP, ↓ cardiac reserve</li>
+            <li><strong>Pulmonary:</strong> ↓ elastic recoil, ↑ residual volume, ↓ FEV1</li>
+            <li><strong>Renal:</strong> ↓ GFR (~1% per year after age 40), ↓ ability to concentrate urine</li>
+            <li><strong>Musculoskeletal:</strong> Sarcopenia (↓ muscle mass), osteoporosis, ↓ bone density</li>
+            <li><strong>Neurological:</strong> ↓ nerve conduction velocity, ↓ proprioception, ↑ fall risk</li>
+            <li><strong>Immune:</strong> Immunosenescence — ↓ T-cell function, ↑ susceptibility to infection and cancer</li>
+            <li><strong>Reproductive — Females:</strong> Menopause = clinically defined as NO period for 12 consecutive months (book says ~50, but true diagnosis = 1 full year without period)</li>
+            <li><strong>Reproductive — Males & Females:</strong> Both experience decreased fertility with aging; males see ↓ testosterone + ↓ sperm quality; females see ↓ ovarian reserve</li>
+            <li><strong>GI:</strong> ↓ gastric motility, ↓ saliva production, ↑ constipation risk</li>
+            <li><strong>Skin:</strong> ↓ collagen, ↑ fragility, ↓ wound healing, ↓ vitamin D synthesis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- /acc-group -->
+</div>
 <!-- ====== QUIZ TAB ====== -->
 <div class="tab-panel" id="tab-quiz">
   <div class="q-filter">
-    <button class="f-btn active" onclick="filterQ('all',this)">All (50)</button>
+    <button class="f-btn active" onclick="filterQ('all',this)">All (60)</button>
     <button class="f-btn" onclick="filterQ('Ch.20',this)">Ch.20 Cancer</button>
     <button class="f-btn" onclick="filterQ('Ch.21',this)">Ch.21 Genetics</button>
     <button class="f-btn" onclick="filterQ('Ch.22',this)">Ch.22 Pregnancy</button>
+    <button class="f-btn" onclick="filterQ('Ch.23',this)">Ch.23 Dev & Aging</button>
   </div>
   <div id="q-container"></div>
   </div>
@@ -908,33 +1124,35 @@ tr:nth-child(even) td{background:#fafafa}
 <!-- ====== GAMES TAB ====== -->
 <div class="tab-panel" id="tab-games">
   <div class="g-tabs">
-    <button class="g-tab-btn active" onclick="switchGame('match')">🔗 Term Matcher</button>
-    <button class="g-tab-btn" onclick="switchGame('fib')">✏️ Fill-in-the-Blank</button>
-    <button class="g-tab-btn" onclick="switchGame('scenario')">🏥 Clinical Scenarios</button>
-    <button class="g-tab-btn" onclick="switchGame('sort')">📂 Category Sort</button>
+    <button class="g-tab-btn active" onclick="switchGame('match')">&#128279; Term Matcher</button>
+    <button class="g-tab-btn" onclick="switchGame('fib')">&#9997;&#65039; Fill-in-Blank</button>
+    <button class="g-tab-btn" onclick="switchGame('scenario')">&#127973; Scenarios</button>
+    <button class="g-tab-btn" onclick="switchGame('sort')">&#128194; Category Sort</button>
+    <button class="g-tab-btn" onclick="switchGame('millionaire')">&#128176; Who Wants to Be a Millionaire</button>
+    <button class="g-tab-btn" onclick="switchGame('jeopardy')">&#127358; Jeopardy</button>
   </div>
 
   <!-- GAME 1: TERM MATCHER -->
   <div class="g-panel active" id="game-match">
     <div class="g-card">
-      <div class="g-title">🔗 Term Matcher</div>
-      <div class="g-desc">Click a <strong>Term</strong>, then click its matching <strong>Definition</strong>. Both columns are independently shuffled — no side-by-side hints! <span class="g-badge" id="match-score">0/0</span></div>
+      <div class="g-title">&#128279; Term Matcher</div>
+      <div class="g-desc">Click a <strong>Term</strong>, then click its matching <strong>Definition</strong>. Both columns are independently shuffled &mdash; no side-by-side hints! <span class="g-badge" id="match-score">0/0</span></div>
       <div id="match-round-label" style="font-size:.82rem;color:#7c3aed;font-weight:700;margin-bottom:10px"></div>
       <div class="match-col-headers">
-        <div class="match-col-hdr">📌 Terms</div>
-        <div class="match-col-hdr">📖 Definitions</div>
+        <div class="match-col-hdr">&#128204; Terms</div>
+        <div class="match-col-hdr">&#128214; Definitions</div>
       </div>
       <div class="match-grid">
         <div class="match-col" id="match-terms"></div>
         <div class="match-col" id="match-defs"></div>
       </div>
       <div class="match-selected-bar" id="match-selected-bar" style="display:none">
-        <span>Selected: </span><strong id="match-selected-txt"></strong> <span style="color:#7c3aed">→ now click its definition</span>
+        <span>Selected: </span><strong id="match-selected-txt"></strong> <span style="color:#7c3aed">&#8594; now click its definition</span>
       </div>
       <div class="match-result" id="match-result"></div>
       <div style="display:flex;gap:10px;margin-top:14px">
-        <button class="g-btn" onclick="nextMatchRound()">Next Round ▶</button>
-        <button class="g-btn sec" onclick="initMatch()">↺ Restart</button>
+        <button class="g-btn" onclick="nextMatchRound()">Next Round &#9654;</button>
+        <button class="g-btn sec" onclick="initMatch()">&#8635; Restart</button>
       </div>
     </div>
   </div>
@@ -942,18 +1160,17 @@ tr:nth-child(even) td{background:#fafafa}
   <!-- GAME 2: FILL IN THE BLANK -->
   <div class="g-panel" id="game-fib">
     <div class="g-card">
-      <div class="g-title">✏️ Fill-in-the-Blank</div>
-      <div class="g-desc">Type the missing word(s) to complete each statement. Tests recall — not multiple choice! <span class="g-badge" id="fib-score">0/0</span></div>
+      <div class="g-title">&#9997;&#65039; Fill-in-the-Blank</div>
+      <div class="g-desc">Click a blank, then click the correct word from the word bank. <span class="g-badge" id="fib-score">0/0</span></div>
       <div id="fib-container"></div>
-      <button class="fib-check" onclick="checkAllFib()">✅ Check All Answers</button>
     </div>
   </div>
 
-  <!-- GAME 3: CLINICAL SCENARIOS -->
+  <!-- GAME 3: SCENARIOS -->
   <div class="g-panel" id="game-scenario">
     <div class="g-card">
-      <div class="g-title">🏥 Clinical Scenarios</div>
-      <div class="g-desc">Read the patient scenario and choose the correct nursing action or identification. These are harder — think like a nurse! <span class="g-badge" id="sc-score">0/0</span></div>
+      <div class="g-title">&#127973; Clinical Scenarios</div>
+      <div class="g-desc">Read each scenario and select the best answer. <span class="g-badge" id="sc-score">0/0</span></div>
       <div id="sc-container"></div>
     </div>
   </div>
@@ -961,106 +1178,391 @@ tr:nth-child(even) td{background:#fafafa}
   <!-- GAME 4: CATEGORY SORT -->
   <div class="g-panel" id="game-sort">
     <div class="g-card">
-      <div class="g-title">📂 Category Sort</div>
+      <div class="g-title">&#128194; Category Sort</div>
       <div class="g-desc">Click an item below, then click the correct category bucket to sort it. <span class="g-badge" id="sort-score">0/0</span></div>
       <div id="sort-round-label" style="font-size:.82rem;color:#7c3aed;font-weight:700;margin-bottom:10px"></div>
       <div id="sort-items" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px"></div>
       <div class="sort-cat" id="sort-buckets"></div>
-      <div id="sort-result" style="text-align:center;font-weight:700;font-size:1rem;display:none;margin-top:10px"></div>
+      <div id="sort-result"></div>
       <div style="display:flex;gap:10px;margin-top:14px">
-        <button class="g-btn" onclick="nextSortRound()">Next Round ▶</button>
-        <button class="g-btn sec" onclick="initSort()">↺ Restart</button>
+        <button class="g-btn" onclick="nextSortRound()">Next Round &#9654;</button>
+        <button class="g-btn sec" onclick="initSort()">&#8635; Restart</button>
       </div>
+    </div>
+  </div>
+
+  <!-- GAME 5: WHO WANTS TO BE A MILLIONAIRE -->
+  <div class="g-panel" id="game-millionaire">
+    <div class="g-card">
+      <div class="g-title">&#128176; Who Wants to Be a Millionaire?</div>
+      <div class="g-desc">Answer 15 questions of increasing difficulty using only your knowledge. No lifelines until you earn them!</div>
+      <div id="mil-progress-bar" style="margin-bottom:14px"></div>
+      <div id="mil-prize-ladder" style="font-size:.75rem;color:#92400e;margin-bottom:12px;text-align:center"></div>
+      <div id="mil-question-box"></div>
+      <div id="mil-lifelines" style="margin:10px 0"></div>
+      <div id="mil-feedback"></div>
+      <div id="mil-result" style="display:none"></div>
+      <button class="g-btn sec" id="mil-restart-btn" onclick="initMillionaire()" style="margin-top:14px;display:none">&#8635; Play Again</button>
+    </div>
+  </div>
+
+  <!-- GAME 6: JEOPARDY -->
+  <div class="g-panel" id="game-jeopardy">
+    <div class="g-card">
+      <div class="g-title">&#127358; Jeopardy!</div>
+      <div class="g-desc">Select a category and point value. Answer in the form of a question! <span class="g-badge" id="jeop-score">$0</span></div>
+      <div id="jeop-board"></div>
+      <div id="jeop-clue-modal" style="display:none" class="jeop-modal">
+        <div class="jeop-modal-inner">
+          <div id="jeop-clue-cat" class="jeop-clue-cat"></div>
+          <div id="jeop-clue-val" class="jeop-clue-val"></div>
+          <div id="jeop-clue-text" class="jeop-clue-text"></div>
+          <div id="jeop-answer-area"></div>
+          <div id="jeop-feedback"></div>
+          <button class="g-btn" id="jeop-next-btn" onclick="closeJeopardyClue()" style="display:none;margin-top:10px">Continue &#9654;</button>
+        </div>
+      </div>
+      <div id="jeop-final" style="display:none"></div>
+      <button class="g-btn sec" id="jeop-restart-btn" onclick="initJeopardy()" style="margin-top:14px;display:none">&#8635; New Game</button>
     </div>
   </div>
 </div>
-
-<!-- ====== NOTES TAB ====== -->
 <div class="tab-panel" id="tab-notes">
-  <div class="en-sec en20">📘 Chapter 20 — Detailed Professor Notes</div>
 
-  <div class="en-card en20-c">
-    <div class="en-title">🔬 Carcinogenesis — Full Lecture Notes</div>
-    <div class="en-body">
-      <div class="hl hl-y">Carcinogenesis takes an extended period of time. Initiated by genetic mutations influenced by gene variants and epigenetics. The two key categories: Inherited (~5%, germline, earlier in life, not guaranteed) and Acquired (~95%, somatic, environmental, later in life).</div>
-      <h4>Cell Regulators</h4>
-      <p><strong>Proto-oncogenes</strong> are "normal" genes that play a vital role in regulating cell function. They turn into an <strong>oncogene</strong> if mutated — leading to uncontrolled growth. Mostly in somatic cells.</p>
-      <p><strong>Tumor Suppressor Genes</strong> regulate rate of cell division and apoptosis. Mutations can occur in germline or somatic cells.</p>
-      <div class="en-2col">
-        <div class="en-box en-b"><strong>Epigenetics (Professor Definition):</strong> How your behaviors and environment can cause changes that affect the way your genes work. Reversible — do NOT change the DNA sequence bases, but change HOW your body reads a DNA sequence.</div>
-        <div class="en-box en-g"><strong>Polymorphism Example:</strong> Affecting estrogen levels → contributing to hormone-dependent cancers. Not a mutation but sets the stage.</div>
-      </div>
-      <h4>Direct vs. Indirect Carcinogens</h4>
-      <p><strong>Direct:</strong> Viruses (HPV → cervical, Hepatitis → liver) — cause modification of cell DNA directly.</p>
-      <p><strong>Indirect:</strong> Tobacco smoke, certain foods, industrial chemicals, alcohol — induce immunosuppression or chronic inflammation.</p>
-    </div>
+<!-- CH.20 CANCER NOTES -->
+<div class="en-sec en20">📘 Chapter 20 — Neoplasms & Cancer (Full Professor Notes)</div>
+
+<div class="en-card en20-c">
+  <div class="en-title">🔬 Cell Biology Foundations</div>
+  <div class="en-body">
+    <div class="hl hl-y">⭐ PROFESSOR FOCUS: Understand labile vs. permanent cells — labile cells are MOST prone to neoplasms.</div>
+    <p><strong>Proliferation</strong> — Generation of new daughter cells divided from progenitor (parent) cells. Normal and regulated in healthy tissue.</p>
+    <p><strong>Differentiation</strong> — The orderly process of cellular maturation to achieve a specific function. Well-differentiated = normal-looking cells. Poorly differentiated = anaplastic cancer cells.</p>
+    <p><strong>Stem Cells</strong> — Highly undifferentiated units that have the potential to divide into progenitor cells, then daughter cells, which can mature into more differentiated units with specific functions.</p>
+    <p><strong>Labile Cells</strong> — Rapidly dividing, easily altered cells such as epithelial cells and blood cells. HIGHLY PRONE to neoplasm development because they divide so frequently.</p>
+    <p><strong>Permanent Cells</strong> — Non-dividing cells such as cardiac myocytes, mature neurons, and lens of the eye. LESS PRONE to neoplasm development because they don't divide.</p>
+    <p><strong>Neoplasms</strong> — Cell clusters that ignore genetic controls on proliferation and differentiation. Uncontrolled and unregulated. Can be benign OR malignant.</p>
+    <p><strong>Cancer</strong> — Caused by altering genes that control cell reproduction, growth, differentiation, and/or death. Highly invasive and destructive neoplasms.</p>
   </div>
+</div>
 
-  <div class="en-card en20-c">
-    <div class="en-title">🎯 IPP Theory — Full Professor Notes</div>
-    <div class="en-body">
-      <p><strong>Initiating factors (procarcinogens)</strong> cause the first irreversible changes in cell DNA. This initial change does NOT create an active neoplasm.</p>
-      <p><strong>Exposure to promoters</strong> later causes further changes — less differentiation, increased mitosis. Dysplasia or anaplasia may be evident. Promoters include hormones and environmental chemicals. The prolonged time interval and multiple factors complicate research on risk factors.</p>
-      <p><strong>Continued exposure</strong> results in a malignant tumor capable of growth, local invasion, and eventually metastasis (cells detach from tumor and spread to distant sites).</p>
-      <div class="hl hl-b">Smoking progression: Predisposition → tobacco use (promoter) → cell changes begin [STOP HERE = cancer won't develop] → prolonged use → changes continue even after stopping → lung cancer develops.</div>
-    </div>
+<div class="en-card en20-c">
+  <div class="en-title">🧬 Carcinogenesis — Origin & Development</div>
+  <div class="en-body">
+    <div class="hl hl-r">🎯 EXAM GUARANTEED: Carcinogenesis begins with an IRREVERSIBLE CHANGE in cell DNA.</div>
+    <p><strong>Carcinogenesis</strong> — The origin and development of cancerous neoplasms. Influenced by genetic mutations, gene variants, and epigenetics.</p>
+    <p><strong>Inherited cancers</strong> — ~5% of all cancers. Germline mutation (present in every cell). Cancer occurs earlier in life. NOT guaranteed to get cancer just because you carry the mutation.</p>
+    <p><strong>Acquired cancers</strong> — ~95% of all cancers. Somatic mutation (in body cells, not reproductive). Occur later in life. Environmental influences are major contributors.</p>
+    <p><strong>Proto-oncogene</strong> — A "normal" gene that plays a vital role in regulating cell function (growth, division, death). Think of it as the accelerator pedal — works normally until mutated.</p>
+    <p><strong>Oncogene</strong> — A mutated proto-oncogene. When activated, it drives uncontrolled cell growth and division — the accelerator pedal is stuck down. Mostly in somatic cells.</p>
+    <p><strong>Tumor Suppressor Genes</strong> — Genes that regulate the rate at which cells divide and die (apoptosis). They are the BRAKE pedal. Mutations can occur in germline or somatic cells. Both copies must be inactivated (two-hit hypothesis) for cancer to develop.</p>
+    <p><strong>Epigenetics</strong> — Turning genes on and off WITHOUT changing the DNA sequence itself. REVERSIBLE changes to gene expression. Methods include: DNA methylation, histone modification, RNA interference. Can alter parts of genes that control cell growth.</p>
+    <p><strong>Polymorphisms</strong> — Inherited differences in genes that are NOT mutations but can still impact cell growth and division. Do not cause cancer directly but can set the stage for neoplasm development.</p>
+
+    <div class="en-sub-title">📐 Initiation–Promotion–Progression (IPP) Theory</div>
+    <p><strong>Initiation</strong> — Causes a mutation in a cell (event/exposure may be unknown). This is the FIRST irreversible DNA change. If initiation occurs alone (without promotion), cancer does NOT develop.</p>
+    <p><strong>Promotion</strong> — Expansion of the mutated cell's growth and reproduction. Oncogenes are activated here. This stage is REVERSIBLE — it depends on how long the promoter is present. If promotion occurs BEFORE initiation, cancer does NOT develop.</p>
+    <p><strong>Progression</strong> — Extension of promotion phase but growth is NO LONGER dependent on the promoting agent — independent growth. This is when the tumor becomes invasive and can metastasize.</p>
   </div>
+</div>
 
-  <div class="en-card en20-c">
-    <div class="en-title">💊 Cachexia & Manifestations — Full Notes</div>
-    <div class="en-body">
-      <p>Clinical manifestations of cancer can be local or systemic. <strong>Tissue necrosis and ulceration</strong> may lead to infection around the tumor — particularly in areas where normal flora can become opportunistic (e.g., oral cavity cancers).</p>
-      <p><strong>Cachexia</strong>: Results from early feelings of fullness + release of chemical mediators (tumor necrosis factor) → lipid energy unavailable to tissues → promotes tissue wasting. Increased TNF = lipid energy unavailable → profound weight loss even with some intake.</p>
-      <p><strong>Genomic assays</strong> may identify genetic mutations independent of heredity but only occurring with the disease itself — helps inform treatment decisions (personalized medicine).</p>
-    </div>
+<div class="en-card en20-c">
+  <div class="en-title">⚠️ Carcinogens — Cancer-Causing Agents</div>
+  <div class="en-body">
+    <p><strong>Carcinogen</strong> — Any agent that interferes with molecular pathways and can initiate or promote tumor formation.</p>
+    <p><strong>Direct carcinogens</strong> — Cause DIRECT modification of cell DNA. Interfere with cell function immediately WITHOUT needing metabolic activation. Examples: HPV (human papillomavirus), ionizing radiation, certain chemotherapy agents.</p>
+    <p><strong>Indirect carcinogens</strong> — Induce immunosuppression or chronic inflammation, OR act in conjunction with other carcinogens to induce DNA damage. Require metabolic conversion before damaging DNA. Examples: tobacco, alcohol, benzene, nitrosamines in processed foods.</p>
   </div>
+</div>
 
-  <div class="en-sec en21">🧬 Chapter 21 — Detailed Professor Notes</div>
-
-  <div class="en-card en21-c">
-    <div class="en-title">🔬 DNA/RNA — Full Notes</div>
-    <div class="en-body">
-      <p>Pieces of DNA make up genes. The four nitrogenous bases (adenine, guanine, cytosine, thymine) are foundations for DNA base pairs forming the genetic code. RNA delivers DNA's genetic message to the cytoplasm where proteins are made. Proteins enable cells to carry out cellular processes and influence traits (eye color, height).</p>
-      <div class="en-2col">
-        <div class="en-box en-b"><strong>mRNA:</strong> Reads the DNA nucleotide bases, transcribes them into complementary RNA bases (like sounding out a word letter by letter)</div>
-        <div class="en-box en-g"><strong>tRNA:</strong> Recognizes each codon, binds to it in the ribosome, transfers specific amino acid to growing chain (each syllable comes together to make a word)</div>
-      </div>
-      <p>Amino acids combine to form polypeptide chains (words → sentences → paragraphs → whole books = proteins).</p>
-    </div>
+<div class="en-card en20-c">
+  <div class="en-title">🔴 Benign vs. Malignant Neoplasms — MUST KNOW</div>
+  <div class="en-body">
+    <div class="hl hl-r">🎯 PROFESSOR SAID: Know ALL differences between benign and malignant, sarcoma, carcinoma, etc.</div>
+    <table class="en-table">
+      <tr><th>Feature</th><th>Benign</th><th>Malignant</th></tr>
+      <tr><td>Cell appearance</td><td>Well-differentiated — resembles normal tissue</td><td>Anaplastic — does NOT resemble tissue of origin</td></tr>
+      <tr><td>Encapsulation</td><td>✅ Encapsulated — contained in fibrous capsule</td><td>❌ NOT encapsulated — invades surrounding tissue</td></tr>
+      <tr><td>Growth rate</td><td>Slow growing</td><td>Rapid proliferation</td></tr>
+      <tr><td>Invasion</td><td>Does NOT invade surrounding tissue</td><td>Invasive and destructive</td></tr>
+      <tr><td>Metastasis</td><td>Does NOT metastasize</td><td>CAN metastasize via lymphatics or blood vessels</td></tr>
+      <tr><td>Harmless?</td><td>NOT always harmless — can impinge on structures, obstruct vital functions</td><td>Promotes ischemia and necrosis of tissue</td></tr>
+      <tr><td>Microscopic cells</td><td>Cells appear relatively normal</td><td>Cells appear abnormal/undifferentiated</td></tr>
+    </table>
   </div>
+</div>
 
-  <div class="en-card en21-c">
-    <div class="en-title">🧩 Inheritance Patterns — Full Notes</div>
-    <div class="en-body">
-      <p>Most hereditary disorders involve autosome genes (22 pairs vs 1 sex pair) — affect males and females equally.</p>
-      <p><strong>Autosomal Recessive probabilities:</strong> 2 carriers × 2 carriers = 25% affected, 50% carrier, 25% unaffected. Two affected parents = 100% affected.</p>
-      <p><strong>X-linked:</strong> Father with defective X → all daughters are carriers, sons unaffected (father passes Y to sons). Mother carrier → daughters 50% carrier, sons 50% affected.</p>
-      <p><strong>Mitochondrial:</strong> Sperm do NOT carry significant mitochondrial genes — males cannot pass mitochondrial diseases. Heteroplasmy = random distribution of mitochondria during embryonic cell division → variable manifestations.</p>
-      <p><strong>Chromosomal Alterations detected by karyotype</strong> — a picture of number and visual appearance of chromosomes, matched by centromere location and banding pattern.</p>
-    </div>
+<div class="en-card en20-c">
+  <div class="en-title">🏷️ Cancer Nomenclature — Tumor Naming</div>
+  <div class="en-body">
+    <div class="hl hl-y">⭐ PROFESSOR FOCUS: Know the naming system — tissue origin determines the name.</div>
+    <p>Identifying the tumor type based on the <strong>tissue of origin</strong> is the common naming method.</p>
+    <p><strong>Benign tumors</strong> — Use suffix <strong>"-oma"</strong> based on cell or tissue origin. Example: lipoma (fat), fibroma (fibrous tissue), adenoma (gland).</p>
+    <p><strong>Malignant tumors</strong> — Tissue prefix + "-oma" suffix REMAINS, but <strong>"carcin-"</strong> (epithelial) or <strong>"sarc-"</strong> (connective tissue) is added in the middle.</p>
+    <table class="en-table">
+      <tr><th>Tumor Type</th><th>Tissue of Origin</th><th>Examples</th></tr>
+      <tr><td><strong>Carcinoma</strong></td><td>Epithelial tissue (skin, glands, organ linings)</td><td>Adenocarcinoma (glands), squamous cell carcinoma (skin)</td></tr>
+      <tr><td><strong>Sarcoma</strong></td><td>Connective tissue (bone, muscle, fat, cartilage)</td><td>Osteosarcoma (bone), rhabdomyosarcoma (muscle), liposarcoma (fat)</td></tr>
+      <tr><td><strong>Adenocarcinoma</strong></td><td>Glandular epithelium</td><td>Lung, colon, breast, prostate cancers</td></tr>
+      <tr><td><strong>Leukemia</strong></td><td>Blood-forming tissue (bone marrow)</td><td>ALL, CML, AML</td></tr>
+      <tr><td><strong>Lymphoma</strong></td><td>Lymphoid tissue</td><td>Hodgkin's, Non-Hodgkin's lymphoma</td></tr>
+    </table>
   </div>
+</div>
 
-  <div class="en-sec en22">🤰 Chapter 22 — Detailed Professor Notes</div>
-
-  <div class="en-card en22-c">
-    <div class="en-title">🔄 Physiologic Changes — Full Notes</div>
-    <div class="en-body">
-      <p><strong>Hormonal:</strong> Estrogen and progesterone increase as placenta ramps up production — essential for uterine development, pregnancy maintenance, and breast preparation for lactation. Thyroid hyperplasia and ↑ thyroxine increases maternal metabolism.</p>
-      <p><strong>Reproductive:</strong> Estrogen → uterus hypertrophy (muscle hypertrophy + hyperplasia + ↑ fibrous tissue + ↑ blood vessels). Cervical mucus more abundant/thick → cervical plug protects uterine contents.</p>
-      <p><strong>Cardiovascular:</strong> Blood volume increases overall. HR may increase slightly. BP drops in 1st/2nd trimester, returns to normal in 3rd trimester. ↑ Blood volume → congestion + edema (nasal congestion, gingivitis, varicose veins).</p>
-      <p><strong>Musculoskeletal:</strong> Pelvic joints relax as hormones prepare pelvis for delivery → loss of stability → waddling gait. Increased abdominal weight → center of gravity shifts → lordosis.</p>
-    </div>
+<div class="en-card en20-c">
+  <div class="en-title">🤒 Manifestations of Cancer</div>
+  <div class="en-body">
+    <div class="hl hl-r">🎯 EXAM: CAUTION warning signs — ALL of these are warning signs together.</div>
+    <p><strong>CAUTION Acronym</strong> — Warning signs of cancer:
+      C = Changes in bowel or bladder habits
+      A = A sore that does not heal
+      U = Unusual bleeding or discharge
+      T = Thickening or lump in breast or elsewhere
+      I = Indigestion or difficulty swallowing
+      O = Obvious changes in a wart or mole
+      N = Nagging cough or hoarseness</p>
+    <p><strong>Asymptomatic</strong> — Many cancers are first noted on imaging before any symptoms appear.</p>
+    <p><strong>Lymphadenopathy</strong> — Hyperplasia of lymph nodes from lymphocyte activity fighting the tumor.</p>
+    <p><strong>Fever</strong> — Results from pyrogens released directly from cancer cells and cells in the inflammatory response.</p>
+    <p><strong>Anorexia</strong> — Results from inflammatory response caused by circulating chemical mediators.</p>
+    <div class="hl hl-r">🔑 CACHEXIA — SEVERE TISSUE WASTING (Professor said to absolutely know this!)</div>
+    <p><strong>Cachexia</strong> — Results from two mechanisms: (1) Early feelings of fullness with eating + (2) Release of chemical mediators including <strong>Tumor Necrosis Factor (TNF-α)</strong>. TNF-α makes lipid energy UNAVAILABLE to tissues and actively promotes tissue wasting. CRITICAL DISTINCTION: Unlike starvation, cachexia is NOT reversed by increasing caloric intake — the metabolism itself is poisoned by the tumor.</p>
+    <p><strong>Palliative Treatment</strong> — Intended to reduce manifestations and complications related to cancer and prolong life. There is NO curative intent. Goal is comfort and quality of life.</p>
   </div>
+</div>
 
-  <div class="en-card en22-c">
-    <div class="en-title">⚠️ Complications — Full Notes</div>
-    <div class="en-body">
-      <p><strong>Blood Clotting:</strong> Thromboembolism and PE are risks after delivery — especially with varicose veins or clotting tendencies. DIC is a serious complication of abruptio placentae and preeclampsia.</p>
-      <p><strong>Rh Incompatibility:</strong> Rh-negative mother + Rh-positive child. Consequences (hemolysis of fetal RBCs) avoided by treating mother at delivery to prevent immune response. RhoGAM given at 28 weeks and within 72 hours of delivery.</p>
-      <p><strong>Infections:</strong> Wound infections (episiotomy, C-section), STIs, UTIs, mastitis, yeast infections (from decreased vaginal pH + ↑ glycogen) — usually well managed with antibiotics.</p>
-      <p><strong>Preeclampsia definition:</strong> BP ≥140/90 + proteinuria after 20 weeks. Add headache, visual changes, epigastric pain. Magnesium sulfate prevents seizures. Delivery is the ONLY cure.</p>
-    </div>
+<!-- CH.21 GENETICS NOTES -->
+<div class="en-sec en21">🧬 Chapter 21 — Congenital & Genetic Disorders (Full Professor Notes)</div>
+
+<div class="en-card en21-c">
+  <div class="en-title">🔬 DNA vs. RNA — Foundations</div>
+  <div class="en-body">
+    <table class="en-table">
+      <tr><th>Feature</th><th>DNA</th><th>RNA</th></tr>
+      <tr><td>Sugar</td><td>Deoxyribose</td><td>Ribose</td></tr>
+      <tr><td>Location</td><td>Cell nucleus (mostly), mitochondria, cytoplasm</td><td>Cell nucleus, cytoplasm, endoplasmic reticulum</td></tr>
+      <tr><td>Function</td><td>Stores genetic information; forms genes & chromosomes</td><td>Delivers DNA's message to cytoplasm for protein making</td></tr>
+      <tr><td>Strands</td><td>Double helix</td><td>Single strand</td></tr>
+      <tr><td>Base pairs</td><td>A-T, C-G (Thymine)</td><td>A-U, C-G (Uracil, no Thymine)</td></tr>
+      <tr><td>Purines</td><td>Adenine (A), Guanine (G)</td><td>Adenine (A), Guanine (G)</td></tr>
+      <tr><td>Pyrimidines</td><td>Cytosine (C), Thymine (T)</td><td>Cytosine (C), Uracil (U)</td></tr>
+    </table>
+    <p><strong>mRNA</strong> — Messenger RNA: directs cells to make protein based on codon sequence. Carries genetic message from nucleus to ribosome.</p>
+    <p><strong>tRNA</strong> — Transfer RNA: recognizes and binds to specific amino acid → carries to ribosome.</p>
+    <p><strong>rRNA</strong> — Ribosomal RNA: part of the ribosome; performs translation of mRNA to protein.</p>
+    <p><strong>Amino Acids</strong> — Basic compounds produced by codons (3-nucleotide sequences). Combine to form the basis of all human proteins.</p>
   </div>
+</div>
+
+<div class="en-card en21-c">
+  <div class="en-title">🧬 Chromosomes & Cell Division</div>
+  <div class="en-body">
+    <p><strong>Chromosomes</strong> — Composed of double-stranded DNA containing threadlike sections of genes. 46 total (23 pairs) in humans. Located in cell nucleus. Reproduce their physical and chemical structures, passing on genetic information during cell division.</p>
+    <p><strong>23 pairs total:</strong> 22 pairs = autosomes (non-sex chromosomes) + 1 pair = sex chromosomes (XX = female, XY = male)</p>
+    <p><strong>Genotype</strong> — The combination of ova and sperm at fertilization that determines the genetic makeup of an individual. The actual DNA code.</p>
+    <p><strong>Phenotype</strong> — Traits that are apparent or OBSERVABLE (think PHYSICAL traits). Examples: blood type, eye color, hair color. Same genotype can produce different phenotypes depending on environment.</p>
+    <p><strong>Alleles</strong> — Two or more different genes occupying the same location on a specific chromosome. Responsible for determining offspring traits.</p>
+    <p><strong>Homozygous</strong> — Identical alleles on each chromosome (AA or aa).</p>
+    <p><strong>Heterozygous</strong> — Two DIFFERENT alleles on each chromosome (Aa) — one copy for that gene.</p>
+
+    <div class="en-sub-title">📊 Mitosis vs. Meiosis</div>
+    <table class="en-table">
+      <tr><th>Feature</th><th>Mitosis</th><th>Meiosis</th></tr>
+      <tr><td>Location</td><td>Nuclei of somatic (body) cells</td><td>Reproductive cells / gonads</td></tr>
+      <tr><td>Result</td><td>2 daughter cells — same chromosome number</td><td>4 gamete cells — different genetic makeup</td></tr>
+      <tr><td>Chromosome number</td><td>Diploid = 23 PAIRS (46 total) in each cell</td><td>Haploid = 23 SINGLE chromosomes in each cell</td></tr>
+      <tr><td>Purpose</td><td>Growth, repair, replacement</td><td>Sexual reproduction (eggs and sperm)</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="en-card en21-c">
+  <div class="en-title">🧩 Chromosomal Mutations</div>
+  <div class="en-body">
+    <p><strong>Deletion</strong> — A DNA segment is LOST entirely. All genes on that segment are missing.</p>
+    <p><strong>Duplication</strong> — A DNA segment is copied and repeated. Increases gene dosage.</p>
+    <p><strong>Inversion</strong> — A DNA segment breaks off and reattaches BACKWARDS on the SAME chromosome.</p>
+    <p><strong>Insertion</strong> — Extra nucleotides are added. Causes a frameshift of all downstream codons.</p>
+    <p><strong>Translocation</strong> — A large segment of DNA breaks from one chromosome and reattaches to a DIFFERENT chromosome. A balanced translocation carrier may be unaffected but offspring can receive unbalanced chromosomes with missing or extra genes.</p>
+    <p><strong>Nondisjunction</strong> — Chromosomes FAIL to separate during meiosis. Results in gametes with too many or too few chromosomes (aneuploidy).</p>
+    <p><strong>Monosomy</strong> — One copy of a chromosome instead of two. Involves gametes (otherwise cell dies). Example: Turner syndrome (45,X).</p>
+    <p><strong>Trisomy</strong> — Three copies of a chromosome. Depends on which chromosome (large chromosome → cell death). Example: Trisomy 21 = Down syndrome.</p>
+  </div>
+</div>
+
+<div class="en-card en21-c">
+  <div class="en-title">📊 Inheritance Patterns</div>
+  <div class="en-body">
+    <div class="hl hl-y">⭐ Based on Gregor Mendel's predictable patterns of inheritance.</div>
+    <p><strong>Autosomal Dominant</strong> — Mutation on 1 dominant allele → expression of trait. ONE copy is enough. Each child of affected parent has 50% risk. Example: Huntington's disease, Marfan syndrome.</p>
+    <p><strong>Autosomal Recessive</strong> — Mutation on 1 recessive allele → CARRIER status (no disease). Mutation on BOTH recessive alleles → expression of disease. Example: Cystic fibrosis (CFTR mutation), PKU, sickle cell disease. Two carriers → 25% chance affected child.</p>
+    <p><strong>X-linked Dominant vs. Recessive</strong> — Mostly X-linked, therefore MEN are impacted more (only one X chromosome — no backup copy). Carrier females (Xx) have 50% chance of affected sons.</p>
+    <p><strong>Mitochondrial Gene Disorders</strong> — Malfunctioning mitochondria. MATRILINEAL inheritance (female gametes contain more mitochondria). Variable manifestations related to heteroplasmy.</p>
+    <p><strong>Polygenic/Multifactorial Disorders</strong> — Multiple alleles at different loci affecting phenotype. Less predictable. Genes + environment required. Examples: cleft lip/palate, clubfoot, neural tube defects (birth); hypertension, CAD, diabetes, many cancers (later in life).</p>
+  </div>
+</div>
+
+<div class="en-card en21-c">
+  <div class="en-title">🔬 Major Chromosomal Syndromes</div>
+  <div class="en-body">
+    <div class="hl hl-r">🎯 EXAM: Trisomy 21, Turner, Klinefelter — know them ALL.</div>
+    <table class="en-table">
+      <tr><th>Syndrome</th><th>Karyotype</th><th>Key Features</th></tr>
+      <tr><td><strong>Down syndrome</strong></td><td>Trisomy 21</td><td>Intellectual disability, flat facial profile, epicanthal folds, hypotonia, congenital heart defects (40-50%), early Alzheimer's risk. Most common chromosomal disorder.</td></tr>
+      <tr><td><strong>Turner syndrome</strong></td><td>45,X (monosomy X)</td><td>Female. Short stature, webbed neck, primary amenorrhea, infertility, cardiovascular defects (coarctation of aorta). IQ usually normal.</td></tr>
+      <tr><td><strong>Klinefelter syndrome</strong></td><td>47,XXY</td><td>Male. Small testes, azoospermia (no sperm), NO secondary sex characteristics, tall stature, possible gynecomastia, infertile.</td></tr>
+    </table>
+    <p><strong>Amniocentesis</strong> — Prenatal diagnosis at weeks 15-20. Extraction of amniotic fluid to examine fetal cells. Detects: ALL chromosomal abnormalities + metabolic disorders + certain structural abnormalities.</p>
+    <p><strong>CVS (Chorionic Villus Sampling)</strong> — Earlier prenatal testing at 10-13 weeks. Samples placental cells. Same detection capabilities as amniocentesis but performed earlier.</p>
+    <p><strong>Karyotype</strong> — A visual representation of an individual's chromosomes, arranged in pairs by size and shape. Used to identify chromosomal abnormalities.</p>
+  </div>
+</div>
+
+<div class="en-card en21-c">
+  <div class="en-title">🦠 Congenital Disorders & TORCH</div>
+  <div class="en-body">
+    <p><strong>Congenital disorders</strong> — Diseases or physical abnormalities present at birth. Gene-environment interactions from fertilization until birth.</p>
+    <p><strong>Risk is GREATEST during embryologic period</strong> — Weeks 3 through 8 of gestation (organogenesis — organ formation).</p>
+    <p><strong>TORCH infections</strong> — Pathogens that cross the placenta and cause severe fetal damage:
+      <strong>T</strong> = Toxoplasmosis
+      <strong>O</strong> = Other (syphilis, HIV, varicella)
+      <strong>R</strong> = Rubella
+      <strong>C</strong> = Cytomegalovirus (CMV)
+      <strong>H</strong> = Herpes simplex virus</p>
+    <p><strong>Other teratogens</strong> — Drugs, alcohol, environmental chemicals, ionizing radiation, maternal nutritional deficiencies.</p>
+    <p><strong>Folic acid</strong> — PROTECTIVE against neural tube defects (spina bifida, anencephaly). It is the EXCEPTION — it PREVENTS developmental disorders, it does NOT cause them.</p>
+  </div>
+</div>
+
+<!-- CH.22 PREGNANCY NOTES -->
+<div class="en-sec en22">🤱 Chapter 22 — Complications of Pregnancy (Full Professor Notes)</div>
+
+<div class="en-card en22-c">
+  <div class="en-title">🌸 Physiologic Changes of Normal Pregnancy</div>
+  <div class="en-body">
+    <p><strong>Gravidity</strong> — Total number of pregnancies. Primigravida = pregnant for the first time. Multigravida = more than one pregnancy.</p>
+    <p><strong>Parity</strong> — Number of pregnancies in which the fetus reached viability (~22 weeks gestation). Multipara = completed two or more viable pregnancies.</p>
+    <p><strong>Hormonal Changes</strong> — Increased estrogen and progesterone. hCG maintains corpus luteum for first 8-10 weeks. Progesterone causes vasodilation (↓ BP), relaxes smooth muscle (GI slowing), maintains uterine lining.</p>
+    <p><strong>Chadwick Sign</strong> — Typical deeper purplish color of the vaginal mucosal lining — due to increased vascularity.</p>
+    <p><strong>Goodell Sign</strong> — Increased vascularity of cervix and vagina → softening of cervical tissues.</p>
+    <p><strong>Uterine hypertrophy</strong> — Uterus grows dramatically to accommodate the fetus.</p>
+    <p><strong>Cardiovascular changes</strong> — Blood volume increases 40-50%. Heart rate increases. Blood pressure may decrease slightly (vasodilation from progesterone). GFR increases ~50%.</p>
+    <p><strong>GI changes</strong> — Nausea, vomiting, constipation, GERD/heartburn from uterus compressing stomach.</p>
+    <p><strong>Musculoskeletal</strong> — Waddling gait, lordosis (exaggerated lumbar curve).</p>
+  </div>
+</div>
+
+<div class="en-card en22-c">
+  <div class="en-title">⚠️ Complications of Pregnancy</div>
+  <div class="en-body">
+    <div class="hl hl-r">🎯 EXAM FOCUS: Know the distinction between placenta previa vs. abruptio placentae.</div>
+    <p><strong>Ectopic Pregnancy</strong> (tubal pregnancy) — Fertilized ovum implants OUTSIDE the uterus. 95% in fallopian tube. Presents with unilateral pain, possible rupture and hemorrhage. Emergency.</p>
+    <p><strong>Preeclampsia</strong> — BP ≥140/90 after 20 weeks WITH proteinuria ± headache, visual changes, RUQ pain. The triad: hypertension + proteinuria + edema.</p>
+    <p><strong>Eclampsia</strong> — Preeclampsia PLUS grand mal seizures. Medical emergency. Magnesium sulfate prevents/stops seizures.</p>
+    <p><strong>HELLP Syndrome</strong> — Hemolysis + Elevated Liver enzymes + Low Platelets. Severe preeclampsia variant. Life-threatening.</p>
+    <p><strong>Gestational Diabetes Mellitus (GDM)</strong> — Increased glucose intolerance during pregnancy. Develops in 2-5% of women. Results in fetal hyperinsulinism → MACROSOMIA (high birth weight). Risk of delivery complications.</p>
+    <p><strong>Placenta Previa</strong> — Placenta implanted over or near the cervical os. As uterus expands near end of pregnancy, placenta is torn → PAINLESS BRIGHT RED bleeding. Requires C-section. NO vaginal examination.</p>
+    <p><strong>Abruptio Placentae</strong> — PREMATURE SEPARATION of placenta from uterine wall. Bleeding may be vaginal (dark red) OR concealed. Abdominal pain is common. Board-like rigid uterus. Major risk of DIC. Occurs more commonly in last trimester.</p>
+    <p><strong>DIC in Pregnancy</strong> — Disseminated Intravascular Coagulation. Indicated by LOW serum clotting factors. Caused by thromboplastin release from abruptio placentae → massive clotting → factors consumed → uncontrolled bleeding.</p>
+    <p><strong>Rh Incompatibility</strong> — Rh-negative mother, Rh-positive fetus. First pregnancy: sensitization (antibodies form). SECOND+ pregnancies: antibodies cross placenta → attack fetal RBCs → hemolytic disease of the newborn (erythroblastosis fetalis). Prevention: RhoGAM injection.</p>
+    <p><strong>Hyperemesis Gravidarum</strong> — Severe uncontrollable vomiting (more than normal morning sickness). May cause dehydration, electrolyte imbalances, and nutritional deficiency during critical fetal development.</p>
+    <p><strong>Edema in Pregnancy</strong> — Develops because of increased blood volume (40-50% increase) → ↑ hydrostatic pressure in capillaries → fluid pushed into tissues. Normal physiological edema.</p>
+    <p><strong>Neonatal Blood Tests</strong> — Performed on neonates shortly after birth to IDENTIFY metabolic and genetic disorders requiring IMMEDIATE treatment (PKU, hypothyroidism, galactosemia). Prevents irreversible damage.</p>
+  </div>
+</div>
+
+<!-- CH.23 AGING NOTES -->
+<div class="en-sec en23">🧒 Chapter 23 — Development & Aging (Full Professor Notes)</div>
+
+<div class="en-card en23-c">
+  <div class="en-title">📈 Adolescent Development</div>
+  <div class="en-body">
+    <div class="hl hl-y">⭐ Biological changes of adolescence are stimulated primarily by the PITUITARY GLAND (via gonadotropins).</div>
+    <p><strong>Adolescence</strong> — Begins around age 10-12 years. Continues until physical growth is completed.</p>
+    <p><strong>Puberty</strong> — The period when adolescents reach sexual maturity and become capable of reproduction.</p>
+    <p><strong>Female puberty sequence</strong> — Pubic/axillary hair → breast development → growth spurt (EARLY in puberty, before menarche) → menarche (first period).</p>
+    <p><strong>Male puberty sequence</strong> — Pubic/axillary hair → testicular enlargement → voice deepening → growth spurt (LATER in puberty, Tanner stage 4).</p>
+    <p><strong>Factors impacting growth:</strong> Secretion of gonadotropins & sex hormones → musculoskeletal changes + sexual maturation. Linear growth (limb lengthening), widening pelvis (females), broadening shoulders/chest (males), muscle mass development.</p>
+    <p><strong>Nutrition needs</strong> — Higher demands but often erratic eating patterns. Vitamin D and calcium critically important for bone development.</p>
+    <p><strong>Genetic factors</strong> — Polygenic traits (genes + environment). Activity levels affect cardiovascular and pulmonary function.</p>
+  </div>
+</div>
+
+<div class="en-card en23-c">
+  <div class="en-title">⚠️ Complications of Adolescence</div>
+  <div class="en-body">
+    <div class="hl hl-r">🎯 EXAM: Obesity in adolescents = ALL of these (physical, metabolic, psychological).</div>
+    <p><strong>Obesity</strong> — Ability to burn fat during exercise DECLINES after puberty. Impacts: self-image, DM type 2 risk, cardiovascular disease, joint pain/damage. BMI at or above the 85th percentile = overweight; 95th percentile = obese.</p>
+    <p><strong>Metabolic Syndrome</strong> — Presence of significant abdominal fat mass + changes in glucose metabolism + changes in lipoprotein metabolism. May also include changes in cardiac output, hypertension, or type 2 diabetes. THREE key factors: BMI ≥85th percentile + glucose/DM2 changes + hypertension.</p>
+    <p><strong>Insulin Resistance</strong> — Body's cells become resistant to insulin effects → metabolic changes. Precursor to type 2 diabetes. Common in adolescent obesity.</p>
+    <p><strong>Musculoskeletal complications</strong> — Postural problems (kyphosis = hunchback, lordosis = swayback), scoliosis (structural = fixed vs. functional = correctable), JRA (juvenile rheumatoid arthritis — autoimmune, affects large joints: knees, wrists, elbows).</p>
+    <p><strong>Anorexia Nervosa</strong> — Extreme weight loss from self-starvation in the absence of another disease. Features: body image distortions, ignoring hunger, weight loss. INCREASED cortisol from stress of malnutrition. Risk of hypokalemia affecting cardiac function.</p>
+    <p><strong>Bulimia Nervosa</strong> — Binge eating (especially carbohydrates) followed by purging. Can maintain normal weight. Risk of HYPOKALEMIA → cardiac arrhythmia.</p>
+    <p><strong>Alopecia</strong> — Hair loss. Can be partial or complete. Caused by aging, hormonal changes, autoimmune conditions, chemotherapy.</p>
+    <p><strong>Acne</strong> — Skin complication of adolescence from increased sebaceous gland activity.</p>
+    <p><strong>Mononucleosis</strong> — Infectious complication common in adolescence (Epstein-Barr virus).</p>
+    <p><strong>Klinefelter syndrome (XXY)</strong> — Small testes, no sperm, no secondary sex characteristics. May become obvious at puberty.</p>
+    <p><strong>Turner syndrome (45,X)</strong> — Retarded growth, primary amenorrhea. May become obvious at puberty when normal development doesn't occur.</p>
+    <p><strong>Testicular tumors</strong> — Peak incidence in adolescence/young adulthood.</p>
+  </div>
+</div>
+
+<div class="en-card en23-c">
+  <div class="en-title">🕐 Theories of Aging</div>
+  <div class="en-body">
+    <p><strong>Aging</strong> — Gradual deterioration of a mature organism resulting from time-dependent, irreversible changes in structure. Begins after birth.</p>
+    <p><strong>Senescence</strong> — Period of life from old age to death. Cell destruction outpaces replication. Often used interchangeably with aging. Refers to postmaturational processes that lead to diminished homeostasis and increased vulnerability.</p>
+    <p><strong>Life Expectancy</strong> — The age at which 50% of a given population is expected to survive.</p>
+    <p><strong>Life Span</strong> — The MAXIMUM length of time a person can live.</p>
+
+    <div class="en-sub-title">📚 Theories on Aging</div>
+    <p><strong>1. Apoptosis Theory</strong> — Programmed cell death is built in. Cells are genetically programmed to die after a certain number of divisions.</p>
+    <p><strong>2. Wear and Tear Theory</strong> — Cumulative cellular damage from use over time, similar to how machines wear out. Free radicals and oxidative stress contribute.</p>
+    <p><strong>3. Random Errors Theory</strong> — Errors occur during cell division that accumulate over time, gradually impairing cell function.</p>
+    <p><strong>4. Telomere Shortening Theory</strong> — Telomeres (protective caps at chromosome ends) shorten with EACH cell division. When critically short, cells enter senescence (permanently stop dividing) or undergo apoptosis. Telomerase (active in stem cells and cancer cells) can rebuild telomeres. This is the cellular "biological clock."</p>
+    <p><strong>5. Latent Viruses / Autoimmune Reactions</strong> — Latent viruses reactivate with aging as immune function declines. Autoimmune reactions increase as the immune system loses ability to distinguish self from non-self.</p>
+  </div>
+</div>
+
+<div class="en-card en23-c">
+  <div class="en-title">🏥 Common Changes in Aging — By System</div>
+  <div class="en-body">
+    <div class="hl hl-r">🎯 EXAM: Osteoporosis predisposing factors — decreased PTH is NOT one of them.</div>
+    <table class="en-table">
+      <tr><th>System</th><th>Aging Change</th><th>Clinical Significance</th></tr>
+      <tr><td><strong>Skin</strong></td><td>Loss of elasticity → sagging/wrinkling; delayed wound healing</td><td>Increased infection risk, skin breakdown, pressure ulcers</td></tr>
+      <tr><td><strong>Skeletal</strong></td><td>Bone mass decreases; joints less mobile</td><td>Osteoporosis, fracture risk, osteoarthritis</td></tr>
+      <tr><td><strong>Muscles</strong></td><td>Sarcopenia — reduced mass → decreased strength</td><td>Fall risk, functional decline, ADL impairment</td></tr>
+      <tr><td><strong>Cardiovascular</strong></td><td>Reduced peripheral blood flow; vessels lose elasticity; arteriosclerosis + atherosclerosis</td><td>Hypertension, decreased perfusion, MI risk</td></tr>
+      <tr><td><strong>Nervous</strong></td><td>Memory, intellectual capabilities, and coordination decline</td><td>Alzheimer's risk, fall risk, dementia</td></tr>
+      <tr><td><strong>Immune</strong></td><td>Reduced responsiveness to antigens</td><td>↑ Infection risk AND ↑ cancer risk</td></tr>
+      <tr><td><strong>Endocrine</strong></td><td>Select hormone production diminishes; sensitivity to hormones declines</td><td>Hypothyroidism, DM type 2, decreased GH/IGF-1</td></tr>
+      <tr><td><strong>Respiratory</strong></td><td>Decreased lung elasticity → decreased function</td><td>Reduced exercise tolerance, increased pneumonia risk</td></tr>
+      <tr><td><strong>Digestive</strong></td><td>Decreased peristalsis and smooth muscle tone</td><td>Constipation, GERD, malabsorption</td></tr>
+      <tr><td><strong>Urinary</strong></td><td>Decreased GFR + reduced peristalsis + reduced smooth muscle tone</td><td>Drug toxicity risk with multiple medications — excretion impaired</td></tr>
+      <tr><td><strong>Reproductive</strong></td><td>Females: menopause (↓ estrogen); Males & females: decreased fertility</td><td>Osteoporosis risk post-menopause; sexual dysfunction</td></tr>
+    </table>
+
+    <div class="en-sub-title">🦴 Osteoporosis — Predisposing Factors</div>
+    <div class="hl hl-r">⚠️ EXAM: PTH DECREASED is NOT a risk factor. Low PTH = less bone resorption = protective.</div>
+    <p><strong>Risk factors FOR osteoporosis:</strong> Decreased estrogen (post-menopause — #1 in women), prolonged corticosteroid use, sedentary lifestyle, low calcium and vitamin D intake, smoking, excessive alcohol, small body frame, female sex, advancing age, family history.</p>
+    <p><strong>PTH clarification:</strong> Parathyroid hormone INCREASES bone resorption (breaks down bone to release calcium). Therefore DECREASED PTH = LESS resorption. It is NOT a predisposing factor for osteoporosis.</p>
+    <p><strong>Treatment/Prevention:</strong> Maintaining walking and weight-bearing exercise, adequate calcium/vitamin D, bisphosphonates (e.g., alendronate), avoiding excessive glucocorticoids.</p>
+
+    <div class="en-sub-title">&#127358; Professor Quiz Questions From Slides</div>
+    <p>• Hypokalemia is a concern in anorexia nervosa due to effect on CARDIAC FUNCTION — TRUE</p>
+    <p>• Immune function works more effectively past age 60 — FALSE (declines with aging)</p>
+    <p>• Osteoporosis in menopause increases risk of INJURY RELATED TO FALLS</p>
+    <p>• Aging kidneys impair drug excretion → risk of DRUG TOXICITY with multiple medications</p>
+    <p>• Anorexia nervosa symptom NOT characteristic: HOT FLASHES (not a feature)</p>
+    <p>• Senescence = period when CELL DEATH EXCEEDS cell replacement</p>
+    <p>• In anorexia nervosa, CORTISOL is increased from stress of malnutrition</p>
+    <p>• To reduce osteoporosis progression: MAINTAIN WALKING AND WEIGHT-BEARING EXERCISE</p>
+    <p>• Biological changes of adolescence stimulated primarily by: PITUITARY GLAND</p>
+  </div>
+</div>
+
 </div>
 <!-- /container -->
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
@@ -1099,7 +1601,7 @@ function switchTab(id){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
-  const tabs=['overview','ch20','ch21','ch22','quiz','games','notes','vault'];
+  const tabs=['overview','ch20','ch21','ch22','ch23','quiz','games','notes','vault'];
   const idx=tabs.indexOf(id);
   if(idx>=0) document.querySelectorAll('.tab-btn')[idx].classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
@@ -1115,69 +1617,108 @@ function switchGame(id){
   document.querySelectorAll('.g-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.g-tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('game-'+id).classList.add('active');
-  const games=['match','fib','scenario','sort'];
+  const games=['match','fib','scenario','sort','millionaire','jeopardy'];
   const idx=games.indexOf(id);
   if(idx>=0) document.querySelectorAll('.g-tab-btn')[idx].classList.add('active');
+  if(id==='millionaire' && !milActive) initMillionaire();
+  if(id==='jeopardy') initJeopardy();
 }
 
 // ======= QUIZ QUESTIONS =======
 const questions=[
-// ===== CHAPTER 20 - CANCER (17 questions) =====
-{ch:"Ch.20",q:"What is the cause of cachexia in a patient with advanced cancer?",opts:["Failure of the kidneys to excrete sufficient metabolic waste","Increased catabolism of fats and proteins driven by TNF-alpha","Loss of appetite due to chemotherapy side effects","Excess insulin production by the pancreas"],correct:1,exp:"Cachexia is caused by TNF-alpha driving increased catabolism of fats and proteins. Unlike starvation, increasing caloric intake does NOT reverse it.",hint:"Think: TNF-alpha drives the breakdown — it is metabolic, not just loss of appetite."},
-{ch:"Ch.20",q:"Catabolic effects of uncontrolled cancer include",opts:["increased erythrocyte production.","moon face and buffalo hump.","profound weight loss and muscle wasting.","hypertension and tachycardia."],correct:2,exp:"Cancer catabolism causes profound wasting — muscle breakdown, fat loss, weight loss. Moon face/buffalo hump are Cushing's effects. Erythrocyte increase is not a catabolic effect.",hint:"Catabolic = breakdown. What breaks down in cancer wasting?"},
-{ch:"Ch.20",q:"The pathophysiology of carcinogenesis includes which correct sequence?",opts:["Promotion → Initiation → Progression","Initiation → Promotion → Progression","Progression → Initiation → Promotion","Initiation → Progression → Promotion"],correct:1,exp:"IPP: Initiation (irreversible DNA mutation) → Promotion (oncogene activation, reversible) → Progression (malignant transformation, irreversible).",hint:"I-P-P order: Initiation comes first, always."},
-{ch:"Ch.20",q:"What is the cause of anaplasia in malignant tumors?",opts:["Increased differentiation of cells into specialized tissue","Loss of cell differentiation, reverting to a primitive undifferentiated state","Excessive apoptosis triggered by tumor suppressor genes","Overproduction of growth hormones by the pituitary"],correct:1,exp:"Anaplasia = loss of differentiation. Cancer cells revert to primitive forms — they no longer look or act like the tissue they came from.",hint:"Ana- means backward. Anaplasia = cells go backward to primitive state."},
-{ch:"Ch.20",q:"In cases of carcinogenesis, what does the pathophysiology of direct carcinogens include?",opts:["Requiring metabolic activation before damaging cellular DNA","Directly modifying cellular DNA without requiring activation","Inducing chronic inflammation as the primary mechanism","Suppressing the immune system to allow tumor growth"],correct:1,exp:"Direct carcinogens (radiation, HPV, hepatitis viruses) act directly on DNA without needing metabolic conversion. Indirect carcinogens (tobacco, alcohol) must be activated first.",hint:"Direct = acts immediately on DNA. Indirect = needs activation first."},
-{ch:"Ch.20",q:"How may a benign tumor differ from a malignant tumor?",opts:["Benign tumors are poorly differentiated; malignant tumors are well-differentiated","Benign tumors are well-differentiated and encapsulated; malignant tumors invade and metastasize","Benign tumors grow more rapidly than malignant tumors","There is no significant pathological difference between the two"],correct:1,exp:"Benign = well-differentiated, encapsulated, does NOT metastasize. Malignant = poorly differentiated, invasive, can spread to distant sites.",hint:"Benign = stays put in a capsule. Malignant = invades and spreads."},
-{ch:"Ch.20",q:"Oral candidiasis is considered to",opts:["be an opportunistic fungal infection of the mouth.","cause white patches in the mucosa that cannot be scraped off.","cause painful ulcerations in the mucosa and tongue.","be a common bacterial infection in infants and young children."],correct:0,exp:"Oral candidiasis (thrush) is an opportunistic fungal infection. It causes white patches that CAN be scraped off. It is fungal, not bacterial.",hint:"Candida = fungus. Opportunistic = occurs when immunity is low."},
-{ch:"Ch.20",q:"When acidosis becomes decompensated in a patient with advanced cancer, a key indicator is",opts:["serum pH dropping below 7.35.","serum buffer ratio of 20 bicarbonate ions to 1 carbonic acid.","increased bicarbonate ion concentration.","increased PCO₂ with normal pH."],correct:0,exp:"Decompensated acidosis = pH falls below 7.35. The buffer systems can no longer maintain normal pH. Normal pH is 7.35–7.45.",hint:"Decompensated = buffers have failed. pH drops below 7.35."},
-{ch:"Ch.20",q:"What is the cause of tumor lysis syndrome in cancer patients?",opts:["Failure of the liver to metabolize chemotherapy drugs","Rapid destruction of cancer cells releasing intracellular contents into the bloodstream","Obstruction of the urinary tract by the growing tumor","Excessive production of cytokines by the immune system"],correct:1,exp:"Tumor lysis syndrome occurs when massive cancer cell death releases K+, phosphate, uric acid into blood → hyperkalemia, hyperphosphatemia, hyperuricemia → organ damage.",hint:"Lysis = cell death/rupture → contents spill into bloodstream."},
-{ch:"Ch.20",q:"Inherited cancers differ from acquired cancers in that inherited cancers",opts:["account for approximately 95% of all cancers.","result from germline mutations present in all body cells and typically appear earlier in life.","only affect reproductive organs and glands.","are always more aggressive than acquired cancers."],correct:1,exp:"Inherited cancers (~5%) come from germline mutations present in ALL cells. They appear earlier because the 'first hit' mutation is already present at birth.",hint:"Germline = in every cell since conception = earlier onset."},
-{ch:"Ch.20",q:"Which statement best describes the role of tumor suppressor genes?",opts:["They promote cell division when activated by growth factors","When mutated, they remove the cell's brakes on division, allowing uncontrolled growth","They convert proto-oncogenes into oncogenes directly","They are only active in cancerous cells"],correct:1,exp:"Tumor suppressor genes are the cell's BRAKES. When mutated, brakes fail → uncontrolled division. Examples: p53, BRCA1/2.",hint:"Tumor suppressor = BRAKE. Mutated brake = car with no stopping."},
-{ch:"Ch.20",q:"Choose the significant change in cellular behavior expected with epigenetic modification in cancer:",opts:["Permanent alteration of the DNA nucleotide sequence","Reversible changes in gene expression without altering the DNA sequence","Deletion of an entire chromosome segment","Direct conversion of a proto-oncogene to an oncogene"],correct:1,exp:"Epigenetic changes alter HOW genes are read without changing the actual DNA sequence. They are REVERSIBLE — unlike mutations.",hint:"Epigenetic = changes gene reading, NOT the DNA code itself. Reversible."},
-{ch:"Ch.20",q:"Cancer nomenclature indicates that a malignant tumor arising from epithelial tissue is called",opts:["a sarcoma.","a carcinoma.","a lymphoma.","an adenoma."],correct:1,exp:"Carcinoma = malignant tumor from epithelial tissue. Sarcoma = malignant from connective tissue. Adenoma = BENIGN glandular tumor. Lymphoma = malignant lymphoid (exception to -oma rule).",hint:"Carci- = crab/cancer + -oma from epithelium = carcinoma."},
-{ch:"Ch.20",q:"What is the cause of paraneoplastic syndrome in cancer patients?",opts:["Direct invasion of the tumor into the nervous system","Hormones or bioactive substances secreted by the tumor affecting distant organs","Metastasis of cancer cells to the brain","Side effects of chemotherapy on the endocrine system"],correct:1,exp:"Paraneoplastic syndrome = tumor secretes substances (hormones, antibodies) that affect distant organs NOT directly invaded by cancer. Example: small cell lung cancer secreting ADH.",hint:"Para- = beside/beyond. Tumor affects distant organs via secreted substances."},
-{ch:"Ch.20",q:"Palliative treatment of cancer is considered to",opts:["cure the underlying malignancy through targeted therapy.","focus on comfort and quality of life without curative intent.","extend survival by more than five years in most patients.","only be appropriate in the final days of life."],correct:1,exp:"Palliative = COMFORT ONLY. It is NOT curative. It can be given at ANY stage of illness, not just end of life. Goal: reduce suffering.",hint:"Palliative = palliate (soothe/comfort). Not cure."},
-{ch:"Ch.20",q:"In cases of cancer-related anemia, what does the pathophysiology include?",opts:["Increased erythropoietin production stimulating red blood cell formation","Suppression of erythropoiesis by inflammatory cytokines and iron sequestration","Destruction of red blood cells by the immune system","Increased platelet production competing with red blood cell precursors"],correct:1,exp:"Cancer-related anemia = inflammatory cytokines (IL-6, TNF) suppress bone marrow erythropoiesis AND sequester iron, making it unavailable for RBC production.",hint:"Inflammation suppresses RBC production AND traps iron so it can't be used."},
-{ch:"Ch.20",q:"Why does hypercalcemia occur in patients with bone metastases?",opts:["The kidneys fail to excrete sufficient calcium due to renal damage","Osteoclast activation by tumor factors releases calcium from bone into the bloodstream","Excess dietary calcium intake accelerated by metabolic changes","The parathyroid gland is directly stimulated by tumor cells"],correct:1,exp:"Bone metastases activate osteoclasts → bone resorption → calcium released into bloodstream → hypercalcemia. This can cause confusion, kidney stones, cardiac arrhythmias.",hint:"Osteoclasts break down bone → calcium spills into blood."},
+// ===== GUARANTEED EXAM QUESTIONS (23) =====
+// Ch.22 - Pregnancy
+{ch:"Ch.22",q:"Which of the following is NOT a common effect of the expanding uterus during pregnancy?",opts:["Urinary frequency","Constipation","Low blood pressure","Heartburn"],correct:2,exp:"The expanding uterus compresses the bladder (urinary frequency), intestines (constipation), and stomach (heartburn). It does NOT directly cause low blood pressure — that is caused by hormonal changes (progesterone vasodilation) or supine positioning compressing the vena cava.",hint:"Think about what the uterus physically pushes on vs. what it doesn't cause directly."},
+// Ch.23 - Aging
+{ch:"Ch.23",q:"What is the major change in the cardiovascular system associated with aging?",opts:["Increased cardiac output","Vascular degeneration with arteriosclerosis and atherosclerosis","Decreased blood pressure","Increased elasticity of vessel walls"],correct:1,exp:"Aging causes vascular degeneration including arteriosclerosis (hardening of arterial walls) and atherosclerosis (plaque buildup), leading to decreased compliance and increased cardiac workload.",hint:"Aging = stiffening and plaque — the vessels lose their flexibility."},
+// Ch.23 - Metabolic Syndrome
+{ch:"Ch.23",q:"Which three factors are commonly associated with metabolic syndrome in adolescents?",opts:["Low HDL, anemia, and hypertension","BMI at or above the 85th percentile, type 2 diabetes changes, and hypertension","Normal BMI, high HDL, and hypotension","Tachycardia, low blood sugar, and underweight"],correct:1,exp:"Metabolic syndrome in adolescents includes obesity (BMI ≥85th percentile), insulin resistance/type 2 diabetes changes, and hypertension — along with dyslipidemia. These cluster together increasing cardiovascular risk.",hint:"Think: overweight + blood sugar problems + high blood pressure = metabolic syndrome."},
+// Ch.23 - Alopecia
+{ch:"Ch.23",q:"Alopecia refers to which of the following?",opts:["Excess facial hair","Hair loss","Nail brittleness","Skin hyperpigmentation"],correct:1,exp:"Alopecia is the medical term for hair loss, which can be partial or complete. It can occur due to aging, hormonal changes, autoimmune conditions, or chemotherapy.",hint:"The root 'alop-' relates to the fox — which loses patches of fur. Think hair loss."},
+// Ch.20 - Benign vs Malignant
+{ch:"Ch.20",q:"How do benign tumors differ from malignant tumors?",opts:["Benign tumors spread to lymph nodes","Benign tumors are encapsulated and slow growing","Benign tumors always become malignant","Benign tumors cause cachexia"],correct:1,exp:"Benign tumors are encapsulated (contained within a fibrous capsule), slow growing, non-invasive, and do not metastasize. Malignant tumors invade surrounding tissue and can spread via lymph or blood.",hint:"Benign = contained and slow. Malignant = invasive and spreading."},
+// Ch.20 - Cancer Warning Signs
+{ch:"Ch.20",q:"Which of the following are warning signs of cancer (CAUTION)?",opts:["Only changes in bowel habits","Only unexplained weight loss","Only a nagging cough","All of these"],correct:3,exp:"The CAUTION acronym covers: Changes in bowel/bladder, A sore that doesn't heal, Unusual bleeding, Thickening/lump, Indigestion/difficulty swallowing, Obvious changes in moles, Nagging cough. ALL are recognized warning signs.",hint:"CAUTION = ALL of the classic cancer warning signs together."},
+// Ch.20 - Warning Signs EXCEPT
+{ch:"Ch.20",q:"Which of the following is NOT a warning sign of cancer?",opts:["A sore that does not heal","Unusual bleeding or discharge","Sudden development of fever, nausea, and diarrhea","Obvious change in a wart or mole"],correct:2,exp:"Sudden fever, nausea, and diarrhea are signs of infection or GI illness, NOT cancer warning signs. The CAUTION warning signs focus on changes that are gradual and persistent, not acute infectious symptoms.",hint:"Cancer warning signs are chronic/persistent — not acute fever/GI symptoms."},
+// Ch.22 - Blood Tests on Neonates
+{ch:"Ch.22",q:"What is the primary purpose of blood tests performed on neonates shortly after birth?",opts:["To determine blood type for future transfusions","To identify metabolic and genetic disorders requiring immediate treatment","To screen for viral infections","To measure growth hormone levels"],correct:1,exp:"Newborn screening (e.g., PKU, hypothyroidism, galactosemia) is performed to identify metabolic and genetic disorders that require immediate treatment to prevent irreversible damage like intellectual disability.",hint:"Newborn heel-stick screens = catch treatable metabolic disorders EARLY."},
+// Ch.22 - Gestational Diabetes
+{ch:"Ch.22",q:"Gestational diabetes most commonly results in which of the following outcomes?",opts:["Delivery of a low birth-weight infant","Delivery of a high birth-weight infant (macrosomia)","Premature delivery before 32 weeks","Fetal anemia"],correct:1,exp:"Gestational diabetes causes fetal hyperinsulinism in response to elevated maternal glucose, resulting in macrosomia (large for gestational age / high birth weight). This increases risk of difficult delivery and birth injury.",hint:"Mom's high blood sugar → baby grows too big → macrosomia."},
+// Ch.20 - Benign Tumor Characteristic
+{ch:"Ch.20",q:"Which of the following is a characteristic of a benign tumor?",opts:["Cells appear anaplastic and undifferentiated","Cells appear relatively normal and well-differentiated","Cells invade surrounding tissue","Cells spread through lymphatic channels"],correct:1,exp:"Benign tumor cells appear relatively normal (well-differentiated) under microscopy. They do not invade surrounding tissue or metastasize. Malignant cells appear anaplastic (abnormal/undifferentiated).",hint:"Benign = cells still look normal. Malignant = cells look abnormal/anaplastic."},
+// Ch.21 - Sex Chromosomes
+{ch:"Ch.21",q:"What is the chromosomal makeup of the 23rd pair in a typical biological male?",opts:["XX","XO","XY","YY"],correct:2,exp:"The 23rd chromosome pair determines biological sex. Typical males have XY (one X from mother, one Y from father). Typical females have XX. The Y chromosome carries the SRY gene that triggers male development.",hint:"XY = male. XX = female. The Y makes the difference."},
+// Ch.23 - Obesity in Adolescents
+{ch:"Ch.23",q:"Obesity in adolescents is associated with which of the following?",opts:["Only physical health problems","Only psychological health problems","Only cardiovascular risks","All of these"],correct:3,exp:"Adolescent obesity is associated with ALL of: cardiovascular risks (hypertension, dyslipidemia), metabolic syndrome/type 2 diabetes, orthopedic problems, sleep apnea, psychological issues (depression, low self-esteem), and social difficulties.",hint:"Obesity affects EVERY system — physical, metabolic, AND psychological."},
+// Ch.20 - Radiation Therapy
+{ch:"Ch.20",q:"Radiation therapy destroys cancer cells by targeting which type of cells primarily?",opts:["Slowly dividing cells only","Primarily rapidly dividing cells","Only cells in the G0 phase","Cells with intact DNA repair mechanisms"],correct:1,exp:"Radiation therapy works by damaging DNA, primarily affecting rapidly dividing cells (cancer cells divide faster than most normal cells). Normal rapidly dividing cells (hair follicles, GI mucosa, bone marrow) are also affected, causing side effects.",hint:"Radiation = DNA damage — hits fastest dividers hardest = cancer cells."},
+// Ch.23 - Osteoporosis EXCEPT
+{ch:"Ch.23",q:"Which of the following is NOT a predisposing factor for osteoporosis?",opts:["Prolonged corticosteroid use","Decreased estrogen levels","Decreased parathyroid hormone","Sedentary lifestyle"],correct:2,exp:"Decreased parathyroid hormone (PTH) is NOT a risk factor — in fact, LOW PTH means LESS bone resorption. Osteoporosis risk factors include: decreased estrogen (post-menopause), corticosteroid use, sedentary lifestyle, low calcium/vitamin D, smoking, and alcohol.",hint:"PTH increases bone resorption — so LOW PTH = LESS bone loss, not more."},
+// Ch.20 - Carcinogenesis
+{ch:"Ch.20",q:"The process of carcinogenesis begins with which of the following?",opts:["Tumor angiogenesis","Metastasis to lymph nodes","An irreversible change in the cell's DNA","Loss of cell membrane integrity"],correct:2,exp:"Carcinogenesis begins with initiation — an irreversible mutation/change in cell DNA (often from carcinogens, radiation, or viruses). This is followed by promotion (clonal expansion) and progression (malignant transformation).",hint:"Carcinogenesis initiation = permanent DNA mutation first."},
+// Ch.21 - Developmental Disorders EXCEPT
+{ch:"Ch.21",q:"Developmental disorders can result from all of the following EXCEPT:",opts:["Exposure to radiation","Mercury in foods and water","Folic acid","Drugs and alcohol"],correct:2,exp:"Folic acid is PROTECTIVE against developmental disorders (especially neural tube defects like spina bifida). The others — radiation, mercury, and drugs/alcohol — are teratogens that CAUSE developmental disorders.",hint:"Folic acid PREVENTS neural tube defects — it's protective, not harmful."},
+// Ch.21 - Karyotype
+{ch:"Ch.21",q:"What is the term for an arrangement of chromosomes from an individual's cell, organized in pairs based on size and shape?",opts:["Punnett square","Pedigree","Karyotype","Genotype"],correct:2,exp:"A karyotype is a visual arrangement/map of all chromosomes in a cell, organized in homologous pairs by size and shape. It is used to identify chromosomal abnormalities like trisomy 21 (Down syndrome) or Turner syndrome.",hint:"Karyotype = photograph of all your chromosome pairs lined up."},
+// Ch.21 - Mutation
+{ch:"Ch.21",q:"A spontaneous alteration in genetic material that may result from exposure to harmful substances is termed:",opts:["Genotype","Mutation","Meiosis","Autosome"],correct:1,exp:"A mutation is a change in the DNA sequence that can be spontaneous or induced by mutagens (radiation, chemicals, viruses). Mutations can be point mutations, insertions, deletions, or chromosomal rearrangements.",hint:"Mutation = change in DNA — can be random or caused by a mutagen."},
+// Ch.22 - DIC in Pregnancy
+{ch:"Ch.22",q:"Which of the following is a serious potential complication of abruptio placentae, indicated by low serum levels of clotting factors?",opts:["Disseminated intravascular coagulation (DIC)","Thrombocytopenia","Severe hypertension","Jaundice"],correct:0,exp:"Abruptio placentae (premature placental separation) releases thromboplastin, triggering widespread clotting that consumes clotting factors, causing DIC. Low clotting factors lead to uncontrolled bleeding — a life-threatening emergency.",hint:"Abruptio → releases clotting triggers → clotting factors used up → DIC = bleeding disaster."},
+// Ch.22 - Edema in Pregnancy
+{ch:"Ch.22",q:"Edema and congestion normally develop in many tissues during pregnancy as a result of:",opts:["Decreased serum albumin","Increased blood pressure","Increased blood volume","Reduced kidney function"],correct:2,exp:"During pregnancy, blood volume increases by 40-50% (increased blood volume / hypervolemia). This expanded volume increases hydrostatic pressure in capillaries, pushing fluid into tissues and causing physiological edema.",hint:"Pregnancy = blood volume up 40-50% → more pressure in vessels → fluid leaks into tissues."},
+// Ch.21 - Sickle Cell Trait
+{ch:"Ch.21",q:"A person with sickle cell trait who is heterozygous (HbAS) demonstrates which inheritance pattern?",opts:["Incomplete dominance","X-linked dominant trait","A multifactorial condition","Co-dominant genes"],correct:0,exp:"Sickle cell trait (HbAS) is an example of incomplete dominance — the heterozygous individual expresses a blend of normal and sickle cell characteristics (mild symptoms under low oxygen conditions) rather than full expression of either allele.",hint:"HbAS = has BOTH normal and sickle hemoglobin = incomplete dominance / codominance."},
+// Ch.20 - Apoptosis
+{ch:"Ch.20",q:"The term apoptosis refers to:",opts:["Necrosis or degeneration of cells","Abnormal or immature cells","Programmed cell death","The development of new capillaries in a tumor"],correct:2,exp:"Apoptosis is programmed cell death — a normal, controlled process where cells self-destruct in an orderly manner. It is essential for development, immune function, and preventing cancer. Dysregulation of apoptosis (cells failing to die) contributes to tumor growth.",hint:"Apoptosis = cells following a programmed 'self-destruct' sequence — normal and necessary."},
+// Ch.21 - Amniocentesis
+{ch:"Ch.21",q:"Which of the following can be detected using amniotic fluid analysis (amniocentesis)?",opts:["All of these","Metabolic disorders only","Certain structural abnormalities only","Chromosomal abnormalities only"],correct:0,exp:"Amniocentesis can detect ALL of: chromosomal abnormalities (e.g., trisomy 21), metabolic/biochemical disorders (e.g., PKU), and certain structural abnormalities. The amniotic fluid contains fetal cells and biochemical markers that provide comprehensive prenatal information.",hint:"Amniocentesis = checks fetal cells + fluid → chromosomes + metabolic + structural all detectable."},
 
-// ===== CHAPTER 21 - GENETICS (17 questions) =====
-{ch:"Ch.21",q:"What is the cause of Down syndrome (Trisomy 21)?",opts:["Deletion of the long arm of chromosome 21","Nondisjunction during meiosis resulting in three copies of chromosome 21","Translocation of chromosome 21 material onto chromosome 14 only","Inversion of the genetic material on chromosome 21"],correct:1,exp:"Trisomy 21 = nondisjunction during meiosis → gamete with 2 copies of chromosome 21 → after fertilization, 3 copies total (47 chromosomes).",hint:"Trisomy = 3 copies. Nondisjunction = chromosomes fail to separate."},
-{ch:"Ch.21",q:"In cases of Turner syndrome, what does the karyotype include?",opts:["47,XXY — one extra X chromosome in a male","45,X — only one sex chromosome present","47,XYY — one extra Y chromosome in a male","46,XX with a deletion on one X chromosome"],correct:1,exp:"Turner syndrome = 45,X (monosomy X). Features: female phenotype, short stature, webbed neck, primary amenorrhea, infertility, no Barr bodies.",hint:"Turner = 45,X = one sex chromosome. Female but infertile."},
-{ch:"Ch.21",q:"How may a translocation mutation affect offspring differently than the carrier parent?",opts:["The carrier parent expresses the mutation; offspring are always unaffected","The carrier parent may be unaffected while offspring may receive unbalanced chromosomes causing disease","Translocation only affects the carrier and cannot be passed to children","Both parent and offspring are always equally affected by translocations"],correct:1,exp:"Translocation carriers may be balanced (no symptoms) because they have all genetic material, just rearranged. Offspring may receive UNBALANCED chromosomes → disease.",hint:"Balanced carrier = no symptoms. Offspring may get unbalanced → disease."},
-{ch:"Ch.21",q:"What is the cause of a frameshift mutation?",opts:["Substitution of one nucleotide base for another in the DNA sequence","Insertion or deletion of nucleotides that shifts the reading frame of all downstream codons","Inversion of a DNA segment that reverses the reading direction","Duplication of an entire gene sequence"],correct:1,exp:"Frameshift = insertion OR deletion of nucleotides (not in multiples of 3) shifts how ALL downstream codons are read → completely different/nonfunctional protein.",hint:"Frame = reading window. Shift = every codon after the mutation is wrong."},
-{ch:"Ch.21",q:"Autosomal recessive inheritance differs from autosomal dominant inheritance in that autosomal recessive",opts:["requires only one mutated allele to express the disease.","requires two copies of the mutated allele to express the disease.","skips generations randomly without a pattern.","only affects males and is carried by females."],correct:1,exp:"Autosomal recessive = BOTH alleles must be mutated to express disease. One normal allele is enough to prevent expression (carrier state). Examples: cystic fibrosis, sickle cell.",hint:"Recessive = needs two bad copies. One good copy = carrier, not affected."},
-{ch:"Ch.21",q:"Mitochondrial inheritance differs from autosomal inheritance because mitochondrial genes are",opts:["inherited equally from both the mother and father.","inherited exclusively from the mother through the egg's cytoplasm.","inherited only from the father through the Y chromosome.","inherited from whichever parent contributes the dominant allele."],correct:1,exp:"Mitochondria are in the egg's cytoplasm. Sperm contributes essentially no mitochondria. Therefore ALL mitochondrial DNA comes from the MOTHER.",hint:"Mitochondria live in cytoplasm of egg → maternal inheritance only."},
-{ch:"Ch.21",q:"What is the significance of the BRCA1 gene mutation in a patient with no current cancer?",opts:["The mutation guarantees development of breast cancer before age 50","The mutation indicates the patient currently has undetected cancer","The mutation significantly increases lifetime risk for breast and ovarian cancer but does not guarantee disease","The mutation is only significant if the patient's mother had cancer"],correct:2,exp:"BRCA1/2 are tumor suppressor genes. Mutations increase risk significantly (lifetime breast cancer risk ~70%) but many carriers never develop cancer.",hint:"BRCA mutation = higher risk, NOT a guarantee. Tumor suppressor is weakened."},
-{ch:"Ch.21",q:"How is amniocentesis performed to diagnose chromosomal disorders?",opts:["A blood sample is drawn from the mother to analyze fetal DNA in circulation","A needle is inserted through the abdomen into the amniotic sac to collect fetal cells","An ultrasound probe is used to stimulate fetal cell shedding for analysis","A sample of the chorion is taken from the mother's cervix"],correct:1,exp:"Amniocentesis: needle through abdomen wall → amniotic sac → collect amniotic fluid containing fetal cells → karyotype analysis. Performed at 15–20 weeks.",hint:"Amnio = amniotic fluid. Needle into amniotic sac = fetal cells."},
-{ch:"Ch.21",q:"A patient carries one copy of a recessive allele for cystic fibrosis but has no symptoms. This patient is best described as",opts:["affected, because the mutation is present in their DNA","a carrier, having one mutated allele without disease expression","homozygous dominant, having two normal copies","heterozygous affected, expressing mild disease symptoms"],correct:1,exp:"One copy of a recessive allele = CARRIER. No disease expression because the normal allele compensates. Can pass mutation to offspring.",hint:"One bad copy of recessive gene = carrier. Two bad copies = affected."},
-{ch:"Ch.21",q:"What is the cause of Klinefelter syndrome?",opts:["Deletion of the Y chromosome resulting in 45,X karyotype","Nondisjunction resulting in 47,XXY — an extra X chromosome in a genetic male","Inversion of the X chromosome causing abnormal hormone production","Translocation of X chromosome material onto the Y chromosome"],correct:1,exp:"Klinefelter = 47,XXY. Nondisjunction during meiosis → extra X in a male. Features: tall, small testes, gynecomastia, infertility, normal/low intelligence.",hint:"Klinefelter = XXY. Extra X in male. Infertile, gynecomastia."},
-{ch:"Ch.21",q:"In cases of X-linked recessive inheritance, what does the pattern of disease expression include?",opts:["Equal expression in males and females across all generations","Males are more commonly affected because they have only one X chromosome and no backup","Females are always more severely affected than males","The disease skips every other generation regardless of sex"],correct:1,exp:"X-linked recessive: males have ONE X. If that X carries the mutation, they express disease. Females have TWO X chromosomes — second X can compensate.",hint:"Males = one X = no backup = more affected by X-linked recessive."},
-{ch:"Ch.21",q:"Spina bifida is considered to",opts:["result from trisomy 18 and is always fatal within the first year.","be a neural tube defect directly associated with folic acid deficiency during early pregnancy.","cause abnormal chromosome number detectable only by amniocentesis.","be an X-linked dominant disorder affecting females more than males."],correct:1,exp:"Spina bifida = failure of neural tube to close. Directly linked to FOLIC ACID deficiency. Folic acid must be taken BEFORE and during early pregnancy.",hint:"Spina bifida = neural tube defect = folic acid deficiency."},
-{ch:"Ch.21",q:"Choose the significant chromosomal change expected with a deletion mutation:",opts:["A DNA segment is copied and repeated, increasing gene dosage","A DNA segment is lost entirely, removing the genes it contained","A DNA segment is reversed within the same chromosome","A DNA segment moves to a different, non-homologous chromosome"],correct:1,exp:"Deletion = a DNA segment is LOST/removed. Genes on that segment are missing → loss of function. Example: Cri du Chat syndrome (deletion of chromosome 5p).",hint:"Deletion = DNA is LOST. Missing genes = missing function."},
-{ch:"Ch.21",q:"What is the cause of genetic anticipation in trinucleotide repeat disorders?",opts:["Environmental toxins accumulate in successive generations causing worsening mutations","Repeat sequences expand with each generation, causing earlier onset and more severe disease","Epigenetic silencing increases with age, suppressing gene function progressively","Mitochondrial mutations accumulate over multiple generations"],correct:1,exp:"Genetic anticipation = trinucleotide repeats (e.g., CAG) EXPAND with each generation → more severe disease/earlier onset. Example: Huntington's disease.",hint:"More repeats = worse disease. Expands each generation = anticipation."},
-{ch:"Ch.21",q:"How may congenital rubella syndrome form during fetal development?",opts:["Direct fetal infection with rubella virus during maternal vaccination","Maternal rubella infection in the first trimester disrupts organogenesis causing congenital defects","Antibody transfer from mother to fetus triggering autoimmune organ damage","Rubella virus crossing placenta only in the third trimester"],correct:1,exp:"Congenital rubella = maternal infection in FIRST TRIMESTER (organogenesis) → virus disrupts organ development → cataracts, deafness, heart defects.",hint:"First trimester = organogenesis = most vulnerable to rubella damage."},
-{ch:"Ch.21",q:"A karyotype showing 47,XY,+21 indicates",opts:["Turner syndrome with monosomy X","Down syndrome (Trisomy 21) in a male","Klinefelter syndrome with an extra sex chromosome","Edwards syndrome (Trisomy 18) in a male"],correct:1,exp:"47,XY,+21 = male (XY) with an extra chromosome 21 (+21) = Down syndrome (Trisomy 21). Total 47 chromosomes instead of normal 46.",hint:"47 chromosomes, XY male, +21 = Trisomy 21 = Down syndrome."},
-{ch:"Ch.21",q:"What is the difference between a genotype and a phenotype?",opts:["Genotype is the physical appearance; phenotype is the underlying genetic code","Genotype is the genetic makeup an organism carries; phenotype is the observable physical expression","They are interchangeable terms describing the same biological concept","Genotype only describes dominant alleles; phenotype describes recessive alleles"],correct:1,exp:"Genotype = the actual genes/alleles you CARRY (may not be expressed). Phenotype = what is physically VISIBLE or expressed.",hint:"Geno = genes you HAVE. Pheno = what you SHOW."},
+// ===== ADDITIONAL CH.20 - CANCER (12 questions) =====
+{ch:"Ch.20",q:"What is the cause of cachexia in a patient with advanced cancer?",opts:["Failure of the liver to produce proteins","Tumor secretion of cytokines causing abnormal metabolism and appetite loss","Excessive fluid retention","Overproduction of red blood cells"],correct:1,exp:"Cachexia (severe wasting) in cancer is caused by tumor-secreted cytokines (TNF-α, IL-1, IL-6) that disrupt normal metabolism, causing muscle and fat breakdown, anorexia, and weight loss despite adequate intake attempts.",hint:"Cancer cachexia = tumor poisons the metabolism with cytokines → wasting away."},
+{ch:"Ch.20",q:"Which of the following best describes metastasis?",opts:["Uncontrolled local cell division","The spread of cancer cells from the primary site to distant organs","Formation of a benign tumor","Programmed death of cancer cells"],correct:1,exp:"Metastasis is the process by which cancer cells break away from the primary tumor, travel through blood or lymph, and establish new tumors (secondary tumors) at distant sites. It is the main reason cancer is life-threatening.",hint:"Metastasis = cancer traveling and setting up new colonies in distant organs."},
+{ch:"Ch.20",q:"Which of the following is the term for a cancer that originates in epithelial tissue?",opts:["Sarcoma","Leukemia","Carcinoma","Lymphoma"],correct:2,exp:"Carcinoma arises from epithelial cells (skin, glands, lining of organs). Sarcoma arises from connective tissue (bone, muscle). Leukemia originates in blood-forming tissue. Lymphoma originates in lymphoid tissue.",hint:"Carci-NOMA = epithelial. SARC-oma = connective tissue."},
+{ch:"Ch.20",q:"Which term describes a cancer cell that lacks normal differentiation and resembles immature cells?",opts:["Hyperplasia","Anaplasia","Dysplasia","Metaplasia"],correct:1,exp:"Anaplasia refers to the loss of normal cell differentiation in cancer cells. Anaplastic cells look immature, irregular, and bear little resemblance to the tissue of origin. Higher anaplasia = more aggressive cancer.",hint:"Anaplasia = UN-differentiated cancer cells that look nothing like their origin tissue."},
+{ch:"Ch.20",q:"Proto-oncogenes become dangerous when they mutate into:",opts:["Tumor suppressor genes","Oncogenes","Apoptosis genes","Telomerase genes"],correct:1,exp:"Proto-oncogenes are normal genes that regulate cell growth. When mutated or overexpressed, they become oncogenes — accelerators of uncontrolled cell division. Examples include RAS, MYC, and HER2.",hint:"Proto-oncogene + mutation → oncogene = stuck accelerator pedal for cell division."},
+{ch:"Ch.20",q:"Tumor angiogenesis is significant in cancer progression because it:",opts:["Triggers apoptosis in cancer cells","Provides the tumor with blood supply needed for growth and metastasis","Activates the immune system to destroy tumors","Prevents DNA replication in cancer cells"],correct:1,exp:"Angiogenesis (formation of new blood vessels) is essential for tumor growth beyond 1-2mm. Tumors secrete VEGF to stimulate new vessel formation, providing oxygen/nutrients and creating routes for metastasis.",hint:"Angiogenesis = tumor building its own blood supply = feeds growth + escape routes."},
+{ch:"Ch.20",q:"Which of the following is a known chemical carcinogen?",opts:["Ultraviolet radiation","Benzene","HPV virus","Estrogen"],correct:1,exp:"Benzene is a chemical carcinogen linked to leukemia. UV radiation is a physical carcinogen. HPV is a viral carcinogen (causes cervical cancer). Estrogen is a hormonal promoter. Carcinogens are classified as chemical, physical, or biological.",hint:"Benzene = chemical carcinogen → leukemia risk for workers exposed to it."},
+{ch:"Ch.20",q:"The p53 gene is important in cancer prevention because it:",opts:["Stimulates cell division","Acts as a tumor suppressor by triggering apoptosis of damaged cells","Promotes blood vessel formation","Increases telomerase activity"],correct:1,exp:"p53 is called the 'guardian of the genome.' It detects DNA damage and either halts the cell cycle for repair or triggers apoptosis. Mutation of p53 (found in ~50% of cancers) removes this safeguard, allowing damaged cells to multiply.",hint:"p53 = genome guardian — broken DNA? Either fix it or kill the cell."},
+{ch:"Ch.20",q:"What type of cancer treatment uses drugs that interfere with cell division throughout the body?",opts:["Radiation therapy","Immunotherapy","Chemotherapy","Surgery"],correct:2,exp:"Chemotherapy uses cytotoxic drugs that interfere with cell division (DNA replication, mitosis). Because it is systemic, it affects rapidly dividing normal cells too (hair follicles, GI tract, bone marrow), causing well-known side effects.",hint:"Chemo = systemic drugs that attack all rapidly dividing cells everywhere in the body."},
+{ch:"Ch.20",q:"Which of the following laboratory findings is most consistent with anemia related to chronic cancer?",opts:["Elevated hemoglobin","Low RBC count with microcytic cells","Elevated WBC with blast cells","Normal CBC with elevated platelets"],correct:1,exp:"Anemia of chronic disease (including cancer) presents with low RBC count. Cancer can also cause anemia through blood loss, bone marrow infiltration, or chemotherapy effects. Iron-deficiency from GI bleeding shows microcytic cells.",hint:"Cancer + anemia = low RBC count — cancer suppresses bone marrow or causes bleeding."},
+{ch:"Ch.20",q:"Which of the following statements about tumor suppressor genes is correct?",opts:["They promote cell division when activated","They inhibit cell division and must be inactivated for cancer to develop","They are always mutated in cancer","They produce growth factors for tumors"],correct:1,exp:"Tumor suppressor genes (e.g., p53, BRCA1, Rb) normally inhibit uncontrolled cell division. Both copies must be inactivated (two-hit hypothesis) for their protective function to be lost, enabling cancer development.",hint:"Tumor suppressors = brakes on cell division. Need BOTH copies broken = cancer."},
+{ch:"Ch.20",q:"Which immune cells are primarily responsible for directly killing cancer cells?",opts:["B lymphocytes","Natural killer (NK) cells and cytotoxic T cells","Basophils","Mast cells"],correct:1,exp:"Natural killer (NK) cells and cytotoxic T lymphocytes (CD8+) directly kill cancer cells. NK cells attack without prior sensitization. Cytotoxic T cells require MHC-I recognition. Both are key components of cancer immune surveillance.",hint:"NK cells + cytotoxic T cells = the body's cancer-killing hit squad."},
 
-// ===== CHAPTER 22 - PREGNANCY (16 questions) =====
-{ch:"Ch.22",q:"What is the cause of diabetic ketoacidosis in a pregnant patient with uncontrolled gestational diabetes?",opts:["Failure of the kidney to excrete sufficient acids","Loss of glucose in the urine causing cellular starvation","Excess insulin in the body suppressing glucose metabolism","Increased catabolism of fats and proteins producing ketone bodies"],correct:3,exp:"DKA = insufficient insulin → cells cannot use glucose → body catabolizes fats/proteins for energy → ketone bodies produced → metabolic acidosis.",hint:"No insulin → can't use glucose → break down fat/protein → ketones → acidosis."},
-{ch:"Ch.22",q:"Choose the significant change in arterial blood gases expected with severe hyperemesis gravidarum:",opts:["Increased bicarbonate ion, increased PCO₂, serum pH 7.50","Decreased bicarbonate ion, decreased PCO₂, serum pH 7.35","Increased bicarbonate ion, decreased PCO₂, serum pH 7.50","Decreased bicarbonate ion, increased PCO₂, serum pH 7.30"],correct:2,exp:"Severe vomiting = loss of HCl → metabolic alkalosis. Increased bicarb (lost H+), decreased PCO₂ (respiratory compensation), pH >7.45.",hint:"Vomiting = losing acid (HCl) = alkalosis = increased pH, increased bicarb."},
-{ch:"Ch.22",q:"Preeclampsia is considered to",opts:["be diagnosed when BP ≥140/90 occurs at any point during pregnancy.","be diagnosed when BP ≥140/90 develops after 20 weeks with proteinuria.","require seizure activity before a definitive diagnosis is made.","be a benign condition that resolves spontaneously without treatment."],correct:1,exp:"Preeclampsia = BP ≥140/90 AFTER 20 weeks + proteinuria. Before 20 weeks = chronic hypertension. Seizures = eclampsia (more severe).",hint:"Pre-eclampsia = HTN + proteinuria AFTER 20 weeks. No seizures yet."},
-{ch:"Ch.22",q:"Why does placenta previa require delivery by cesarean section?",opts:["The fetus is always in breech position with placenta previa","The placenta covers the cervical os, blocking vaginal delivery and risking hemorrhage","Placenta previa causes uterine contractions too weak for vaginal delivery","The umbilical cord is always compressed in placenta previa"],correct:1,exp:"Placenta previa = placenta implanted over the cervical os (opening). Vaginal delivery would shear the placenta → massive hemorrhage. C-section is mandatory.",hint:"Placenta blocks the exit → C-section is the only safe delivery route."},
-{ch:"Ch.22",q:"How may abruptio placentae be distinguished from placenta previa?",opts:["Abruptio has painless bright red bleeding; previa has painful dark bleeding","Abruptio has painful dark bleeding with a rigid board-like uterus; previa has painless bright red bleeding","Both conditions present identically and require the same emergency management","Abruptio only occurs after 36 weeks; previa only occurs before 20 weeks"],correct:1,exp:"Abruptio = PAINFUL, dark bleeding, board-like rigid uterus (concealed hemorrhage). Previa = PAINLESS, bright red bleeding, soft uterus. Critical distinction.",hint:"Abruptio = Agonizing + rigid. Previa = Painless + soft."},
-{ch:"Ch.22",q:"What is the cause of Rh incompatibility hemolytic disease in the newborn?",opts:["The fetus inherits ABO blood type incompatibility from both parents","Rh-negative mother sensitized to Rh-positive fetal blood produces antibodies that cross the placenta and destroy fetal RBCs","Rh-positive mother produces antibodies against Rh-negative fetal blood cells","The fetus produces antibodies against maternal blood cells crossing the placenta"],correct:1,exp:"Rh- mother exposed to Rh+ fetal blood → produces anti-Rh IgG → in subsequent pregnancies, antibodies cross placenta → destroy fetal Rh+ RBCs → hemolytic disease.",hint:"Rh- mom + Rh+ baby = sensitization → next Rh+ pregnancy at risk."},
-{ch:"Ch.22",q:"RhoGAM is administered to Rh-negative mothers to",opts:["treat existing Rh antibodies that are already attacking fetal red blood cells.","prevent maternal sensitization by destroying fetal Rh-positive cells before immune response develops.","boost the mother's immune response to Rh-positive antigens.","stimulate fetal production of Rh-negative red blood cells."],correct:1,exp:"RhoGAM (anti-D immunoglobulin) given at 28 weeks and within 72 hours of delivery. It DESTROYS fetal Rh+ cells before the mother's immune system can recognize them → prevents sensitization.",hint:"RhoGAM = destroys fetal Rh+ cells before mom makes antibodies. Prevention."},
-{ch:"Ch.22",q:"In cases of HELLP syndrome, what does the clinical presentation include?",opts:["Hypertension, Elevated blood sugar, Low Potassium","Hemolysis, Elevated Liver enzymes, Low Platelets","Hemorrhage, Elevated Lipids, Low Protein levels","Headache, Edema, Low blood Pressure"],correct:1,exp:"HELLP = Hemolysis (H) + Elevated Liver enzymes (EL) + Low Platelets (LP). A severe variant of preeclampsia. Symptoms: RUQ pain, nausea, malaise.",hint:"H=Hemolysis, EL=Elevated Liver enzymes, LP=Low Platelets."},
-{ch:"Ch.22",q:"What is the cause of gestational diabetes mellitus?",opts:["Autoimmune destruction of pancreatic beta cells during pregnancy","Insulin resistance caused by placental hormones including HPL, progesterone, and cortisol","Pre-existing type 1 diabetes that worsens during pregnancy","Increased renal glucose excretion reducing maternal blood sugar"],correct:1,exp:"GDM = placental hormones (HPL, progesterone, cortisol) cause insulin RESISTANCE. Usually develops 2nd/3rd trimester when placenta is largest.",hint:"Placenta produces hormones that block insulin → insulin resistance → GDM."},
-{ch:"Ch.22",q:"A primigravida patient at 10 weeks gestation presents with right lower quadrant pain and a positive pregnancy test. The priority concern is",opts:["round ligament pain, which is expected in early pregnancy","ectopic pregnancy implanted in the fallopian tube requiring urgent evaluation","appendicitis unrelated to the pregnancy","normal implantation cramping in the first trimester"],correct:1,exp:"Unilateral pain + positive pregnancy test in early pregnancy = ectopic until proven otherwise. 95% of ectopics implant in the fallopian tube → risk of rupture → hemorrhage.",hint:"Positive pregnancy test + unilateral pain = rule out ectopic FIRST."},
-{ch:"Ch.22",q:"How may eclampsia develop from preeclampsia?",opts:["Eclampsia develops when proteinuria exceeds 5 grams per day","Eclampsia develops when preeclampsia progresses to include grand mal seizures","Eclampsia develops when BP exceeds 160/110 without seizures","Eclampsia develops when liver enzymes become elevated"],correct:1,exp:"Eclampsia = preeclampsia + SEIZURES. The seizures are grand mal type. Management: magnesium sulfate (prevents/treats seizures), emergent delivery.",hint:"Eclampsia = preeclampsia + SEIZURES. Magnesium sulfate prevents seizures."},
-{ch:"Ch.22",q:"Physiologic changes of pregnancy that are considered normal include",opts:["decreased cardiac output and decreased heart rate throughout pregnancy.","lordosis of the lumbar spine, waddling gait, and blood pressure drop in the first and second trimesters.","hypertension and proteinuria developing after the first trimester.","decreased respiratory rate due to upward displacement of the diaphragm."],correct:1,exp:"Normal pregnancy: lordosis (increased lumbar curve), waddling gait (pelvic relaxation), BP DROPS in 1st/2nd trimester (vasodilation), returns to baseline in 3rd.",hint:"Lordosis + waddling + BP drop early = NORMAL pregnancy changes."},
-{ch:"Ch.22",q:"Why does severe pain occur with each menstrual cycle in endometriosis?",opts:["Obstruction in the fallopian tubes prevents normal menstrual flow","Hormonal imbalance causes uterine contractions stronger than normal","Inflammation due to blood irritating tissue outside the uterus with nowhere to drain","Fibrous scar tissue restricts uterine expansion during menstruation"],correct:2,exp:"Endometriosis = uterine tissue OUTSIDE uterus. During menstruation, this tissue bleeds but blood has NOWHERE to go → inflammation, irritation, severe pain.",hint:"Blood trapped outside uterus → irritation → inflammation → pain."},
-{ch:"Ch.22",q:"What is the cause of hyperemesis gravidarum requiring hospitalization?",opts:["Mild morning nausea and vomiting responding to dietary changes","Inability to retain food or fluids causing significant weight loss, dehydration, and electrolyte imbalances","Psychological aversion to food unrelated to pregnancy hormones","Gastroesophageal reflux disease worsened by pregnancy"],correct:1,exp:"Hyperemesis gravidarum = SEVERE persistent N/V causing >5% weight loss, dehydration, electrolyte disturbances, ketonuria. Requires IV fluids and antiemetics.",hint:"Hyperemesis = hyper (excessive) + emesis (vomiting). Needs IV fluids."},
-{ch:"Ch.22",q:"How is gravidity defined in obstetric terminology?",opts:["The number of pregnancies that have resulted in live births only","The total number of times a woman has been pregnant, regardless of outcome","The number of pregnancies carried beyond 20 weeks gestation","The number of fetuses currently in the uterus"],correct:1,exp:"Gravidity = TOTAL number of pregnancies, regardless of outcome (including miscarriages, abortions, ectopics). Parity = pregnancies reaching viability (≥20 weeks).",hint:"Gravida = all pregnancies. Para = pregnancies reaching viability."},
-{ch:"Ch.22",q:"Musculoskeletal changes during pregnancy that require patient education include",opts:["decreased lumbar lordosis due to anterior weight shift.","increased lumbar lordosis and widening of the pelvis causing altered gait and back pain.","spinal cord compression from vertebral disc herniation in all pregnancies.","decreased joint flexibility due to progesterone effects on ligaments."],correct:1,exp:"Pregnancy causes INCREASED lumbar lordosis (swayback) from anterior weight shift + relaxin loosens pelvic joints → waddling gait, back pain. These are NORMAL but need education.",hint:"Growing belly shifts weight forward → more lumbar curve → back pain + waddling."}
-];
+// ===== ADDITIONAL CH.21 - GENETICS (10 questions) =====
+{ch:"Ch.21",q:"Down syndrome (trisomy 21) results from which chromosomal abnormality?",opts:["Deletion of chromosome 21","Three copies of chromosome 21","A translocation of the X chromosome","Monosomy of chromosome 21"],correct:1,exp:"Down syndrome is caused by trisomy 21 — the presence of three copies of chromosome 21 instead of two. Most cases result from nondisjunction during meiosis (most commonly in the egg cell). Risk increases with maternal age.",hint:"Trisomy 21 = THREE copies of chromosome 21 = Down syndrome."},
+{ch:"Ch.21",q:"Turner syndrome is characterized by which chromosomal pattern?",opts:["XXY","XYY","45,X (monosomy X)","Trisomy 18"],correct:2,exp:"Turner syndrome occurs in females with only one X chromosome (45,X). Features include short stature, webbed neck, primary amenorrhea, infertility, and cardiovascular defects (coarctation of the aorta). IQ is usually normal.",hint:"Turner = 45,X = one X chromosome only = female with short stature and infertility."},
+{ch:"Ch.21",q:"What is the term for the physical expression of an individual's genetic makeup?",opts:["Genotype","Phenotype","Karyotype","Haplotype"],correct:1,exp:"Phenotype is the observable physical expression of genes (appearance, traits, biochemistry). Genotype is the actual genetic code. The same genotype can produce different phenotypes depending on environment and gene expression.",hint:"PHENOtype = what you can see/observe. GENOtype = the actual DNA code."},
+{ch:"Ch.21",q:"An autosomal dominant disorder requires how many mutated alleles to express the disease?",opts:["Two mutated alleles (homozygous)","One mutated allele is sufficient","Only X-linked alleles","Three chromosome copies"],correct:1,exp:"In autosomal dominant disorders (e.g., Huntington's disease, Marfan syndrome), ONE mutated copy of the gene is sufficient to cause disease. The abnormal allele 'dominates' over the normal allele. Each child of an affected parent has 50% risk.",hint:"Dominant = ONE copy is enough to cause the disease."},
+{ch:"Ch.21",q:"Which of the following is an example of an X-linked recessive disorder?",opts:["Down syndrome","Cystic fibrosis","Hemophilia A","Sickle cell disease"],correct:2,exp:"Hemophilia A is X-linked recessive — the gene is on the X chromosome. Males (XY) only need one affected X to have the disease. Females (XX) are usually carriers. Down syndrome is trisomy 21. CF and sickle cell are autosomal recessive.",hint:"Hemophilia A = X-linked recessive = mostly affects males, females are carriers."},
+{ch:"Ch.21",q:"Cystic fibrosis is caused by a mutation in which gene/protein?",opts:["p53 tumor suppressor","CFTR (cystic fibrosis transmembrane conductance regulator)","BRCA1 breast cancer gene","HBB hemoglobin beta chain"],correct:1,exp:"Cystic fibrosis results from mutations in the CFTR gene, which codes for a chloride channel protein. Defective CFTR leads to thick, sticky mucus in lungs, pancreas, and other organs. It is the most common lethal autosomal recessive disorder in Caucasians.",hint:"CF = CFTR gene mutation → broken chloride channel → thick sticky mucus everywhere."},
+{ch:"Ch.21",q:"Nondisjunction during meiosis refers to:",opts:["Normal chromosome separation","Failure of chromosomes to separate properly, resulting in aneuploidy","A translocation between two chromosomes","Deletion of a chromosome segment"],correct:1,exp:"Nondisjunction is the failure of chromosomes (or chromatids) to separate during meiosis I or II. This results in gametes with too many or too few chromosomes (aneuploidy), leading to conditions like trisomy 21 or monosomy X.",hint:"Nondisjunction = chromosomes that FAIL to separate = one cell gets too many, one too few."},
+{ch:"Ch.21",q:"Huntington's disease is characterized by which inheritance pattern?",opts:["Autosomal recessive","X-linked recessive","Autosomal dominant","Mitochondrial inheritance"],correct:2,exp:"Huntington's disease is autosomal dominant — one mutated copy of the HTT gene causes disease. It features a CAG trinucleotide repeat expansion. Symptoms (chorea, dementia) typically appear in middle age (35-50 years).",hint:"Huntington's = autosomal dominant = one bad copy = you get it, usually after age 35."},
+{ch:"Ch.21",q:"What is the function of a Punnett square in genetics?",opts:["To visualize chromosomes under a microscope","To predict the probability of offspring inheriting specific traits","To sequence DNA","To identify gene mutations"],correct:1,exp:"A Punnett square is a diagram used to predict the probability of offspring inheriting specific allele combinations from two parents. It shows all possible combinations of parental alleles and the resulting genotype ratios.",hint:"Punnett square = probability chart for predicting offspring genotypes."},
+{ch:"Ch.21",q:"Which prenatal test involves sampling cells from the chorionic villi of the placenta?",opts:["Amniocentesis","Chorionic villus sampling (CVS)","Alpha-fetoprotein test","Ultrasonography"],correct:1,exp:"Chorionic villus sampling (CVS) involves taking a small sample of placental cells (chorionic villi) at 10-13 weeks gestation. It provides fetal chromosomal and genetic information earlier than amniocentesis (which is done at 15-20 weeks).",hint:"CVS = placental cells sampled early (10-13 weeks). Amnio = amniotic fluid at 15-20 weeks."},
+
+// ===== ADDITIONAL CH.22 - PREGNANCY (8 questions) =====
+{ch:"Ch.22",q:"Preeclampsia is characterized by which classic triad of symptoms?",opts:["Fever, tachycardia, and anemia","Hypertension, proteinuria, and edema","Hypotension, oliguria, and jaundice","Headache, vomiting, and hyperglycemia"],correct:1,exp:"Preeclampsia is defined by the triad of hypertension (≥140/90), proteinuria (≥300mg/24hr), and edema after 20 weeks gestation. It can progress to eclampsia (seizures) and HELLP syndrome, both life-threatening emergencies.",hint:"Preeclampsia triad = HIGH blood pressure + PROTEIN in urine + EDEMA (swelling)."},
+{ch:"Ch.22",q:"Which hormone is responsible for maintaining the corpus luteum during early pregnancy?",opts:["Estrogen","Progesterone","Human chorionic gonadotropin (hCG)","Luteinizing hormone (LH)"],correct:2,exp:"Human chorionic gonadotropin (hCG), produced by the trophoblast of the early embryo, maintains the corpus luteum for the first 8-10 weeks. The corpus luteum then produces progesterone to maintain the uterine lining until the placenta takes over.",hint:"hCG = the pregnancy hormone that keeps the corpus luteum alive early in pregnancy."},
+{ch:"Ch.22",q:"Placenta previa is a condition in which:",opts:["The placenta separates prematurely from the uterine wall","The placenta implants over or near the cervical os","The placenta fails to deliver after birth","The umbilical cord wraps around the fetal neck"],correct:1,exp:"Placenta previa occurs when the placenta implants over or near the cervical opening (os), blocking the birth canal. It presents with painless bright red vaginal bleeding in the third trimester and requires cesarean delivery.",hint:"Placenta previa = placenta covers the exit (cervix) = painless bleeding + C-section needed."},
+{ch:"Ch.22",q:"What is the TORCH acronym used to represent in prenatal care?",opts:["Types of obstetric risk complications and hemorrhage","Toxoplasmosis, Other infections, Rubella, Cytomegalovirus, Herpes simplex","Tests, Observations, Routine Checks, and Hormones","Thyroid, Ovarian, Renal, Cardiac, Hepatic disorders"],correct:1,exp:"TORCH refers to a group of infections that can cross the placenta and cause severe fetal damage: Toxoplasmosis, Other (syphilis, HIV, varicella), Rubella, Cytomegalovirus (CMV), and Herpes simplex virus. All cause congenital defects if contracted during pregnancy.",hint:"TORCH = Toxo, Other, Rubella, CMV, Herpes = infections that cross the placenta and harm the fetus."},
+{ch:"Ch.22",q:"Rh incompatibility during pregnancy is most dangerous in:",opts:["The first pregnancy with an Rh-negative mother and Rh-positive fetus","Subsequent pregnancies after sensitization of an Rh-negative mother","Only when the mother is Rh-positive","When both parents are Rh-negative"],correct:1,exp:"During the first pregnancy, an Rh-negative mother may become sensitized to Rh-positive fetal blood. In SUBSEQUENT pregnancies, maternal anti-Rh antibodies cross the placenta and attack the Rh-positive fetal RBCs, causing hemolytic disease of the newborn (erythroblastosis fetalis).",hint:"First pregnancy: sensitization occurs. SECOND+ pregnancies: antibodies attack baby's blood = danger."},
+{ch:"Ch.22",q:"Hydramnios (polyhydramnios) refers to:",opts:["Decreased amniotic fluid volume","Excessive amniotic fluid volume","Rupture of the amniotic membranes","Premature separation of the placenta"],correct:1,exp:"Hydramnios (polyhydramnios) is an excess of amniotic fluid (>2000mL). It is associated with maternal diabetes, fetal anomalies (esophageal atresia, anencephaly), and multiple gestations. It can cause maternal discomfort and preterm labor.",hint:"Hydramnios = HYDRO = too much water = too much amniotic fluid."},
+{ch:"Ch.22",q:"Which of the following physiological changes is expected during normal pregnancy?",opts:["Decreased heart rate","Increased glomerular filtration rate (GFR)","Decreased tidal volume","Increased hematocrit"],correct:1,exp:"GFR increases by ~50% during pregnancy due to increased cardiac output and renal blood flow. Other normal changes include increased heart rate, increased tidal volume (breathes deeper), and DECREASED hematocrit (dilutional anemia from plasma volume expansion).",hint:"Pregnancy GFR increases ~50% — kidneys work harder to filter increased blood volume."},
+{ch:"Ch.22",q:"What is the most common cause of postpartum hemorrhage?",opts:["Cervical lacerations","Uterine atony","Placenta previa","DIC"],correct:1,exp:"Uterine atony (failure of the uterus to contract firmly after delivery) is the most common cause of postpartum hemorrhage (PPH), accounting for ~70-80% of cases. The uterus must contract to compress the open blood vessels at the placental site.",hint:"Postpartum hemorrhage #1 cause = uterine atony = uterus fails to contract after delivery."},
+
+// ===== ADDITIONAL CH.23 - DEVELOPMENT & AGING (7 questions) =====
+{ch:"Ch.23",q:"Which chromosomal abnormality causes Down syndrome, and what are its characteristic features?",opts:["Monosomy 21; short stature only","Trisomy 21; intellectual disability, flat facial profile, and increased cardiac defect risk","Deletion of chromosome 21; behavioral disorders","Translocation of chromosome 18; seizures"],correct:1,exp:"Down syndrome (trisomy 21) features: intellectual disability (mild-moderate), characteristic facial features (flat face, epicanthal folds, upslanted palpebral fissures), hypotonia, atlantoaxial instability, increased risk of congenital heart defects (40-50%), and early-onset Alzheimer's.",hint:"Trisomy 21 = Down syndrome = extra chromosome 21 → intellectual disability + flat face + heart defects."},
+{ch:"Ch.23",q:"What is the telomere theory of aging?",opts:["Telomeres lengthen with each cell division, causing aging","Telomeres shorten with each cell division, eventually triggering cell senescence or apoptosis","Telomeres are only found in cancer cells","Telomeres have no relationship to the aging process"],correct:1,exp:"Telomeres are protective caps at chromosome ends. With each cell division, telomeres shorten. When critically short, cells enter senescence (stop dividing) or apoptosis. This cellular 'clock' contributes to aging. Telomerase (active in stem cells and cancer) can rebuild telomeres.",hint:"Telomere = shoelace cap that shortens each division → eventually too short → cell stops dividing = aging."},
+{ch:"Ch.23",q:"During puberty, the growth spurt in females typically occurs at what stage?",opts:["Before any breast development","After menarche (first menstruation)","At the beginning of puberty, before other changes","Same time as males"],correct:0,exp:"In females, the growth spurt occurs EARLY in puberty — typically before or at the early stages of breast development (Tanner stage 2-3), and BEFORE menarche. In males, the growth spurt occurs LATER in puberty (Tanner stage 4).",hint:"Female growth spurt = EARLY in puberty. Male growth spurt = LATER in puberty."},
+{ch:"Ch.23",q:"Which of the following is a common health concern specifically associated with adolescence?",opts:["Atherosclerosis and MI","Eating disorders, substance abuse, and risky sexual behavior","Benign prostatic hyperplasia","Cataracts and macular degeneration"],correct:1,exp:"Adolescent health concerns include: eating disorders (anorexia, bulimia), substance abuse (alcohol, drugs), risky sexual behavior (STIs, teen pregnancy), depression, suicide, and obesity. These are distinct from adult chronic diseases.",hint:"Adolescent health issues = eating disorders + substance abuse + risky behaviors."},
+{ch:"Ch.23",q:"Senescence in cellular biology refers to:",opts:["Rapid cell proliferation","The state where cells permanently stop dividing but remain metabolically active","Cell death by necrosis","Stem cell activation and regeneration"],correct:1,exp:"Cellular senescence is a state where cells permanently exit the cell cycle and stop dividing, often triggered by telomere shortening or DNA damage. Senescent cells remain metabolically active and secrete inflammatory factors (SASP), contributing to tissue aging and age-related diseases.",hint:"Senescence = cell 'retires' — stops dividing but doesn't die, stays active causing inflammation."},
+{ch:"Ch.23",q:"Which of the following best describes the normal physiological changes of aging in the musculoskeletal system?",opts:["Increased muscle mass and bone density","Sarcopenia (muscle loss) and decreased bone density leading to fracture risk","Increased flexibility and joint range of motion","Accelerated bone remodeling with stronger bones"],correct:1,exp:"Normal aging causes sarcopenia (progressive muscle mass and strength loss), decreased bone density (osteopenia/osteoporosis), joint degeneration (osteoarthritis), and reduced flexibility. These changes increase fall risk and fracture risk in older adults.",hint:"Aging musculoskeletal = LESS muscle (sarcopenia) + LESS bone density = fall and fracture risk."},
+{ch:"Ch.23",q:"Which growth factor plays a key role in stimulating bone and muscle growth during puberty?",opts:["Thyroid-stimulating hormone (TSH)","Insulin-like growth factor-1 (IGF-1) stimulated by growth hormone (GH)","Antidiuretic hormone (ADH)","Aldosterone"],correct:1,exp:"Growth hormone (GH) from the pituitary stimulates the liver to produce IGF-1 (insulin-like growth factor-1), which directly promotes bone elongation at growth plates and muscle growth. GH/IGF-1 axis peaks during puberty and declines with aging.",hint:"GH → liver makes IGF-1 → IGF-1 grows bones and muscles during puberty."}
+];;
 
 // ======= QUIZ RENDER =======
 let answered={},vault=[],vaultStreaks={},currentFilter='all';
@@ -1475,6 +2016,54 @@ function clearVault(){vault=[];vaultStreaks={};updateVault();updateProgress();}
       {t:"PIH vs. chronic HTN",d:"PIH develops AFTER 20 weeks in a previously normotensive woman; chronic HTN present BEFORE 20 weeks"},
       {t:"Abruptio vs. ruptured ectopic",d:"Abruptio = after 20 wks, rigid uterus, dark bleeding; Ectopic = before 20 wks, unilateral pain, hypotension"},
     ]},
+    // ROUND 13 — EASY: Ch.23 Adolescence & Aging basics
+    {diff:"easy",items:[
+      {t:"Puberty",d:"Period when adolescents reach sexual maturity; driven by pituitary gonadotropins & sex hormones"},
+      {t:"Adolescence",d:"Begins ~age 10-12; continues until physical growth completed"},
+      {t:"Alopecia",d:"Hair loss — can be partial or complete; caused by aging, hormones, chemo, or autoimmune"},
+      {t:"Senescence",d:"State where cells permanently stop dividing but stay metabolically active — contributes to aging"},
+      {t:"Sarcopenia",d:"Progressive muscle mass and strength loss that occurs with aging"},
+    ]},
+    // ROUND 14 — EASY: Metabolic syndrome & eating disorders
+    {diff:"easy",items:[
+      {t:"Metabolic syndrome",d:"Abdominal obesity + insulin resistance + hypertension + dyslipidemia — major cardiovascular risk"},
+      {t:"Insulin resistance",d:"Body's cells resist insulin effects — precursor to type 2 diabetes; common in obesity"},
+      {t:"Anorexia nervosa",d:"Extreme self-starvation without another disease cause; body image distortion; elevated cortisol"},
+      {t:"Bulimia nervosa",d:"Binge eating (especially carbs) followed by purging — can cause hypokalemia affecting heart"},
+      {t:"Klinefelter syndrome",d:"47,XXY — male with extra X; small testes, no sperm/secondary sex characteristics; infertile"},
+    ]},
+    // ROUND 15 — MEDIUM: Aging changes by system
+    {diff:"medium",items:[
+      {t:"Arteriosclerosis",d:"Hardening and thickening of arterial walls with aging — reduces elasticity, increases BP"},
+      {t:"Atherosclerosis",d:"Plaque buildup inside arterial walls — major aging cardiovascular change"},
+      {t:"Telomere shortening",d:"Protective chromosome caps shorten with each cell division — eventually triggers senescence"},
+      {t:"Life expectancy",d:"Age at which 50% of a given population is expected to survive"},
+      {t:"Life span",d:"The maximum length of time a person can live"},
+    ]},
+    // ROUND 16 — MEDIUM: Ch.23 clinical distinctions
+    {diff:"medium",items:[
+      {t:"Osteoporosis",d:"Decreased bone density — predisposing factors: low estrogen, corticosteroids, sedentary lifestyle, smoking"},
+      {t:"Decreased PTH (aging)",d:"NOT a risk factor for osteoporosis — low PTH = less bone resorption (opposite of what causes osteoporosis)"},
+      {t:"IGF-1",d:"Insulin-like growth factor-1 — produced by liver in response to growth hormone — drives bone & muscle growth in puberty"},
+      {t:"Scoliosis",d:"Lateral curvature of spine — structural (fixed) vs. functional (correctable); common adolescent concern"},
+      {t:"Juvenile rheumatoid arthritis",d:"Autoimmune chronic inflammation in joints of children — affects large joints: knees, wrists, elbows"},
+    ]},
+    // ROUND 17 — HARD: Aging systems deep detail
+    {diff:"hard",items:[
+      {t:"Aging cardiovascular",d:"Reduced peripheral blood flow, vessels lose elasticity, arteriosclerosis — leads to ↑ BP and ↓ perfusion"},
+      {t:"Aging immune",d:"Reduced responsiveness to antigens → increased infection risk AND increased cancer risk"},
+      {t:"Aging urinary",d:"Decreased GFR + reduced peristalsis → impaired drug excretion → drug toxicity risk on multiple medications"},
+      {t:"Aging nervous",d:"Memory, intellectual capabilities, and coordination decline; Alzheimer's risk increases"},
+      {t:"Aging reproductive",d:"Females: menopause (↓ estrogen → osteoporosis risk); Males & females: decreased fertility"},
+    ]},
+    // ROUND 18 — HARD: Exam-focused comparisons Ch.23
+    {diff:"hard",items:[
+      {t:"Turner vs. Klinefelter",d:"Turner: 45,X female — short stature, amenorrhea, infertile; Klinefelter: 47,XXY male — tall, infertile, gynecomastia"},
+      {t:"Anorexia vs. Bulimia",d:"Anorexia: extreme underweight, starvation, body distortion; Bulimia: normal weight, binge-purge, hypokalemia"},
+      {t:"Senescence vs. Apoptosis",d:"Senescence: cell stops dividing but stays alive (SASP); Apoptosis: programmed cell DEATH — ordered destruction"},
+      {t:"Metabolic syndrome criteria",d:"BMI ≥85th percentile (abdominal fat) + glucose changes/DM2 + hypertension — 3 together = metabolic syndrome"},
+      {t:"Female vs. male puberty timing",d:"Female: growth spurt EARLY (before menarche); Male: growth spurt LATE in puberty (Tanner stage 4)"},
+    ]},
   ];
 
   let matchRoundIdx=0,matchSelected=null,matchAnswered={};
@@ -1650,11 +2239,36 @@ function clearVault(){vault=[];vaultStreaks={};updateVault();updateProgress();}
     {diff:"hard",text:"Gravidity counts [__] pregnancies. Parity counts pregnancies reaching [__].",
      blanks:["all","viability"],
      words:["all","live","completed","viability","term","delivery"]},
-  ];
+    // ---- Ch.23 Development & Aging ----
+    {diff:"easy",text:"Adolescence begins around age [__] to [__] years and is driven by gonadotropins from the [__] gland.",
+     blanks:["10","12","pituitary"],
+     words:["10","12","pituitary","hypothalamus","thyroid","8","15","adrenal"]},
+    {diff:"easy",text:"[__] refers to hair loss. [__] is the term for programmed cell death where the cell self-destructs in an orderly way.",
+     blanks:["Alopecia","Apoptosis"],
+     words:["Alopecia","Senescence","Apoptosis","Necrosis","Cachexia","Anaplasia"]},
+    {diff:"easy",text:"Metabolic syndrome includes abdominal [__], changes in [__] metabolism, and [__].",
+     blanks:["obesity","glucose","hypertension"],
+     words:["obesity","muscle","glucose","lipid","hypertension","tachycardia","anemia"]},
+    {diff:"medium",text:"Aging cardiovascular changes include vascular degeneration with [__] (arterial wall hardening) and [__] (plaque buildup).",
+     blanks:["arteriosclerosis","atherosclerosis"],
+     words:["arteriosclerosis","atherosclerosis","angiogenesis","vasodilation","lymphedema","cardiomegaly"]},
+    {diff:"medium",text:"Telomeres [__] with each cell division. When critically short, cells enter [__] (stop dividing) or undergo [__].",
+     blanks:["shorten","senescence","apoptosis"],
+     words:["shorten","lengthen","senescence","hyperplasia","apoptosis","necrosis","mitosis"]},
+    {diff:"medium",text:"Osteoporosis is NOT caused by decreased [__] hormone — in fact, LOW PTH means LESS bone [__]. It IS caused by decreased [__].",
+     blanks:["parathyroid","resorption","estrogen"],
+     words:["parathyroid","thyroid","resorption","formation","estrogen","progesterone","insulin"]},
+    {diff:"hard",text:"[__] is progressive muscle loss with aging. The aging immune system has reduced responsiveness to antigens, increasing risk of [__] and [__].",
+     blanks:["Sarcopenia","infections","cancer"],
+     words:["Sarcopenia","Anorexia","infections","inflammation","cancer","anemia","diabetes"]},
+    {diff:"hard",text:"Aging kidneys have decreased [__] filtration rate, impaired drug [__], increasing risk of drug [__] with multiple medications.",
+     blanks:["glomerular","excretion","toxicity"],
+     words:["glomerular","tubular","excretion","absorption","toxicity","resistance","depletion"]}];
 
   let fibState={};
   let fibActiveBlank=null;
 
+  function initFib(){renderFib();}
   function renderFib(){
     fibState={};fibActiveBlank=null;
     document.getElementById('fib-container').innerHTML=fibQs.map((q,qi)=>{
@@ -1777,6 +2391,7 @@ function clearVault(){vault=[];vaultStreaks={};updateVault();updateProgress();}
   ];
 
   let scAnswered={};
+  function initScenario(){scAnswered={};renderScenarios();}
   function renderScenarios(){
     document.getElementById('sc-container').innerHTML=scenarios.map((sc,i)=>{
       const isAns=scAnswered[i]!==undefined;
@@ -1961,7 +2576,48 @@ function clearVault(){vault=[];vaultStreaks={};updateVault();updateProgress();}
       {text:"Increased urinary frequency in 1st trimester",cat:"Normal Pregnancy Change"},
       {text:"BP 155/100 developing after 20 weeks — no prior HTN",cat:"Requires Immediate Assessment"},
     ]},
-  ];
+    {title:"Sort: Aging System Changes",cats:["Expected with Aging","NOT Expected with Aging"],items:[
+      {text:"Arteriosclerosis — vessels stiffen",cat:"Expected with Aging"},
+      {text:"Decreased GFR",cat:"Expected with Aging"},
+      {text:"Increased muscle mass",cat:"NOT Expected with Aging"},
+      {text:"Sarcopenia — muscle loss",cat:"Expected with Aging"},
+      {text:"Improved immune response",cat:"NOT Expected with Aging"},
+      {text:"Decreased lung elasticity",cat:"Expected with Aging"},
+      {text:"Increased bone density",cat:"NOT Expected with Aging"},
+      {text:"Telomere shortening",cat:"Expected with Aging"},
+    ]},
+    {title:"Sort: Adolescent Complications",cats:["Complication of Adolescence","NOT a Complication of Adolescence"],items:[
+      {text:"Metabolic syndrome",cat:"Complication of Adolescence"},
+      {text:"Anorexia nervosa",cat:"Complication of Adolescence"},
+      {text:"Klinefelter syndrome (XXY)",cat:"Complication of Adolescence"},
+      {text:"Alzheimer's disease",cat:"NOT a Complication of Adolescence"},
+      {text:"Scoliosis",cat:"Complication of Adolescence"},
+      {text:"Atherosclerosis with plaque",cat:"NOT a Complication of Adolescence"},
+      {text:"Acne",cat:"Complication of Adolescence"},
+      {text:"Cataracts",cat:"NOT a Complication of Adolescence"},
+    ]},
+    {title:"Sort: Benign vs. Malignant — EXAM FOCUS",cats:["Benign Tumor","Malignant Tumor"],items:[
+      {text:"Encapsulated — contained within fibrous capsule",cat:"Benign Tumor"},
+      {text:"Invasive — destroys surrounding normal tissue",cat:"Malignant Tumor"},
+      {text:"Well-differentiated — cells look normal",cat:"Benign Tumor"},
+      {text:"Anaplastic — cells do NOT resemble origin tissue",cat:"Malignant Tumor"},
+      {text:"Does NOT metastasize",cat:"Benign Tumor"},
+      {text:"Spreads via lymphatics or blood vessels",cat:"Malignant Tumor"},
+      {text:"Slow growing",cat:"Benign Tumor"},
+      {text:"Rapid proliferation",cat:"Malignant Tumor"},
+      {text:"Resembles surrounding tissue",cat:"Benign Tumor"},
+      {text:"Promotes ischemia and necrosis",cat:"Malignant Tumor"},
+    ]},
+    {title:"Sort: Cancer Nomenclature — Tissue Origin",cats:["Carcinoma (Epithelial)","Sarcoma (Connective)","Other"],items:[
+      {text:"Skin cancer",cat:"Carcinoma (Epithelial)"},
+      {text:"Osteosarcoma — bone cancer",cat:"Sarcoma (Connective)"},
+      {text:"Adenocarcinoma — glandular epithelium",cat:"Carcinoma (Epithelial)"},
+      {text:"Rhabdomyosarcoma — muscle cancer",cat:"Sarcoma (Connective)"},
+      {text:"Cervical cancer (HPV-related)",cat:"Carcinoma (Epithelial)"},
+      {text:"Leukemia — blood-forming tissue",cat:"Other"},
+      {text:"Liposarcoma — fat tissue",cat:"Sarcoma (Connective)"},
+      {text:"Lymphoma — lymphoid tissue",cat:"Other"},
+    ]}];
 
   let sortRoundIdx=0,sortSelected=null,sortAnswered={},sortScore=0,sortTotal=0;
   function initSort(){sortRoundIdx=0;resetSortRound();}
@@ -2016,6 +2672,333 @@ function clearVault(){vault=[];vaultStreaks={};updateVault();updateProgress();}
   renderScenarios();
   initMatch();
   initSort();
+
+// ═══════════════════════════════════════════════════
+// WHO WANTS TO BE A MILLIONAIRE
+// ═══════════════════════════════════════════════════
+const milQuestions=[
+  // $100 - Very easy
+  {q:"What does CAUTION stand for in cancer warning signs?",opts:["A single warning sign","An acronym for multiple warning signs of cancer","A treatment protocol","A staging system"],correct:1,prize:"$100",exp:"CAUTION = Changes in bowel/bladder, A sore not healing, Unusual bleeding, Thickening/lump, Indigestion, Obvious mole change, Nagging cough — ALL are warning signs."},
+  // $200
+  {q:"Alopecia is the medical term for:",opts:["Nail brittleness","Skin rash","Hair loss","Bone pain"],correct:2,prize:"$200",exp:"Alopecia = hair loss. Can be caused by chemotherapy, aging, hormonal changes, or autoimmune conditions."},
+  // $300
+  {q:"A benign tumor is best described as:",opts:["Invasive and spreading","Encapsulated and slow growing","Anaplastic with metastasis","Producing cachexia"],correct:1,prize:"$300",exp:"Benign = encapsulated, slow growing, well-differentiated, does NOT metastasize."},
+  // $500
+  {q:"The 23rd chromosome pair in a biological male is:",opts:["XX","XO","XY","YY"],correct:2,prize:"$500",exp:"Males = XY. The Y chromosome carries the SRY gene triggering male development. Females = XX."},
+  // $1,000
+  {q:"Gestational diabetes most commonly results in:",opts:["Low birth weight infant","Premature birth before 32 weeks","High birth weight infant (macrosomia)","Fetal anemia"],correct:2,prize:"$1,000",exp:"Maternal hyperglycemia → fetal hyperinsulinism → macrosomia (large baby). This is the classic result of gestational diabetes."},
+  // $2,000
+  {q:"Which is NOT a predisposing factor for osteoporosis?",opts:["Decreased estrogen","Prolonged corticosteroid use","Decreased parathyroid hormone","Sedentary lifestyle"],correct:2,prize:"$2,000",exp:"Decreased PTH is NOT a risk factor — low PTH means LESS bone resorption. Osteoporosis risk factors include low estrogen, corticosteroids, inactivity, low calcium/Vitamin D."},
+  // $4,000
+  {q:"Carcinogenesis begins with:",opts:["Tumor angiogenesis","Metastasis to lymph nodes","An irreversible change in cell DNA","Loss of cell membrane integrity"],correct:2,prize:"$4,000",exp:"Initiation = first irreversible DNA mutation — the start of carcinogenesis. This cannot be undone once it occurs."},
+  // $8,000
+  {q:"Developmental disorders can result from all of the following EXCEPT:",opts:["Radiation exposure","Mercury in food/water","Folic acid","Drugs and alcohol"],correct:2,prize:"$8,000",exp:"Folic acid PREVENTS neural tube defects — it is PROTECTIVE. Radiation, mercury, and drugs/alcohol are teratogens that CAUSE developmental disorders."},
+  // $16,000
+  {q:"A spontaneous alteration in genetic material from harmful substance exposure is called:",opts:["Genotype change","Mutation","Meiosis error","Autosome shift"],correct:1,prize:"$16,000",exp:"A mutation is a permanent change in DNA sequence — can be spontaneous or induced by mutagens like radiation, chemicals, or viruses."},
+  // $32,000
+  {q:"Edema in pregnancy tissues develops primarily as a result of:",opts:["Decreased serum albumin","Increased blood pressure","Increased blood volume","Reduced kidney function"],correct:2,prize:"$32,000",exp:"Blood volume increases 40-50% in pregnancy → increased hydrostatic pressure → fluid moves into tissues = physiological edema."},
+  // $64,000
+  {q:"A person with sickle cell trait (HbAS) demonstrates which inheritance pattern?",opts:["Incomplete dominance","X-linked dominant","Multifactorial","Pure recessive"],correct:0,prize:"$64,000",exp:"HbAS = heterozygous — has BOTH normal and sickle hemoglobin. This is incomplete dominance where the heterozygous individual shows mixed expression."},
+  // $125,000
+  {q:"Which complication of abruptio placentae is indicated by LOW serum clotting factors?",opts:["Thrombocytopenia","DIC (disseminated intravascular coagulation)","Severe hypertension","Jaundice"],correct:1,prize:"$125,000",exp:"Abruptio placentae releases thromboplastin → widespread clotting uses up ALL clotting factors → DIC → uncontrolled bleeding. Life-threatening emergency."},
+  // $250,000
+  {q:"Radiation therapy destroys cancer cells by primarily targeting:",opts:["Only G0 phase cells","Slowly dividing cells","Rapidly dividing cells","Cells with repaired DNA"],correct:2,prize:"$250,000",exp:"Radiation damages DNA most effectively in rapidly dividing cells. Cancer cells divide faster = more vulnerable. Side effects hit normal fast-dividing cells too (hair, GI, bone marrow)."},
+  // $500,000
+  {q:"The major cardiovascular change with aging is:",opts:["Increased cardiac output","Vascular degeneration with arteriosclerosis and atherosclerosis","Decreased blood pressure","Increased vessel elasticity"],correct:1,prize:"$500,000",exp:"Aging = arteriosclerosis (arterial wall hardening) + atherosclerosis (plaque buildup) = decreased compliance, increased cardiac workload, reduced perfusion."},
+  // $1,000,000
+  {q:"Cachexia in cancer patients results from increased tumor necrosis factor (TNF-α), which:",opts:["Increases appetite and nutrient absorption","Makes lipid energy UNAVAILABLE to tissues and promotes tissue wasting","Stimulates muscle growth","Increases red blood cell production"],correct:1,prize:"$1,000,000",exp:"PROFESSOR KEY POINT: Cachexia is SEVERE TISSUE WASTING caused by TNF-α blocking nutrient USE — NOT from lack of eating. Eating more does NOT reverse it. The tumor poisons the metabolism itself."},
+];
+
+let milIdx=0, milScore=0, milActive=false, milLifelines={fiftyFifty:true, skip:true};
+const milPrizes=milQuestions.map(q=>q.prize);
+
+function initMillionaire(){
+  milIdx=0; milScore=0; milActive=true;
+  milLifelines={fiftyFifty:true, skip:true};
+  document.getElementById('mil-restart-btn').style.display='none';
+  document.getElementById('mil-result').style.display='none';
+  document.getElementById('mil-feedback').innerHTML='';
+  renderMillionaire();
+}
+
+function renderMillionaire(){
+  if(milIdx>=milQuestions.length){
+    showMillionaireResult(true); return;
+  }
+  const q=milQuestions[milIdx];
+  // Progress bar
+  const pct=Math.round((milIdx/milQuestions.length)*100);
+  document.getElementById('mil-progress-bar').innerHTML=
+    `<div style="background:#e5e7eb;border-radius:20px;height:10px;margin-bottom:6px">
+       <div style="background:linear-gradient(90deg,#f59e0b,#d97706);width:${pct}%;height:10px;border-radius:20px;transition:width .4s"></div>
+     </div>
+     <div style="text-align:center;font-size:.78rem;color:#92400e;font-weight:700">Question ${milIdx+1} of ${milQuestions.length} &mdash; ${q.prize}</div>`;
+  // Prize ladder
+  let ladder='<div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center">';
+  milPrizes.forEach((p,i)=>{
+    const cls=i<milIdx?'background:#16a34a;color:white':i===milIdx?'background:#f59e0b;color:white;font-weight:800':'background:#f3f4f6;color:#6b7280';
+    ladder+=`<span style="padding:2px 7px;border-radius:10px;font-size:.7rem;${cls}">${p}</span>`;
+  });
+  ladder+='</div>';
+  document.getElementById('mil-prize-ladder').innerHTML=ladder;
+  // Question
+  document.getElementById('mil-question-box').innerHTML=
+    `<div style="background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:20px;margin-bottom:14px">
+       <div style="color:#c7d2fe;font-size:.75rem;font-weight:700;margin-bottom:8px">&#127919; ${q.prize}</div>
+       <div style="color:white;font-size:1rem;font-weight:700;line-height:1.5">${q.q}</div>
+     </div>
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="mil-opts">
+       ${q.opts.map((o,i)=>`<button onclick="answerMillionaire(${i})" class="mil-opt" data-idx="${i}" style="padding:12px 14px;border-radius:10px;border:2px solid #c7d2fe;background:white;cursor:pointer;font-size:.88rem;text-align:left;font-weight:600;color:#1e1b4b;transition:all .2s">
+         <span style="background:#312e81;color:white;border-radius:6px;padding:2px 7px;font-size:.75rem;margin-right:6px">${String.fromCharCode(65+i)}</span>${o}
+       </button>`).join('')}
+     </div>`;
+  // Lifelines
+  let ll='<div style="display:flex;gap:8px;justify-content:center;margin:8px 0">';
+  if(milLifelines.fiftyFifty) ll+=`<button onclick="milFiftyFifty()" style="background:#fff7ed;border:2px solid #fb923c;border-radius:20px;padding:5px 14px;font-size:.8rem;font-weight:700;cursor:pointer;color:#c2410c">50:50</button>`;
+  if(milLifelines.skip) ll+=`<button onclick="milSkip()" style="background:#f0fdf4;border:2px solid #16a34a;border-radius:20px;padding:5px 14px;font-size:.8rem;font-weight:700;cursor:pointer;color:#15803d">&#9193; Skip</button>`;
+  ll+='</div>';
+  document.getElementById('mil-lifelines').innerHTML=ll;
+  document.getElementById('mil-feedback').innerHTML='';
+}
+
+function answerMillionaire(idx){
+  if(!milActive) return;
+  milActive=false;
+  const q=milQuestions[milIdx];
+  const btns=document.querySelectorAll('.mil-opt');
+  btns.forEach(b=>b.disabled=true);
+  const chosen=btns[idx];
+  if(idx===q.correct){
+    chosen.style.background='#dcfce7'; chosen.style.borderColor='#16a34a';
+    btns[q.correct].style.color='#15803d';
+    milScore++;
+    document.getElementById('mil-feedback').innerHTML=
+      `<div style="background:#dcfce7;border:2px solid #16a34a;border-radius:10px;padding:12px;margin-top:12px">
+        <div style="color:#15803d;font-weight:800;margin-bottom:5px">&#9989; Correct! ${q.prize} earned!</div>
+        <div style="color:#166534;font-size:.83rem">${q.exp}</div>
+        <button onclick="milNext()" style="margin-top:10px;background:#16a34a;color:white;border:none;border-radius:8px;padding:8px 18px;font-weight:700;cursor:pointer">Next Question &#9654;</button>
+      </div>`;
+  } else {
+    chosen.style.background='#fee2e2'; chosen.style.borderColor='#dc2626';
+    btns[q.correct].style.background='#dcfce7'; btns[q.correct].style.borderColor='#16a34a';
+    document.getElementById('mil-feedback').innerHTML=
+      `<div style="background:#fee2e2;border:2px solid #dc2626;border-radius:10px;padding:12px;margin-top:12px">
+        <div style="color:#b91c1c;font-weight:800;margin-bottom:5px">&#10060; Wrong! You leave with ${milIdx>=5?milPrizes[4]:'$0'}.</div>
+        <div style="color:#991b1b;font-size:.83rem">${q.exp}</div>
+        <button onclick="showMillionaireResult(false)" style="margin-top:10px;background:#dc2626;color:white;border:none;border-radius:8px;padding:8px 18px;font-weight:700;cursor:pointer">See Final Score</button>
+      </div>`;
+  }
+}
+
+function milNext(){
+  milIdx++; milActive=true;
+  renderMillionaire();
+}
+
+function milFiftyFifty(){
+  milLifelines.fiftyFifty=false;
+  const q=milQuestions[milIdx];
+  const wrong=[];
+  for(let i=0;i<4;i++) if(i!==q.correct) wrong.push(i);
+  // remove 2 wrong
+  const remove=wrong.sort(()=>Math.random()-.5).slice(0,2);
+  remove.forEach(i=>{
+    const b=document.querySelectorAll('.mil-opt')[i];
+    b.style.opacity='.25'; b.disabled=true;
+  });
+  document.getElementById('mil-lifelines').querySelector('button').remove();
+}
+
+function milSkip(){
+  milLifelines.skip=false;
+  milIdx++; milActive=true;
+  if(milIdx>=milQuestions.length) showMillionaireResult(true);
+  else renderMillionaire();
+}
+
+function showMillionaireResult(won){
+  document.getElementById('mil-result').style.display='block';
+  document.getElementById('mil-result').innerHTML=
+    won?`<div style="text-align:center;padding:24px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:16px;color:white">
+          <div style="font-size:2rem">&#127881;</div>
+          <div style="font-size:1.3rem;font-weight:800">YOU ARE A MILLIONAIRE!</div>
+          <div style="margin-top:8px">All 15 questions correct! You clearly know this material!</div>
+        </div>`
+    :`<div style="text-align:center;padding:24px;background:#fef9c3;border-radius:16px">
+        <div style="font-size:2rem">&#128214;</div>
+        <div style="font-size:1.1rem;font-weight:800;color:#92400e">You answered ${milScore} correctly</div>
+        <div style="color:#78350f;margin-top:6px;font-size:.88rem">You leave with ${milIdx>=5?milPrizes[4]:'$0'} — Keep studying and try again!</div>
+      </div>`;
+  document.getElementById('mil-restart-btn').style.display='block';
+  document.getElementById('mil-question-box').innerHTML='';
+  document.getElementById('mil-lifelines').innerHTML='';
+  document.getElementById('mil-feedback').innerHTML='';
+}
+
+// ═══════════════════════════════════════════════════
+// JEOPARDY
+// ═══════════════════════════════════════════════════
+const jeopardyBoard=[
+  {cat:"Cancer Basics",color:"#7c3aed",clues:[
+    {val:100,q:"This term describes the loss of cell differentiation in cancer cells — the more of it, the more aggressive the tumor.",a:"Anaplasia",exp:"Anaplasia = loss of differentiation. Higher anaplasia = more aggressive/malignant tumor."},
+    {val:200,q:"This type of malignant tumor originates from epithelial tissue — the most common cancer category.",a:"Carcinoma",exp:"Carcinoma = malignant tumor from epithelial cells. Examples: breast, lung, colon, skin cancers."},
+    {val:300,q:"Severe tissue wasting in cancer patients caused by TNF-α making lipid energy unavailable to the body — NOT reversed by eating more.",a:"Cachexia",exp:"PROFESSOR KEY: Cachexia = severe tissue wasting. TNF-α blocks nutrient use. Eating more does NOT fix it."},
+    {val:400,q:"This malignant tumor type originates from connective tissue such as bone, muscle, fat, or cartilage.",a:"Sarcoma",exp:"Sarcoma = connective tissue malignancy. Examples: osteosarcoma (bone), rhabdomyosarcoma (muscle), liposarcoma (fat)."},
+    {val:500,q:"The three stages of carcinogenesis in order — the first causes irreversible DNA change.",a:"Initiation → Promotion → Progression",exp:"IPP Theory: Initiation (irreversible DNA mutation) → Promotion (oncogene activation, reversible) → Progression (independent growth, metastasis)."},
+  ]},
+  {cat:"Guaranteed Exam",color:"#b91c1c",clues:[
+    {val:100,q:"This is NOT a warning sign of cancer — sudden development of fever, nausea, and diarrhea.",a:"What is NOT a CAUTION sign? (Acute infection symptoms)",exp:"CAUTION warning signs are chronic/persistent changes. Sudden fever/nausea/diarrhea = infection, not cancer."},
+    {val:200,q:"Blood tests on neonates are performed primarily to do this.",a:"Identify metabolic/genetic disorders requiring immediate treatment",exp:"Newborn screening (heel-stick) catches PKU, hypothyroidism, galactosemia — treatable disorders that cause irreversible damage if missed."},
+    {val:300,q:"Gestational diabetes causes fetal hyperinsulinism, resulting in this delivery outcome.",a:"High birth weight (macrosomia)",exp:"High maternal glucose → fetal hyperinsulinism → macrosomia. Increases risk of difficult delivery and birth injury."},
+    {val:400,q:"Folic acid is the answer to this question about developmental disorders — because it is PROTECTIVE, not causative.",a:"What is NOT a cause of developmental disorders?",exp:"Folic acid PREVENTS neural tube defects. Radiation, mercury, drugs/alcohol are teratogens that CAUSE disorders."},
+    {val:500,q:"This complication of abruptio placentae is indicated by low serum clotting factors — a life-threatening emergency.",a:"DIC (Disseminated Intravascular Coagulation)",exp:"Abruptio releases thromboplastin → massive clotting → clotting factors consumed → DIC → uncontrolled bleeding."},
+  ]},
+  {cat:"Genetics",color:"#0891b2",clues:[
+    {val:100,q:"A visual arrangement of all chromosomes from a cell, organized in pairs by size and shape.",a:"Karyotype",exp:"Karyotype = chromosome photo arranged in pairs. Used to identify trisomy 21, Turner syndrome, etc."},
+    {val:200,q:"This chromosomal syndrome is caused by trisomy 21.",a:"Down syndrome",exp:"Trisomy 21 = 3 copies of chromosome 21. Features: intellectual disability, flat facial profile, cardiac defects (40-50%)."},
+    {val:300,q:"In this inheritance pattern, ONE mutated allele is sufficient to cause disease — like Huntington's.",a:"Autosomal dominant",exp:"Autosomal dominant = one bad copy causes disease. Affected parent has 50% chance of passing it to each child."},
+    {val:400,q:"This syndrome occurs in males with a 47,XXY karyotype — features include small testes and infertility.",a:"Klinefelter syndrome",exp:"Klinefelter = XXY male. Small testes, no sperm, no secondary sex characteristics. Tall stature, possible gynecomastia."},
+    {val:500,q:"A sickle cell trait individual who is heterozygous (HbAS) demonstrates this inheritance pattern.",a:"Incomplete dominance",exp:"HbAS = has BOTH normal and sickle hemoglobin = incomplete dominance. Mild symptoms under low oxygen."},
+  ]},
+  {cat:"Pregnancy",color:"#059669",clues:[
+    {val:100,q:"This sign describes the purplish discoloration of the vaginal mucosa during pregnancy.",a:"Chadwick sign",exp:"Chadwick sign = purplish cervix/vagina from increased vascularity. Normal pregnancy change."},
+    {val:200,q:"This condition occurs when the placenta implants over the cervical os — presenting with PAINLESS bright red bleeding.",a:"Placenta previa",exp:"Placenta previa = placenta covers cervix = painless bright red bleeding. Requires C-section. No vaginal exam."},
+    {val:300,q:"The triad of hypertension, proteinuria, and edema after 20 weeks gestation.",a:"Preeclampsia",exp:"Preeclampsia triad = HTN (≥140/90) + proteinuria + edema after 20 weeks. Can progress to eclampsia (seizures) or HELLP."},
+    {val:400,q:"Premature separation of the placenta causing PAINFUL dark red bleeding — risk of DIC.",a:"Abruptio placentae",exp:"Abruptio = premature placental separation. Painful, dark blood, board-like rigid uterus. Major DIC risk."},
+    {val:500,q:"This acronym represents infections that cross the placenta and cause severe fetal damage — includes Toxoplasmosis and CMV.",a:"TORCH infections",exp:"TORCH = Toxoplasmosis, Other (syphilis, HIV, varicella), Rubella, CMV, Herpes. All cross placenta during embryologic period."},
+  ]},
+  {cat:"Dev & Aging",color:"#c2410c",clues:[
+    {val:100,q:"This medical term refers to hair loss.",a:"Alopecia",exp:"Alopecia = hair loss. Can be from aging, hormones, chemo, or autoimmune conditions like alopecia areata."},
+    {val:200,q:"Telomeres shorten with each cell division — when critically short, cells enter this state of permanent non-division.",a:"Senescence",exp:"Cellular senescence = cell retires (stops dividing) but stays metabolically active. Contributes to aging and inflammation."},
+    {val:300,q:"The major cardiovascular change in aging — vessels lose elasticity, develop hardening and plaque buildup.",a:"Arteriosclerosis and atherosclerosis",exp:"Arteriosclerosis = arterial wall hardening. Atherosclerosis = plaque buildup. Both reduce vessel compliance with aging."},
+    {val:400,q:"This is NOT a predisposing factor for osteoporosis — in fact, having less of it means LESS bone resorption.",a:"Decreased PTH (parathyroid hormone)",exp:"PTH increases bone resorption. LOW PTH = LESS resorption = protective. Osteoporosis risk: low estrogen, corticosteroids, sedentary lifestyle."},
+    {val:500,q:"Metabolic syndrome in adolescents is defined by this triad of findings.",a:"BMI ≥85th percentile + glucose/DM2 changes + hypertension",exp:"Metabolic syndrome = abdominal obesity (BMI ≥85th) + insulin resistance/DM2 + hypertension. Major cardiovascular risk cluster."},
+  ]},
+];
+
+let jeopScore=0, jeopAnswered=new Set();
+
+function initJeopardy(){
+  jeopScore=0; jeopAnswered=new Set();
+  document.getElementById('jeop-score').textContent='$0';
+  document.getElementById('jeop-final').style.display='none';
+  document.getElementById('jeop-restart-btn').style.display='none';
+  document.getElementById('jeop-clue-modal').style.display='none';
+  renderJeopBoard();
+}
+
+function renderJeopBoard(){
+  let html='<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;min-width:500px">';
+  // header row
+  html+='<tr>';
+  jeopardyBoard.forEach(cat=>{
+    html+=`<th style="background:${cat.color};color:white;padding:10px 6px;font-size:.8rem;text-align:center;border:3px solid #1e293b">${cat.cat}</th>`;
+  });
+  html+='</tr>';
+  // clue rows
+  for(let r=0;r<5;r++){
+    html+='<tr>';
+    jeopardyBoard.forEach((cat,ci)=>{
+      const clue=cat.clues[r];
+      const key=`${ci}-${r}`;
+      const used=jeopAnswered.has(key);
+      html+=`<td style="background:${used?'#374151':'#1e3a5f'};color:${used?'#6b7280':'#fbbf24'};font-size:1rem;font-weight:800;text-align:center;padding:14px 6px;cursor:${used?'default':'pointer'};border:3px solid #1e293b;transition:all .2s" 
+        ${used?'':'onclick="openJeopClue('+ci+','+r+')"'}
+        onmouseover="if(!${used}) this.style.background='${cat.color}'"
+        onmouseout="if(!${used}) this.style.background='#1e3a5f'"
+      >$${clue.val}</td>`;
+    });
+    html+='</tr>';
+  }
+  html+='</table></div>';
+  document.getElementById('jeop-board').innerHTML=html;
+  // check if all answered
+  if(jeopAnswered.size===25) showJeopFinal();
+}
+
+function openJeopClue(ci,ri){
+  const cat=jeopardyBoard[ci];
+  const clue=cat.clues[ri];
+  const key=`${ci}-${ri}`;
+  document.getElementById('jeop-clue-cat').textContent=cat.cat;
+  document.getElementById('jeop-clue-val').textContent='$'+clue.val;
+  document.getElementById('jeop-clue-text').textContent=clue.q;
+  document.getElementById('jeop-feedback').innerHTML='';
+  document.getElementById('jeop-next-btn').style.display='none';
+  document.getElementById('jeop-answer-area').innerHTML=
+    `<div style="margin:14px 0">
+      ${clue.opts?clue.opts.map((o,i)=>`<button onclick="checkJeop(${ci},${ri},'${o.replace(/'/g,"\'")}',this)" style="display:block;width:100%;margin:6px 0;padding:10px 14px;border-radius:8px;border:2px solid #c7d2fe;background:white;cursor:pointer;font-size:.88rem;text-align:left;font-weight:600">
+        ${String.fromCharCode(65+i)}. ${o}
+      </button>`).join('')
+      :`<div style="display:flex;gap:8px;margin-top:10px">
+          <button onclick="jeopReveal(${ci},${ri},true)" style="flex:1;padding:10px;border-radius:8px;border:none;background:#16a34a;color:white;font-weight:700;cursor:pointer">&#9989; I Got It Right</button>
+          <button onclick="jeopReveal(${ci},${ri},false)" style="flex:1;padding:10px;border-radius:8px;border:none;background:#dc2626;color:white;font-weight:700;cursor:pointer">&#10060; I Got It Wrong</button>
+        </div>
+        <div style="background:#1e3a5f;color:#fbbf24;border-radius:8px;padding:12px;margin-top:10px;font-size:.9rem;font-style:italic">
+          <strong>Answer:</strong> ${clue.a}
+        </div>`}
+    </div>`;
+  document.getElementById('jeop-clue-modal').style.display='flex';
+  jeopAnswered.add(key);
+}
+
+function jeopReveal(ci,ri,correct){
+  const cat=jeopardyBoard[ci];
+  const clue=cat.clues[ri];
+  if(correct){
+    jeopScore+=clue.val;
+    document.getElementById('jeop-score').textContent='$'+jeopScore;
+    document.getElementById('jeop-feedback').innerHTML=`<div style="background:#dcfce7;border:2px solid #16a34a;border-radius:8px;padding:10px;margin-top:8px;color:#15803d;font-size:.83rem"><strong>+$${clue.val}!</strong> ${clue.exp}</div>`;
+  } else {
+    document.getElementById('jeop-feedback').innerHTML=`<div style="background:#fee2e2;border:2px solid #dc2626;border-radius:8px;padding:10px;margin-top:8px;color:#991b1b;font-size:.83rem"><strong>No points.</strong> ${clue.exp}</div>`;
+  }
+  document.getElementById('jeop-next-btn').style.display='block';
+}
+
+function checkJeop(ci,ri,answer,btn){
+  // not currently used for multiple choice clues (kept for extensibility)
+  jeopReveal(ci,ri,true);
+}
+
+function closeJeopardyClue(){
+  document.getElementById('jeop-clue-modal').style.display='none';
+  renderJeopBoard();
+}
+
+function showJeopFinal(){
+  document.getElementById('jeop-final').style.display='block';
+  document.getElementById('jeop-final').innerHTML=
+    `<div style="background:linear-gradient(135deg,#1e3a5f,#1e1b4b);border-radius:14px;padding:24px;text-align:center;color:white;margin-top:16px">
+      <div style="font-size:1.5rem;margin-bottom:8px">&#127358; Game Over!</div>
+      <div style="font-size:1.2rem;font-weight:800;color:#fbbf24">Final Score: $${jeopScore}</div>
+      <div style="font-size:.9rem;color:#c7d2fe;margin-top:8px">
+        ${jeopScore>=2000?'Outstanding! You clearly know this material!':jeopScore>=1000?'Great job! Keep reviewing the harder categories!':'Keep studying — you can do this!'}
+      </div>
+    </div>`;
+  document.getElementById('jeop-restart-btn').style.display='block';
+}
+
+// Game auto-init handled inside switchGame above
+// ── Initialize games on page load ──
+document.addEventListener('DOMContentLoaded',function(){
+  initMatch();
+  initFib();
+  initScenario();
+  initSort();
+});
+
+// ── JEOPARDY CSS (injected) ──
+(function(){
+  const s=document.createElement('style');
+  s.textContent=`
+    .jeop-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+    .jeop-modal-inner{background:white;border-radius:16px;padding:24px;max-width:540px;width:100%;max-height:85vh;overflow-y:auto}
+    .jeop-clue-cat{font-size:.8rem;font-weight:700;color:#6b7280;text-transform:uppercase;margin-bottom:4px}
+    .jeop-clue-val{font-size:1.4rem;font-weight:900;color:#1e3a5f;margin-bottom:12px}
+    .jeop-clue-text{font-size:1rem;font-weight:700;color:#1e293b;line-height:1.5;margin-bottom:10px;background:#f0f4ff;border-radius:8px;padding:14px}
+  `;
+  document.head.appendChild(s);
+})();
 </script>
   <!-- Back to Top Button -->
   <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
