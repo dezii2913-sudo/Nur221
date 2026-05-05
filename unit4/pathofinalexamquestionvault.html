@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUR 221 Pathophysiology - Comprehensive Practice Exam</title>
+<style>
+:root{--primary:#1a3a5c;--secondary:#2e6da4;--accent:#e8a020;--correct:#27ae60;--incorrect:#e74c3c;--light:#f0f4f8;--text:#1a1a2e;--muted:#6c757d;--border:#c8d6e5;--shadow:0 4px 18px rgba(0,0,0,0.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);min-height:100vh;color:var(--text)}
+#splash{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center}
+.splash-card{background:white;border-radius:20px;padding:3rem 2.5rem;max-width:700px;width:100%;box-shadow:0 25px 60px rgba(0,0,0,0.4)}
+.splash-badge{background:var(--accent);color:white;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:50px;display:inline-block;margin-bottom:1.2rem}
+.splash-card h1{font-size:2.2rem;color:var(--primary);margin-bottom:0.5rem;line-height:1.2}
+.splash-card h2{font-size:1.1rem;color:var(--secondary);font-weight:400;margin-bottom:1.8rem}
+.stats-row{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.stat-box{background:var(--light);border-radius:12px;padding:1rem 1.5rem;text-align:center;min-width:120px;border:2px solid var(--border)}
+.stat-box .num{font-size:2rem;font-weight:800;color:var(--primary)}
+.stat-box .lbl{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:0.2rem}
+.mode-select{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.mode-btn{border:2px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;background:white;transition:all 0.2s;text-align:left}
+.mode-btn:hover,.mode-btn.active{border-color:var(--secondary);background:#eef4fc}
+.mode-btn .mode-icon{font-size:1.5rem;margin-bottom:0.3rem}
+.mode-btn .mode-title{font-weight:700;color:var(--primary);font-size:0.9rem}
+.mode-btn .mode-desc{font-size:0.75rem;color:var(--muted);margin-top:0.2rem}
+.category-select{margin-bottom:2rem;text-align:left}
+.category-select label{font-weight:600;color:var(--primary);display:block;margin-bottom:0.5rem;font-size:0.9rem}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.5rem}
+.cat-chip{background:var(--light);border:2px solid var(--border);border-radius:8px;padding:0.4rem 0.7rem;font-size:0.78rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.4rem;user-select:none}
+.cat-chip.selected{background:var(--secondary);border-color:var(--secondary);color:white}
+.start-btn{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;border:none;border-radius:12px;padding:1rem 3rem;font-size:1.1rem;font-weight:700;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 5px 20px rgba(30,90,160,0.35)}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(30,90,160,0.45)}
+#exam-screen{display:none;min-height:100vh;padding:1.5rem}
+.exam-header{background:white;border-radius:14px;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}
+.exam-header h3{color:var(--primary);font-size:1rem;font-weight:700}
+.progress-wrap{flex:1;min-width:200px;max-width:400px}
+.progress-bar{background:var(--border);border-radius:50px;height:8px;overflow:hidden;margin-top:0.4rem}
+.progress-fill{background:linear-gradient(90deg,var(--secondary),var(--accent));height:100%;border-radius:50px;transition:width 0.4s ease}
+.header-stats{display:flex;gap:1rem;align-items:center}
+.hs-item{text-align:center;font-size:0.8rem}
+.hs-item .val{font-weight:800;font-size:1.1rem;color:var(--primary)}
+.hs-item .lbl{color:var(--muted);font-size:0.7rem}
+#timer-display{background:var(--light);border-radius:8px;padding:0.4rem 0.8rem;font-weight:700;color:var(--primary);font-size:1rem;border:2px solid var(--border)}
+#timer-display.warning{color:var(--incorrect);border-color:var(--incorrect);background:#fff0f0}
+.question-card{background:white;border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:var(--shadow);max-width:860px;margin-left:auto;margin-right:auto}
+.q-meta{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.q-num{background:var(--primary);color:white;font-size:0.75rem;font-weight:700;padding:0.3rem 0.8rem;border-radius:50px}
+.q-category{background:var(--light);color:var(--secondary);font-size:0.72rem;font-weight:600;padding:0.25rem 0.7rem;border-radius:50px;border:1px solid var(--border);text-transform:uppercase;letter-spacing:0.5px}
+.q-source{background:#fff3e0;color:#e67e22;font-size:0.68rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:50px;border:1px solid #f0c060;text-transform:uppercase;letter-spacing:0.5px}
+.q-text{font-size:1.1rem;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:1.5rem}
+.options-list{display:flex;flex-direction:column;gap:0.7rem}
+.option-btn{display:flex;align-items:flex-start;gap:0.9rem;background:var(--light);border:2px solid var(--border);border-radius:10px;padding:0.9rem 1.1rem;cursor:pointer;transition:all 0.18s;text-align:left;font-size:0.95rem;color:var(--text);line-height:1.5;width:100%}
+.option-btn:hover:not(:disabled){border-color:var(--secondary);background:#eef4fc;transform:translateX(3px)}
+.option-btn .opt-letter{background:white;border:2px solid var(--border);border-radius:50%;width:30px;height:30px;min-width:30px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;color:var(--primary);transition:all 0.18s;margin-top:1px}
+.option-btn.correct{background:#eafaf1;border-color:var(--correct)}
+.option-btn.correct .opt-letter{background:var(--correct);border-color:var(--correct);color:white}
+.option-btn.incorrect{background:#fdf0ef;border-color:var(--incorrect)}
+.option-btn.incorrect .opt-letter{background:var(--incorrect);border-color:var(--incorrect);color:white}
+.option-btn.reveal-correct{background:#eafaf1;border-color:var(--correct);opacity:0.85}
+.option-btn.reveal-correct .opt-letter{background:var(--correct);border-color:var(--correct);color:white}
+.option-btn:disabled{cursor:default}
+.feedback-box{display:none;margin-top:1.2rem;border-radius:10px;padding:1rem 1.2rem;font-size:0.92rem;line-height:1.6}
+.feedback-box.correct-fb{background:#eafaf1;border:2px solid var(--correct);color:#1e8449;display:block}
+.feedback-box.incorrect-fb{background:#fdf0ef;border:2px solid var(--incorrect);color:#c0392b;display:block}
+.nav-row{display:flex;justify-content:space-between;align-items:center;max-width:860px;margin:0 auto;gap:1rem;flex-wrap:wrap}
+.nav-btn{background:white;border:2px solid var(--border);border-radius:10px;padding:0.7rem 1.5rem;font-size:0.9rem;font-weight:600;cursor:pointer;color:var(--primary);transition:all 0.2s}
+.nav-btn:hover{border-color:var(--secondary);background:#eef4fc}
+.nav-btn.primary-nav{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;border-color:transparent;box-shadow:0 4px 14px rgba(30,90,160,0.3)}
+.nav-btn.primary-nav:hover{transform:translateY(-1px)}
+.nav-btn:disabled{opacity:0.4;cursor:not-allowed}
+.flag-btn{background:white;border:2px solid var(--border);border-radius:10px;padding:0.7rem 1rem;cursor:pointer;font-size:1rem;transition:all 0.2s}
+.flag-btn.flagged{background:#fff3e0;border-color:var(--accent)}
+#results-screen{display:none;min-height:100vh;padding:2rem 1.5rem}
+.results-card{background:white;border-radius:20px;padding:2.5rem;max-width:860px;margin:0 auto;box-shadow:0 25px 60px rgba(0,0,0,0.3)}
+.results-header{text-align:center;margin-bottom:2rem}
+.score-circle{width:140px;height:140px;border-radius:50%;margin:0 auto 1.2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;box-shadow:0 8px 25px rgba(0,0,0,0.15)}
+.score-circle .pct{font-size:2.5rem;line-height:1}
+.score-circle .lbl{font-size:0.7rem;letter-spacing:1px;text-transform:uppercase;margin-top:0.2rem;opacity:0.85}
+.score-pass{background:linear-gradient(135deg,#27ae60,#2ecc71);color:white}
+.score-good{background:linear-gradient(135deg,#f39c12,#e8a020);color:white}
+.score-fail{background:linear-gradient(135deg,#e74c3c,#c0392b);color:white}
+.results-header h2{font-size:1.6rem;color:var(--primary);margin-bottom:0.3rem}
+.results-header p{color:var(--muted);font-size:0.95rem}
+.results-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem;margin-bottom:2rem}
+.rs-box{background:var(--light);border-radius:12px;padding:1rem;text-align:center;border:2px solid var(--border)}
+.rs-box .val{font-size:1.8rem;font-weight:800}
+.rs-box .lbl{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.rs-box.green .val{color:var(--correct)}
+.rs-box.red .val{color:var(--incorrect)}
+.rs-box.blue .val{color:var(--secondary)}
+.rs-box.orange .val{color:var(--accent)}
+.review-section{margin-top:2rem}
+.review-section h3{font-size:1.1rem;color:var(--primary);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--border)}
+.review-item{border:2px solid var(--border);border-radius:10px;padding:1rem 1.2rem;margin-bottom:0.8rem;font-size:0.88rem}
+.review-item.r-correct{border-color:var(--correct);background:#f0faf4}
+.review-item.r-incorrect{border-color:var(--incorrect);background:#fef8f7}
+.review-item .ri-q{font-weight:600;color:var(--text);margin-bottom:0.4rem;line-height:1.5}
+.review-item .ri-your{color:var(--incorrect);font-size:0.82rem;margin-bottom:0.2rem}
+.review-item .ri-correct-ans{color:var(--correct);font-size:0.82rem;font-weight:600}
+.review-item .ri-skipped{color:var(--muted);font-size:0.82rem;font-style:italic}
+.results-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;padding-top:2rem;border-top:2px solid var(--border)}
+.ra-btn{padding:0.8rem 2rem;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;border:none;transition:all 0.2s}
+.ra-btn.primary{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;box-shadow:0 4px 14px rgba(30,90,160,0.3)}
+.ra-btn.secondary{background:var(--light);color:var(--primary);border:2px solid var(--border)}
+.ra-btn.danger{background:linear-gradient(135deg,#e74c3c,#c0392b);color:white}
+.ra-btn:hover{transform:translateY(-2px)}
+.q-map-wrap{background:rgba(255,255,255,0.1);border-radius:12px;padding:1rem;margin-bottom:1rem;max-width:860px;margin-left:auto;margin-right:auto}
+.q-map-title{font-size:0.75rem;color:rgba(255,255,255,0.7);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.6rem}
+.q-map{display:flex;flex-wrap:wrap;gap:0.35rem}
+.q-dot{width:28px;height:28px;border-radius:6px;border:2px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.15);font-size:0.65rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.8);transition:all 0.15s}
+.q-dot:hover{border-color:white;color:white}
+.q-dot.current{border-color:var(--accent);background:var(--accent);color:white}
+.q-dot.answered-correct{background:var(--correct);border-color:var(--correct);color:white}
+.q-dot.answered-incorrect{background:var(--incorrect);border-color:var(--incorrect);color:white}
+.q-dot.flagged-dot{background:var(--accent);border-color:var(--accent);color:white}
+.hint-btn{background:#fff3e0;border:2px solid #f0c060;color:#d35400;border-radius:8px;padding:0.4rem 0.9rem;font-size:0.8rem;font-weight:600;cursor:pointer;margin-top:0.5rem;transition:all 0.2s}
+.hint-box{display:none;background:#fff3e0;border:2px solid #f0c060;border-radius:8px;padding:0.8rem 1rem;margin-top:0.6rem;font-size:0.85rem;color:#7b3f00;line-height:1.5}
+.batch-select{background:var(--light);border:2px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;margin-top:1rem}
+.batch-select label{font-weight:600;color:var(--primary);font-size:0.9rem;display:block;margin-bottom:0.7rem}
+.batch-options{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.6rem}
+.batch-btn{padding:0.45rem 1.1rem;border-radius:8px;border:2px solid var(--border);background:white;color:var(--primary);font-weight:700;font-size:0.88rem;cursor:pointer;transition:all 0.2s}
+.batch-btn.active{background:var(--primary);color:white;border-color:var(--primary)}
+.batch-btn:hover:not(.active){background:var(--light);border-color:var(--primary)}
+.batch-desc{font-size:0.8rem;color:var(--muted);font-style:italic}
+.batch-nav{display:flex;align-items:center;gap:0.8rem;justify-content:center;padding:0.6rem 1rem;background:rgba(255,255,255,0.12);border-radius:10px;margin-bottom:0.5rem}
+.batch-nav-btn{background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);color:white;border-radius:8px;padding:0.35rem 0.9rem;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.batch-nav-btn:hover:not(:disabled){background:rgba(255,255,255,0.35)}
+.batch-nav-btn:disabled{opacity:0.35;cursor:not-allowed}
+.batch-info{font-size:0.82rem;color:rgba(255,255,255,0.85);font-weight:600}
+@media(max-width:600px){
+.splash-card{padding:2rem 1.2rem}
+.splash-card h1{font-size:1.6rem}
+.mode-select{grid-template-columns:1fr}
+.question-card{padding:1.2rem}
+.q-text{font-size:1rem}
+.option-btn{font-size:0.88rem;padding:0.75rem 0.9rem}
+.nav-row{justify-content:center}
+}
+</style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+<div id="splash">
+  <div class="splash-card">
+    <span class="splash-badge">ECPI University</span>
+    <h1>NUR 221 Pathophysiology</h1>
+    <h2>Comprehensive Practice Exam - All 4 Units</h2>
+    <div class="stats-row">
+      <div class="stat-box"><div class="num" id="total-q-count">270</div><div class="lbl">Questions</div></div>
+      <div class="stat-box"><div class="num">4</div><div class="lbl">Units</div></div>
+      <div class="stat-box"><div class="num">&#11088;</div><div class="lbl">Actual Exams</div></div>
+    </div>
+    <div class="mode-select">
+      <button class="mode-btn active" onclick="selectMode('practice')" id="mode-practice">
+        <div class="mode-icon">&#128221;</div>
+        <div class="mode-title">Practice Mode</div>
+        <div class="mode-desc">Instant feedback after each answer</div>
+      </button>
+      <button class="mode-btn" onclick="selectMode('exam')" id="mode-exam">
+        <div class="mode-icon">&#9200;</div>
+        <div class="mode-title">Exam Mode</div>
+        <div class="mode-desc">Timed, no feedback until end</div>
+      </button>
+      <button class="mode-btn" onclick="selectMode('study')" id="mode-study">
+        <div class="mode-icon">&#128218;</div>
+        <div class="mode-title">Study Mode</div>
+        <div class="mode-desc">Hints available, relaxed pacing</div>
+      </button>
+      <button class="mode-btn" onclick="selectMode('missed')" id="mode-missed">
+        <div class="mode-icon">&#128260;</div>
+        <div class="mode-title">Review Missed</div>
+        <div class="mode-desc">Practice only your weak areas</div>
+      </button>
+    </div>
+    <div class="category-select">
+      <label>Filter by Unit / Topic: <span id="avail-count" style="font-weight:700;color:var(--primary);"></span></label>
+      <div class="cat-grid" id="cat-grid"></div>
+    </div>
+    <div class="batch-select">
+      <label>Questions per Session:</label>
+      <div class="batch-options">
+        <button class="batch-btn" onclick="setBatch(10)" id="batch-10">10</button>
+        <button class="batch-btn" onclick="setBatch(20)" id="batch-20">20</button>
+        <button class="batch-btn active" onclick="setBatch(30)" id="batch-30">30</button>
+        <button class="batch-btn" onclick="setBatch(40)" id="batch-40">40</button>
+        <button class="batch-btn" onclick="setBatch(0)" id="batch-0">All</button>
+      </div>
+      <div class="batch-desc" id="batch-desc">You will practice 30 shuffled questions per session.</div>
+    </div>
+    <button class="start-btn" onclick="startExam()">Start Exam &#8594;</button>
+  </div>
+</div>
+<div id="exam-screen">
+  <div class="exam-header">
+    <div>
+      <h3>NUR 221 Pathophysiology</h3>
+      <div style="font-size:0.8rem;color:var(--muted);margin-top:2px;" id="mode-label">Practice Mode</div>
+    </div>
+    <div class="progress-wrap">
+      <div style="font-size:0.78rem;color:var(--muted);font-weight:600;" id="progress-text">Question 1 of 220</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-stats">
+      <div class="hs-item"><div class="val" id="h-correct">0</div><div class="lbl">Correct</div></div>
+      <div class="hs-item"><div class="val" id="h-incorrect">0</div><div class="lbl">Wrong</div></div>
+      <div id="timer-display" style="display:none">00:00</div>
+    </div>
+    <button class="nav-btn" onclick="endExam()" style="font-size:0.8rem;padding:0.5rem 1rem;">End Exam</button>
+  </div>
+  <div class="q-map-wrap">
+    <div class="batch-nav" id="batch-nav-bar" style="display:none">
+      <button class="batch-nav-btn" id="batch-prev-btn" onclick="prevBatch()" disabled>&#8592; Prev Batch</button>
+      <span class="batch-info" id="batch-info-label">Batch 1 of 1</span>
+      <button class="batch-nav-btn" id="batch-next-btn" onclick="nextBatch()">Next Batch &#8594;</button>
+    </div>
+    <div class="q-map-title">Question Map — <span id="qmap-range"></span></div>
+    <div class="q-map" id="q-map"></div>
+  </div>
+  <div class="question-card" id="question-card">
+    <div class="q-meta">
+      <span class="q-num" id="q-num-badge">Q1</span>
+      <span class="q-category" id="q-cat-badge">Category</span>
+      <span class="q-source" id="q-src-badge">Source</span>
+    </div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options-list" id="options-list"></div>
+    <div id="hint-area"></div>
+    <div class="feedback-box" id="feedback-box"></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" id="prev-btn" onclick="navigate(-1)" disabled>&#8592; Previous</button>
+    <button class="flag-btn" id="flag-btn" onclick="toggleFlag()">&#128681; Flag</button>
+    <button class="nav-btn primary-nav" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+  </div>
+</div>
+<div id="results-screen">
+  <div class="results-card">
+    <div class="results-header">
+      <div class="score-circle" id="score-circle">
+        <div class="pct" id="score-pct">0%</div>
+        <div class="lbl">Score</div>
+      </div>
+      <h2 id="results-title">Results</h2>
+      <p id="results-subtitle"></p>
+    </div>
+    <div class="results-stats">
+      <div class="rs-box green"><div class="val" id="r-correct">0</div><div class="lbl">Correct</div></div>
+      <div class="rs-box red"><div class="val" id="r-incorrect">0</div><div class="lbl">Incorrect</div></div>
+      <div class="rs-box blue"><div class="val" id="r-skipped">0</div><div class="lbl">Skipped</div></div>
+      <div class="rs-box orange"><div class="val" id="r-total">0</div><div class="lbl">Total</div></div>
+    </div>
+    <div class="results-actions">
+      <button class="ra-btn primary" onclick="restartSame()">&#128260; Retry Same</button>
+      <button class="ra-btn secondary" onclick="goHome()">&#127968; Home</button>
+      <button class="ra-btn danger" onclick="clearMissed()">&#128465; Clear Missed</button>
+    </div>
+    <div class="review-section" id="review-section"></div>
+  </div>
+</div>
+<script>
+const QUESTIONS = [
+// ===== UNIT 1: FOUNDATIONS OF PATHOPHYSIOLOGY =====
+{id:1,text:"HIV infection impairs",options:["only cell-mediated immunity","both humoral and cell-mediated immunity","only humoral immunity","innate immunity only"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"HIV targets CD4+ T helper cells, impairing both humoral and cell-mediated immunity."},
+{id:2,text:"The role of memory cells is to",options:["produce antibodies immediately","recognize the antigen and stimulate the immune response","destroy pathogens directly","release histamine"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Memory cells provide rapid secondary immune response upon re-exposure to an antigen."},
+{id:3,text:"Host versus graft disease refers to",options:["graft attacking the host","transplant rejection by the recipient's immune system","tolerance of foreign tissue","autoimmune attack on donor organ"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Host versus graft disease (transplant rejection) occurs when the recipient's immune system attacks the donor organ."},
+{id:4,text:"A retrovirus such as HIV contains",options:["DNA only","RNA and enzymes for its conversion","double-stranded DNA","protein coat only"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"HIV is a retrovirus containing RNA and reverse transcriptase enzyme to convert RNA to DNA."},
+{id:5,text:"CD4-positive helper T cells function by",options:["directly killing infected cells","producing antibodies","facilitating all immune system activity","destroying cancer cells"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"CD4+ T helper cells coordinate and facilitate all branches of the immune response."},
+{id:6,text:"The term prognosis refers to the",options:["cause of a disease","study of disease patterns","expected outcome of the disease","treatment protocol"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Prognosis is the predicted or expected outcome of a disease."},
+{id:7,text:"Etiology is defined as the study of the",options:["expected outcome of the disease","functional changes in disease","causes of a disease","treatment of disease"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Etiology is the study of the causes or origins of disease."},
+{id:8,text:"Pathophysiology involves the study of",options:["drug interactions","functional or structural changes resulting from disease processes","normal anatomy only","genetic inheritance"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Pathophysiology studies how disease processes cause functional and structural changes in the body."},
+{id:9,text:"The term pathogenesis refers to",options:["the cause of disease","the expected outcome","the development of a disease or sequence of events related to tissue changes involved in the disease process","the treatment approach"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Pathogenesis describes the mechanism by which a disease develops and progresses."},
+{id:10,text:"The term disease refers to",options:["any discomfort felt by a patient","a deviation from the normal state of health and function","a genetic abnormality only","an infectious condition only"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Disease is defined as a deviation from the normal state of health and normal function."},
+{id:11,text:"The term homeostasis refers to",options:["the study of disease","maintenance of a stable internal environment","immune system activation","cellular adaptation"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Homeostasis is the maintenance of a stable, balanced internal environment essential for normal body function."},
+{id:12,text:"A diagnosis of HIV positive means that",options:["the patient has AIDS","the virus and its antibodies are present in the blood","the patient will develop AIDS within one year","the immune system is unaffected"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"HIV positive means both the HIV virus and antibodies against it are detectable in the blood."},
+{id:13,text:"In cases of HIV infection, the 'window period' refers to the time between",options:["infection and first symptoms","entry of the virus into the body and the appearance of antibodies in the blood","treatment and recovery","viral load peak and decline"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"The window period is the gap between HIV infection and when antibodies become detectable in blood tests."},
+{id:14,text:"An autoimmune disease is",options:["an immune deficiency disorder","failure of the immune system to distinguish self from nonself","an overactive allergic response","a parasitic infection"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Autoimmune disease occurs when the immune system fails to recognize the body's own tissues as self and attacks them."},
+{id:15,text:"The principle of universal precautions is based on",options:["treating all patients as infectious","assuming that all body fluids from all individuals are possible sources of infection","using gloves only with known HIV patients","washing hands before procedures only"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Universal precautions treat all body fluids as potentially infectious to protect healthcare workers."},
+{id:16,text:"A short term illness that develops very quickly with perhaps a high fever or severe pain is called",options:["chronic","subacute","acute","terminal"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Acute illness develops rapidly and is usually of short duration, often with severe symptoms."},
+{id:17,text:"The term nosocomial infection means",options:["a community-acquired infection","acquired in a hospital or medical facility","a viral infection only","a chronic infection"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Nosocomial infections are those acquired during a stay in a hospital or other healthcare facility."},
+{id:18,text:"A deficit of oxygen in the cells usually due to respiratory or circulatory problems is called",options:["hypercapnia","ischemia","apnea","cyanosis"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Ischemia refers to an insufficient supply of oxygen to cells, typically from circulatory compromise."},
+{id:19,text:"A type of cellular adaptation in which there is a decrease in cell size is referred to as",options:["hypertrophy","hyperplasia","atrophy","metaplasia"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Atrophy is the decrease in cell size, leading to shrinkage of tissue or organ."},
+{id:20,text:"Routine application of sun block to skin would be an example of",options:["tertiary prevention","secondary prevention","a preventative measure","active immunity"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Applying sunblock is a primary preventative measure against skin cancer and UV damage."},
+{id:21,text:"Which of the following is a local sign of infection?",options:["fever and chills","pain, erythema, and swelling","leukocytosis","tachycardia"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Local signs of infection include pain (dolor), erythema (rubor), swelling (tumor), heat (calor), and loss of function."},
+{id:22,text:"Which statement applies to contact dermatitis?",options:["it is caused by a type I hypersensitivity reaction","a type IV reaction occurs in affected areas","it is always caused by infection","it involves immediate IgE-mediated response"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Contact dermatitis is a type IV (delayed/cell-mediated) hypersensitivity reaction."},
+{id:23,text:"Chemical mediators released during the inflammatory response include",options:["insulin and glucagon","histamine and prostaglandins","thrombin and fibrin","aldosterone and ADH"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Histamine and prostaglandins are key chemical mediators released during inflammation causing vasodilation and increased permeability."},
+{id:24,text:"The cardinal signs of inflammation include all of the following EXCEPT",options:["heat","redness","nausea","swelling"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"The cardinal signs of inflammation (PRISH) are Pain, Redness, Immobility, Swelling, and Heat. Nausea is not a cardinal sign."},
+{id:25,text:"The warmth and redness related to the inflammatory response results from",options:["increased white blood cell production","increased blood flow into the area","decreased lymphatic drainage","prostaglandin inhibition"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Vasodilation and increased blood flow to the injured area cause the warmth and redness of inflammation."},
+{id:26,text:"All of the following are correct statements regarding wound healing EXCEPT",options:["fibrin forms a framework for healing","granulation tissue forms a permanent replacement for damaged tissue","scar tissue may form","phagocytes remove debris"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Granulation tissue is temporary and is eventually replaced by scar tissue, not a permanent replacement."},
+{id:27,text:"Ibuprofen is classified as an NSAID and is particularly useful in treating",options:["bacterial infections","pain caused by inflammation","hypertension","diabetes"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"NSAIDs like ibuprofen inhibit prostaglandins and are particularly effective for inflammatory pain."},
+{id:28,text:"What are culture and sensitivity tests used for?",options:["measuring immune function","to identify the causative microbe and the effective antimicrobial agent for it","screening for cancer","determining blood type"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Culture identifies the specific pathogen; sensitivity testing determines which antibiotics will be effective."},
+{id:29,text:"Which of the following does NOT directly determine the virulence of a microbe?",options:["ability to produce toxins","capacity for opportunism","ability to invade tissues","resistance to host defenses"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Virulence factors include toxin production, invasiveness, and resistance to host defenses. Opportunism is not a direct determinant of virulence."},
+{id:30,text:"Opportunistic infection may develop when",options:["the immune system is overactive","an imbalance occurs in the normal resident flora","a person is fully vaccinated","normal flora is present"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Opportunistic infections exploit compromised immune defenses or disrupted normal flora."},
+{id:31,text:"Which of the following is a characteristic of rickettsia?",options:["it is a large gram-positive organism","it is a very small gram-negative intracellular microbe","it is a fungus","it is transmitted by direct contact"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Rickettsia are small gram-negative obligate intracellular bacteria, typically transmitted by arthropod vectors."},
+{id:32,text:"Which of the following statements applies to chlamydia?",options:["it is a viral infection","it causes a common STD","it is easily visible on gram stain","it is transmitted only through blood"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Chlamydia trachomatis causes one of the most common sexually transmitted diseases."},
+{id:33,text:"What is the role of nociceptors?",options:["to regulate temperature","they are pain receptors that are stimulated by thermal, chemical or physical means","to detect pressure only","to transmit proprioceptive signals"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"Nociceptors are specialized pain receptors activated by potentially tissue-damaging stimuli."},
+{id:34,text:"According to the gate-control theory, passage of pain impulses may be naturally blocked",options:["by increasing body temperature","at the synapse by entry of other sensory impulses","by reducing blood flow","by cortisol release"],correct:1,category:"Unit 1 - Foundations",source:"Q",explanation:"The gate-control theory states that non-pain sensory signals can close the gate to pain transmission in the spinal cord."},
+{id:35,text:"An infectious disease that spreads over wide regions of the globe is called a(n)",options:["epidemic","endemic","pandemic","nosocomial infection"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"A pandemic is an epidemic that has spread across multiple countries or continents, worldwide."},
+{id:36,text:"A situation when there is a higher than expected number of cases of an infectious disease within a given area is called a/an",options:["pandemic","endemic","epidemic","outbreak"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"An epidemic is an unusual increase in the number of cases of a disease in a specific geographic area."},
+{id:37,text:"The pandemic that started in 2019 is",options:["Influenza H1N1","Ebola","Covid-19","SARS"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"COVID-19, caused by SARS-CoV-2, began in 2019 and was declared a pandemic in March 2020."},
+// ===== UNIT 2: FLUIDS, ELECTROLYTES & ACID-BASE =====
+{id:38,text:"What would a serum pH of 7.33 in a patient with kidney disease indicate?",options:["respiratory alkalosis","metabolic alkalosis","metabolic acidosis","respiratory acidosis"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"A pH below 7.35 indicates acidosis. With kidney disease the cause is metabolic (inability to excrete acid)."},
+{id:39,text:"Hypokalemia refers to a condition in which the serum has a very low level of which ion?",options:["sodium","potassium","calcium","chloride"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Hypokalemia = low serum potassium (K+) level, below 3.5 mEq/L."},
+{id:40,text:"Choose the correct proportion of water to body weight to be expected in a healthy male adult's body",options:["40%","50%","60%","70%"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Water comprises approximately 60% of total body weight in a healthy adult male."},
+{id:41,text:"Compensation mechanisms in the body for dehydration would include",options:["increased urination","decreased antidiuretic hormone (ADH)","increased antidiuretic hormone (ADH)","decreased aldosterone"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"ADH increases water reabsorption in the kidneys to compensate for dehydration."},
+{id:42,text:"In the blood and extracellular fluids, hypernatremia refers to",options:["a deficit of sodium","an excess sodium level","low potassium","excess potassium"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Hypernatremia is an abnormally high sodium concentration in the blood (>145 mEq/L)."},
+{id:43,text:"Insensible fluid loss refers to water lost through",options:["urine and feces","perspiration and expiration","vomiting and diarrhea","hemorrhage"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Insensible fluid loss occurs through respiration (lungs) and perspiration (skin) and cannot be easily measured."},
+{id:44,text:"Which of the following is a common cause of hyponatremia?",options:["excessive water intake","excessive sweating","kidney failure","diabetes insipidus"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Excessive sweating leads to both sodium and water loss, but if replaced with water only, hyponatremia results."},
+{id:45,text:"Hypocalcemia causes weak cardiac contractions because",options:["potassium levels are elevated","insufficient calcium ions are available for muscle contraction","sodium reabsorption is blocked","ADH is suppressed"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Calcium ions are essential for myocardial muscle contraction; low calcium weakens cardiac contractility."},
+{id:46,text:"Compensation for respiratory system depression due to anesthesia and sedation would be",options:["increased bicarbonate excretion","decreased respiratory rate","increased secretion of hydrogen ions into the filtrate","increased oxygen consumption"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"The kidneys compensate for respiratory acidosis by secreting more H+ ions and retaining bicarbonate."},
+{id:47,text:"In the initial state, vomiting results in",options:["metabolic acidosis","respiratory alkalosis","metabolic alkalosis","respiratory acidosis"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Vomiting causes loss of hydrochloric acid (HCl), initially producing metabolic alkalosis."},
+{id:48,text:"An anxiety attack often causes hyperventilation leading to",options:["increased PCO2","decreased PCO2","metabolic acidosis","increased bicarbonate"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Hyperventilation blows off excess CO2, causing decreased PCO2 and respiratory alkalosis."},
+{id:49,text:"Hyperventilation leads to",options:["respiratory acidosis","metabolic alkalosis","respiratory alkalosis","metabolic acidosis"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Hyperventilation causes excessive CO2 loss, raising pH above 7.45 — respiratory alkalosis."},
+{id:50,text:"Carbon dioxide is mainly transported as",options:["dissolved gas in plasma","oxyhemoglobin","bicarbonate","carbaminohemoglobin"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Approximately 70% of CO2 is transported as bicarbonate ions (HCO3-) in the plasma."},
+{id:51,text:"Respiratory alkalosis causes",options:["increased PaCO2","decreased PaCO2","increased bicarbonate","decreased pH"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Respiratory alkalosis is characterized by decreased PaCO2 due to hyperventilation."},
+{id:52,text:"Choose the significant change in arterial blood gases expected with prolonged severe vomiting",options:["Increased bicarbonate, increased PaCO2, serum pH elevated","Decreased bicarbonate ion, decreased PaCO2, serum pH decreased","Increased PaCO2, increased bicarbonate, normal pH","Decreased sodium, increased pH, normal PaCO2"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"A",explanation:"Prolonged severe vomiting causes loss of acid and bicarbonate depletion; the tan box confirms: decreased bicarbonate, decreased PCO2, serum pH decreased."},
+{id:53,text:"When acidosis becomes decompensated in renal failure, a key indicator is",options:["serum buffer ratio of 20 bicarbonate to 1 carbonic acid","increased bicarbonate ion","serum pH dropping below 7.35","increased PCO2"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"A",explanation:"Decompensated acidosis occurs when pH drops below normal range (7.35), indicating the body can no longer maintain acid-base balance."},
+{id:54,text:"The normal pH of urine is",options:["6.0-7.0","7.35-7.45","4.5-8.0","3.5-5.0"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"A",explanation:"Normal urine pH ranges from 4.5 to 8.0, reflecting the kidneys' role in acid-base balance."},
+{id:55,text:"What is the primary reason for hypocalcemia developing during end-stage renal failure or uremia?",options:["Excessive calcium excretion in urine","Decreased dietary calcium intake","A deficit of activated vitamin D and hyperphosphatemia","Increased parathyroid hormone secretion"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"A",explanation:"Failing kidneys cannot activate vitamin D; without activated vitamin D, calcium absorption drops; hyperphosphatemia also binds calcium."},
+{id:56,text:"Renal disease frequently causes hypertension because",options:["the kidneys release excess insulin","fluid overload reduces cardiac output","congestion and ischemia stimulate release of renin","excess bicarbonate causes vasoconstriction"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"A",explanation:"Renal ischemia stimulates renin release, activating the RAAS system, causing sodium retention and hypertension."},
+{id:57,text:"Which of the following does NOT apply to inappropriate ADH syndrome (SIADH)?",options:["Hyponatremia develops","Urine output decreases","Water is retained","Excessive sodium is retained"],correct:3,category:"Unit 2 - Fluids & Electrolytes",source:"A",explanation:"In SIADH, water is retained (not sodium). Sodium is actually diluted, causing hyponatremia. Excessive sodium retention does NOT apply."},
+// ===== UNIT 3: CARDIOVASCULAR, RESPIRATORY & BLOOD =====
+{id:58,text:"ACE Inhibitors reduce _______ in CHF",options:["cardiac output","renin & aldosterone","ventricular hypertrophy","pulmonary pressure"],correct:1,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"ACE inhibitors block the renin-angiotensin-aldosterone system, reducing sodium/water retention and cardiac workload."},
+{id:59,text:"Calcium channel blockers reduce",options:["renin secretion","blood viscosity","cardiac muscle contraction","platelet aggregation"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Calcium channel blockers prevent calcium influx into cardiac and smooth muscle, reducing contraction strength and heart rate."},
+{id:60,text:"Myocardial infarction is confirmed with",options:["chest X-ray and CBC","elevated troponin levels & EKG","echocardiogram only","elevated BNP levels"],correct:1,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Elevated troponin (I or T) is the gold standard for MI confirmation; EKG shows characteristic changes."},
+{id:61,text:"Aspirin (ASA, acetylsalicylic acid)",options:["increases platelet aggregation","reduces platelet adhesion when taken in small doses","elevates blood pressure","acts as a calcium channel blocker"],correct:1,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Low-dose aspirin irreversibly inhibits COX-1, reducing thromboxane A2 and platelet aggregation."},
+{id:62,text:"QRS wave represents",options:["atrial depolarization","sinoatrial node firing","ventricular depolarization","ventricular repolarization"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"The QRS complex on an EKG represents ventricular depolarization — the electrical activation of the ventricles."},
+{id:63,text:"Echocardiogram",options:["measures electrical activity of the heart","assesses heart valves and muscle movement","shows coronary artery blockage","measures blood pressure"],correct:1,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"An echocardiogram uses ultrasound to visualize heart valves, muscle movement, and chambers."},
+{id:64,text:"Very rapid heart rate reduces cardiac output due to",options:["increased stroke volume","vasoconstriction","poor ventricular filling","elevated preload"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Tachycardia shortens diastolic filling time, reducing stroke volume and therefore cardiac output."},
+{id:65,text:"Cardiac Output is defined as",options:["pressure generated by heart contraction","stroke volume times heart rate","volume of blood in the ventricles","resistance to blood flow"],correct:1,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Cardiac output = stroke volume × heart rate; it represents the volume of blood pumped per minute."},
+{id:66,text:"Chronic blood loss anemia results from",options:["vitamin B12 deficiency","decreased iron availability","hemolysis of red blood cells","bone marrow suppression"],correct:1,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Chronic blood loss depletes iron stores, reducing hemoglobin synthesis and causing iron-deficiency anemia."},
+{id:67,text:"Reed-Sternberg cells are seen in",options:["Non-Hodgkin lymphoma","multiple myeloma","Hodgkin Lymphoma","leukemia"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Reed-Sternberg cells are large binucleated cells pathognomonic for Hodgkin lymphoma."},
+{id:68,text:"Hodgkin lymphoma uses the",options:["TNM staging system","Gleason staging system","Ann Arbor staging system","Dukes staging system"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Hodgkin lymphoma is staged using the Ann Arbor staging system (I-IV based on lymph node involvement)."},
+{id:69,text:"DIC causes",options:["only abnormal bleeding","only excessive clotting","both clotting and bleeding due to factor depletion","decreased platelet production"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"DIC (Disseminated Intravascular Coagulation) causes widespread clotting that consumes clotting factors, leading to simultaneous bleeding."},
+{id:70,text:"Sickle cell anemia is caused by",options:["iron deficiency","an autoimmune reaction","inherited defective genes","viral infection of red blood cells"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Sickle cell anemia is an autosomal recessive disorder caused by a point mutation in the beta-globin gene."},
+{id:71,text:"Erythropoietin stimulates",options:["platelet production","white blood cell production","red blood cell production","lymphocyte differentiation"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Erythropoietin (EPO), produced by the kidneys, stimulates the bone marrow to produce red blood cells."},
+{id:72,text:"Iron deficiency anemia is NOT commonly caused by",options:["chronic blood loss","poor dietary intake","pregnancy","diabetes"],correct:3,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Diabetes does not directly cause iron deficiency anemia. Common causes include bleeding, poor intake, and increased demand."},
+{id:73,text:"Infant respiratory distress syndrome is due to",options:["pneumonia","airway obstruction","low surfactant","excess mucus production"],correct:2,category:"Unit 3 - Respiratory",source:"Q",explanation:"Infant RDS results from surfactant deficiency in premature infants, causing alveolar collapse."},
+{id:74,text:"Vital capacity is",options:["the amount of air in the lungs at rest","the maximum air exhaled after full inspiration","the air remaining after maximal exhalation","the tidal volume during exercise"],correct:1,category:"Unit 3 - Respiratory",source:"Q",explanation:"Vital capacity is the maximum volume of air that can be exhaled after a maximal inhalation."},
+{id:75,text:"Von Willebrand disease is",options:["a red blood cell disorder","a type of leukemia","a platelet disorder that prevents clotting","a coagulation factor deficiency only"],correct:2,category:"Unit 3 - Cardiovascular",source:"Q",explanation:"Von Willebrand disease involves deficient or dysfunctional von Willebrand factor, impairing platelet adhesion and clotting."},
+{id:76,text:"Type 1 hypersensitivity from ingestion causes",options:["contact dermatitis","anaphylaxis only","urticaria (hives)","serum sickness"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Type I (IgE-mediated) hypersensitivity reactions from ingested allergens commonly cause urticaria (hives)."},
+{id:77,text:"Necrotizing fasciitis can cause",options:["mild localized infection","fever only","toxic shock and disorientation","lymphadenopathy only"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Necrotizing fasciitis is a rapidly spreading soft tissue infection that can cause toxic shock, organ failure, and death."},
+{id:78,text:"Psoriatic arthritis is an",options:["infectious joint disease","degenerative joint disease","autoimmune condition","metabolic disorder"],correct:2,category:"Unit 1 - Foundations",source:"Q",explanation:"Psoriatic arthritis is an autoimmune inflammatory arthritis associated with psoriasis."},
+// ===== UNIT 3: MUSCULOSKELETAL =====
+{id:79,text:"Lymphadenopathy refers to",options:["lymph node cancer","inflammation or infection of lymph nodes","decreased lymphocyte production","enlarged spleen"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Lymphadenopathy refers to swelling, inflammation, or enlargement of lymph nodes, often indicating infection."},
+{id:80,text:"A dislocation shows",options:["fracture of a bone","deformity of a joint","muscle tear","ligament sprain"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"A dislocation is characterized by deformity at a joint where bones have lost normal contact."},
+{id:81,text:"Dislocation is defined as",options:["ligament tear at a joint","separation of bones with loss of contact","fracture with displacement","muscle rupture"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Dislocation occurs when bones in a joint become separated and lose their normal contact."},
+{id:82,text:"Open Fracture",options:["involves only soft tissue damage","exposes bone or soft tissue through the skin","heals faster than closed fractures","causes no bleeding"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"An open (compound) fracture breaks the skin, exposing bone or soft tissue to the environment."},
+{id:83,text:"Osteoporosis Risk Factors include all of the following EXCEPT",options:["sedentary lifestyle","steroid use","calcium deficiency","weight-bearing activity"],correct:3,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Weight-bearing activity is PROTECTIVE against osteoporosis, not a risk factor."},
+{id:84,text:"Osteoblasts",options:["break down bone tissue","create new bone","store calcium in blood","produce red blood cells"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Osteoblasts are bone-forming cells responsible for synthesizing new bone matrix."},
+{id:85,text:"Bursa are defined as",options:["cartilage pads in joints","fluid-filled sacs that cushion structures","tendons connecting muscle to bone","immovable fibrous joints"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Bursae are fluid-filled sacs near joints that reduce friction between bones and soft tissues."},
+{id:86,text:"The first step in fracture healing is",options:["callus formation","bone remodeling","hematoma forms, granulation tissue grows","periosteum proliferation"],correct:2,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"The first stage of fracture healing is hematoma formation at the fracture site, followed by granulation tissue development."},
+{id:87,text:"Procallus acts as a",options:["permanent bone replacement","splint during fracture healing","source of osteoclasts","nutrient transport system"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Procallus (soft callus) serves as a temporary splint stabilizing the fracture before it mineralizes."},
+{id:88,text:"The cause of Rickets is",options:["calcium excess and vitamin K deficiency","vitamin D and phosphate deficiency","excess fluoride intake","iron deficiency"],correct:1,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Rickets is caused by vitamin D deficiency (and often phosphate deficiency) leading to impaired bone mineralization."},
+{id:89,text:"Synarthrosis refers to",options:["freely movable joints","cartilaginous joints","immovable joints","slightly movable joints"],correct:2,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"Synarthroses are immovable joints, such as the sutures of the skull."},
+{id:90,text:"A sprain is defined as",options:["muscle tear","bone fracture","ligament tear","tendon rupture"],correct:2,category:"Unit 3 - Musculoskeletal",source:"Q",explanation:"A sprain involves stretching or tearing of ligaments at a joint."},
+// ===== UNIT 3: INTEGUMENTARY =====
+{id:91,text:"Malignant melanoma appears",options:["as uniform brown spots","as silvery plaques","non-uniform, misshapen, and discolored","as vesicles that rupture"],correct:2,category:"Unit 3 - Integumentary",source:"Q",explanation:"Melanoma is identified by asymmetry, irregular borders, color variation, large diameter, and evolution (ABCDE)."},
+{id:92,text:"Psoriasis presents as",options:["vesicles that rupture into crusty lesions","non-pruritic purplish macules","silvery plaques","moist erosions"],correct:2,category:"Unit 3 - Integumentary",source:"Q",explanation:"Psoriasis classically presents as well-demarcated, silvery-white scaly plaques on erythematous skin."},
+{id:93,text:"Herpes is usually spread by",options:["airborne droplets","blood transfusion","direct contact","insect vectors"],correct:2,category:"Unit 3 - Integumentary",source:"Q",explanation:"Herpes simplex virus spreads through direct contact with infected skin, mucous membranes, or secretions."},
+{id:94,text:"Contact dermatitis cause can be identified",options:["by blood tests only","by biopsy","by lesion location and size","by culture and sensitivity"],correct:2,category:"Unit 3 - Integumentary",source:"Q",explanation:"The distribution and size of contact dermatitis lesions help identify the causative agent (e.g., watch, ring, belt)."},
+{id:95,text:"Impetigo presents as",options:["silvery plaques","small vesicles that rupture into a crusty, brown, pruritic lesion","non-pruritic purplish macules","deep ulcers"],correct:1,category:"Unit 3 - Integumentary",source:"Q",explanation:"Impetigo is a bacterial skin infection presenting as small blisters that rupture to form honey-colored crusts."},
+{id:96,text:"Plantar warts are caused by",options:["Herpes simplex virus","Staphylococcus aureus","Human papillomavirus (HPV)","Candida albicans"],correct:2,category:"Unit 3 - Integumentary",source:"Q",explanation:"Plantar warts are caused by HPV (human papillomavirus), particularly types 1, 2, and 4."},
+{id:97,text:"Scabies is commonly found on",options:["scalp and face","feet and ankles","fingers, wrists and waist","chest and back"],correct:2,category:"Unit 3 - Integumentary",source:"Q",explanation:"Scabies (caused by Sarcoptes scabiei mite) typically affects fingers, wrists, and waistline."},
+{id:98,text:"Tinea capitis is a",options:["bacterial infection of the skin","viral rash of the scalp","fungal infection of the scalp","parasitic infestation of hair"],correct:2,category:"Unit 3 - Integumentary",source:"Q",explanation:"Tinea capitis is a dermatophyte (fungal) infection of the scalp, common in children."},
+// ===== UNIT 4: ACTUAL EXAM QUESTIONS =====
+{id:99,text:"Why does hypoglycemia cause fatigue?",options:["Insulin production is halted","Glucagon levels decrease","ATP synthesis is blocked in neurons","Glycogen stores are depleted in muscle only"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Neurons depend on glucose as their primary energy source; without glucose, ATP synthesis fails, causing neuronal dysfunction and fatigue."},
+{id:100,text:"Herpes zoster can be identified by a typical",options:["bilateral rash covering the trunk","unilateral rash and pain along a cranial nerve or dermatome","diffuse pruritic rash on extremities","vesicular rash on mucous membranes only"],correct:1,category:"Unit 4 - Neurological",source:"A",explanation:"Herpes zoster (shingles) reactivates from dorsal root ganglia and follows a single dermatome unilaterally."},
+{id:101,text:"Which of the following STDs is considered to be a systemic infection?",options:["Chlamydia","Gonorrhea","Syphilis","HPV"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"Syphilis (Treponema pallidum) is a systemic infection that can affect virtually every organ system."},
+{id:102,text:"A type of diabetes that may develop during pregnancy and disappear after delivery is called",options:["Type 1 diabetes","Type 2 diabetes","gestational diabetes","LADA"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Gestational diabetes mellitus develops during pregnancy due to placental hormones causing insulin resistance and typically resolves postpartum."},
+{id:103,text:"Compensation mechanisms occurring in the early stage of diabetic ketoacidosis include",options:["Cheyne-Stokes respirations","Kussmaul's respirations","shallow slow breathing","apneic breathing"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Kussmaul's respirations are deep, rapid, labored breathing that compensates for metabolic acidosis in DKA by blowing off CO2."},
+{id:104,text:"What is a common sign of acute gastritis?",options:["Melena and dark stools","Jaundice and clay-colored stools","Vomiting and anorexia","Constipation and bloating"],correct:2,category:"Unit 4 - GI",source:"A",explanation:"Acute gastritis commonly presents with nausea, vomiting, and anorexia due to gastric mucosal irritation."},
+{id:105,text:"What causes the characteristic rigid abdomen found in the patient with peritonitis?",options:["Excessive gas distension of the intestine","Paralytic ileus with loss of peristalsis","Inflamed peritoneum, resulting in reflex abdominal muscle spasm","Direct pressure from ascitic fluid"],correct:2,category:"Unit 4 - GI",source:"A",explanation:"Peritoneal inflammation triggers reflex abdominal muscle guarding and rigidity (involuntary guarding)."},
+{id:106,text:"Signs and symptoms of a stroke depend upon",options:["the patient's age and sex only","time of onset only","location of obstruction, size of artery, and area affected","the type of anticoagulant used"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"Stroke symptoms vary based on which brain area is affected, determined by the location and size of the occluded or ruptured vessel."},
+{id:107,text:"The lens and cornea are nourished by",options:["vitreous humor","tears from lacrimal glands","aqueous humor","choroidal blood vessels"],correct:2,category:"Unit 4 - Sensory",source:"A",explanation:"Aqueous humor provides nutrients to the avascular lens and cornea."},
+{id:108,text:"What characteristic is common to all individuals with cerebral palsy?",options:["Intellectual disability","Seizure disorder","Some degree of motor disability","Visual impairment"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"The one universal characteristic in cerebral palsy is motor disability; other features vary widely."},
+{id:109,text:"Typical signs of a TIA include",options:["permanent paralysis on one side","loss of consciousness for several hours","transient muscle weakness in a hand or leg","severe persistent headache"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"TIA (Transient Ischemic Attack) causes brief, reversible neurological deficits like transient limb weakness, lasting less than 24 hours."},
+{id:110,text:"What is caused by hypocalcemia due to hypoparathyroidism?",options:["Osteoporosis and bone pain only","Skeletal muscle twitching/spasm and weak cardiac contraction","Hypertension and tachycardia","Polyuria and polydipsia"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Low calcium due to hypoparathyroidism causes skeletal muscle hyperexcitability (tetany/spasm) and reduces cardiac contractility."},
+{id:111,text:"Testicular cancer usually spreads first to the",options:["inguinal lymph nodes","liver","pelvic lymph nodes","lungs"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"Testicular cancer follows lymphatic drainage and typically metastasizes first to para-aortic or pelvic lymph nodes."},
+{id:112,text:"What does the term melena mean?",options:["Bright red blood in stool","Blood in a dark-colored stool","Mucus in stool","Clay-colored stool"],correct:1,category:"Unit 4 - GI",source:"A",explanation:"Melena refers to black, tarry stools resulting from digested blood, typically from upper GI bleeding."},
+{id:113,text:"Yellow or greenish stained vomitus usually indicates the presence of",options:["blood","stomach acid","bile","partially digested food"],correct:2,category:"Unit 4 - GI",source:"A",explanation:"Bile from the duodenum causes the yellow-green color of vomitus, indicating pyloric sphincter relaxation."},
+{id:114,text:"Which of the following is often the first sign of ototoxicity from drugs or chemicals?",options:["Hearing loss","Vertigo","Tinnitus","Ear pain"],correct:2,category:"Unit 4 - Sensory",source:"A",explanation:"Tinnitus (ringing in the ears) is typically the earliest sign of ototoxicity before more severe hearing loss develops."},
+{id:115,text:"Which of the following applies to the corpus luteum?",options:["It produces FSH and LH","It secretes estrogen and progesterone during the latter half of the menstrual cycle","It is responsible for ovulation","It forms before ovulation"],correct:1,category:"Unit 4 - Reproductive",source:"A",explanation:"After ovulation, the ruptured follicle becomes the corpus luteum, which secretes estrogen and progesterone in the luteal phase."},
+{id:116,text:"What is a useful serum marker during treatment for prostatic cancer?",options:["CEA (carcinoembryonic antigen)","AFP (alpha-fetoprotein)","CA-125","Prostate-specific antigen (PSA)"],correct:3,category:"Unit 4 - Reproductive",source:"A",explanation:"PSA (prostate-specific antigen) is used to monitor response to prostate cancer treatment and detect recurrence."},
+{id:117,text:"In which disorders do biochemical abnormalities involving the neurotransmitters in the brain occur?",options:["Only schizophrenia","Only bipolar disorder","Bipolar disorder, schizophrenia, and Huntington's disease","Only Huntington's disease"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"Neurotransmitter abnormalities (dopamine, serotonin, GABA) are implicated in bipolar disorder, schizophrenia, and Huntington's disease."},
+{id:118,text:"In patients with cirrhosis, serum ammonia may increase when",options:["protein intake decreases","the patient exercises","bleeding occurs in the digestive tract","liver function temporarily improves"],correct:2,category:"Unit 4 - GI",source:"A",explanation:"GI bleeding provides protein that is broken down to ammonia by intestinal bacteria; the cirrhotic liver cannot detoxify it."},
+{id:119,text:"Gastroesophageal reflux disease involves",options:["H. pylori infection of the esophagus","periodic flow of gastric contents into the esophagus","spasm of the lower esophageal sphincter","esophageal varices"],correct:1,category:"Unit 4 - GI",source:"A",explanation:"GERD results from incompetent lower esophageal sphincter allowing gastric acid to reflux into the esophagus."},
+{id:120,text:"Stools that are more liquid and contain mucus and frank blood are typical of",options:["Crohn's disease","irritable bowel syndrome","ulcerative colitis","diverticulitis"],correct:2,category:"Unit 4 - GI",source:"A",explanation:"Ulcerative colitis classically causes bloody diarrhea with mucus, as it involves the mucosal layer of the colon."},
+{id:121,text:"All of the following apply to CVA EXCEPT",options:["it may be caused by hemorrhage","hemiplegia may result","maximum necrosis and infarction develop within several hours of onset","speech may be affected"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"Maximal necrosis in a CVA develops over 24-72 hours, not within several hours. This statement does NOT apply."},
+{id:122,text:"Which of the following applies to the act of swallowing?",options:["It is a purely voluntary process","It requires coordination of cranial nerves V, IX, X, and XII","It is controlled by the cerebellum alone","It involves only the esophagus"],correct:1,category:"Unit 4 - Neurological",source:"A",explanation:"Swallowing requires cranial nerves V (trigeminal), IX (glossopharyngeal), X (vagus), and XII (hypoglossal)."},
+{id:123,text:"Vaginal candidiasis is frequently predisposed by",options:["increased estrogen levels","pregnancy only","systemic antibacterial therapy","sexual activity"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"Antibiotics disrupt normal vaginal flora, allowing Candida albicans overgrowth. This is the most common predisposing factor."},
+{id:124,text:"What do the extrinsic muscles of the eye control?",options:["Pupil dilation and constriction","Accommodation of the lens","Movement of the eyeball","Aqueous humor production"],correct:2,category:"Unit 4 - Sensory",source:"A",explanation:"The six extrinsic (extraocular) muscles control the movement and direction of the eyeball."},
+{id:125,text:"Choose the statement that applies to type 1 diabetes mellitus",options:["It is caused by insulin resistance","It typically develops after age 40","Onset often occurs during childhood","It can be controlled by diet alone"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Type 1 DM is an autoimmune destruction of beta cells, typically presenting in childhood or early adulthood."},
+{id:126,text:"Infertility in women may result from",options:["Regular menstrual cycles","Normal hormone levels","Endometriosis and hormonal imbalances","Healthy fallopian tubes"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"Endometriosis causes scarring of reproductive structures; hormonal imbalances disrupt ovulation, both causing infertility."},
+{id:127,text:"Following a head injury, what is the most likely cause of secondary damage to the brain?",options:["Elevated ICP from dehydration","Direct neuronal destruction","Hematoma or infection","Cerebral atrophy"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"Secondary brain injury after trauma is most commonly caused by expanding hematoma or infection causing increased ICP."},
+{id:128,text:"What is the definition of dysphagia?",options:["Difficulty in breathing","Difficulty in swallowing","Double vision","Difficulty in speaking"],correct:1,category:"Unit 4 - GI",source:"A",explanation:"Dysphagia means difficulty swallowing and can result from neurological, muscular, or structural problems."},
+{id:129,text:"Which of the following applies to Parkinson's disease?",options:["It primarily affects young adults","It is caused by excess dopamine","The majority of cases are predisposed by antipsychotic medications","Usually develops in men and women over 60 years of age"],correct:3,category:"Unit 4 - Neurological",source:"A",explanation:"Parkinson's disease primarily affects individuals over 60 years old; it results from dopamine-producing neuron degeneration."},
+{id:130,text:"Catabolic effects of Cushing's syndrome include",options:["moon face and buffalo hump","increased muscle mass","osteoporosis","weight gain and edema"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Cushing's syndrome causes catabolic effects including osteoporosis, muscle wasting, and thin skin due to excess cortisol."},
+{id:131,text:"Why does severe pain occur with each menstrual cycle in endometriosis?",options:["Uterine contractions are abnormally strong","Hormonal imbalance causing irregular cycles","Inflammation due to blood irritating the endometrial tissue","Endometrial cells block the fallopian tubes"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"Ectopic endometrial tissue bleeds during menstruation but cannot drain; the resulting blood irritates surrounding tissue causing severe pain."},
+{id:132,text:"Metabolic syndrome is marked by",options:["elevated TSH and low T4","abnormal lipid and glucose metabolism","decreased cortisol and aldosterone","elevated BNP and troponin"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Metabolic syndrome is characterized by central obesity, hypertension, dyslipidemia, and impaired glucose metabolism (insulin resistance)."},
+{id:133,text:"Small, hidden amounts of blood in stool are referred to as",options:["melena","hematochezia","occult blood","frank blood"],correct:2,category:"Unit 4 - GI",source:"A",explanation:"Occult blood in stool is not visible to the naked eye and requires chemical testing (fecal occult blood test) to detect."},
+{id:134,text:"How may a fistula form with Crohn's disease?",options:["Lack of peristalsis leading to dilated areas of intestine","Recurrent inflammation, necrosis, and fibrosis, forming a connection between intestinal loops","Excessive acid production eroding the intestinal wall","Autoimmune destruction of the intestinal mucosa"],correct:1,category:"Unit 4 - GI",source:"A",explanation:"Crohn's transmural inflammation leads to recurrent inflammation, necrosis, and fibrosis, creating fistulous tracts between loops of bowel."},
+{id:135,text:"In cases of Guillain-Barré syndrome, what does the pathophysiology include?",options:["Demyelination of CNS white matter tracts","Inflammation and demyelination of peripheral nerves, leading to ascending paralysis","Destruction of neuromuscular junctions","Dopamine deficiency in the basal ganglia"],correct:1,category:"Unit 4 - Neurological",source:"A",explanation:"GBS is an autoimmune attack on peripheral nerve myelin, causing ascending weakness from the lower extremities upward."},
+{id:136,text:"Bilirubin is a product of",options:["liver cell breakdown only","protein metabolism","hemolysis of red blood cells (RBCs) and breakdown of hemoglobin","bile acid synthesis"],correct:2,category:"Unit 4 - GI",source:"A",explanation:"Bilirubin is formed from heme breakdown when RBCs are destroyed; it is then processed by the liver."},
+{id:137,text:"Painful menstruation is called",options:["amenorrhea","menorrhagia","dyspareunia","dysmenorrhea"],correct:3,category:"Unit 4 - Reproductive",source:"A",explanation:"Dysmenorrhea means painful menstruation; primary dysmenorrhea is caused by prostaglandins; secondary may be from endometriosis."},
+{id:138,text:"Polydipsia occurs with diabetes mellitus when",options:["insulin resistance develops in hypothalamus","glucose is retained in the blood only","polyuria causes dehydration","excess ADH causes thirst"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Polyuria from glycosuria causes excessive water loss; resulting dehydration stimulates thirst (polydipsia)."},
+{id:139,text:"What causes a herniated intervertebral disc?",options:["Degeneration of the facet joints","A protrusion of the nucleus pulposus through the annulus fibrosis","Calcification of spinal ligaments","Vertebral body fracture"],correct:1,category:"Unit 4 - Neurological",source:"A",explanation:"A herniated disc occurs when the soft nucleus pulposus protrudes through a tear in the outer annulus fibrosis, compressing nearby nerves."},
+{id:140,text:"When acidosis becomes decompensated in renal failure, a key indicator is",options:["serum buffer ratio of 20 bicarbonate to 1 carbonic acid","increased bicarbonate ion","increased PCO2","serum pH dropping below 7.35"],correct:3,category:"Unit 2 - Fluids & Electrolytes",source:"A",explanation:"Decompensated acidosis means the body's buffer systems have failed; pH drops below 7.35, the lower limit of normal."},
+{id:141,text:"How is the presence of spina bifida diagnosed?",options:["MRI after birth only","Blood test for HCG levels","Prenatally by ultrasound or detection of alpha-fetoprotein (AFP) in maternal blood or amniotic fluid","Genetic testing of parents only"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"Spina bifida is diagnosed prenatally via elevated maternal serum AFP or amniocentesis, and confirmed by ultrasound."},
+{id:142,text:"What is the best definition of aphasia?",options:["Inability to walk or move limbs","Difficulty in swallowing","The inability to comprehend or express language appropriately","Partial loss of vision"],correct:2,category:"Unit 4 - Neurological",source:"A",explanation:"Aphasia is a language disorder affecting the ability to speak, understand speech, read, or write."},
+{id:143,text:"What is caused by hyperparathyroidism?",options:["Hypocalcemia and tetany","Bone demineralization","Decreased kidney stones","Reduced PTH secretion"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Excess PTH causes osteoclast activation, releasing calcium from bones — causing bone demineralization (osteoporosis, fractures)."},
+{id:144,text:"What is the cause of diabetic ketoacidosis?",options:["Failure of the kidney to excrete sufficient acids","Loss of glucose in the urine","Excess insulin in the body","Increased catabolism of fats and proteins"],correct:3,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Without insulin, the body catabolizes fats and proteins for energy, producing ketone bodies that cause metabolic acidosis."},
+{id:145,text:"Characteristics of Cushing's syndrome include all of the following EXCEPT",options:["heavy body and round face","atrophied skeletal muscle in the limbs","staring eyes with infrequent blinking","atrophy of the lymph nodes"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Staring eyes with infrequent blinking is a sign of hyperthyroidism/Graves' disease, NOT Cushing's syndrome."},
+{id:146,text:"What is caused by hyperparathyroidism?",options:["Hypocalcemia","Bone demineralization","Tetany","Hyperphosphatemia"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Hyperparathyroidism causes excess PTH release, leading to bone demineralization."},
+{id:147,text:"Which term refers to near-sightedness?",options:["Hyperopia","Diplopia","Presbyopia","Myopia"],correct:3,category:"Unit 4 - Sensory",source:"A",explanation:"Myopia (near-sightedness) occurs when the eye focuses light in front of the retina; distant objects appear blurry."},
+{id:148,text:"In a case of acute otitis media, what would a purulent discharge in the external canal of the ear and some pain relief likely indicate?",options:["Obstruction of the auditory tube","Infection of the external ear","Rupture of the tympanic membrane","Spread of infection into the mastoid cells"],correct:2,category:"Unit 4 - Sensory",source:"A",explanation:"Spontaneous perforation of the tympanic membrane releases pressure and pus, causing temporary pain relief."},
+{id:149,text:"Expressive aphasia is most likely to result from damage to",options:["Wernicke's area","the left temporal lobe","the right motor cortex","the left frontal lobe"],correct:3,category:"Unit 4 - Neurological",source:"A",explanation:"Broca's area in the left frontal lobe controls speech production; damage causes expressive (non-fluent) aphasia."},
+{id:150,text:"Oral candidiasis is considered to",options:["cause white patches to develop on the mucosa that cannot be scraped","be an opportunistic fungal infection of the mouth","be a common bacterial infection in infants","develop only in patients with AIDS"],correct:1,category:"Unit 3 - Integumentary",source:"A",explanation:"Oral candidiasis (thrush) is caused by Candida albicans overgrowth, occurring in immunocompromised patients."},
+// ===== ADDITIONAL UNIT 4 QUESTIONS =====
+{id:151,text:"Which of the following applies to the corpus luteum?",options:["It produces FSH and LH","It develops before ovulation","It secretes estrogen and progesterone during the latter half of the menstrual cycle","It is responsible for egg maturation"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"The corpus luteum forms after ovulation and secretes progesterone and estrogen during the luteal phase."},
+{id:152,text:"Renal disease frequently causes hypertension because",options:["the kidneys produce excess aldosterone directly","fluid retention causes cardiac hypertrophy","congestion and ischemia stimulate release of renin","renal failure causes sodium excretion"],correct:2,category:"Unit 4 - Renal",source:"A",explanation:"Renal ischemia activates the renin-angiotensin-aldosterone system, leading to vasoconstriction and sodium retention."},
+// ===== NEW PRACTICE QUESTIONS - ALL UNITS =====
+{id:153,text:"Why does hypocalcemia cause tetany?",options:["Calcium excess blocks nerve impulses","Nerves to skeletal muscle are less excitable","Nerves to skeletal muscle are more excitable","Potassium shifts into cells"],correct:2,category:"Unit 2 - Fluids & Electrolytes",source:"Q",explanation:"Low calcium reduces the threshold for nerve depolarization, making skeletal muscle nerves hyperexcitable, causing tetany."},
+{id:154,text:"Which of the following is a characteristic finding in Addison's disease?",options:["Moon face and buffalo hump","Hyperpigmentation and hypotension","Hypertension and hyperglycemia","Exophthalmos and tachycardia"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Addison's disease (adrenal insufficiency) causes hyperpigmentation (ACTH stimulation), hypotension, and electrolyte imbalances."},
+{id:155,text:"The primary function of the glomerulus in the kidney is",options:["reabsorption of glucose","secretion of potassium","filtration of blood","concentration of urine"],correct:2,category:"Unit 4 - Renal",source:"N",explanation:"The glomerulus filters blood under pressure, removing waste products, water, and small molecules into the Bowman's capsule."},
+{id:156,text:"Atherosclerosis involves the buildup of",options:["calcium crystals in joint spaces","fibrous plaques containing lipids in arterial walls","fibrin clots in venous circulation","amyloid deposits in cardiac muscle"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Atherosclerosis is characterized by subendothelial lipid deposits, foam cells, and fibrous plaques that narrow and harden arteries."},
+{id:157,text:"Which type of diabetes involves absolute insulin deficiency due to autoimmune destruction of beta cells?",options:["Type 2 diabetes","Gestational diabetes","MODY","Type 1 diabetes"],correct:3,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Type 1 DM is caused by autoimmune destruction of pancreatic beta cells, resulting in absolute insulin deficiency."},
+{id:158,text:"The term 'embolism' refers to",options:["a clot that forms in place within a vessel","a sudden blockage of a vessel by material traveling through the bloodstream","inflammation of a vein","arterial spasm"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"An embolus is material (clot, fat, air) that travels through the bloodstream and lodges in a vessel, causing obstruction."},
+{id:159,text:"Hyperthyroidism is characterized by all of the following EXCEPT",options:["weight loss","tachycardia","cold intolerance","exophthalmos"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Cold intolerance is a sign of HYPOTHYROIDISM. Hyperthyroidism causes heat intolerance, weight loss, tachycardia, and exophthalmos."},
+{id:160,text:"Which condition is associated with a positive Trousseau's sign and Chvostek's sign?",options:["Hyperkalemia","Hypocalcemia","Hypernatremia","Hypokalemia"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"N",explanation:"Both Trousseau's sign (carpopedal spasm with BP cuff) and Chvostek's sign (facial muscle twitch) indicate hypocalcemia."},
+{id:161,text:"The pathophysiology of multiple sclerosis involves",options:["loss of dopamine-producing neurons","demyelination of CNS axons causing impaired nerve conduction","destruction of peripheral nerve sheaths","atrophy of the cerebellum"],correct:1,category:"Unit 4 - Neurological",source:"N",explanation:"MS is an autoimmune demyelinating disease of the CNS causing plaques that slow or block nerve conduction."},
+{id:162,text:"Glaucoma results from",options:["lens opacity blocking light","increased intraocular pressure damaging the optic nerve","retinal detachment","inflammation of the choroid"],correct:1,category:"Unit 4 - Sensory",source:"N",explanation:"Elevated intraocular pressure in glaucoma compresses and damages the optic nerve, causing progressive vision loss."},
+{id:163,text:"A patient with COPD relies on hypoxic drive to breathe because",options:["their CO2 receptors are overactive","elevated CO2 levels have desensitized their central chemoreceptors","they have excess bicarbonate buffering","their respiratory muscles are weak"],correct:1,category:"Unit 3 - Respiratory",source:"N",explanation:"Chronic CO2 retention desensitizes central chemoreceptors; COPD patients rely on low O2 (hypoxic drive) to stimulate breathing."},
+{id:164,text:"The most common cause of peptic ulcer disease is",options:["NSAIDs only","stress-induced acid hypersecretion","Helicobacter pylori infection","excessive alcohol consumption"],correct:2,category:"Unit 4 - GI",source:"N",explanation:"H. pylori disrupts the protective mucous layer of the stomach, and is responsible for ~70-80% of peptic ulcers."},
+{id:165,text:"Jaundice occurs when",options:["liver produces excess bile acids","bilirubin accumulates in the blood and tissues","iron stores are depleted","hemoglobin production increases"],correct:1,category:"Unit 4 - GI",source:"N",explanation:"Jaundice (icterus) results from hyperbilirubinemia — excess bilirubin depositing in skin and sclerae causing yellow discoloration."},
+{id:166,text:"Which electrolyte imbalance is most commonly associated with hypertension, edema, and weight gain?",options:["Hypokalemia","Hypernatremia","Hypocalcemia","Hypomagnesemia"],correct:1,category:"Unit 2 - Fluids & Electrolytes",source:"N",explanation:"Hypernatremia causes water retention, leading to increased blood pressure, edema, and weight gain."},
+{id:167,text:"The purpose of surfactant in the lungs is to",options:["filter inhaled particles","reduce surface tension to prevent alveolar collapse","transport oxygen to tissues","stimulate cough reflex"],correct:1,category:"Unit 3 - Respiratory",source:"N",explanation:"Pulmonary surfactant reduces surface tension within alveoli, preventing them from collapsing during exhalation."},
+{id:168,text:"Rheumatoid arthritis differs from osteoarthritis in that it",options:["affects only elderly patients","is a wear-and-tear disease","is an autoimmune inflammatory disease affecting synovial joints bilaterally","only affects weight-bearing joints"],correct:2,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Rheumatoid arthritis is a systemic autoimmune disease causing symmetric joint inflammation, unlike osteoarthritis which is degenerative."},
+{id:169,text:"Which complication is most associated with long-standing diabetes mellitus?",options:["Hyperthyroidism","Diabetic nephropathy, neuropathy, and retinopathy","Adrenal insufficiency","Cushingoid features"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Chronic hyperglycemia causes microvascular damage leading to the classic triad: diabetic nephropathy, neuropathy, and retinopathy."},
+{id:170,text:"What is the function of the parathyroid hormone (PTH)?",options:["Lower blood calcium by increasing renal excretion","Raise blood calcium by stimulating bone resorption and renal reabsorption","Lower blood phosphate by decreasing intestinal absorption","Stimulate insulin secretion"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"PTH raises serum calcium by stimulating osteoclast bone resorption, increasing renal Ca2+ reabsorption, and activating vitamin D."},
+{id:171,text:"Portal hypertension in cirrhosis leads to",options:["decreased splenic blood flow","ascites, varices, and splenomegaly","elevated serum albumin","increased liver synthetic function"],correct:1,category:"Unit 4 - GI",source:"N",explanation:"Elevated portal pressure forces fluid into the peritoneum (ascites), opens varices, and causes congestive splenomegaly."},
+{id:172,text:"The primary problem in congestive heart failure is",options:["insufficient red blood cell production","the heart's inability to pump sufficient blood to meet the body's metabolic needs","coronary artery spasm","excessive cardiac output"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"CHF is a clinical syndrome where the heart cannot maintain adequate cardiac output to meet metabolic demands."},
+{id:173,text:"Deep vein thrombosis (DVT) is most dangerous because it can lead to",options:["stroke only","myocardial infarction","pulmonary embolism","renal failure"],correct:2,category:"Unit 3 - Cardiovascular",source:"N",explanation:"DVT clots can dislodge and travel to the pulmonary vasculature causing a potentially fatal pulmonary embolism."},
+{id:174,text:"Anemia of chronic disease is characterized by",options:["elevated serum iron and low ferritin","normal RBC size with low hemoglobin due to impaired iron utilization","macrocytic red blood cells","increased erythropoietin response"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Anemia of chronic disease results from inflammatory cytokines trapping iron in storage, making it unavailable for erythropoiesis."},
+{id:175,text:"A patient with hypothyroidism would most likely present with",options:["weight loss and heat intolerance","tachycardia and exophthalmos","bradycardia, weight gain, cold intolerance, and constipation","hypertension and hyperglycemia"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Hypothyroidism causes decreased metabolic rate: bradycardia, weight gain, cold intolerance, fatigue, constipation, and dry skin."},
+{id:176,text:"Which of the following best describes the difference between Crohn's disease and ulcerative colitis?",options:["Crohn's affects only the colon; UC affects the entire GI tract","Crohn's causes bloody diarrhea; UC does not","Crohn's is transmural and can affect any part of GI tract; UC is mucosal and limited to colon","UC causes fistulas; Crohn's does not"],correct:2,category:"Unit 4 - GI",source:"N",explanation:"Crohn's disease involves transmural inflammation anywhere in the GI tract; UC is limited to the mucosal layer of the colon."},
+{id:177,text:"Increased intracranial pressure (ICP) is most dangerous because it can cause",options:["fluid retention in the extremities","herniation of brain structures through the foramen magnum causing brainstem compression","peripheral neuropathy","decreased reflexes"],correct:1,category:"Unit 4 - Neurological",source:"N",explanation:"Uncal/transtentorial herniation due to elevated ICP compresses the brainstem, causing coma and death if untreated."},
+{id:178,text:"Alzheimer's disease is characterized pathologically by",options:["Lewy bodies in the substantia nigra","amyloid plaques and neurofibrillary tangles in the brain","demyelinating plaques in white matter","loss of motor neurons in the spinal cord"],correct:1,category:"Unit 4 - Neurological",source:"N",explanation:"Alzheimer's disease is defined by amyloid-beta plaques and tau neurofibrillary tangles causing progressive neuronal loss."},
+{id:179,text:"The classic presentation of appendicitis includes pain that",options:["starts diffusely in the pelvis and remains there","begins diffusely around the umbilicus and localizes to the right lower quadrant (McBurney's point)","is felt in the right upper quadrant after fatty meals","is crampy and relieves after defecation"],correct:1,category:"Unit 4 - GI",source:"N",explanation:"Appendicitis classically begins as periumbilical pain (referred from T10) that migrates to RLQ as peritoneum becomes inflamed."},
+{id:180,text:"What is the most common type of kidney stone?",options:["Uric acid","Struvite","Calcium oxalate","Cystine"],correct:2,category:"Unit 4 - Renal",source:"N",explanation:"Calcium oxalate stones are the most common type of kidney stone, accounting for approximately 75-80% of cases."},
+{id:181,text:"Benign prostatic hyperplasia (BPH) causes urinary symptoms primarily because",options:["it invades the bladder wall","the enlarged prostate compresses the urethra obstructing urine flow","it causes renal failure directly","it blocks the ureters"],correct:1,category:"Unit 4 - Reproductive",source:"N",explanation:"BPH enlargement compresses the urethra, causing obstructive symptoms: hesitancy, weak stream, and incomplete emptying."},
+{id:182,text:"Cor pulmonale is defined as",options:["left heart failure due to MI","right ventricular hypertrophy and failure secondary to pulmonary hypertension","congenital heart defect","inflammation of the pericardium"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Cor pulmonale is right-sided heart failure caused by pulmonary hypertension, often from chronic lung disease like COPD."},
+{id:183,text:"The mechanism of type 2 diabetes mellitus involves",options:["autoimmune destruction of alpha cells","absence of glucagon","insulin resistance and relative insulin deficiency","absolute lack of insulin"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Type 2 DM involves peripheral insulin resistance plus progressive beta cell failure, leading to relative insulin deficiency."},
+{id:184,text:"Which sign indicates meningeal irritation?",options:["Positive Romberg sign","Positive Kernig's or Brudzinski's sign","Positive Babinski sign","Positive Homan's sign"],correct:1,category:"Unit 4 - Neurological",source:"N",explanation:"Kernig's sign (pain on knee extension) and Brudzinski's sign (hip flexion when neck is flexed) indicate meningeal irritation."},
+{id:185,text:"The hallmark of nephrotic syndrome is",options:["hematuria and hypertension","massive proteinuria leading to hypoalbuminemia and edema","oliguria and azotemia","polyuria and dilute urine"],correct:1,category:"Unit 4 - Renal",source:"N",explanation:"Nephrotic syndrome: proteinuria >3.5g/day causes hypoalbuminemia, edema, hyperlipidemia, and lipiduria."},
+{id:186,text:"Which of the following is a risk factor specific to cervical cancer?",options:["BRCA1 gene mutation","Early menopause","HPV (human papillomavirus) infection","Nulliparity"],correct:2,category:"Unit 4 - Reproductive",source:"N",explanation:"HPV infection (particularly strains 16 and 18) is the primary causative risk factor for cervical cancer."},
+{id:187,text:"Spinal cord injury at the level of C4 or above is life-threatening because",options:["it causes complete loss of sensation only","it disrupts innervation of the diaphragm, impairing breathing","it causes spinal shock only","it leads to autonomic dysreflexia immediately"],correct:1,category:"Unit 4 - Neurological",source:"N",explanation:"The phrenic nerve (C3-C5) innervates the diaphragm; injury above C4 impairs or eliminates spontaneous breathing."},
+{id:188,text:"Pancreatitis causes epigastric pain that",options:["is relieved by eating","radiates to the back and is worsened by lying flat","is colicky and comes in waves","is relieved by bowel movements"],correct:1,category:"Unit 4 - GI",source:"N",explanation:"Pancreatitis causes severe epigastric pain radiating to the back; it worsens supine and is relieved by leaning forward."},
+{id:189,text:"Which of the following best describes the pathophysiology of asthma?",options:["Permanent airway destruction from smoking","Reversible airway inflammation, bronchoconstriction, and increased mucus production","Progressive alveolar enlargement","Fibrosis of lung parenchyma"],correct:1,category:"Unit 3 - Respiratory",source:"N",explanation:"Asthma is characterized by reversible bronchoconstriction, airway inflammation, and mucus hypersecretion triggered by various stimuli."},
+{id:190,text:"In shock, the body compensates by",options:["decreasing heart rate and vasodilation","decreasing ADH and increasing urination","increasing heart rate, vasoconstriction, and activating RAAS","decreasing sympathetic nervous system activity"],correct:2,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Compensatory shock response: sympathetic activation increases HR, causes vasoconstriction; RAAS retains Na/water to restore BP."},
+{id:191,text:"Hypothyroidism in infants, if untreated, causes",options:["Cushing syndrome","cretinism — severe intellectual disability and growth failure","gigantism","Addison's disease"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Untreated congenital hypothyroidism (cretinism) causes profound intellectual disability, stunted growth, and developmental delay."},
+{id:192,text:"The primary difference between Type 1 and Type 2 diabetes regarding treatment is",options:["Type 1 requires exercise only; Type 2 requires insulin","Type 1 requires exogenous insulin; Type 2 may be managed with diet, exercise, and oral agents","Both always require insulin injections","Type 2 requires insulin; Type 1 uses oral hypoglycemics"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Type 1 always requires insulin replacement. Type 2 can often be managed with lifestyle changes and oral agents initially."},
+{id:193,text:"Which complication of immobility is directly prevented by use of compression stockings?",options:["Pressure ulcers","Muscle atrophy","Deep vein thrombosis (DVT)","Pneumonia"],correct:2,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Compression stockings promote venous return in immobilized patients, reducing venous stasis and DVT risk."},
+{id:194,text:"The most common early symptom of Parkinson's disease is",options:["dementia","resting tremor (pill-rolling tremor)","postural instability","rigidity"],correct:1,category:"Unit 4 - Neurological",source:"N",explanation:"Resting tremor (often described as pill-rolling) is the most common initial symptom of Parkinson's disease."},
+{id:195,text:"What is the primary cause of secondary hypertension?",options:["Stress and obesity","Renal disease or renovascular disease","Excessive caffeine intake","Dietary sodium excess"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Secondary hypertension has an identifiable cause; renal disease (renovascular or parenchymal) is the most common cause."},
+{id:196,text:"A patient develops sudden onset of one-sided weakness, facial droop, and slurred speech. The priority action is",options:["Give aspirin and observe","Perform CT scan in the morning","Recognize as stroke and ensure emergent treatment within the time window","Administer nitroglycerin"],correct:2,category:"Unit 4 - Neurological",source:"N",explanation:"Acute ischemic stroke is a medical emergency; tPA (thrombolytics) are most effective within 3-4.5 hours of onset."},
+{id:197,text:"Which cells are primarily responsible for producing antibodies?",options:["T cytotoxic cells","Natural killer cells","Plasma cells (differentiated B cells)","Macrophages"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Plasma cells are mature B lymphocytes that have differentiated to produce large quantities of specific antibodies."},
+{id:198,text:"Septic shock differs from hypovolemic shock in that septic shock presents with",options:["decreased cardiac output and cold clammy skin initially","elevated temperature, warm flushed skin, and vasodilation initially","severe hemorrhage","normal blood pressure"],correct:1,category:"Unit 1 - Foundations",source:"N",explanation:"Early septic shock causes vasodilation from inflammatory mediators, resulting in warm, flushed skin and high cardiac output (warm shock)."},
+{id:199,text:"The development of drug resistance in bacteria occurs primarily through",options:["random mutations and natural selection","viral insertion into bacterial DNA only","patient non-compliance only","antibiotic overproduction by bacteria"],correct:0,category:"Unit 1 - Foundations",source:"N",explanation:"Antibiotic resistance develops through spontaneous mutations and natural selection — resistant bacteria survive and reproduce."},
+{id:200,text:"IgGs transferred from mother to fetus across the placenta is referred to as",options:["active natural immunity","active artificial immunity","passive natural immunity","passive artificial immunity"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Maternal IgG crosses the placenta providing passive natural immunity to the fetus without active immune response."},
+{id:201,text:"Cushing's syndrome results from",options:["deficiency of cortisol","excess of cortisol from any cause","deficiency of aldosterone","excess of thyroid hormone"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Cushing's syndrome is caused by prolonged excess cortisol — from exogenous steroids, adrenal tumor, or pituitary adenoma (Cushing's disease)."},
+{id:202,text:"Which of the following is a classic sign of increased intracranial pressure (Cushing's triad)?",options:["Hypotension, tachycardia, tachypnea","Hypertension, bradycardia, and irregular respirations","Fever, nuchal rigidity, and photophobia","Hypotension, bradycardia, and hypothermia"],correct:1,category:"Unit 4 - Neurological",source:"N",explanation:"Cushing's triad (hypertension, bradycardia, irregular respirations) is a late sign of dangerously elevated ICP."},
+{id:203,text:"Which of the following correctly describes the function of insulin?",options:["Raises blood glucose by breaking down glycogen","Stimulates gluconeogenesis in the liver","Facilitates glucose entry into cells and lowers blood glucose","Inhibits glucose uptake in the brain"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Insulin facilitates glucose uptake by cells (especially muscle and fat), inhibits glycogenolysis and gluconeogenesis, lowering blood glucose."},
+{id:204,text:"The most characteristic laboratory finding in hemolytic anemia is",options:["elevated serum iron","decreased bilirubin","elevated serum bilirubin (indirect) and decreased haptoglobin","thrombocytopenia"],correct:2,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Hemolysis releases hemoglobin; this is broken down to indirect bilirubin. Haptoglobin binds free hemoglobin and becomes depleted."},
+{id:205,text:"Which of the following is NOT a function of the kidney?",options:["Regulating acid-base balance","Producing erythropoietin","Activating vitamin D","Producing insulin"],correct:3,category:"Unit 4 - Renal",source:"N",explanation:"Insulin is produced by pancreatic beta cells, not the kidneys. The kidneys regulate acid-base balance, produce EPO, and activate vitamin D."},
+{id:206,text:"The term 'polyphagia' in diabetes mellitus refers to",options:["excessive thirst","excessive urination","excessive hunger","excessive weight gain"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Polyphagia (excessive hunger) occurs in DM because despite high blood glucose, cells cannot access it without insulin."},
+{id:207,text:"Carcinoma in situ refers to",options:["cancer that has spread to lymph nodes","a benign tumor with calcifications","malignant cells confined to the original site with no invasion","metastatic cancer"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Carcinoma in situ is stage 0 cancer — malignant cells are present but have not invaded through the basement membrane."},
+{id:208,text:"Which characteristic most distinguishes malignant tumors from benign tumors?",options:["Malignant tumors grow faster","Malignant tumors have a capsule","Malignant tumors invade and metastasize to distant sites","Malignant tumors are always painful"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"The defining feature of malignancy is the ability to invade local tissue and metastasize (spread) to distant organs."},
+{id:209,text:"The term 'hematuria' refers to",options:["blood in the stool","protein in the urine","blood in the urine","pus in the urine"],correct:2,category:"Unit 4 - Renal",source:"N",explanation:"Hematuria is the presence of blood in the urine, which can be gross (visible) or microscopic."},
+{id:210,text:"A patient with renal failure will develop anemia primarily because",options:["the kidneys cannot filter red blood cells","insufficient erythropoietin is produced by the failing kidneys","excess iron is excreted in urine","the bone marrow is directly damaged by uremia"],correct:1,category:"Unit 4 - Renal",source:"N",explanation:"The kidneys are the primary source of erythropoietin; renal failure causes decreased EPO production and subsequent anemia."},
+{id:211,text:"Which of the following best describes the Starling's law of the heart?",options:["Heart rate increases with increased preload","The greater the stretch of cardiac muscle (preload), the stronger the contraction","Cardiac output decreases with increased afterload","Heart rate is independent of stroke volume"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Frank-Starling Law: increased venous return stretches the myocardium; a greater stretch produces a stronger contraction (up to a point)."},
+{id:212,text:"Myasthenia gravis is caused by",options:["destruction of motor neurons in the spinal cord","demyelination of peripheral nerves","autoimmune attack on acetylcholine receptors at the neuromuscular junction","dopamine deficiency"],correct:2,category:"Unit 4 - Neurological",source:"N",explanation:"Myasthenia gravis involves antibodies against nicotinic acetylcholine receptors, reducing effective neuromuscular transmission, causing muscle weakness."},
+{id:213,text:"Which acid-base disorder is most commonly associated with uncontrolled diabetes mellitus (DKA)?",options:["Respiratory alkalosis","Respiratory acidosis","Metabolic alkalosis","Metabolic acidosis"],correct:3,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"DKA causes metabolic acidosis from overproduction of ketoacids (acetoacetate, beta-hydroxybutyrate) from fat catabolism."},
+{id:214,text:"The hormone responsible for the 'fight-or-flight' response is",options:["cortisol","aldosterone","epinephrine (adrenaline)","insulin"],correct:2,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Epinephrine from the adrenal medulla mediates the acute sympathetic fight-or-flight response."},
+{id:215,text:"Otosclerosis is a condition affecting",options:["the optic nerve","the cochlea only","ossicles of the middle ear causing conductive hearing loss","the tympanic membrane only"],correct:2,category:"Unit 4 - Sensory",source:"N",explanation:"Otosclerosis is abnormal bone remodeling of the ossicles (particularly stapes), causing progressive conductive hearing loss."},
+{id:216,text:"Which of the following is a sign specific to right-sided heart failure?",options:["Pulmonary edema","Orthopnea","Peripheral edema, jugular venous distension, and hepatomegaly","Pink frothy sputum"],correct:2,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Right heart failure causes systemic venous congestion: JVD, hepatomegaly, ascites, and dependent edema."},
+{id:217,text:"The condition in which the thyroid gland is underactive, resulting in a decrease in metabolic rate, is called",options:["hyperthyroidism","thyroiditis","Graves' disease","hypothyroidism"],correct:3,category:"Unit 4 - Endocrine & Metabolism",source:"N",explanation:"Hypothyroidism occurs when thyroid hormone production is insufficient, slowing metabolic processes throughout the body."},
+{id:218,text:"Acute respiratory distress syndrome (ARDS) is characterized by",options:["gradual onset of productive cough","sudden onset of severe hypoxemia with bilateral pulmonary infiltrates","unilateral lung consolidation with fever","chronic progressive dyspnea with barrel chest"],correct:1,category:"Unit 3 - Respiratory",source:"N",explanation:"ARDS is defined by acute hypoxemia (PaO2/FiO2 ratio <300), bilateral infiltrates, and non-cardiogenic pulmonary edema."},
+{id:219,text:"Diverticulitis occurs when",options:["polyps form on the colon mucosa","diverticula become inflamed or infected","the appendix becomes inflamed","the colon telescopes into itself"],correct:1,category:"Unit 4 - GI",source:"N",explanation:"Diverticulitis occurs when feces or bacteria get trapped in diverticular pouches, causing inflammation and possible perforation."},
+{id:220,text:"Which of the following is the most appropriate description of 'remission' in the context of cancer?",options:["The cancer has been completely eliminated permanently","All evidence of cancer has disappeared but monitoring continues","The cancer has spread to a new organ","The patient has declined treatment"],correct:1,category:"Unit 1 - Foundations",source:"N",explanation:"Remission means signs and symptoms of cancer have decreased or disappeared; complete remission means no detectable cancer, though monitoring continues."}
+
+,
+{id:221,text:"Common effects of the expanding uterus during pregnancy include all of the following EXCEPT",options:["increased urinary frequency","dependent edema","constipation","low blood pressure"],correct:3,category:"Unit 4 - Reproductive",source:"A",explanation:"The expanding uterus causes urinary frequency, edema, and constipation by compressing adjacent structures. Low blood pressure is not a typical direct effect of uterine expansion; supine hypotension is positional, not a common general effect."},
+{id:222,text:"With advancing age, the major change in the cardiovascular system involves",options:["decreased cardiac output only","vascular degeneration leading to arteriosclerosis and atherosclerosis","increased elasticity of vessels","decreased systolic blood pressure"],correct:1,category:"Unit 3 - Cardiovascular",source:"A",explanation:"Aging causes progressive vascular degeneration: arterial walls thicken and stiffen (arteriosclerosis) and plaques accumulate (atherosclerosis), increasing risk of cardiovascular disease."},
+{id:223,text:"Three factors common to metabolic syndrome include",options:["anemia, hypothyroidism, and hypertension","BMI at the 85th percentile, type 2 diabetes mellitus, and hypertension","hypotension, low cholesterol, and obesity","type 1 diabetes, tachycardia, and obesity"],correct:1,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Metabolic syndrome is characterized by central obesity (BMI ≥85th percentile in youth), insulin resistance/type 2 diabetes, hypertension, dyslipidemia, and elevated blood glucose."},
+{id:224,text:"Alopecia refers to",options:["excessive hair growth","hair loss","skin inflammation","nail dystrophy"],correct:1,category:"Unit 3 - Integumentary",source:"A",explanation:"Alopecia is the medical term for hair loss, which can be partial or complete and result from genetics, autoimmune conditions, medications, or systemic disease."},
+{id:225,text:"Benign tumors can often be differentiated from malignant tumors because benign tumors",options:["invade surrounding tissues","metastasize to distant organs","are encapsulated and slow-growing","have a high mitotic rate"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"Benign tumors are typically encapsulated, well-differentiated, slow-growing, and do NOT invade or metastasize. Malignant tumors invade, are poorly differentiated, and can spread."},
+{id:226,text:"The warning signs for cancer include",options:["a change in bowel or bladder habits","a sore that does not heal","unusual bleeding or discharge","all of these"],correct:3,category:"Unit 1 - Foundations",source:"A",explanation:"The CAUTION warning signs of cancer (American Cancer Society) include: Change in bowel/bladder habits, A sore that doesn't heal, Unusual bleeding/discharge, Thickening/lump, Indigestion, Obvious change in wart/mole, Nagging cough/hoarseness."},
+{id:227,text:"A warning sign of potential cancer would be any of the following EXCEPT",options:["a painless lump in the breast","blood in the urine","a sore that does not heal","sudden development of fever, nausea, and diarrhea"],correct:3,category:"Unit 1 - Foundations",source:"A",explanation:"Fever, nausea, and diarrhea are signs of acute infection, not cancer warning signs. Cancer warning signs include painless lumps, hematuria, and non-healing sores."},
+{id:228,text:"Blood tests are performed on neonates primarily to",options:["determine blood type for future transfusions","screen for genetic abnormalities only","identify disorders requiring immediate treatment","assess nutritional status"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"Neonatal blood screening (newborn screening programs) is performed primarily to identify metabolic, genetic, and other disorders that require immediate treatment to prevent serious complications."},
+{id:229,text:"Gestational diabetes in the mother usually results in",options:["delivery of a low birth-weight infant","premature birth","delivery of a high birth-weight infant","intrauterine growth restriction"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"Gestational diabetes causes fetal hyperinsulinemia in response to maternal hyperglycemia, leading to macrosomia (high birth weight, >4 kg), which can complicate delivery."},
+{id:230,text:"Which of the following is a characteristic of a benign tumor?",options:["Cells appear anaplastic and undifferentiated","Cells invade the basement membrane","Cells appear relatively normal","High nuclear-to-cytoplasm ratio"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"Benign tumor cells appear well-differentiated and relatively normal microscopically. Malignant cells show anaplasia, pleomorphism, and high mitotic activity."},
+{id:231,text:"The 23rd pair of chromosomes in the male karyotype is",options:["XX","XY","YY","XO"],correct:1,category:"Unit 1 - Foundations",source:"A",explanation:"Males have XY sex chromosomes as the 23rd pair. Females have XX. XO results in Turner syndrome; XXY results in Klinefelter syndrome."},
+{id:232,text:"Obesity in adolescents is",options:["defined only by weight exceeding 200 lbs","associated with increased risk of type 2 diabetes","linked to psychosocial problems such as low self-esteem","all of these"],correct:3,category:"Unit 4 - Endocrine & Metabolism",source:"A",explanation:"Adolescent obesity is associated with type 2 diabetes, cardiovascular risk factors, sleep apnea, orthopedic problems, and significant psychosocial issues including depression and low self-esteem."},
+{id:233,text:"Radiation therapy destroys",options:["all cells in the tumor at one time","radioresistant cells","primarily rapidly dividing cells","the cells in the center of the tumor"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"Radiation therapy primarily targets rapidly dividing cells by damaging their DNA. Cancer cells divide rapidly and are more vulnerable, though normal rapidly dividing cells (GI lining, hair follicles) are also affected."},
+{id:234,text:"Predisposing factors to osteoporosis in older women include all of the following EXCEPT",options:["sedentary lifestyle","decreased parathyroid hormone","genetic factors","decreased estrogen secretion"],correct:1,category:"Unit 3 - Musculoskeletal",source:"A",explanation:"Osteoporosis risk factors include sedentary lifestyle, decreased estrogen (menopause), genetic predisposition, low calcium intake, and smoking. Decreased parathyroid hormone would actually REDUCE bone resorption — it is NOT a risk factor for osteoporosis."},
+{id:235,text:"The process of carcinogenesis usually begins with",options:["exposure to promoters causing dysplasia","development of defective genes","an irreversible change in the cell DNA","a single exposure to a known risk factor causing temporary cell damage"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"Carcinogenesis begins with initiation — an irreversible mutation/change in cellular DNA caused by a carcinogen. This is followed by promotion (clonal expansion) and progression (malignant transformation)."},
+{id:236,text:"Developmental disorders can result from all the following EXCEPT",options:["exposure to radiation","mercury in foods and water","folic acid","drugs and alcohol"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"Folic acid is a PROTECTIVE factor — it prevents neural tube defects. Radiation, mercury, and drugs/alcohol are teratogens that cause developmental disorders."},
+{id:237,text:"What is the term for an arrangement of the chromosomes from an individual's cell, organized in pairs based on size and shape?",options:["Punnett square","Pedigree","Karyotype","Genotype"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"A karyotype is the organized profile of an individual's chromosomes, arranged in homologous pairs by size and shape. It is used to detect chromosomal abnormalities such as trisomies."},
+{id:238,text:"A spontaneous alteration in genetic material that may result from exposure to harmful substances is termed",options:["genotype","mutation","meiosis","autosome"],correct:1,category:"Unit 1 - Foundations",source:"A",explanation:"A mutation is a permanent change in the DNA sequence. Mutations can be spontaneous or induced by mutagens such as radiation, chemicals, or viruses."},
+{id:239,text:"Which of the following is a serious potential complication of abruptio placentae indicated by low serum levels of clotting factors?",options:["Disseminated intravascular coagulation (DIC)","Thromboembolism","Severe hypertension","Jaundice"],correct:0,category:"Unit 4 - Reproductive",source:"A",explanation:"Abruptio placentae can trigger DIC by releasing thromboplastin from the placenta into maternal circulation, consuming clotting factors and causing uncontrolled bleeding. Low serum clotting factors confirm DIC."},
+{id:240,text:"Edema and congestion normally develop in many tissues during pregnancy as a result of",options:["decreased serum albumin","increases in blood pressure","increased blood volume","reduced kidney function"],correct:2,category:"Unit 4 - Reproductive",source:"A",explanation:"Normal pregnancy causes a 40-50% increase in blood volume, which along with decreased colloid osmotic pressure and uterine compression of veins leads to dependent edema and tissue congestion."},
+{id:241,text:"A person with sickle cell trait that is heterozygous has",options:["an incomplete dominant gene","X-linked dominant trait","a multifactorial condition","co-dominant genes"],correct:0,category:"Unit 1 - Foundations",source:"A",explanation:"Sickle cell trait (HbAS) is a result of incomplete dominance — the heterozygous person carries one normal hemoglobin gene and one sickle cell gene, producing both HbA and HbS."},
+{id:242,text:"The term apoptosis refers to",options:["degree of differentiation of cells","abnormal or immature cells","programmed cell death","the development of new capillaries in a tumor"],correct:2,category:"Unit 1 - Foundations",source:"A",explanation:"Apoptosis is programmed cell death — an orderly, energy-dependent process by which cells self-destruct. It is essential for normal development, tissue homeostasis, and elimination of damaged cells."},
+{id:243,text:"Which of the following can be detected using amniotic fluid?",options:["All of these","Metabolic disorders","Certain structural abnormalities","Chromosomal abnormalities"],correct:0,category:"Unit 1 - Foundations",source:"A",explanation:"Amniocentesis collects amniotic fluid containing fetal cells and substances that allow detection of chromosomal abnormalities (e.g., trisomy 21), metabolic disorders (e.g., PKU), and certain structural abnormalities."},
+{id:244,text:"Von Willebrand disease is characterized by",options:["decreased red blood cell production","deficiency or dysfunction of Von Willebrand factor leading to impaired platelet adhesion and prolonged bleeding","excess clotting causing thrombosis","destruction of platelets by the immune system"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Von Willebrand disease is the most common inherited bleeding disorder. Von Willebrand factor (vWF) normally helps platelets adhere to damaged vessel walls and carries Factor VIII. Deficiency/dysfunction causes prolonged bleeding, easy bruising, and excessive bleeding from cuts or surgery."},
+{id:245,text:"Von Willebrand factor (vWF) plays which of the following roles in hemostasis?",options:["Activates the intrinsic clotting cascade only","Promotes platelet adhesion to damaged endothelium and stabilizes Factor VIII","Breaks down fibrin clots","Stimulates red blood cell production"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"vWF acts as a bridge between damaged subendothelial collagen and platelet glycoprotein Ib receptors, enabling platelet adhesion (primary hemostasis). It also carries and protects Factor VIII from premature degradation."},
+{id:246,text:"A patient with Von Willebrand disease would most likely present with",options:["deep muscle and joint bleeds","petechiae, easy bruising, prolonged bleeding from cuts, and heavy menstrual bleeding","stroke and deep vein thrombosis","severe anemia without bleeding symptoms"],correct:1,category:"Unit 3 - Cardiovascular",source:"N",explanation:"Von Willebrand disease causes mucocutaneous bleeding: nosebleeds, easy bruising, prolonged bleeding from cuts, gum bleeding, and menorrhagia. Deep tissue/joint bleeds are more characteristic of hemophilia (Factor VIII/IX deficiency)."},
+{id:247,text:"Which type of bone is longer than it is wide and serves as a lever for movement?",options:["Short bone","Flat bone","Long bone","Irregular bone"],correct:2,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Long bones (e.g., femur, humerus, tibia) are longer than wide, with a diaphysis (shaft) and two epiphyses. They function as levers for movement and contain red marrow in epiphyses and yellow marrow in the diaphysis."},
+{id:248,text:"Which type of bone is approximately equal in length and width and provides support and stability?",options:["Long bone","Short bone","Flat bone","Sesamoid bone"],correct:1,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Short bones (e.g., carpals, tarsals) are roughly cube-shaped — equal in length and width. They provide stability and some movement and are found in the wrist and ankle."},
+{id:249,text:"Flat bones such as the sternum and skull primarily function to",options:["act as levers for movement","store yellow bone marrow","protect vital organs and provide large surfaces for muscle attachment","allow gliding movements only"],correct:2,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Flat bones (skull, sternum, ribs, scapulae) protect internal organs (brain, heart, lungs) and provide broad surfaces for muscle attachment. They also contain red bone marrow for hematopoiesis."},
+{id:250,text:"Irregular bones, such as the vertebrae and hip bones, are characterized by",options:["a regular geometric shape","complex shapes that do not fit other bone classifications","being longer than wide","being sesamoid in nature"],correct:1,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Irregular bones have complex shapes that don't fit long, short, or flat categories. Vertebrae protect the spinal cord and support weight; facial bones and hip bones are other examples."},
+{id:251,text:"A sesamoid bone such as the patella develops within",options:["the periosteum","a tendon","the synovial membrane","compact bone"],correct:1,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Sesamoid bones develop within tendons where the tendon passes over a joint. The patella is the largest sesamoid bone; it protects the knee joint and improves the leverage of the quadriceps tendon."},
+{id:252,text:"A synarthrosis joint is best described as",options:["a freely movable joint with a synovial cavity","a slightly movable joint connected by cartilage","a completely immovable joint where bones are joined by fibrous tissue","a joint found only in the appendicular skeleton"],correct:2,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Synarthrosis joints are completely immovable (e.g., sutures of the skull, gomphosis of teeth). Bones are joined by fibrous connective tissue with no joint cavity. They provide stability and protection."},
+{id:253,text:"Which of the following is an example of a synarthrosis (immovable) joint?",options:["The knee joint","The intervertebral discs","The sutures of the skull","The shoulder joint"],correct:2,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"The cranial sutures are classic examples of synarthrosis — immovable fibrous joints that fuse together in adulthood to protect the brain. The knee is diarthrosis; intervertebral discs are amphiarthrosis."},
+{id:254,text:"An amphiarthrosis joint allows",options:["no movement whatsoever","slight movement and is connected by cartilage or fibrocartilage","free movement in all planes","movement only in one axis"],correct:1,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Amphiarthrosis joints allow slight movement. Examples include the pubic symphysis (connected by fibrocartilage) and intervertebral discs (connected by fibrocartilage discs). They provide stability with minimal flexibility."},
+{id:255,text:"Which of the following is an example of an amphiarthrosis (slightly movable) joint?",options:["The hip joint","The elbow joint","The pubic symphysis","The sutures of the skull"],correct:2,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"The pubic symphysis is a classic amphiarthrosis — the two pubic bones are joined by a fibrocartilaginous disc allowing slight movement, especially important during childbirth. Hip and elbow are diarthroses; skull sutures are synarthroses."},
+{id:256,text:"A diarthrosis (synovial) joint is characterized by",options:["no movement and dense fibrous tissue","slight movement and a cartilaginous connection","free movement, a synovial cavity, articular cartilage, and a joint capsule","immovable bony fusion"],correct:2,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"Diarthrosis (synovial) joints are freely movable and have: articular cartilage covering bone ends, a synovial cavity filled with synovial fluid, a fibrous joint capsule, and a synovial membrane. Examples: knee, hip, shoulder, elbow."},
+{id:257,text:"Which of the following joints is classified as a diarthrosis (freely movable)?",options:["Skull sutures","Pubic symphysis","Intervertebral discs","The knee joint"],correct:3,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"The knee joint is a diarthrosis (synovial joint) — it is freely movable with a synovial cavity. Skull sutures are synarthrosis; pubic symphysis and intervertebral discs are amphiarthrosis."},
+{id:258,text:"The correct classification of joints from immovable to freely movable is",options:["diarthrosis → amphiarthrosis → synarthrosis","synarthrosis → amphiarthrosis → diarthrosis","amphiarthrosis → synarthrosis → diarthrosis","synarthrosis → diarthrosis → amphiarthrosis"],correct:1,category:"Unit 3 - Musculoskeletal",source:"N",explanation:"The correct order by degree of movement: Synarthrosis (immovable, e.g., skull sutures) → Amphiarthrosis (slightly movable, e.g., pubic symphysis) → Diarthrosis (freely movable, e.g., knee, hip). This is a key classification for musculoskeletal nursing."},
+{id:259,text:"Which statement best describes the difference between genotype and phenotype?",options:["Genotype is the physical expression of traits; phenotype is the genetic makeup","Genotype is the genetic makeup of an organism; phenotype is the observable physical expression","Genotype and phenotype are identical terms","Genotype refers only to sex chromosomes"],correct:1,category:"Unit 1 - Foundations",source:"N",explanation:"Genotype = the actual genetic code/alleles an individual carries. Phenotype = the observable characteristics (physical, biochemical, behavioral) that result from the interaction of genotype and environment."},
+{id:260,text:"An autosomal dominant disorder",options:["requires two copies of the defective gene to cause disease","affects only males","requires only one copy of the defective gene to cause disease and each child of an affected parent has a 50% chance of inheritance","is always lethal in infancy"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Autosomal dominant disorders require only ONE defective allele. Affected individuals are usually heterozygous, each child of an affected parent has a 50% chance of inheriting the disorder. Examples: Huntington disease, Marfan syndrome, neurofibromatosis."},
+{id:261,text:"An autosomal recessive disorder",options:["is expressed when only one defective allele is present","requires two copies of the defective allele (homozygous) for disease expression","affects only females","always skips a generation"],correct:1,category:"Unit 1 - Foundations",source:"N",explanation:"Autosomal recessive disorders require TWO copies of the defective allele (homozygous). Carriers (heterozygous) are unaffected. When both parents are carriers, each child has a 25% chance of disease, 50% chance of being a carrier. Examples: cystic fibrosis, PKU, sickle cell disease."},
+{id:262,text:"Which of the following is an X-linked recessive disorder?",options:["Huntington disease","Cystic fibrosis","Hemophilia A","Marfan syndrome"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Hemophilia A (Factor VIII deficiency) is X-linked recessive. It primarily affects males (who have only one X chromosome). Females with one defective X are carriers. Huntington and Marfan are autosomal dominant; cystic fibrosis is autosomal recessive."},
+{id:263,text:"The term used to describe the degree to which a cell has differentiated from its original form is",options:["metastasis","anaplasia","differentiation","hyperplasia"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Differentiation describes how much a cell resembles its cell of origin — well-differentiated (low grade) tumors look more normal; poorly differentiated (high grade) tumors look more abnormal (anaplastic). Higher differentiation = better prognosis in cancer."},
+{id:264,text:"Tumor staging with the TNM system refers to",options:["Temperature, Necrosis, Metastasis","Tissue type, Node involvement, Malignancy grade","Tumor size/extent, Node involvement, Metastasis","Tumor grade, Necrosis, Mitosis rate"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"The TNM staging system classifies cancer by: T (tumor size and local extent), N (regional lymph node involvement), M (distant metastasis). Higher TNM values indicate more advanced disease and generally worse prognosis."},
+{id:265,text:"Homeostasis refers to",options:["the process of cell division","the tendency of the body to maintain a stable internal environment despite external changes","the removal of waste products from the cell","the movement of substances from high to low concentration"],correct:1,category:"Unit 1 - Foundations",source:"N",explanation:"Homeostasis is the dynamic process by which the body maintains a stable internal environment (temperature, pH, fluid balance, etc.) through feedback mechanisms. Disease occurs when homeostasis is disrupted."},
+{id:266,text:"Which of the following best describes a positive feedback mechanism?",options:["A mechanism that reverses a change and restores normal levels","A mechanism that amplifies a change, moving the system further from normal","A mechanism that has no effect on body function","A mechanism used only during exercise"],correct:1,category:"Unit 1 - Foundations",source:"N",explanation:"Positive feedback amplifies or enhances a change (e.g., uterine contractions during labor — oxytocin release increases contractions, which increases oxytocin). Negative feedback is the primary homeostatic mechanism that reverses changes."},
+{id:267,text:"Cellular adaptation to stress includes all of the following EXCEPT",options:["hypertrophy","atrophy","necrosis","hyperplasia"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Necrosis is cell DEATH, not adaptation. Cellular adaptations to stress include: hypertrophy (increased cell size), atrophy (decreased cell size), hyperplasia (increased cell number), metaplasia (cell type change), and dysplasia (abnormal cell change)."},
+{id:268,text:"Which type of necrosis is associated with liquefaction and is commonly seen in brain infarcts?",options:["Coagulative necrosis","Caseous necrosis","Liquefactive necrosis","Fat necrosis"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"Liquefactive necrosis occurs when hydrolytic enzymes digest dead cells, forming a liquid mass. It is characteristic of brain infarcts (due to abundant hydrolytic enzymes) and bacterial infections forming abscesses."},
+{id:269,text:"Inflammation serves which primary purpose in the body?",options:["To permanently damage tissue in the affected area","To destroy all microorganisms regardless of need","To eliminate the injurious agent and prepare the area for tissue repair","To cause fever in all cases of tissue damage"],correct:2,category:"Unit 1 - Foundations",source:"N",explanation:"The primary purpose of inflammation is protective: to eliminate the cause of cell injury (pathogens, toxins, damaged cells) and initiate the repair process. The cardinal signs — redness, heat, swelling, pain, loss of function — reflect this process."},
+{id:270,text:"The five cardinal signs of inflammation are",options:["fever, chills, malaise, anorexia, and leukocytosis","redness (rubor), heat (calor), swelling (tumor), pain (dolor), and loss of function (functio laesa)","edema, necrosis, fibrosis, ischemia, and infarction","tachycardia, hypotension, confusion, cyanosis, and oliguria"],correct:1,category:"Unit 1 - Foundations",source:"N",explanation:"The five cardinal signs of inflammation (described by Celsius and Virchow) are: Rubor (redness), Calor (heat), Tumor (swelling), Dolor (pain), and Functio laesa (loss of function). These result from vasodilation, increased vascular permeability, and fluid exudate."}
+
+];
+
+const CATEGORIES = [...new Set(QUESTIONS.map(q => q.category))].sort();
+let selectedCategories = [...CATEGORIES];
+let currentMode = 'practice';
+let allPoolQuestions = [];   // full shuffled pool for session
+let examQuestions = [];      // current batch slice
+let currentBatch = 0;        // 0-indexed batch number
+let batchSize = 30;          // 0 = all
+let currentIndex = 0;
+let answers = {};            // keyed by global pool index
+let flagged = new Set();     // global pool indices
+let timer = null;
+let timeLeft = 0;
+let sessionCorrect = 0;
+let sessionIncorrect = 0;
+
+// Update total question count on load
+document.querySelector('#total-q-count').textContent = QUESTIONS.length;
+
+// ── Category grid ─────────────────────────────────────────────────────────────
+function buildCatGrid(){
+  const grid = document.getElementById('cat-grid');
+  grid.innerHTML = '';
+  const allChip = document.createElement('div');
+  allChip.className = 'cat-chip selected';
+  allChip.id = 'chip-all';
+  allChip.innerHTML = '&#10003; All Topics';
+  allChip.onclick = () => {
+    if(selectedCategories.length === CATEGORIES.length){
+      selectedCategories = [];
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('selected'));
+    } else {
+      selectedCategories = [...CATEGORIES];
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.add('selected'));
+    }
+    updateAvailCount();
+  };
+  grid.appendChild(allChip);
+  CATEGORIES.forEach(cat => {
+    const chip = document.createElement('div');
+    chip.className = 'cat-chip selected';
+    chip.textContent = cat;
+    chip.onclick = () => {
+      const idx = selectedCategories.indexOf(cat);
+      if(idx > -1){ selectedCategories.splice(idx,1); chip.classList.remove('selected'); }
+      else { selectedCategories.push(cat); chip.classList.add('selected'); }
+      updateAvailCount();
+    };
+    grid.appendChild(chip);
+  });
+  updateAvailCount();
+}
+
+function updateAvailCount(){
+  const n = QUESTIONS.filter(q => selectedCategories.includes(q.category)).length;
+  const el = document.getElementById('avail-count');
+  if(el) el.textContent = n + ' questions available';
+}
+
+// ── Batch size selector ───────────────────────────────────────────────────────
+function setBatch(n){
+  batchSize = n;
+  document.querySelectorAll('.batch-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('batch-' + n).classList.add('active');
+  const desc = document.getElementById('batch-desc');
+  if(n === 0) desc.textContent = 'You will practice all available questions in one session.';
+  else desc.textContent = 'You will practice ' + n + ' shuffled questions per session. Use Next/Prev Batch to navigate all questions.';
+}
+
+// ── Utility ───────────────────────────────────────────────────────────────────
+function shuffle(arr){ for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr; }
+function getMissed(){ try{return JSON.parse(localStorage.getItem('nur221_missed')||'[]');}catch(e){return[];} }
+function saveMissed(ids){ localStorage.setItem('nur221_missed', JSON.stringify([...new Set(ids)])); }
+
+// ── Start exam ────────────────────────────────────────────────────────────────
+function startExam(){
+  let pool = QUESTIONS.filter(q => selectedCategories.includes(q.category));
+  if(currentMode === 'missed'){
+    const missed = getMissed();
+    if(!missed.length){ alert('No missed questions saved! Take a practice or exam session first.'); return; }
+    pool = QUESTIONS.filter(q => missed.includes(q.id));
+  }
+  if(!pool.length){ alert('No questions match your filter. Please select at least one topic.'); return; }
+
+  allPoolQuestions = shuffle([...pool]);
+  currentBatch = 0;
+  answers = {};
+  flagged = new Set();
+  sessionCorrect = 0;
+  sessionIncorrect = 0;
+
+  loadBatch(0);
+
+  document.getElementById('splash').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'block';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('mode-label').textContent =
+    {practice:'Practice Mode — Instant Feedback', exam:'Exam Mode — Timed', study:'Study Mode — Hints Available', missed:'Review Missed Questions'}[currentMode];
+
+  if(currentMode === 'exam'){
+    timeLeft = examQuestions.length * 90;
+    document.getElementById('timer-display').style.display = 'block';
+    startTimer();
+  } else {
+    document.getElementById('timer-display').style.display = 'none';
+  }
+  renderQuestion();
+}
+
+// ── Batch loading ─────────────────────────────────────────────────────────────
+function getTotalBatches(){
+  if(batchSize === 0) return 1;
+  return Math.ceil(allPoolQuestions.length / batchSize);
+}
+
+function loadBatch(batchIdx){
+  currentBatch = batchIdx;
+  currentIndex = 0;
+  if(batchSize === 0){
+    examQuestions = allPoolQuestions;
+  } else {
+    const start = batchIdx * batchSize;
+    examQuestions = allPoolQuestions.slice(start, start + batchSize);
+  }
+  const totalBatches = getTotalBatches();
+  const batchNavBar = document.getElementById('batch-nav-bar');
+  if(totalBatches > 1){
+    batchNavBar.style.display = 'flex';
+    document.getElementById('batch-info-label').textContent =
+      'Batch ' + (batchIdx+1) + ' of ' + totalBatches + ' (' + allPoolQuestions.length + ' total questions)';
+    document.getElementById('batch-prev-btn').disabled = batchIdx === 0;
+    document.getElementById('batch-next-btn').disabled = batchIdx >= totalBatches - 1;
+  } else {
+    batchNavBar.style.display = 'none';
+  }
+  const start = batchIdx * (batchSize || allPoolQuestions.length);
+  const end = start + examQuestions.length;
+  document.getElementById('qmap-range').textContent =
+    totalBatches > 1 ? 'Q' + (start+1) + '–Q' + end + ' of ' + allPoolQuestions.length : examQuestions.length + ' questions';
+
+  buildQMap();
+}
+
+function prevBatch(){
+  if(currentBatch > 0){
+    loadBatch(currentBatch - 1);
+    renderQuestion();
+  }
+}
+
+function nextBatch(){
+  const totalBatches = getTotalBatches();
+  if(currentBatch < totalBatches - 1){
+    loadBatch(currentBatch + 1);
+    renderQuestion();
+  } else {
+    // All batches done — show results
+    endExam();
+  }
+}
+
+// ── Question map ──────────────────────────────────────────────────────────────
+function buildQMap(){
+  const map = document.getElementById('q-map');
+  map.innerHTML = '';
+  const batchOffset = currentBatch * (batchSize || 0);
+  examQuestions.forEach((_,i) => {
+    const dot = document.createElement('div');
+    const globalI = batchSize > 0 ? batchOffset + i : i;
+    dot.className = 'q-dot' + (i===currentIndex?' current':'');
+    dot.textContent = batchSize > 0 ? (batchOffset + i + 1) : (i + 1);
+    dot.onclick = () => { currentIndex=i; renderQuestion(); };
+    dot.id = 'dot-'+i;
+    map.appendChild(dot);
+  });
+}
+
+function updateQMap(){
+  const batchOffset = currentBatch * (batchSize || 0);
+  examQuestions.forEach((_,i) => {
+    const dot = document.getElementById('dot-'+i);
+    if(!dot) return;
+    const globalI = batchSize > 0 ? batchOffset + i : i;
+    dot.className = 'q-dot';
+    if(i === currentIndex) dot.classList.add('current');
+    else if(flagged.has(globalI)) dot.classList.add('flagged-dot');
+    else if(answers[globalI] !== undefined){
+      const q = examQuestions[i];
+      dot.classList.add(answers[globalI] === q.correct ? 'answered-correct' : 'answered-incorrect');
+    }
+  });
+}
+
+// ── Render question ───────────────────────────────────────────────────────────
+function renderQuestion(){
+  const q = examQuestions[currentIndex];
+  const batchOffset = currentBatch * (batchSize || 0);
+  const globalI = batchSize > 0 ? batchOffset + currentIndex : currentIndex;
+  const displayNum = batchSize > 0 ? batchOffset + currentIndex + 1 : currentIndex + 1;
+
+  document.getElementById('q-num-badge').textContent = 'Q' + displayNum;
+  document.getElementById('q-cat-badge').textContent = q.category;
+  const srcMap = {A:'⭐ Actual Exam', Q:'Quizlet', N:'Practice'};
+  document.getElementById('q-src-badge').textContent = srcMap[q.source] || q.source;
+  document.getElementById('q-text').textContent = q.text;
+
+  const totalBatches = getTotalBatches();
+  const batchEnd = batchOffset + examQuestions.length;
+  if(totalBatches > 1){
+    document.getElementById('progress-text').textContent =
+      'Q' + (batchOffset+currentIndex+1) + ' of ' + allPoolQuestions.length +
+      ' (Batch ' + (currentBatch+1) + '/' + totalBatches + ')';
+  } else {
+    document.getElementById('progress-text').textContent =
+      'Question ' + (currentIndex+1) + ' of ' + examQuestions.length;
+  }
+  document.getElementById('progress-fill').style.width =
+    ((batchOffset + currentIndex + 1) / allPoolQuestions.length * 100) + '%';
+
+  document.getElementById('h-correct').textContent = sessionCorrect;
+  document.getElementById('h-incorrect').textContent = sessionIncorrect;
+
+  const opts = document.getElementById('options-list');
+  opts.innerHTML = '';
+  const letters = ['A','B','C','D','E'];
+  q.options.forEach((opt,oi) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = '<span class="opt-letter">' + letters[oi] + '</span><span>' + opt + '</span>';
+    btn.onclick = () => selectAnswer(oi);
+    if(answers[globalI] !== undefined){
+      btn.disabled = true;
+      if(oi === q.correct) btn.classList.add(currentMode==='exam'?'':'reveal-correct');
+      if(oi === answers[globalI]){
+        btn.classList.add(answers[globalI]===q.correct?'correct':'incorrect');
+      }
+    }
+    opts.appendChild(btn);
+  });
+
+  const fb = document.getElementById('feedback-box');
+  fb.className = 'feedback-box';
+  fb.textContent = '';
+  if(answers[globalI] !== undefined && currentMode !== 'exam'){
+    const correct = answers[globalI] === q.correct;
+    fb.className = 'feedback-box ' + (correct?'correct-fb':'incorrect-fb');
+    fb.innerHTML = (correct ? '✅ Correct! ' : '❌ Incorrect. The correct answer is: <strong>' + q.options[q.correct] + '</strong>. ') + q.explanation;
+  }
+
+  const hintArea = document.getElementById('hint-area');
+  hintArea.innerHTML = '';
+  if(currentMode === 'study' && answers[globalI] === undefined){
+    const hBtn = document.createElement('button');
+    hBtn.className = 'hint-btn';
+    hBtn.textContent = '💡 Show Hint';
+    const hBox = document.createElement('div');
+    hBox.className = 'hint-box';
+    hBox.textContent = q.explanation;
+    hBtn.onclick = () => { hBox.style.display = hBox.style.display==='block'?'none':'block'; };
+    hintArea.appendChild(hBtn);
+    hintArea.appendChild(hBox);
+  }
+
+  document.getElementById('prev-btn').disabled = (currentIndex === 0 && currentBatch === 0);
+  const nextBtn = document.getElementById('next-btn');
+  const isLastInBatch = currentIndex === examQuestions.length - 1;
+  const isLastBatch = currentBatch >= getTotalBatches() - 1;
+
+  if(isLastInBatch && isLastBatch){
+    nextBtn.textContent = 'Finish ✓';
+    nextBtn.onclick = endExam;
+  } else if(isLastInBatch && !isLastBatch){
+    nextBtn.textContent = 'Next Batch →';
+    nextBtn.onclick = () => nextBatch();
+  } else {
+    nextBtn.textContent = 'Next →';
+    nextBtn.onclick = () => navigate(1);
+  }
+
+  const fb2 = document.getElementById('flag-btn');
+  const globalFlagI = batchSize > 0 ? batchOffset + currentIndex : currentIndex;
+  fb2.className = 'flag-btn' + (flagged.has(globalFlagI)?' flagged':'');
+  updateQMap();
+}
+
+// ── Select answer ─────────────────────────────────────────────────────────────
+function selectAnswer(optIdx){
+  const batchOffset = currentBatch * (batchSize || 0);
+  const globalI = batchSize > 0 ? batchOffset + currentIndex : currentIndex;
+  if(answers[globalI] !== undefined) return;
+  const q = examQuestions[currentIndex];
+  answers[globalI] = optIdx;
+  const correct = optIdx === q.correct;
+  if(correct) sessionCorrect++; else sessionIncorrect++;
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach((btn,i) => {
+    btn.disabled = true;
+    if(i === q.correct && currentMode !== 'exam') btn.classList.add('reveal-correct');
+    if(i === optIdx) btn.classList.add(correct?'correct':'incorrect');
+  });
+  if(currentMode !== 'exam'){
+    const fb = document.getElementById('feedback-box');
+    fb.className = 'feedback-box ' + (correct?'correct-fb':'incorrect-fb');
+    fb.innerHTML = (correct ? '✅ Correct! ' : '❌ Incorrect. The correct answer is: <strong>' + q.options[q.correct] + '</strong>. ') + q.explanation;
+  }
+  updateQMap();
+}
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+function navigate(dir){
+  const newIdx = currentIndex + dir;
+  if(dir < 0 && newIdx < 0){
+    // Go to previous batch, last question
+    if(currentBatch > 0){
+      loadBatch(currentBatch - 1);
+      currentIndex = examQuestions.length - 1;
+      renderQuestion();
+    }
+    return;
+  }
+  if(newIdx >= examQuestions.length){
+    nextBatch();
+    return;
+  }
+  currentIndex = Math.max(0, Math.min(examQuestions.length-1, newIdx));
+  renderQuestion();
+}
+
+function toggleFlag(){
+  const batchOffset = currentBatch * (batchSize || 0);
+  const globalI = batchSize > 0 ? batchOffset + currentIndex : currentIndex;
+  if(flagged.has(globalI)) flagged.delete(globalI);
+  else flagged.add(globalI);
+  renderQuestion();
+}
+
+function selectMode(mode){
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode-'+mode).classList.add('active');
+}
+
+// ── Timer ─────────────────────────────────────────────────────────────────────
+function startTimer(){
+  updateTimerDisplay();
+  timer = setInterval(() => {
+    timeLeft--;
+    updateTimerDisplay();
+    if(timeLeft <= 0){ clearInterval(timer); endExam(); }
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  const m = Math.floor(timeLeft/60);
+  const s = timeLeft%60;
+  const el = document.getElementById('timer-display');
+  el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  el.className = timeLeft < 120 ? 'warning' : '';
+}
+
+function endExam(){
+  if(timer){ clearInterval(timer); timer=null; }
+  showResults();
+}
+
+// ── Results ───────────────────────────────────────────────────────────────────
+function showResults(){
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'block';
+  let correct=0, incorrect=0, skipped=0;
+  const missedIds = getMissed();
+
+  // Count across ALL batches that have been answered
+  allPoolQuestions.forEach((q,i) => {
+    const globalI = i;
+    if(answers[globalI] === undefined){ skipped++; missedIds.push(q.id); }
+    else if(answers[globalI] === q.correct) correct++;
+    else { incorrect++; missedIds.push(q.id); }
+  });
+  saveMissed(missedIds);
+
+  const total = allPoolQuestions.length;
+  const answered = correct + incorrect;
+  const pct = answered > 0 ? Math.round(correct/answered*100) : 0;
+  document.getElementById('score-pct').textContent = pct + '%';
+  const sc = document.getElementById('score-circle');
+  sc.className = 'score-circle ' + (pct>=80?'score-pass':pct>=70?'score-good':'score-fail');
+  document.getElementById('results-title').textContent = pct>=80?'Excellent Work! 🎉':pct>=70?'Good Job! 📚':'Keep Studying! 💪';
+  document.getElementById('results-subtitle').textContent = `You answered ${correct} of ${answered} attempted questions correctly (${skipped} skipped).`;
+  document.getElementById('r-correct').textContent = correct;
+  document.getElementById('r-incorrect').textContent = incorrect;
+  document.getElementById('r-skipped').textContent = skipped;
+  document.getElementById('r-total').textContent = total;
+
+  const rev = document.getElementById('review-section');
+  rev.innerHTML = '<h3>Question Review</h3>';
+  allPoolQuestions.forEach((q,i) => {
+    const ans = answers[i];
+    if(ans === undefined && skipped === 0) return; // skip unanswered if none skipped
+    const item = document.createElement('div');
+    const isCorrect = ans === q.correct;
+    item.className = 'review-item ' + (ans===undefined?'':isCorrect?'r-correct':'r-incorrect');
+    item.innerHTML = '<div class="ri-q">' + (i+1) + '. ' + q.text + '</div>' +
+      (ans===undefined ? '<div class="ri-skipped">⏭ Not attempted</div>' :
+       isCorrect ? '<div class="ri-correct-ans">✅ ' + q.options[ans] + '</div>' :
+       '<div class="ri-your">Your answer: ' + q.options[ans] + '</div><div class="ri-correct-ans">✅ Correct: ' + q.options[q.correct] + '</div>') +
+      '<div style="font-size:0.8rem;color:#555;margin-top:0.4rem;">' + q.explanation + '</div>';
+    rev.appendChild(item);
+  });
+}
+
+function restartSame(){
+  // Reshuffle same pool, reset answers
+  allPoolQuestions = shuffle([...allPoolQuestions]);
+  currentBatch = 0;
+  answers = {};
+  flagged = new Set();
+  sessionCorrect = 0;
+  sessionIncorrect = 0;
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'block';
+  loadBatch(0);
+  if(currentMode === 'exam'){
+    timeLeft = examQuestions.length * 90;
+    document.getElementById('timer-display').style.display = 'block';
+    startTimer();
+  }
+  renderQuestion();
+}
+
+function goHome(){
+  if(timer){clearInterval(timer);timer=null;}
+  document.getElementById('results-screen').style.display='none';
+  document.getElementById('exam-screen').style.display='none';
+  document.getElementById('splash').style.display='flex';
+}
+
+function clearMissed(){
+  localStorage.removeItem('nur221_missed');
+  alert('Missed questions cleared!');
+}
+
+buildCatGrid();
+
+</script>
+</body>
+</html>
